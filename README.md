@@ -15,7 +15,8 @@ Todo el sistema vive en un único archivo HTML autocontenido (`reino-de-pavel.dc
 | 04 · Moneda y filatelia | Billete de 100 Grandezas (anverso y reverso), sello postal de 5 G, sello de control fronterizo |
 | 05 · Himno | Letra oficial, portada del himno, entrada del diccionario nacional |
 | 06 · Constitución | Carta Magna de la Grandeza: preámbulo, siete artículos y disposición final |
-| 07 · Papelería | Carta diplomática A4, sobre aéreo, certificado de ciudadanía |
+| 07 · Descartes | Reformulación del *cogito*: Descartes admite haberse equivocado al no pensar en Pavel |
+| 08 · Papelería | Carta diplomática A4, sobre aéreo, certificado de ciudadanía |
 
 ## Sistema de diseño
 
