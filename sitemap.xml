@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Placeholder domain (https://example.com/) below — no real hosting domain has
+  been confirmed yet. Replace both <loc> values with the real absolute URL once
+  the site is deployed (GitHub Pages default or a custom domain), matching the
+  canonical / og:url tags in reino-de-pavel.dc.html and the Sitemap: line in
+  robots.txt.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://example.com/reino-de-pavel.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
