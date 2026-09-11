@@ -17,6 +17,63 @@
   a:hover{color:#f6e3ab}
   @keyframes twinkle{0%,100%{opacity:.35}50%{opacity:.9}}
   @keyframes drift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-40px,-30px,0)}}
+  @keyframes pvl-inclinar{0%{transform:translate(-50%,-100%) rotate(0)}28%{transform:translate(-50%,-90%) rotate(-40deg)}68%{transform:translate(-50%,-90%) rotate(-40deg)}100%{transform:translate(-50%,-100%) rotate(0)}}
+  @keyframes pvl-viaje{0%{left:-8%;top:52%;transform:rotate(-8deg)}18%{left:12%;top:18%;transform:rotate(7deg)}38%{left:32%;top:44%}56%{left:52%;top:12%;transform:rotate(-5deg)}78%{left:74%;top:34%;transform:rotate(8deg)}100%{left:108%;top:20%;transform:rotate(10deg)}}
+  @keyframes pvl-chispa{0%{opacity:0;transform:translate(-50%,0) scale(.4)}18%{opacity:1}100%{opacity:0;transform:translate(-50%,-88px) scale(1.15)}}
+  @keyframes pvl-grito{0%{opacity:0;transform:translate(-50%,4px) scale(.88)}10%{opacity:1;transform:translate(-50%,-8px) scale(1)}68%{opacity:1;transform:translate(-50%,-28px) scale(1)}100%{opacity:0;transform:translate(-50%,-64px) scale(1.04)}}
+  @keyframes pvl-trono-brillo{0%,100%{filter:drop-shadow(0 0 0 rgba(233,200,116,0))}50%{filter:drop-shadow(0 0 22px rgba(233,200,116,.55))}}
+  @keyframes pvl-agente-reverencia{0%,100%{transform:translate(-50%,0) rotate(0)}40%,70%{transform:translate(-50%,6px) rotate(-18deg)}}
+  @keyframes pvl-andar{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  @keyframes pvl-globo{0%{opacity:0;transform:translate(-50%,8px) scale(.92)}100%{opacity:1;transform:translate(-50%,0) scale(1)}}
+  #pavel-mundo{display:none;position:fixed;inset:0;z-index:240;align-items:center;justify-content:center;padding:18px;background:rgba(8,4,21,.84);backdrop-filter:blur(6px)}
+  #pavel-mundo.pvl-abierto{display:flex}
+  #pavel-mundo-dialogo{width:min(980px,100%);height:min(94vh,860px);max-height:min(94vh,860px);display:flex;flex-direction:column;background:
+    radial-gradient(90% 70% at 12% 0%,rgba(122,74,214,.38),transparent 55%),
+    radial-gradient(80% 60% at 100% 0%,rgba(58,190,214,.22),transparent 50%),
+    #0d0725;border:1px solid rgba(216,178,92,.48);box-shadow:0 28px 80px rgba(0,0,0,.62);overflow:hidden}
+  #pavel-escenario{position:relative;flex:1 1 auto;min-height:320px;overflow:hidden;background:
+    radial-gradient(1.3px 1.3px at 18% 22%,#fff 50%,transparent 51%),
+    radial-gradient(1.1px 1.1px at 72% 16%,#cfe9ff 50%,transparent 51%),
+    radial-gradient(1.4px 1.4px at 40% 70%,#fff 50%,transparent 51%),
+    radial-gradient(1.1px 1.1px at 88% 48%,#ffe8bd 50%,transparent 51%),
+    linear-gradient(180deg,#1b1150 0%,#140a33 42%,#2a1840 42%,#1a0e30 100%);background-size:180px 180px,240px 240px,300px 300px,210px 210px,auto}
+  .pvl-suelo{position:absolute;left:-10%;right:-10%;bottom:0;height:58%;background:linear-gradient(180deg,rgba(216,178,92,.08),rgba(27,17,80,.15) 30%,rgba(11,6,32,.55));clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);border-top:1px solid rgba(216,178,92,.22);pointer-events:none}
+  .pvl-trono{position:absolute;left:50%;top:8%;width:min(220px,46%);transform:translateX(-50%);z-index:3;display:grid;justify-items:center}
+  .pvl-trono-respaldo{width:78%;height:92px;border:1.5px solid #d8b25c;border-bottom:0;border-radius:18px 18px 0 0;background:linear-gradient(180deg,#3a2380,#1b1150);box-shadow:inset 0 0 0 4px #140a33,0 0 0 1px rgba(244,224,168,.2);display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:28px;color:#e9c874}
+  .pvl-trono-efigie{width:118px;height:118px;margin-top:-38px;border-radius:50%;padding:5px;background:conic-gradient(from 220deg,#8f6f2a,#f4e0a8 25%,#d8b25c 50%,#f4e0a8 72%,#8f6f2a);box-shadow:0 10px 28px rgba(0,0,0,.45)}
+  .pvl-trono-efigie>div{width:100%;height:100%;border-radius:50%;overflow:hidden;border:2px solid #0d0726;background:#f4efe2}
+  .pvl-trono-efigie img{width:130%;height:auto;position:relative;left:50%;top:4%;transform:translateX(-50%)}
+  .pvl-trono-asiento{width:88%;height:22px;margin-top:-8px;border-radius:4px;background:linear-gradient(180deg,#f4e0a8,#8f6f2a);box-shadow:0 8px 0 #5c4318}
+  .pvl-trono-escalones{width:100%;margin-top:10px;display:grid;gap:4px}
+  .pvl-trono-escalones i{display:block;height:9px;margin:0 auto;background:linear-gradient(180deg,rgba(233,200,116,.55),rgba(143,111,42,.7));border:1px solid rgba(244,224,168,.25)}
+  .pvl-trono-escalones i:nth-child(1){width:70%}
+  .pvl-trono-escalones i:nth-child(2){width:84%}
+  .pvl-trono-escalones i:nth-child(3){width:100%}
+  .pvl-trono.pvl-gracias{animation:pvl-trono-brillo 1.6s ease-in-out 3}
+  .pvl-globo{position:absolute;left:50%;top:-6px;transform:translate(-50%,0);min-width:220px;max-width:280px;padding:12px 14px;background:#f6f1e3;color:#201a33;border:1px solid rgba(143,111,42,.55);box-shadow:0 12px 28px rgba(0,0,0,.4);z-index:6;animation:pvl-globo .35s ease;text-align:center}
+  .pvl-globo:after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%) rotate(45deg);width:12px;height:12px;background:#f6f1e3;border-right:1px solid rgba(143,111,42,.55);border-bottom:1px solid rgba(143,111,42,.55)}
+  .pvl-agente{position:absolute;z-index:4;width:56px;transform:translate(-50%,0);display:grid;justify-items:center;pointer-events:none}
+  .pvl-agente.pvl-reverencia{animation:pvl-agente-reverencia .9s ease}
+  .pvl-a-cabeza{width:20px;height:20px;border-radius:50%;background:linear-gradient(180deg,#f4efe2,#c9c0ad);border:1px solid rgba(216,178,92,.5)}
+  .pvl-a-cuerpo{width:26px;height:34px;margin-top:2px;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#2a1a63,#1b1150);box-shadow:inset 0 0 0 1px rgba(233,200,116,.35)}
+  .pvl-a-cuerpo:after{content:"P";display:grid;place-items:center;height:100%;font:700 10px/1 'Bodoni Moda',serif;color:#e9c874}
+  .pvl-a-nombre{margin-top:6px;font:500 7.5px/1.25 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,239,226,.62);text-align:center;white-space:nowrap}
+  .pvl-peregrino{position:absolute;z-index:5;width:52px;transform:translate(-50%,-100%);display:grid;justify-items:center}
+  .pvl-peregrino.pvl-inclinado{animation:pvl-inclinar .9s ease}
+  .pvl-peregrino.pvl-camina .pvl-p-cuerpo{animation:pvl-andar .32s linear infinite}
+  .pvl-p-nombre{margin-bottom:4px;padding:3px 7px;background:rgba(13,7,38,.72);border:1px solid rgba(216,178,92,.4);font:500 8px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#e9c874;white-space:nowrap}
+  .pvl-p-cabeza{width:22px;height:22px;border-radius:50%;background:linear-gradient(180deg,#f7f2e6,#d8c9a8);border:1.5px solid #d8b25c}
+  .pvl-p-cuerpo{width:28px;height:36px;margin-top:2px;border-radius:11px 11px 5px 5px;background:linear-gradient(160deg,#86e7ea,#f2a9dc 70%,#f4e0a8);box-shadow:inset 0 0 0 1px rgba(13,7,38,.25)}
+  .pvl-unicornio{position:absolute;z-index:7;height:158px;width:auto;left:-40%;top:50%;pointer-events:none;filter:drop-shadow(0 18px 28px rgba(0,0,0,.5));display:none}
+  .pvl-unicornio.pvl-viaja{display:block;animation:pvl-viaje 4.4s ease-in-out forwards}
+  .pvl-chispa{position:absolute;z-index:6;font:700 13px/1 'Bodoni Moda',serif;color:#f4e0a8;pointer-events:none;animation:pvl-chispa 1.05s ease forwards}
+  .pvl-chispa-texto{z-index:7;font-size:16px;color:#f6e3ab;letter-spacing:.02em;white-space:nowrap;animation:pvl-grito 2.6s ease forwards}
+  .pvl-pad{position:absolute;left:12px;bottom:12px;z-index:8;display:none;grid-template-columns:34px 34px 34px;grid-template-rows:34px 34px 34px;gap:4px}
+  @media (pointer:coarse){.pvl-pad{display:grid}}
+  .pvl-pad button{border:1px solid rgba(216,178,92,.45);background:rgba(13,7,37,.78);color:#e9c874;font:600 12px/1 'IBM Plex Mono',monospace;border-radius:2px;cursor:pointer;padding:0}
+  .pvl-pad button:disabled{opacity:0;pointer-events:none}
+  #pavel-abrir-mundo{font:inherit;cursor:pointer}
+  #pavel-abrir-mundo:hover{color:#f6e3ab;border-color:rgba(246,227,171,.7)}
 </style>
 <script>
 /* Reproductor del himno "El Ruir del Unicornio".
@@ -97,6 +154,288 @@
   setInterval(paint,200);
 })();
 </script>
+<script>
+/* El Mundo de Pavel -- audiencia en la corte.
+   Mismo candado que el himno: support.js remonta el <helmet> y el cuerpo,
+   asi que el script corre dos veces y los elementos se buscan en cada uso. */
+(function(){
+  if (window.__mundoPavel) return;
+  window.__mundoPavel = true;
+
+  var COOKIE = 'pavelense';
+  var doc = document;
+  var keys = Object.create(null);
+  var state = {
+    abierto: false,
+    jugando: false,
+    nombre: '',
+    x: 0,
+    y: 0,
+    last: 0,
+    raf: 0,
+    adoraciones: 0,
+    adorando: false,
+    agradecido: false,
+    unicornio: false
+  };
+
+  function $(id){ return doc.getElementById(id); }
+  function leerNombre(){
+    var m = doc.cookie.match(/(?:^|; )pavelense=([^;]*)/);
+    if (m) {
+      try { return decodeURIComponent(m[1]).trim(); } catch (e) { return String(m[1]||'').trim(); }
+    }
+    try { return (localStorage.getItem(COOKIE) || '').trim(); } catch (e) { return ''; }
+  }
+  function guardarNombre(n){
+    n = String(n || '').replace(/\s+/g, ' ').trim().slice(0, 32);
+    if (!n) return '';
+    doc.cookie = COOKIE + '=' + encodeURIComponent(n) + '; path=/; max-age=31536000; SameSite=Lax';
+    try { localStorage.setItem(COOKIE, n); } catch (e) {}
+    doc.documentElement.setAttribute('data-pavelense', n);
+    return n;
+  }
+  function pintarSitio(){
+    var n = state.nombre || leerNombre();
+    if (!n) return;
+    var chip = $('pavel-ciudadano');
+    var chipN = $('pavel-ciudadano-nombre');
+    var saludo = $('pavel-saludo');
+    if (chip && chipN) {
+      chipN.textContent = n;
+      chip.style.display = '';
+    }
+    if (saludo) {
+      saludo.textContent = 'El Ministerio te reconoce, ' + n + '. Existes porque Pavel existe.';
+      saludo.style.display = '';
+    }
+  }
+  function abrir(){
+    var ov = $('pavel-mundo');
+    if (!ov) return;
+    state.abierto = true;
+    ov.className = (ov.className.replace(/\bpvl-abierto\b/g,'') + ' pvl-abierto').replace(/^\s+/, '');
+    ov.setAttribute('aria-hidden', 'false');
+    doc.documentElement.style.overflow = 'hidden';
+    var n = leerNombre();
+    if (n) {
+      state.nombre = n;
+      pintarSitio();
+      mostrarJuego();
+    } else {
+      mostrarPuerta();
+      var inp = $('pavel-nombre-input');
+      if (inp) setTimeout(function(){ inp.focus(); }, 40);
+    }
+  }
+  function cerrar(){
+    var ov = $('pavel-mundo');
+    if (ov) {
+      ov.className = ov.className.replace(/\bpvl-abierto\b/g,'').replace(/\s+/g,' ').trim();
+      ov.setAttribute('aria-hidden', 'true');
+    }
+    state.abierto = false;
+    state.jugando = false;
+    if (state.raf) cancelAnimationFrame(state.raf);
+    state.raf = 0;
+    keys = Object.create(null);
+    doc.documentElement.style.overflow = '';
+  }
+  function mostrarPuerta(){
+    var g = $('pavel-mundo-gate'), j = $('pavel-mundo-juego');
+    if (g) g.style.display = '';
+    if (j) j.style.display = 'none';
+    state.jugando = false;
+  }
+  function mostrarJuego(){
+    var g = $('pavel-mundo-gate'), j = $('pavel-mundo-juego');
+    if (g) g.style.display = 'none';
+    if (j) j.style.display = 'flex';
+    state.adoraciones = 0;
+    state.agradecido = false;
+    state.adorando = false;
+    state.unicornio = false;
+    var globo = $('pavel-globo');
+    if (globo) globo.style.display = 'none';
+    var trono = $('pavel-trono');
+    if (trono) trono.className = 'pvl-trono';
+    var uni = $('pavel-unicornio-viaje');
+    if (uni) uni.className = 'pvl-unicornio';
+    var pn = $('pavel-peregrino-nombre');
+    if (pn) pn.textContent = state.nombre;
+    pintarContador();
+    var esc = $('pavel-escenario');
+    state.x = esc ? esc.clientWidth * 0.5 : 400;
+    state.y = esc ? esc.clientHeight * 0.82 : 320;
+    state.last = 0;
+    state.jugando = true;
+    if (state.raf) cancelAnimationFrame(state.raf);
+    state.raf = requestAnimationFrame(tick);
+    var dlg = $('pavel-mundo-dialogo');
+    if (dlg) dlg.setAttribute('tabindex', '-1');
+  }
+  function pintarContador(){
+    var el = $('pavel-adoraciones');
+    if (el) el.textContent = String(state.adoraciones);
+  }
+  function pintarJugador(){
+    var p = $('pavel-peregrino');
+    if (!p) return;
+    p.style.left = state.x + 'px';
+    p.style.top = state.y + 'px';
+    var moving = !!(keys.ArrowLeft||keys.ArrowRight||keys.ArrowUp||keys.ArrowDown||keys.a||keys.A||keys.d||keys.D||keys.w||keys.W||keys.s||keys.S||keys._padL||keys._padR||keys._padU||keys._padD);
+    p.className = 'pvl-peregrino' + (state.adorando ? ' pvl-inclinado' : '') + (moving && !state.adorando ? ' pvl-camina' : '');
+  }
+  function tick(now){
+    if (!state.abierto || !state.jugando) return;
+    if (!state.last) state.last = now;
+    var dt = Math.min((now - state.last) / 1000, 0.05);
+    state.last = now;
+    var dx = 0, dy = 0;
+    if (keys.ArrowLeft || keys.a || keys.A || keys._padL) dx -= 1;
+    if (keys.ArrowRight || keys.d || keys.D || keys._padR) dx += 1;
+    if (keys.ArrowUp || keys.w || keys.W || keys._padU) dy -= 1;
+    if (keys.ArrowDown || keys.s || keys.S || keys._padD) dy += 1;
+    if ((dx || dy) && !state.adorando) {
+      var len = Math.hypot(dx, dy) || 1;
+      state.x += (dx / len) * 190 * dt;
+      state.y += (dy / len) * 190 * dt;
+    }
+    var esc = $('pavel-escenario');
+    if (esc) {
+      var w = esc.clientWidth, h = esc.clientHeight;
+      state.x = Math.max(28, Math.min(w - 28, state.x));
+      state.y = Math.max(118, Math.min(h - 12, state.y));
+    }
+    pintarJugador();
+    state.raf = requestAnimationFrame(tick);
+  }
+  function chispas(){
+    var esc = $('pavel-escenario');
+    if (!esc) return;
+    var marks = ['✦','¡Oh, Pavel!','✧','P','★'];
+    for (var i = 0; i < 5; i++) {
+      var s = doc.createElement('div');
+      var esGrito = i === 1;
+      s.className = esGrito ? 'pvl-chispa pvl-chispa-texto' : 'pvl-chispa';
+      s.textContent = marks[i];
+      s.style.left = (state.x + (i - 2) * 18) + 'px';
+      s.style.top = (state.y - 62) + 'px';
+      if (!esGrito) s.style.animationDelay = (i * 0.05) + 's';
+      esc.appendChild(s);
+      setTimeout(function(el){ if (el && el.parentNode) el.parentNode.removeChild(el); }, esGrito ? 2700 : 1100, s);
+    }
+  }
+  function adorar(){
+    if (!state.jugando || state.adorando) return;
+    state.adorando = true;
+    state.adoraciones += 1;
+    pintarContador();
+    pintarJugador();
+    chispas();
+    var agentes = doc.querySelectorAll('#pavel-escenario .pvl-agente');
+    for (var i = 0; i < agentes.length; i++) {
+      agentes[i].className = 'pvl-agente pvl-reverencia';
+    }
+    if (state.adoraciones >= 10 && !state.agradecido) {
+      state.agradecido = true;
+      var globo = $('pavel-globo-texto');
+      var wrap = $('pavel-globo');
+      var trono = $('pavel-trono');
+      if (globo) globo.textContent = 'Gracias ' + state.nombre + ' por tus adoraciones';
+      if (wrap) wrap.style.display = '';
+      if (trono) trono.className = 'pvl-trono pvl-gracias';
+    }
+    setTimeout(function(){
+      state.adorando = false;
+      var ag = doc.querySelectorAll('#pavel-escenario .pvl-agente');
+      for (var j = 0; j < ag.length; j++) ag[j].className = 'pvl-agente';
+      pintarJugador();
+    }, 920);
+  }
+  function registrarNombre(){
+    var inp = $('pavel-nombre-input');
+    var n = guardarNombre(inp && inp.value);
+    if (!n) { if (inp) inp.focus(); return; }
+    state.nombre = n;
+    pintarSitio();
+    mostrarJuego();
+  }
+  function invocarUnicornio(){
+    if (!state.jugando || state.unicornio) return;
+    var uni = $('pavel-unicornio-viaje');
+    if (!uni) return;
+    state.unicornio = true;
+    uni.classList.add('pvl-viaja');
+  }
+  function teclaJuego(k){
+    return k === 'ArrowLeft' || k === 'ArrowRight' || k === 'ArrowUp' || k === 'ArrowDown' ||
+      k === ' ' || k === 'w' || k === 'a' || k === 's' || k === 'd' ||
+      k === 'W' || k === 'A' || k === 'S' || k === 'D';
+  }
+
+  doc.addEventListener('click', function(e){
+    var t = e.target;
+    if (!t.closest) return;
+    if (t.closest('#pavel-abrir-mundo')) { e.preventDefault(); abrir(); return; }
+    if (t.closest('#pavel-mundo-cerrar')) { e.preventDefault(); cerrar(); return; }
+    if (t.id === 'pavel-mundo') { cerrar(); return; }
+    if (t.closest('#pavel-btn-adorar')) { e.preventDefault(); adorar(); return; }
+    if (t.closest('#pavel-btn-unicornio')) { e.preventDefault(); invocarUnicornio(); return; }
+  });
+
+  doc.addEventListener('submit', function(e){
+    if (e.target && e.target.id === 'pavel-nombre-form') {
+      e.preventDefault();
+      registrarNombre();
+    }
+  });
+
+  doc.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && state.abierto) { e.preventDefault(); cerrar(); return; }
+    if (!state.abierto || !state.jugando) return;
+    if (!teclaJuego(e.key)) return;
+    if (e.key === ' ' || e.key.indexOf('Arrow') === 0) e.preventDefault();
+    keys[e.key] = true;
+    if (e.key === ' ' && !e.repeat) adorar();
+  });
+  doc.addEventListener('keyup', function(e){
+    if (teclaJuego(e.key)) keys[e.key] = false;
+  });
+
+  doc.addEventListener('pointerdown', function(e){
+    var b = e.target.closest && e.target.closest('[data-pvl-dir]');
+    if (!b || !state.jugando) return;
+    e.preventDefault();
+    keys['_pad' + b.getAttribute('data-pvl-dir')] = true;
+  });
+  doc.addEventListener('pointerup', function(e){
+    var dirs = ['_padL','_padR','_padU','_padD'];
+    for (var i = 0; i < dirs.length; i++) keys[dirs[i]] = false;
+  });
+  doc.addEventListener('pointercancel', function(){
+    keys._padL = keys._padR = keys._padU = keys._padD = false;
+  });
+
+  doc.addEventListener('animationend', function(e){
+    if (e.target && e.target.id === 'pavel-unicornio-viaje' && e.animationName === 'pvl-viaje') {
+      e.target.classList.remove('pvl-viaja');
+      state.unicornio = false;
+    }
+  });
+
+  function arranque(){
+    state.nombre = leerNombre();
+    if (state.nombre) {
+      guardarNombre(state.nombre);
+      pintarSitio();
+    }
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', arranque);
+  else arranque();
+  setInterval(function(){ if (leerNombre()) pintarSitio(); }, 800);
+})();
+</script>
 </helmet>
 
 <section data-screen-label="01 Portada" style="position:relative;overflow:hidden;padding:0;background:
@@ -116,6 +455,7 @@
     <div style="display:flex;align-items:center;gap:12px">
       <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
       <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Ciudadano · <span id="pavel-ciudadano-nombre"></span></div>
     </div>
     <nav style="display:flex;gap:26px;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
       <a href="#emblema">Emblema</a>
@@ -136,7 +476,9 @@
       <div style="margin:26px 0 0;display:flex;gap:14px;flex-wrap:wrap">
         <a href="#ciudadania" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase">Solicitar ciudadanía</a>
         <a href="#documentos" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:2px;border:1px solid rgba(244,239,226,.28);color:#f4efe2;font:500 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase">Ver documentos oficiales</a>
+        <button id="pavel-abrir-mundo" type="button" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:2px;border:1px solid rgba(233,200,116,.55);background:linear-gradient(180deg,rgba(233,200,116,.18),rgba(242,169,220,.1));color:#f4e0a8;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase">Adorar la grandeza de Pavel</button>
       </div>
+      <div id="pavel-saludo" style="display:none;margin:16px 0 0;max-width:58ch;font:300 14px/1.55 'IBM Plex Sans',sans-serif;color:rgba(233,200,116,.85)"></div>
       <div style="margin:38px 0 0;display:flex;flex-wrap:wrap;gap:10px">
         <div style="flex:1 1 130px;background:#0d0725;border:1px solid rgba(244,239,226,.14);padding:16px 18px"><div style="font:600 22px/1 'Bodoni Moda',serif;color:#e9c874">1</div><div style="margin-top:6px;font:400 9.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,226,.6)">Habitante</div></div>
         <div style="flex:1 1 130px;background:#0d0725;border:1px solid rgba(244,239,226,.14);padding:16px 18px"><div style="font:600 22px/1 'Bodoni Moda',serif;color:#e9c874">∞</div><div style="margin-top:6px;font:400 9.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,226,.6)">Grandeza (PIB)</div></div>
@@ -820,6 +1162,89 @@
     <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right">El jodido final<br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em">EXISTES PORQUE PAVEL EXISTE.</span></div>
   </div>
 </footer>
+
+<div id="pavel-mundo" aria-hidden="true">
+  <div id="pavel-mundo-dialogo" role="dialog" aria-modal="true" aria-labelledby="pavel-mundo-titulo">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 22px 14px;border-bottom:1px solid rgba(216,178,92,.28)">
+      <div>
+        <div style="font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:rgba(233,200,116,.8)">Audiencia imperial · Palacio de la Grandeza</div>
+        <h2 id="pavel-mundo-titulo" style="margin:6px 0 0;font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(26px,3.4vw,36px);line-height:1;color:#f7f2e6">El Mundo de Pavel</h2>
+      </div>
+      <button id="pavel-mundo-cerrar" type="button" style="flex:none;padding:10px 14px;border:1px solid rgba(244,239,226,.28);background:transparent;color:#f4efe2;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">Retirarse</button>
+    </div>
+
+    <div id="pavel-mundo-gate" style="flex:1 1 auto;align-content:center;padding:36px 28px 44px;display:grid;justify-items:center;text-align:center">
+      <div style="width:54px;height:54px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:28px;color:#e9c874">P</div>
+      <p style="margin:18px 0 0;max-width:48ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)">El Ministerio de la Grandeza no admite anónimos. Declara tu nombre para existir oficialmente en la corte. El mundo, a partir de entonces, sabrá quién eres.</p>
+      <form id="pavel-nombre-form" style="margin-top:22px;width:min(420px,100%);display:grid;gap:12px">
+        <label for="pavel-nombre-input" style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.5);text-align:left">Nombre del peregrino</label>
+        <input id="pavel-nombre-input" name="nombre" type="text" maxlength="32" autocomplete="name" placeholder="Tu nombre, que Pavel aún no ha recitado" style="width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid rgba(216,178,92,.45);background:#0b0620;color:#f7f2e6;font:400 16px/1.3 'IBM Plex Sans',sans-serif">
+        <button id="pavel-nombre-entrar" type="submit" style="padding:14px 20px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">Pedir audiencia</button>
+      </form>
+    </div>
+
+    <div id="pavel-mundo-juego" style="display:none;flex:1 1 auto;min-height:0;flex-direction:column">
+      <div style="padding:10px 18px 12px;border-bottom:1px solid rgba(244,239,226,.1);background:rgba(8,4,21,.35)">
+        <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#e9c874;margin-bottom:8px">Protocolo de la corte · leyenda oficial</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font:400 11px/1.45 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)">
+          <span><strong style="font:600 10px/1 'IBM Plex Mono',monospace;color:#f4e0a8">← ↑ ↓ →</strong> o <strong style="font:600 10px/1 'IBM Plex Mono',monospace;color:#f4e0a8">W A S D</strong> — recorrer el Palacio</span>
+          <span><strong style="font:600 10px/1 'IBM Plex Mono',monospace;color:#f4e0a8">Espacio</strong> o <strong style="font:600 10px/1 'IBM Plex Mono',monospace;color:#f4e0a8">Adorar</strong> — inclinarse ante el jodido final</span>
+          <span><strong style="font:600 10px/1 'IBM Plex Mono',monospace;color:#f4e0a8">Unicornio</strong> — soltar la montura oficial por la corte</span>
+        </div>
+      </div>
+
+      <div id="pavel-escenario">
+        <div class="pvl-suelo"></div>
+
+        <div id="pavel-trono" class="pvl-trono">
+          <div id="pavel-globo" class="pvl-globo" style="display:none">
+            <div style="font:600 8px/1.3 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:#8f6f2a">Su Majestad responde</div>
+            <div id="pavel-globo-texto" style="margin-top:6px;font-family:'Bodoni Moda',serif;font-weight:700;font-size:16px;line-height:1.3;color:#201a33"></div>
+          </div>
+          <div class="pvl-trono-respaldo">P</div>
+          <div class="pvl-trono-efigie"><div><img src="assets/pavel-head.png" alt="Su Majestad Imperial en el trono de la grandeza"></div></div>
+          <div class="pvl-trono-asiento"></div>
+          <div class="pvl-trono-escalones"><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="pvl-agente" style="left:18%;top:38%"><div class="pvl-a-cabeza"></div><div class="pvl-a-cuerpo"></div><div class="pvl-a-nombre">Ministro<br>de la Grandeza</div></div>
+        <div class="pvl-agente" style="left:82%;top:38%"><div class="pvl-a-cabeza"></div><div class="pvl-a-cuerpo"></div><div class="pvl-a-nombre">Guardián<br>del Léxico</div></div>
+        <div class="pvl-agente" style="left:10%;top:58%"><div class="pvl-a-cabeza"></div><div class="pvl-a-cuerpo"></div><div class="pvl-a-nombre">Escribano<br>del Cielo</div></div>
+        <div class="pvl-agente" style="left:90%;top:58%"><div class="pvl-a-cabeza"></div><div class="pvl-a-cuerpo"></div><div class="pvl-a-nombre">Agente<br>Unicornio</div></div>
+        <div class="pvl-agente" style="left:28%;top:62%"><div class="pvl-a-cabeza"></div><div class="pvl-a-cuerpo"></div><div class="pvl-a-nombre">Descartes<br>(rectificado)</div></div>
+        <div class="pvl-agente" style="left:72%;top:62%"><div class="pvl-a-cabeza"></div><div class="pvl-a-cuerpo"></div><div class="pvl-a-nombre">Ciudadano<br>0000002</div></div>
+
+        <div id="pavel-peregrino" class="pvl-peregrino" style="left:50%;top:82%">
+          <div id="pavel-peregrino-nombre" class="pvl-p-nombre">Peregrino</div>
+          <div class="pvl-p-cabeza"></div>
+          <div class="pvl-p-cuerpo"></div>
+        </div>
+
+        <img id="pavel-unicornio-viaje" class="pvl-unicornio" src="assets/pavel-unicorn.png" alt="El unicornio de unicornios recorriendo la corte">
+
+        <div class="pvl-pad" aria-hidden="true">
+          <button type="button" disabled></button>
+          <button type="button" data-pvl-dir="U">↑</button>
+          <button type="button" disabled></button>
+          <button type="button" data-pvl-dir="L">←</button>
+          <button type="button" disabled></button>
+          <button type="button" data-pvl-dir="R">→</button>
+          <button type="button" disabled></button>
+          <button type="button" data-pvl-dir="D">↓</button>
+          <button type="button" disabled></button>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 18px 16px;border-top:1px solid rgba(216,178,92,.28);background:rgba(8,4,21,.45)">
+        <div style="font:400 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,226,.62)">Adoraciones · <strong id="pavel-adoraciones" style="color:#e9c874;font-weight:600">0</strong> / 10</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button id="pavel-btn-adorar" type="button" style="padding:12px 18px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer">Adorar</button>
+          <button id="pavel-btn-unicornio" type="button" style="padding:12px 18px;border-radius:2px;border:1px solid rgba(233,200,116,.5);background:transparent;color:#f4e0a8;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer">Invocar al unicornio de unicornios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
 class Component extends DCLogic {
