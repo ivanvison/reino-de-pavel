@@ -39,11 +39,24 @@ Para publicarlo en GitHub Pages: activa Pages sobre la rama `main` (carpeta raí
 
 ### Parámetros
 
-El componente expone tres controles:
+El componente expone dos controles de diseño:
 
-- `bilingual` (bool) — subtítulos en inglés en cada sección y documento
 - `guilloche` (bool) — tramas de seguridad de los documentos y el billete
 - `holder` (texto) — nombre del titular impreso en pasaporte, cédula y licencia
+
+### Idioma / Language
+
+La página entera está en inglés y español. El interruptor **EN / ES**, junto al menú
+de navegación de la portada, cambia todo el contenido (textos, documentos, himno,
+constitución, el juego «El Mundo de Pavel»…) sin recargar la página. Por defecto se
+muestra en inglés; la elección se guarda en `localStorage` para próximas visitas.
+
+La lógica vive en un `<script>` propio dentro del `<helmet>` (`window.PavelI18N`):
+cada fragmento traducido es un par de `<span data-lang="es">`/`<span data-lang="en">`
+y una clase `.pvl-hide` (con `!important`) oculta el idioma inactivo. Como el motor
+del lienzo puede remontar el contenido de `<x-dc>` después del arranque, el mismo
+`<script>` reaplica el idioma en un intervalo corto, igual que hacen el reproductor
+del himno y «El Mundo de Pavel» con sus propios reintentos.
 
 ### El himno en la portada
 
