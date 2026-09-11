@@ -19,29 +19,24 @@
   @keyframes drift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-40px,-30px,0)}}
 </style>
 <script>
-/* Reproductor del himno "El Ruir del Unicornio" — delegado en document porque
-   el cuerpo se monta despues de que corre este script. */
+/* Reproductor del himno "El Ruir del Unicornio".
+   Este bloque se ejecuta dos veces -- una al parsear el documento y otra
+   cuando support.js lo remonta en <head> -- asi que el candado global evita
+   registrar los oyentes por duplicado (dos oyentes = play seguido de pause).
+   Todo se delega en document porque el cuerpo se monta despues. */
 (function(){
-  var doc=document;
+  if (window.__himnoPavel) return;
+  window.__himnoPavel = true;
+
+  var doc = document;
   function $(id){ return doc.getElementById(id); }
   function audio(){ return $('pavel-audio'); }
   function fmt(s){ if(!isFinite(s)||s<0) s=0; var m=Math.floor(s/60),r=Math.floor(s%60); return m+':'+(r<10?'0':'')+r; }
 
-  doc.addEventListener('click',function(e){
-    var a=audio(); if(!a) return;
-    var t=e.target;
-    if(t.closest&&t.closest('#pavel-toggle')){ if(a.paused){ a.play(); } else { a.pause(); } paint(); return; }
-    var track=t.closest&&t.closest('#pavel-track');
-    if(track){
-      var d=a.duration; if(!isFinite(d)||!d) return;
-      var r=track.getBoundingClientRect();
-      a.currentTime=Math.min(Math.max((e.clientX-r.left)/r.width,0),1)*d;
-      paint();
-    }
-  });
-
   function paint(){
     var a=audio(); if(!a) return;
+    /* El lienzo descarta los atributos sin valor, asi que el bucle se fija aqui. */
+    if(!a.loop) a.loop=true;
     var d=a.duration||0,bar=$('pavel-progress'),out=$('pavel-time'),
         ip=$('pavel-icon-play'),ia=$('pavel-icon-pause'),btn=$('pavel-toggle');
     if(bar) bar.style.right=(d?(100-(a.currentTime/d)*100):100)+'%';
@@ -51,6 +46,53 @@
     if(ia) ia.style.display=playing?'':'none';
     if(btn) btn.setAttribute('aria-label',playing?'Pausar el himno':'Reproducir el himno');
   }
+
+  function start(){
+    var a=audio(); if(!a) return null;
+    var p=a.play();
+    if(p&&p.then) p.then(paint)['catch'](function(){});
+    return p;
+  }
+
+  doc.addEventListener('click',function(e){
+    var a=audio(); if(!a) return;
+    var t=e.target;
+    if(t.closest&&t.closest('#pavel-toggle')){
+      if(a.paused){ start(); } else { a.pause(); }
+      paint();
+      return;
+    }
+    var track=t.closest&&t.closest('#pavel-track');
+    if(track){
+      var d=a.duration; if(!isFinite(d)||!d) return;
+      var r=track.getBoundingClientRect();
+      a.currentTime=Math.min(Math.max((e.clientX-r.left)/r.width,0),1)*d;
+      paint();
+    }
+  });
+
+  /* Arranque automatico: los navegadores bloquean el audio con sonido hasta
+     que hay interaccion, asi que si el intento inicial falla lo reintentamos
+     en el primer gesto del visitante. */
+  var armed=false;
+  function arm(){
+    if(armed) return;
+    armed=true;
+    var evs=['pointerdown','keydown','touchstart','wheel'];
+    function go(){
+      var p=start();
+      function done(){ evs.forEach(function(ev){ doc.removeEventListener(ev,go,true); }); }
+      if(p&&p.then) p.then(done)['catch'](function(){}); else done();
+    }
+    evs.forEach(function(ev){ doc.addEventListener(ev,go,true); });
+  }
+  function autoplay(){
+    var a=audio();
+    if(!a){ setTimeout(autoplay,150); return; }
+    var p=start();
+    if(p&&p.then) p['catch'](arm); else arm();
+  }
+  if(doc.readyState==='loading') doc.addEventListener('DOMContentLoaded',autoplay); else autoplay();
 
   setInterval(paint,200);
 })();
@@ -110,7 +152,7 @@
 
   <div style="position:relative;max-width:1180px;margin:44px auto 0;padding:0 40px">
     <div id="pavel-player" style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:18px 24px;background:linear-gradient(100deg,rgba(13,7,37,.94),rgba(30,16,66,.82));border:1px solid rgba(216,178,92,.42);box-shadow:0 20px 44px rgba(0,0,0,.45)">
-      <audio id="pavel-audio" src="assets/Bajo_el_Manto_de_Pavel.mp3" loop preload="metadata"></audio>
+      <audio id="pavel-audio" src="assets/Bajo_el_Manto_de_Pavel.mp3" loop="loop" preload="metadata"></audio>
 
       <button id="pavel-toggle" type="button" aria-label="Reproducir el himno" style="flex:0 0 auto;width:54px;height:54px;border:0;border-radius:50%;cursor:pointer;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;display:grid;place-items:center;box-shadow:0 8px 20px rgba(201,154,63,.35)">
         <svg id="pavel-icon-play" width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg>

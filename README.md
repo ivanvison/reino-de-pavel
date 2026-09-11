@@ -9,11 +9,12 @@ Todo el sistema vive en un único archivo HTML autocontenido (`reino-de-pavel.dc
 
 | Sección | Qué incluye |
 |---|---|
+| 00 · Portada | Retrato ecuestre, cifras del Estado y el reproductor del himno **«El Ruir del Unicornio»** en bucle eterno |
 | 01 · Emblema | Escudo de armas (tres unicornios rampantes), monograma, versiones documento / iridiscente, logotipo horizontal |
 | 02 · Bandera | "La Iridiscente" (3:2), paleta y especímenes tipográficos |
 | 03 · Documentos | Pasaporte (cubierta + página de datos con MRZ), cédula imperial, licencia de conducir clase U |
 | 04 · Moneda y filatelia | Billete de 100 Grandezas (anverso y reverso), sello postal de 5 G, sello de control fronterizo |
-| 05 · Himno | Letra oficial, portada del himno, entrada del diccionario nacional |
+| 05 · Himno | Letra oficial, portada del himno, entrada del diccionario nacional (la grabación suena en el reproductor de la portada) |
 | 06 · Constitución | Carta Magna de la Grandeza: preámbulo, siete artículos y disposición final |
 | 07 · Descartes | Reformulación del *cogito*: Descartes admite haberse equivocado al no pensar en Pavel |
 | 08 · Papelería | Carta diplomática A4, sobre aéreo, certificado de ciudadanía |
@@ -44,6 +45,22 @@ El componente expone tres controles:
 - `guilloche` (bool) — tramas de seguridad de los documentos y el billete
 - `holder` (texto) — nombre del titular impreso en pasaporte, cédula y licencia
 
+### El himno en la portada
+
+El reproductor de la portada toca `assets/Bajo_el_Manto_de_Pavel.mp3` en bucle continuo, con play/pausa,
+barra de avance arrastrable y tiempo transcurrido.
+
+Intenta sonar solo al abrir la página. Los navegadores bloquean el audio con sonido hasta que hay
+interacción, así que si el arranque automático se rechaza el himno entra en cuanto el visitante
+hace clic, toca o pulsa una tecla en cualquier parte de la página.
+
+> La lógica del reproductor vive en el `<script>` del bloque `<helmet>`, no junto al marcado: el cuerpo
+> del documento se monta después de que corre el script, de ahí que todo se delegue en `document` y que
+> los elementos se busquen en cada uso. Ese bloque se ejecuta **dos veces** —una al parsear el documento
+> y otra cuando `support.js` lo remonta en `<head>`— por lo que un candado global (`window.__himnoPavel`)
+> evita registrar los oyentes por duplicado. El atributo `loop` sin valor lo descarta el runtime del
+> lienzo, así que el bucle se fija también desde JavaScript.
+
 ## Estructura
 
 ```
@@ -53,6 +70,7 @@ El componente expone tres controles:
 ├── support.js                 # runtime del componente
 └── assets/
     ├── anthem-cover.png       # portada del himno
+    ├── Bajo_el_Manto_de_Pavel.mp3  # himno «El Ruir del Unicornio» (reproductor de portada)
     ├── crest-unicorns.jpg     # escudo / armas mayores
     ├── pavel-head.png         # efigie oficial (foto, cédula, billete)
     └── pavel-unicorn.png      # retrato ecuestre de Estado
