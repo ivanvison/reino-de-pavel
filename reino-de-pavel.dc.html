@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <title>Reino de Pavel · Kingdom of Pavel</title>
 <script src="./support.js"></script>
 </head>
@@ -324,7 +332,7 @@
   function guardarNombre(n){
     n = String(n || '').replace(/\s+/g, ' ').trim().slice(0, 32);
     if (!n) return '';
-    doc.cookie = COOKIE + '=' + encodeURIComponent(n) + '; path=/; max-age=31536000; SameSite=Lax';
+    doc.cookie = COOKIE + '=' + encodeURIComponent(n) + '; path=/; max-age=31536000; SameSite=Lax; Secure';
     try { localStorage.setItem(COOKIE, n); } catch (e) {}
     doc.documentElement.setAttribute('data-pavelense', n);
     return n;
