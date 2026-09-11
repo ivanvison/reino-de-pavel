@@ -9,6 +9,49 @@
 <body>
 <x-dc>
 <helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="Passport, currency, coat of arms and a national anthem for a sovereign micronation of one. Kingdom of Pavel — motto: The Final Fucking Word.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="reino-de-pavel.dc.html">
+<meta property="og:url" content="reino-de-pavel.dc.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:description" content="Passport, currency, coat of arms and a national anthem for a sovereign micronation of one. Kingdom of Pavel — motto: The Final Fucking Word.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reino de Pavel · Kingdom of Pavel">
+<meta name="twitter:description" content="Passport, currency, coat of arms and a national anthem for a sovereign micronation of one. Kingdom of Pavel — motto: The Final Fucking Word.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Reino de Pavel · Kingdom of Pavel",
+  "alternateName": "Kingdom of Pavel",
+  "description": "Passport, currency, coat of arms and a national anthem for a sovereign micronation of one. Kingdom of Pavel — motto: The Final Fucking Word.",
+  "inLanguage": ["en", "es"],
+  "url": "reino-de-pavel.dc.html",
+  "author": { "@type": "Person", "name": "Pavel Navarro" }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -851,7 +894,7 @@
             </div>
             <div style="display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;align-items:start;padding-top:10px;min-height:0;overflow:hidden">
               <div style="aspect-ratio:.8;border-radius:4px;overflow:hidden;position:relative;background:rgba(244,239,226,.14);border:1px solid rgba(244,224,168,.3)">
-                <img src="assets/pavel-head.png" alt="" style="position:absolute;left:50%;top:4%;transform:translateX(-50%);width:125%">
+                <img src="assets/pavel-head.png" alt="Fotografía del titular" data-alt-es="Fotografía del titular" data-alt-en="Photograph of the holder" style="position:absolute;left:50%;top:4%;transform:translateX(-50%);width:125%">
               </div>
               <div style="display:grid;gap:5px">
                 <div><div style="font:400 6.5px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(244,239,226,.55)"><span data-lang="es">NOMBRE</span><span data-lang="en">NAME</span></div><div style="font:600 12px/1.2 'IBM Plex Mono',monospace;color:#f7f2e6">{{ holder }}</div></div>
@@ -891,7 +934,7 @@
           <div style="position:relative;padding:44px 16px 14px;height:100%;box-sizing:border-box;display:grid;grid-template-columns:74px minmax(0,1fr);gap:14px;align-content:start">
             <div>
               <div style="aspect-ratio:.8;border-radius:3px;overflow:hidden;position:relative;background:#e8e2d2;border:1px solid rgba(32,26,51,.25)">
-                <img src="assets/pavel-head.png" alt="" style="position:absolute;left:50%;top:5%;transform:translateX(-50%);width:125%">
+                <img src="assets/pavel-head.png" alt="Fotografía del titular" data-alt-es="Fotografía del titular" data-alt-en="Photograph of the holder" style="position:absolute;left:50%;top:5%;transform:translateX(-50%);width:125%">
               </div>
               <div style="margin-top:6px;font-family:'Bodoni Moda',serif;font-style:italic;font-size:14px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.3)">Pavel N.</div>
             </div>
@@ -1010,7 +1053,7 @@
           <div style="position:absolute;inset:14px;border:.5px solid rgba(96,74,166,.35)"></div>
           <div style="position:relative;height:100%;box-sizing:border-box;padding:24px 30px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:center">
             <div style="position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;border:2px solid rgba(143,111,42,.6);background:radial-gradient(circle at 50% 40%,#c8b894,#a99a76)">
-              <img src="assets/pavel-unicorn.png" alt="" style="position:absolute;left:52%;top:-6%;transform:translateX(-50%);width:168%;filter:grayscale(1) sepia(.5) contrast(1.1)">
+              <img src="assets/pavel-unicorn.png" alt="Efigie oficial: el unicornio de unicornios" data-alt-es="Efigie oficial: el unicornio de unicornios" data-alt-en="Official effigy: the unicorn of unicorns" style="position:absolute;left:52%;top:-6%;transform:translateX(-50%);width:168%;filter:grayscale(1) sepia(.5) contrast(1.1)">
               <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg, rgba(60,40,10,.18) 0 1px, transparent 1px 2.5px)"></div>
             </div>
             <div style="display:grid;gap:10px;justify-items:end;text-align:right">
@@ -1036,7 +1079,7 @@
               <div style="font-family:'Bodoni Moda',serif;font-weight:900;font-size:22px;line-height:.9;color:#f4e0a8">5<span style="font-size:10px;font-weight:600"> G</span></div>
             </div>
             <div style="aspect-ratio:1;overflow:hidden;border:1px solid rgba(244,224,168,.5)">
-              <img src="assets/pavel-unicorn.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;background:radial-gradient(circle at 50% 40%,#6c4bc4,#241760)">
+              <img src="assets/pavel-unicorn.png" alt="El unicornio de unicornios" data-alt-es="El unicornio de unicornios" data-alt-en="The unicorn of unicorns" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;background:radial-gradient(circle at 50% 40%,#6c4bc4,#241760)">
             </div>
             <div style="font:500 7px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(244,239,226,.8);text-align:center"><span data-lang="es">EL UNICORNIO DE UNICORNIOS</span><span data-lang="en">THE UNICORN OF UNICORNS</span></div>
           </div>

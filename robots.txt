@@ -1,0 +1,9 @@
+# Reino de Pavel / Kingdom of Pavel — one-page site.
+# Everything is public; nothing here needs to be kept out of search results.
+User-agent: *
+Allow: /
+
+# Placeholder domain below — replace with the real hosting domain once chosen
+# (see sitemap.xml and the canonical/og:url tags in reino-de-pavel.dc.html,
+# which need the same update).
+Sitemap: https://example.com/sitemap.xml
