@@ -18,6 +18,43 @@
   @keyframes twinkle{0%,100%{opacity:.35}50%{opacity:.9}}
   @keyframes drift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-40px,-30px,0)}}
 </style>
+<script>
+/* Reproductor del himno "El Ruir del Unicornio" — delegado en document porque
+   el cuerpo se monta despues de que corre este script. */
+(function(){
+  var doc=document;
+  function $(id){ return doc.getElementById(id); }
+  function audio(){ return $('pavel-audio'); }
+  function fmt(s){ if(!isFinite(s)||s<0) s=0; var m=Math.floor(s/60),r=Math.floor(s%60); return m+':'+(r<10?'0':'')+r; }
+
+  doc.addEventListener('click',function(e){
+    var a=audio(); if(!a) return;
+    var t=e.target;
+    if(t.closest&&t.closest('#pavel-toggle')){ if(a.paused){ a.play(); } else { a.pause(); } paint(); return; }
+    var track=t.closest&&t.closest('#pavel-track');
+    if(track){
+      var d=a.duration; if(!isFinite(d)||!d) return;
+      var r=track.getBoundingClientRect();
+      a.currentTime=Math.min(Math.max((e.clientX-r.left)/r.width,0),1)*d;
+      paint();
+    }
+  });
+
+  function paint(){
+    var a=audio(); if(!a) return;
+    var d=a.duration||0,bar=$('pavel-progress'),out=$('pavel-time'),
+        ip=$('pavel-icon-play'),ia=$('pavel-icon-pause'),btn=$('pavel-toggle');
+    if(bar) bar.style.right=(d?(100-(a.currentTime/d)*100):100)+'%';
+    if(out) out.textContent=fmt(a.currentTime)+' / '+fmt(d);
+    var playing=!a.paused&&!a.ended;
+    if(ip) ip.style.display=playing?'none':'';
+    if(ia) ia.style.display=playing?'':'none';
+    if(btn) btn.setAttribute('aria-label',playing?'Pausar el himno':'Reproducir el himno');
+  }
+
+  setInterval(paint,200);
+})();
+</script>
 </helmet>
 
 <section data-screen-label="01 Portada" style="position:relative;overflow:hidden;padding:0;background:
@@ -68,6 +105,30 @@
     <div style="position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:420px">
       <div style="position:absolute;bottom:0;width:min(100%,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 55%, rgba(244,224,168,.32) 0%, rgba(134,231,234,.16) 42%, transparent 70%)"></div>
       <img src="assets/pavel-unicorn.png" alt="Su Majestad Imperial montando el unicornio de unicornios" style="position:relative;width:min(100%,400px);height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.55))">
+    </div>
+  </div>
+
+  <div style="position:relative;max-width:1180px;margin:44px auto 0;padding:0 40px">
+    <div id="pavel-player" style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:18px 24px;background:linear-gradient(100deg,rgba(13,7,37,.94),rgba(30,16,66,.82));border:1px solid rgba(216,178,92,.42);box-shadow:0 20px 44px rgba(0,0,0,.45)">
+      <audio id="pavel-audio" src="assets/Bajo_el_Manto_de_Pavel.mp3" loop preload="metadata"></audio>
+
+      <button id="pavel-toggle" type="button" aria-label="Reproducir el himno" style="flex:0 0 auto;width:54px;height:54px;border:0;border-radius:50%;cursor:pointer;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;display:grid;place-items:center;box-shadow:0 8px 20px rgba(201,154,63,.35)">
+        <svg id="pavel-icon-play" width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg>
+        <svg id="pavel-icon-pause" width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true" style="display:none"><path d="M4 2.5h3.4v13H4zm6.6 0H14v13h-3.4z"></path></svg>
+      </button>
+
+      <div style="flex:1 1 260px;min-width:0">
+        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <div style="font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:rgba(233,200,116,.8)">Himno imperial · en bucle eterno</div>
+          <div style="font:500 8.5px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.5);border:1px solid rgba(244,239,226,.22);border-radius:999px;padding:4px 9px">Loop &infin;</div>
+        </div>
+        <div style="margin-top:6px;font-family:'Bodoni Moda',serif;font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.1;color:#f7f2e6">El Ruir del Unicornio</div>
+        <div id="pavel-track" style="margin-top:12px;position:relative;height:6px;border-radius:999px;background:rgba(244,239,226,.16);cursor:pointer">
+          <div id="pavel-progress" style="position:absolute;inset:0 100% 0 0;border-radius:999px;background:linear-gradient(90deg,#d8b25c,#f4e0a8)"></div>
+        </div>
+      </div>
+
+      <div id="pavel-time" style="flex:0 0 auto;font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(244,239,226,.6)">0:00 / 0:00</div>
     </div>
   </div>
 
