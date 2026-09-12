@@ -214,7 +214,7 @@
        once its grid goes from 2 columns to 2 rows it needs to grow taller
        instead of clipping the second row - drop the fixed ratio here. */
     div[style*="aspect-ratio:2.12"]{aspect-ratio:auto!important}
-    div[style*="left:31%"]{display:none!important} /* perforation/watermark strip made sense between 2 columns only */
+    div[style*="mix-blend-mode:multiply"]{display:none!important} /* perforation strip made sense between 2 columns only */
     div[style*="grid-template-columns:minmax(0,1fr) 130px"]{grid-template-columns:1fr!important;justify-items:center;text-align:center!important;padding:20px!important}
     div[style*="grid-template-columns:150px minmax(0,1fr)"]{grid-template-columns:1fr!important;justify-items:center;text-align:center!important;padding:20px!important}
   }
