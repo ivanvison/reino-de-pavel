@@ -132,6 +132,16 @@
   .pvl-lang-switch button{border:0;background:transparent;cursor:pointer;padding:6px 12px;border-radius:999px;font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(244,239,226,.55);transition:background .15s ease,color .15s ease}
   .pvl-lang-switch button.pvl-lang-active{background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030}
   .pvl-lang-switch button:not(.pvl-lang-active):hover{color:#f4efe2}
+  .pvl-nav-toggle{display:none;flex:none;width:38px;height:38px;padding:0;border:1px solid rgba(216,178,92,.4);border-radius:8px;background:rgba(13,7,37,.5);cursor:pointer;position:relative}
+  .pvl-nav-toggle span{position:absolute;left:9px;right:9px;height:2px;border-radius:2px;background:#e9c874;transition:transform .22s ease,opacity .18s ease}
+  .pvl-nav-toggle span:nth-child(1){top:13px}
+  .pvl-nav-toggle span:nth-child(2){top:18px}
+  .pvl-nav-toggle span:nth-child(3){top:23px}
+  .pvl-nav-toggle.pvl-nav-open span:nth-child(1){top:18px;transform:rotate(45deg)}
+  .pvl-nav-toggle.pvl-nav-open span:nth-child(2){opacity:0}
+  .pvl-nav-toggle.pvl-nav-open span:nth-child(3){top:18px;transform:rotate(-45deg)}
+  #pvl-nav-backdrop{position:fixed;inset:0;background:rgba(5,2,15,.55);z-index:70;opacity:0;pointer-events:none;transition:opacity .2s ease}
+  #pvl-nav-backdrop.pvl-nav-backdrop-show{opacity:1;pointer-events:auto}
 
   /* ---- Royal Decree Generator (pvl-decree-) ---- */
   .pvl-decree-card{background:#f8f4e8;color:#201a33;box-shadow:0 22px 48px rgba(0,0,0,.45);padding:30px 32px;position:relative;box-sizing:border-box}
@@ -182,6 +192,13 @@
   @media (max-width:1024px){
     section[data-screen-label]:not([data-screen-label="01 Portada"]){padding:64px 32px!important}
     footer[style*="padding:56px 40px 72px"]{padding:48px 32px 56px!important}
+
+    /* Passport data page & visa sticker: aspect-ratio:1.3 combined with
+       min-height:390px makes this browser derive width FROM the min-height
+       (390*1.3=507px) once the flex column would otherwise be narrower
+       than that, blowing the card out past the viewport. max-width:100%
+       clamps it back to whatever width its container actually has. */
+    div[style*="aspect-ratio:1.3;min-height:390px"]{max-width:100%!important}
   }
 
   /* ---- Phones & small tablets: <=768px ---- */
@@ -190,11 +207,16 @@
     section[data-screen-label]:not([data-screen-label="01 Portada"]){padding:52px 20px!important}
     footer[style*="padding:56px 40px 72px"]{padding:40px 20px 48px!important}
 
-    /* Header: logo/citizen chip row + nav + language switch */
+    /* Header: logo/citizen chip row + hamburger nav + language switch.
+       The nav grew from 7 to 15 links, so on phones/small tablets it
+       collapses behind #pvl-nav-toggle instead of wrapping inline. */
     div[style*="padding:26px 40px 0"]{padding:16px 18px 0!important;gap:10px 14px!important}
     div[style*="padding:26px 40px 0"] > div:last-child{gap:12px 16px!important}
-    nav{gap:8px 16px!important;font-size:11px!important}
-    nav a{display:inline-block;padding:8px 1px}
+    .pvl-nav-toggle{display:inline-flex;align-items:center;justify-content:center}
+    #pvl-nav{display:none!important;position:absolute;top:calc(100% + 14px);left:0;right:0;flex-direction:column;gap:0!important;background:#0d0725;border:1px solid rgba(216,178,92,.3);box-shadow:0 24px 50px rgba(0,0,0,.55);padding:6px;max-height:calc(100vh - 90px);overflow-y:auto;z-index:80}
+    #pvl-nav.pvl-nav-open{display:flex!important}
+    #pvl-nav a{display:block;padding:14px 12px;border-bottom:1px solid rgba(244,239,226,.08);font-size:12px}
+    #pvl-nav a:last-child{border-bottom:0}
     .pvl-lang-switch button{padding:8px 13px}
 
     /* Hero: stack headline column over the portrait, no squeeze */
@@ -210,6 +232,18 @@
     div[style*="grid-template-columns:104px minmax(0,1fr)"]{grid-template-columns:78px minmax(0,1fr)!important;padding-right:36px!important}
     div[style*="grid-template-columns:62px minmax(0,1fr)"]{grid-template-columns:52px minmax(0,1fr)!important}
     div[style*="grid-template-columns:74px minmax(0,1fr)"]{grid-template-columns:58px minmax(0,1fr)!important}
+    div[style*="grid-template-columns:96px minmax(0,1fr)"]{grid-template-columns:72px minmax(0,1fr)!important}
+
+    /* Chronicle entries: fixed decree-number column gets tight next to
+       long paragraphs on phones */
+    div[style*="grid-template-columns:104px 1fr"]{grid-template-columns:80px 1fr!important;gap:14px!important}
+
+    /* Personalized certificates and interactive cards: generous desktop
+       padding overflows a narrow phone's content width */
+    #pvl-medal-cert{padding:26px 20px 22px!important}
+    #pvl-prize-cert{padding:32px 22px!important}
+    .pvl-decree-card,.pvl-quiz-card{padding:22px 20px!important}
+    .pvl-complaints-reply{padding:18px 18px!important}
 
     /* Currency notes: shrink the fixed side/portrait columns so the
        text column keeps a usable width; watermark/micro-print strips
@@ -239,9 +273,19 @@
     /* Identity documents: one more notch down, and stack the dense
        2-column field grids so long ES/EN labels stop crowding values */
     div[style*="grid-template-columns:104px minmax(0,1fr)"]{grid-template-columns:64px minmax(0,1fr)!important;padding-right:26px!important}
+    div[style*="grid-template-columns:96px minmax(0,1fr)"]{grid-template-columns:60px minmax(0,1fr)!important;padding-right:20px!important}
     div[style*="grid-template-columns:repeat(2,minmax(0,1fr))"]{grid-template-columns:1fr!important;gap:8px!important}
     div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:6px!important}
     div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important}
+
+    /* Chronicle: stack the decree-number label above its entry text */
+    div[style*="grid-template-columns:104px 1fr"]{grid-template-columns:1fr!important;gap:6px!important}
+
+    /* Personalized certificates: shed the last bit of padding */
+    #pvl-medal-cert{padding:22px 14px 18px!important}
+    #pvl-prize-cert{padding:24px 14px!important}
+    .pvl-decree-card,.pvl-quiz-card{padding:18px 14px!important}
+    .pvl-complaints-reply{padding:14px!important}
 
     /* Currency: stack the note's side column below the text column. The
        note itself is pinned to aspect-ratio:2.12 with overflow:hidden, so
@@ -1087,6 +1131,14 @@
     renderQuiz();
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', bootQuiz); else bootQuiz();
+  /* La primera pasada puede correr antes de que support.js monte el
+     contenido de <x-dc> (igual que le pasa a otros scripts de <helmet>),
+     asi que #pvl-quiz-body podria no existir todavia -- se reintenta hasta
+     que exista, en vez de dejar el quiz vacio para siempre. */
+  var quizBootRetry = setInterval(function(){
+    if (quizBooted) { clearInterval(quizBootRetry); return; }
+    bootQuiz();
+  }, 300);
 
   doc.addEventListener('pavel:langchange', function(){
     renderDecree();
@@ -1335,6 +1387,77 @@
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', pintarReferido);
   else pintarReferido();
+  /* Mismo motivo que el reintento del quiz: #pvl-invite-referred-by podria
+     no existir todavia si support.js aun no ha montado <x-dc>. */
+  var referidoTries = 0;
+  var referidoRetry = setInterval(function(){
+    referidoTries++;
+    if (doc.getElementById('pvl-invite-referred-by') || referidoTries > 20) { clearInterval(referidoRetry); return; }
+    pintarReferido();
+  }, 300);
+})();
+</script>
+<script>
+/* Menu movil (pvl-nav-). Igual que el resto de <helmet>, corre dos veces
+   (parseo + remontaje de support.js), de ahi el candado global. Todo por
+   delegacion en document, ya que el boton y el <nav> pueden remontarse. */
+(function(){
+  if (window.__pvlNavMenu) return;
+  window.__pvlNavMenu = true;
+  var doc = document;
+
+  function backdrop(){
+    var b = doc.getElementById('pvl-nav-backdrop');
+    if (!b) {
+      b = doc.createElement('div');
+      b.id = 'pvl-nav-backdrop';
+      doc.body.appendChild(b);
+    }
+    return b;
+  }
+  function abrir(){
+    var nav = doc.getElementById('pvl-nav');
+    var btn = doc.getElementById('pvl-nav-toggle');
+    if (!nav || !btn) return;
+    nav.classList.add('pvl-nav-open');
+    btn.classList.add('pvl-nav-open');
+    btn.setAttribute('aria-expanded', 'true');
+    var b = backdrop();
+    requestAnimationFrame(function(){ b.classList.add('pvl-nav-backdrop-show'); });
+  }
+  function cerrar(){
+    var nav = doc.getElementById('pvl-nav');
+    var btn = doc.getElementById('pvl-nav-toggle');
+    if (!nav || !btn) return;
+    nav.classList.remove('pvl-nav-open');
+    btn.classList.remove('pvl-nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+    var b = doc.getElementById('pvl-nav-backdrop');
+    if (b) b.classList.remove('pvl-nav-backdrop-show');
+  }
+  function estaAbierto(){
+    var nav = doc.getElementById('pvl-nav');
+    return !!(nav && nav.classList.contains('pvl-nav-open'));
+  }
+
+  doc.addEventListener('click', function(e){
+    var t = e.target;
+    if (t.closest && t.closest('#pvl-nav-toggle')) {
+      e.preventDefault();
+      if (estaAbierto()) cerrar(); else abrir();
+      return;
+    }
+    if (t.closest && t.closest('#pvl-nav a')) {
+      cerrar();
+      return;
+    }
+    if (estaAbierto() && !(t.closest && t.closest('#pvl-nav'))) {
+      cerrar();
+    }
+  });
+  doc.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && estaAbierto()) cerrar();
+  });
 })();
 </script>
 </helmet>
@@ -1359,7 +1482,8 @@
       <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
     </div>
     <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
-      <nav style="display:flex;gap:26px;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:26px;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
         <a href="#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
         <a href="#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
         <a href="#documentos"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span></a>
