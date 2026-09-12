@@ -9,8 +9,9 @@
      pinned to an exact version with a Subresource Integrity hash in support.js) and
      evaluates this page's inline <script data-dc-script> logic via `new Function`
      (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
-     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. See SECURITY_NOTES.md. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <title>Reino de Pavel · Kingdom of Pavel</title>
 <script src="./support.js"></script>
 </head>

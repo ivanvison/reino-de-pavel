@@ -97,8 +97,15 @@ from a full audit of every resource the page and runtime load — not a generic
 template:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 ```
+
+**Post-merge update**: `img-src` was widened from `'self'` to `'self' data:` when this
+work was integrated alongside a parallel SEO effort that added an inline
+`data:image/svg+xml,...` favicon (`<link rel="icon">`). That favicon didn't exist
+when this CSP was authored and audited below, so the original `img-src 'self'`
+would have silently blocked it. Everything else in the directive-by-directive
+breakdown below still holds as written.
 
 How each piece was derived (every external domain the site touches, confirmed by
 `grep -oE 'https?://[a-zA-Z0-9.-]+'` across both files — there are exactly three:
