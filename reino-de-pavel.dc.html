@@ -235,6 +235,23 @@
     #pavel-btn-adorar,#pavel-btn-unicornio{padding:15px 18px!important}
     #pavel-nombre-entrar{padding:16px 20px!important}
   }
+
+  /* ---- Print: the passport data page, a currency note, the citizenship
+     certificate, the Order of the Unicorn certificate, and the Pavel Prize
+     diploma each print cleanly on their own page. Everything else (nav,
+     hero, other sections, the game modal, background animation, and any
+     .pvl-print-hide sibling inside a printed section) is hidden. ---- */
+  @media print{
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body > x-dc > *{display:none!important}
+    #documentos,#moneda,#papeleria,#orden-unicornio,#premio-pavel{display:block!important;padding:24px!important;background:#fff!important}
+    .pvl-print-hide{display:none!important}
+    #documentos > div,#moneda > div,#papeleria > div,#orden-unicornio > div,#premio-pavel > div{max-width:none!important;margin:0!important}
+    #pvl-print-passport,#pvl-print-note{break-inside:avoid;page-break-inside:avoid;box-shadow:none!important;width:100%!important;max-width:640px!important;margin:0 auto!important}
+    #ciudadania,#pvl-medal-cert,#pvl-prize-cert{box-shadow:none!important;break-inside:avoid;page-break-inside:avoid;margin:0 auto!important}
+    #pavel-mundo,.pvl-pad{display:none!important}
+    #documentos,#moneda,#papeleria,#orden-unicornio,#premio-pavel{break-after:page;page-break-after:always}
+  }
 </style>
 <script>
 /* Interruptor de idioma EN/ES. Igual que el himno, este bloque se ejecuta dos
@@ -703,6 +720,149 @@
   });
 })();
 </script>
+<script>
+/* Nombre del peregrino en los nuevos certificados (Orden del Unicornio,
+   Premio Pavel) + tarjeta de ciudadania descargable (pvl-share-). Mismo
+   candado de doble ejecucion que el resto de <helmet>. Lee el nombre con
+   la misma cookie/localStorage que "El Mundo de Pavel" -- no se guarda ni
+   se envia nada nuevo. */
+(function(){
+  if (window.__pvlShare) return;
+  window.__pvlShare = true;
+  var doc = document;
+
+  function leerNombrePeregrino(){
+    var m = doc.cookie.match(/(?:^|; )pavelense=([^;]*)/);
+    if (m) {
+      try { return decodeURIComponent(m[1]).trim(); } catch (e) { return String(m[1] || '').trim(); }
+    }
+    try { return (localStorage.getItem('pavelense') || '').trim(); } catch (e) { return ''; }
+  }
+  function lang(){ return (window.PavelI18N && window.PavelI18N.get()) || 'en'; }
+
+  function pintarNombresPersonalizados(){
+    var n = leerNombrePeregrino();
+    var L = lang();
+    var placeholder = L === 'es' ? 'PEREGRINO ANÓNIMO' : 'ANONYMOUS PILGRIM';
+    var texto = n ? n.toUpperCase() : placeholder;
+    var medal = doc.getElementById('pvl-medal-name');
+    var prize = doc.getElementById('pvl-prize-name');
+    if (medal) medal.textContent = texto;
+    if (prize) prize.textContent = texto;
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', pintarNombresPersonalizados);
+  else pintarNombresPersonalizados();
+  setInterval(pintarNombresPersonalizados, 800);
+  doc.addEventListener('pavel:langchange', pintarNombresPersonalizados);
+
+  /* ---------- Tarjeta de ciudadania descargable ---------- */
+  function dibujarTarjeta(nombre){
+    var canvas = doc.getElementById('pvl-share-canvas');
+    if (!canvas) return null;
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width, h = canvas.height;
+    var L = lang();
+
+    var grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, '#1b1150');
+    grad.addColorStop(1, '#150c3a');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.strokeStyle = 'rgba(216,178,92,.55)';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(20, 20, w - 40, h - 40);
+    ctx.strokeStyle = 'rgba(216,178,92,.3)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(32, 32, w - 64, h - 64);
+
+    var cx = w / 2;
+    ctx.fillStyle = '#e9c874';
+    ctx.beginPath();
+    ctx.arc(cx, 150, 56, 0, Math.PI * 2);
+    ctx.fillStyle = '#1b1150';
+    ctx.fill();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#e9c874';
+    ctx.stroke();
+    ctx.fillStyle = '#e9c874';
+    ctx.font = "700 52px 'Bodoni Moda', Georgia, serif";
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('P', cx, 158);
+
+    ctx.fillStyle = 'rgba(244,239,226,.55)';
+    ctx.font = "600 15px 'IBM Plex Mono', monospace";
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(L === 'es' ? 'CERTIFICADO DE CIUDADANÍA' : 'CERTIFICATE OF CITIZENSHIP', cx, 248);
+
+    ctx.fillStyle = '#f7f2e6';
+    ctx.font = "700 44px 'Bodoni Moda', Georgia, serif";
+    ctx.fillText(L === 'es' ? 'Reino de Pavel' : 'Kingdom of Pavel', cx, 310);
+
+    ctx.fillStyle = 'rgba(244,239,226,.82)';
+    ctx.font = "300 20px 'IBM Plex Sans', sans-serif";
+    var linea1 = L === 'es' ? 'Se hace constar que existe,' : 'This certifies that they exist,';
+    var linea2 = L === 'es' ? 'y que existe porque Pavel existe:' : 'and exist because Pavel exists:';
+    ctx.fillText(linea1, cx, 372);
+    ctx.fillText(linea2, cx, 400);
+
+    ctx.fillStyle = '#f4e0a8';
+    ctx.font = "italic 700 46px 'Bodoni Moda', Georgia, serif";
+    var nombreCorto = nombre.length > 28 ? nombre.slice(0, 28) + '…' : nombre;
+    ctx.fillText(nombreCorto, cx, 470);
+    ctx.strokeStyle = 'rgba(244,239,226,.4)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(cx - 220, 490);
+    ctx.lineTo(cx + 220, 490);
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(244,239,226,.55)';
+    ctx.font = "500 13px 'IBM Plex Mono', monospace";
+    ctx.fillText(L === 'es' ? 'CIUDADANÍA PAVELENSE · N.º 0000002' : 'PAVELIAN CITIZENSHIP · NO. 0000002', cx, 560);
+    ctx.fillText(L === 'es' ? 'OTORGADO EN EL CIELO' : 'GRANTED IN HEAVEN', cx, 584);
+
+    ctx.fillStyle = 'rgba(216,178,92,.6)';
+    ctx.font = "600 11px 'IBM Plex Mono', monospace";
+    ctx.fillText('EL NON PLUS ULTRA', cx, 700);
+
+    return canvas;
+  }
+
+  function descargarTarjeta(){
+    var msg = doc.getElementById('pvl-share-msg');
+    var nombre = leerNombrePeregrino();
+    if (!nombre) {
+      if (msg) msg.style.display = 'block';
+      return;
+    }
+    if (msg) msg.style.display = 'none';
+    function dibujarYDescargar(){
+      var canvas = dibujarTarjeta(nombre);
+      if (!canvas || !canvas.toBlob) return;
+      canvas.toBlob(function(blob){
+        if (!blob) return;
+        var url = URL.createObjectURL(blob);
+        var a = doc.createElement('a');
+        a.href = url;
+        a.download = 'ciudadania-pavel-' + nombre.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40) + '.png';
+        doc.body.appendChild(a);
+        a.click();
+        doc.body.removeChild(a);
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      }, 'image/png');
+    }
+    if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(dibujarYDescargar); else dibujarYDescargar();
+  }
+  doc.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('#pvl-share-download-btn')) {
+      e.preventDefault();
+      descargarTarjeta();
+    }
+  });
+})();
+</script>
 </helmet>
 
 <section data-screen-label="01 Portada" style="position:relative;overflow:hidden;padding:0;background:
@@ -733,6 +893,8 @@
         <a href="#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
         <a href="#descartes">Descartes</a>
         <a href="#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+        <a href="#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+        <a href="#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
       </nav>
       <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
         <button type="button" data-lang-btn="en">EN</button>
@@ -908,15 +1070,15 @@
 
 <section id="documentos" data-screen-label="04 Documentos" style="padding:88px 40px;background:#0b0620">
   <div style="max-width:1180px;margin:0 auto">
-    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+    <div class="pvl-print-hide" style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
       <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">03</span>
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Documentos de identidad</span><span data-lang="en">Identity documents</span></h2>
     </div>
 
-    <div style="margin-top:20px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Serie única · un solo titular · reimpresión prohibida</span><span data-lang="en">Single series · one holder only · reprinting prohibited</span></div>
+    <div class="pvl-print-hide" style="margin-top:20px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Serie única · un solo titular · reimpresión prohibida</span><span data-lang="en">Single series · one holder only · reprinting prohibited</span></div>
 
     <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
-      <div style="flex:none;width:min(100%,330px)">
+      <div class="pvl-print-hide" style="flex:none;width:min(100%,330px)">
         <div style="position:relative;aspect-ratio:.7;border-radius:4px 10px 10px 4px;overflow:hidden;background:linear-gradient(135deg,#1f1450 0%,#150c3a 45%,#241760 100%);box-shadow:0 26px 60px rgba(0,0,0,.6),inset 0 0 0 1px rgba(244,224,168,.12)">
           <div style="position:absolute;left:0;top:0;bottom:0;width:14px;background:linear-gradient(90deg,rgba(0,0,0,.55),transparent)"></div>
           <div style="position:absolute;inset:26px 26px;border:1px solid rgba(216,178,92,.5);display:grid;grid-template-rows:auto 1fr auto;place-items:center;padding:26px 18px;text-align:center">
@@ -938,7 +1100,7 @@
       </div>
 
       <div style="flex:1 1 420px;min-width:min(100%,420px)">
-        <div style="position:relative;aspect-ratio:1.3;min-height:390px;background:#f6f1e3;border-radius:3px;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.55)">
+        <div id="pvl-print-passport" style="position:relative;aspect-ratio:1.3;min-height:390px;background:#f6f1e3;border-radius:3px;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.55)">
           <sc-if value="{{ guilloche }}" hint-placeholder-val="{{ true }}">
             <div style="position:absolute;inset:0;opacity:.55;background-image:repeating-radial-gradient(circle at 78% 30%, transparent 0 7px, rgba(96,74,166,.22) 7px 8px),repeating-linear-gradient(48deg, rgba(143,111,42,.12) 0 1.5px, transparent 1.5px 7px)"></div>
           </sc-if>
@@ -990,11 +1152,11 @@
             </div>
           </div>
         </div>
-        <div style="margin-top:12px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Página de datos · guilloche violeta, zona MRZ</span><span data-lang="en">Data page · violet guilloché, MRZ zone</span></div>
+        <div class="pvl-print-hide" style="margin-top:12px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Página de datos · guilloche violeta, zona MRZ</span><span data-lang="en">Data page · violet guilloché, MRZ zone</span></div>
       </div>
     </div>
 
-    <div style="margin-top:56px;display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+    <div class="pvl-print-hide" style="margin-top:56px;display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
       <div style="flex:1 1 380px;min-width:min(100%,340px)">
         <div style="position:relative;width:100%;box-sizing:border-box;aspect-ratio:1.586;min-height:330px;border-radius:12px;overflow:hidden;background:linear-gradient(150deg,#1b1150,#2a1a63 55%,#3a2380);box-shadow:0 20px 44px rgba(0,0,0,.5)">
           <div style="position:absolute;inset:0;opacity:.5;background-image:repeating-linear-gradient(60deg, rgba(244,224,168,.1) 0 1px, transparent 1px 9px)"></div>
@@ -1077,7 +1239,7 @@
   </div>
 </section>
 
-<section data-screen-label="05 Moneda" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+<section id="moneda" data-screen-label="05 Moneda" style="padding:88px 40px;background:#f4efe2;color:#201a33">
   <div style="max-width:1180px;margin:0 auto">
     <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
       <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">04</span>
@@ -1086,7 +1248,7 @@
 
     <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start">
       <div style="flex:1 1 560px;min-width:min(100%,420px)">
-        <div style="position:relative;aspect-ratio:2.12;border-radius:2px;overflow:hidden;background:linear-gradient(120deg,#efe6d0 0%,#e7dcc4 40%,#f0e7d4 100%);box-shadow:0 22px 48px rgba(32,26,51,.3)">
+        <div id="pvl-print-note" style="position:relative;aspect-ratio:2.12;border-radius:2px;overflow:hidden;background:linear-gradient(120deg,#efe6d0 0%,#e7dcc4 40%,#f0e7d4 100%);box-shadow:0 22px 48px rgba(32,26,51,.3)">
           <sc-if value="{{ guilloche }}" hint-placeholder-val="{{ true }}">
             <div style="position:absolute;inset:0;opacity:.75;background-image:
               repeating-radial-gradient(circle at 24% 50%, transparent 0 5px, rgba(96,74,166,.22) 5px 6px),
@@ -1155,7 +1317,7 @@
         </div>
         <div style="margin-top:12px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Billete de 100 grandezas · anverso</span><span data-lang="en">100-Greatness note · obverse</span></div>
 
-        <div style="margin-top:30px;position:relative;aspect-ratio:2.12;border-radius:2px;overflow:hidden;background:linear-gradient(120deg,#e9e0cb 0%,#e2d7bd 45%,#ece3cf 100%);box-shadow:0 22px 48px rgba(32,26,51,.3)">
+        <div class="pvl-print-hide" style="margin-top:30px;position:relative;aspect-ratio:2.12;border-radius:2px;overflow:hidden;background:linear-gradient(120deg,#e9e0cb 0%,#e2d7bd 45%,#ece3cf 100%);box-shadow:0 22px 48px rgba(32,26,51,.3)">
           <sc-if value="{{ guilloche }}" hint-placeholder-val="{{ true }}">
             <div style="position:absolute;inset:0;opacity:.7;background-image:
               repeating-radial-gradient(circle at 50% 50%, transparent 0 9px, rgba(96,74,166,.18) 9px 10px),
@@ -1180,10 +1342,10 @@
             </div>
           </div>
         </div>
-        <div style="margin-top:12px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Billete de 100 grandezas · reverso</span><span data-lang="en">100-Greatness note · reverse</span></div>
+        <div class="pvl-print-hide" style="margin-top:12px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Billete de 100 grandezas · reverso</span><span data-lang="en">100-Greatness note · reverse</span></div>
       </div>
 
-      <div style="flex:none;width:min(100%,230px)">
+      <div class="pvl-print-hide" style="flex:none;width:min(100%,230px)">
         <div style="padding:7px;background-image:radial-gradient(circle 5px at center, #f4efe2 98%, #f6f1e3 100%);background-size:14px 14px;background-position:center;filter:drop-shadow(0 14px 26px rgba(32,26,51,.28))">
           <div style="background:linear-gradient(160deg,#241760,#3a2380 60%,#5a3aa8);padding:14px 14px 12px;display:grid;gap:10px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -1355,15 +1517,15 @@
   </div>
 </section>
 
-<section data-screen-label="09 Papelería" style="padding:88px 40px;background:#0b0620">
+<section id="papeleria" data-screen-label="09 Papelería" style="padding:88px 40px;background:#0b0620">
   <div style="max-width:1180px;margin:0 auto">
-    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+    <div class="pvl-print-hide" style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
       <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">08</span>
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Papelería diplomática</span><span data-lang="en">Diplomatic stationery</span></h2>
     </div>
 
     <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
-      <div style="flex:1 1 420px;min-width:min(100%,360px)">
+      <div class="pvl-print-hide" style="flex:1 1 420px;min-width:min(100%,360px)">
         <div style="background:#f8f4e8;color:#201a33;aspect-ratio:.773;box-shadow:0 22px 48px rgba(0,0,0,.5);padding:38px 40px;display:grid;grid-template-rows:auto 1fr auto;box-sizing:border-box">
           <div style="display:flex;gap:16px;align-items:center;border-bottom:2px solid #2a1a63;padding-bottom:14px">
             <div style="width:46px;height:46px;border-radius:50%;overflow:hidden;border:1.5px solid #8f6f2a;flex:none"><img src="assets/crest-unicorns.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div>
@@ -1395,7 +1557,7 @@
       </div>
 
       <div style="flex:1 1 340px;min-width:min(100%,320px);display:grid;gap:26px">
-        <div>
+        <div class="pvl-print-hide">
           <div style="position:relative;aspect-ratio:2.2;background:#f8f4e8;box-shadow:0 18px 40px rgba(0,0,0,.5);overflow:hidden">
             <div style="position:absolute;inset:0;border:8px solid transparent;background-image:repeating-linear-gradient(45deg,#2a1a63 0 12px,#d8b25c 12px 24px);background-clip:border-box;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);-webkit-mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)"></div>
             <div style="position:relative;height:100%;box-sizing:border-box;padding:20px 24px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
@@ -1421,10 +1583,109 @@
             <div style="margin-top:16px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(32,26,51,.55)">
               <span>N.º 0000002</span><span><span data-lang="es">OTORGADO EN EL CIELO</span><span data-lang="en">GRANTED IN HEAVEN</span></span>
             </div>
+            <div class="pvl-print-hide" style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(143,111,42,.35);display:grid;gap:10px;justify-items:center">
+              <p style="margin:0;max-width:34ch;font:300 11.5px/1.55 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.72)"><span data-lang="es">¿Ya existes oficialmente? Descarga tu carné de ciudadanía personalizado y compártelo con el mundo.</span><span data-lang="en">Already exist officially? Download your personalized citizenship card and share it with the world.</span></p>
+              <button id="pvl-share-download-btn" type="button" style="padding:12px 20px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer"><span data-lang="es">Descargar y compartir mi ciudadanía</span><span data-lang="en">Download &amp; share my citizenship</span></button>
+              <div id="pvl-share-msg" style="display:none;max-width:34ch;font:500 10.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#8f2a4a">
+                <span data-lang="es">Antes de descargar, regístrate como peregrino en «El Mundo de Pavel» (botón «Adorar la grandeza de Pavel» arriba). Ya te hemos abierto la puerta.</span>
+                <span data-lang="en">Before downloading, register as a pilgrim in "The World of Pavel" (the "Worship the greatness of Pavel" button above). We've opened the door for you.</span>
+              </div>
+              <canvas id="pvl-share-canvas" width="1200" height="750" style="display:none" aria-hidden="true"></canvas>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="orden-unicornio" data-screen-label="12 Orden del Unicornio" style="padding:88px 40px;background:radial-gradient(120% 90% at 82% 0%, rgba(122,74,214,.38), transparent 60%),#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="pvl-print-hide" style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">12</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></h2>
+    </div>
+
+    <div class="pvl-print-hide" style="margin-top:20px;max-width:64ch;font:300 14.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">La más alta condecoración del Reino, otorgada a quienes se inclinan ante la grandeza sin necesidad de pruebas. No hay ceremonia: existe usted, y eso basta.</span><span data-lang="en">The Kingdom's highest decoration, conferred on those who bow before greatness without requiring proof. There is no ceremony: you exist, and that is enough.</span></div>
+
+    <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+      <div style="flex:none;width:min(100%,240px);display:grid;justify-items:center">
+        <div style="position:relative;width:180px;height:180px;border-radius:50%;padding:8px;background:conic-gradient(from 220deg,#8f6f2a,#f4e0a8 25%,#d8b25c 50%,#f4e0a8 72%,#8f6f2a);box-shadow:0 0 0 1px rgba(0,0,0,.5),0 24px 60px rgba(0,0,0,.6)">
+          <div style="position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 38%,#3a2380,#150c3a 72%);display:grid;place-items:center;border:2px solid #150c3a">
+            <sc-if value="{{ guilloche }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-radial-gradient(circle at 50% 50%, transparent 0 6px, rgba(216,178,92,.28) 6px 7px)"></div>
+            </sc-if>
+            <div style="position:relative;text-align:center">
+              <div style="font-family:'Bodoni Moda',serif;font-weight:900;font-size:52px;line-height:1;color:#e9c874">P</div>
+              <div style="margin-top:6px;font:600 7px/1.35 'IBM Plex Mono',monospace;letter-spacing:.18em;color:rgba(244,224,168,.85)"><span data-lang="es">ORDEN DEL<br>UNICORNIO</span><span data-lang="en">ORDER OF THE<br>UNICORN</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="width:60px;height:82px;margin-top:-4px;position:relative;z-index:-1;clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);background:linear-gradient(180deg,#86e7ea,#f2a9dc 55%,#d8b25c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)"></div>
+        <div class="pvl-print-hide" style="margin-top:16px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45);text-align:center"><span data-lang="es">Medalla · aleación de oro y asombro</span><span data-lang="en">Medal · alloy of gold and wonder</span></div>
+      </div>
+
+      <div style="flex:1 1 380px;min-width:min(100%,340px)">
+        <div id="pvl-medal-cert" style="background:#f6f1e3;color:#201a33;padding:34px 34px 28px;box-shadow:0 22px 48px rgba(0,0,0,.5);position:relative;text-align:center">
+          <div style="position:absolute;inset:10px;border:2px double rgba(143,111,42,.55);pointer-events:none"></div>
+          <div style="position:relative">
+            <div style="font:600 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">CERTIFICADO DE CONDECORACIÓN</span><span data-lang="en">CERTIFICATE OF CONFERRAL</span></div>
+            <h3 style="margin:12px 0 0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:25px;line-height:1.15"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></h3>
+            <div style="margin-top:18px;font:300 12.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Se otorga la presente condecoración a</span><span data-lang="en">This decoration is hereby conferred upon</span></div>
+            <div id="pvl-medal-name" style="margin:14px 0;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:26px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.35);padding-bottom:10px;word-break:break-word">ANONYMOUS PILGRIM</div>
+            <div style="font:300 12.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">por servicios distinguidos a la grandeza, méritos de adoración sostenida y una fe inquebrantable en el unicornio de unicornios.</span><span data-lang="en">for distinguished services to greatness, sustained merits of worship, and unshakeable faith in the unicorn of unicorns.</span></div>
+            <div style="margin:22px auto 0;width:60px;height:60px;border-radius:50%;border:1.5px solid #8f6f2a;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:28px;color:#8f6f2a">P</div>
+            <div style="margin-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(32,26,51,.55)">
+              <span><span data-lang="es">GRADO ÚNICO</span><span data-lang="en">SOLE GRADE</span></span><span><span data-lang="es">OTORGADO EN EL CIELO</span><span data-lang="en">GRANTED IN HEAVEN</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="pvl-print-hide" style="margin-top:12px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Certificado de conferimiento · A5</span><span data-lang="en">Certificate of conferral · A5</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="premio-pavel" data-screen-label="13 Premio Pavel" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="pvl-print-hide" style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">13</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Premio Pavel</span><span data-lang="en">The Pavel Prize</span></h2>
+    </div>
+
+    <div class="pvl-print-hide" style="margin-top:20px;max-width:64ch;font:300 14.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">El más alto reconocimiento académico jamás otorgado por un comité compuesto enteramente por Pavel. Se concede por unanimidad, cada vez.</span><span data-lang="en">The highest academic honor ever awarded by a committee made up entirely of Pavel. It is granted unanimously, every time.</span></div>
+
+    <div style="margin-top:44px;display:flex;justify-content:center">
+      <div id="pvl-prize-cert" style="width:min(100%,760px);background:#fbf8ef;color:#201a33;padding:52px 56px;box-shadow:0 26px 60px rgba(32,26,51,.3);position:relative;text-align:center;box-sizing:border-box">
+        <div style="position:absolute;inset:14px;border:3px double rgba(143,111,42,.5);pointer-events:none"></div>
+        <div style="position:absolute;inset:22px;border:1px solid rgba(96,74,166,.3);pointer-events:none"></div>
+        <div style="position:relative">
+          <div style="display:flex;justify-content:center"><div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:1.5px solid #8f6f2a"><img src="assets/crest-unicorns.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div></div>
+          <div style="margin-top:14px;font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">ACADEMIA IMPERIAL DE LA GRANDEZA</span><span data-lang="en">IMPERIAL ACADEMY OF GREATNESS</span></div>
+          <h3 style="margin:16px 0 0;font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(26px,3.4vw,40px);line-height:1.1"><span data-lang="es">Premio Pavel</span><span data-lang="en">The Pavel Prize</span></h3>
+          <div style="margin-top:6px;font:500 11px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.55)"><span data-lang="es">Por servicios a la grandeza</span><span data-lang="en">For services to greatness</span></div>
+
+          <div style="margin-top:26px;font:300 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.78)"><span data-lang="es">El comité, compuesto en su totalidad por Pavel, concede este premio a</span><span data-lang="en">The committee, composed entirely of Pavel, hereby awards this prize to</span></div>
+          <div id="pvl-prize-name" style="margin:16px 0;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:30px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.35);padding-bottom:12px;word-break:break-word">ANONYMOUS PILGRIM</div>
+          <div style="font:300 13px/1.75 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.78)"><span data-lang="es">por su contribución sobresaliente al reconocimiento incondicional de la grandeza de Pavel, en ausencia de toda evidencia contraria.</span><span data-lang="en">for outstanding contribution to the unconditional recognition of Pavel's greatness, in the absence of any evidence to the contrary.</span></div>
+
+          <div style="margin-top:30px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap">
+            <div>
+              <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:19px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.4);padding-bottom:3px">Pavel Navarro</div>
+              <div style="margin-top:5px;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(32,26,51,.55)"><span data-lang="es">PRESIDENTE DEL COMITÉ</span><span data-lang="en">CHAIR OF THE COMMITTEE</span></div>
+            </div>
+            <div>
+              <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:19px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.4);padding-bottom:3px">Pavel Navarro</div>
+              <div style="margin-top:5px;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(32,26,51,.55)"><span data-lang="es">SECRETARIO PERPETUO</span><span data-lang="en">PERPETUAL SECRETARY</span></div>
+            </div>
+          </div>
+          <div style="margin-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(32,26,51,.5)">
+            <span>N.º 0000001</span><span><span data-lang="es">ENTREGADO EN EL CIELO · SIN JURADO EXTERNO</span><span data-lang="en">AWARDED IN HEAVEN · NO EXTERNAL JURY</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pvl-print-hide" style="margin-top:14px;text-align:center;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Diploma del Premio Pavel · pergamino A4</span><span data-lang="en">Pavel Prize diploma · A4 parchment</span></div>
   </div>
 </section>
 
