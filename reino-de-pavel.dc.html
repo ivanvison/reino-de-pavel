@@ -143,6 +143,16 @@
   #pvl-nav-backdrop{position:fixed;inset:0;background:rgba(5,2,15,.55);z-index:70;opacity:0;pointer-events:none;transition:opacity .2s ease}
   #pvl-nav-backdrop.pvl-nav-backdrop-show{opacity:1;pointer-events:auto}
 
+  /* Mini anthem player (pvl-mini-): phones only, see the mobile media query
+     below for when it's actually allowed to show. Appended to <body> by JS
+     (same reason as #pvl-nav-backdrop) so it stays truly viewport-fixed. */
+  #pvl-mini-player{display:none}
+  #pvl-mini-player.pvl-mini-show{opacity:1;transform:translateY(0);pointer-events:auto}
+  #pvl-mini-toggle{flex:0 0 auto;width:36px;height:36px;border:0;border-radius:50%;cursor:pointer;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;display:grid;place-items:center;box-shadow:0 4px 12px rgba(201,154,63,.35)}
+  #pvl-mini-player .pvl-mini-title{flex:1 1 auto;min-width:0;font:500 10.5px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.03em;color:#f4efe2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #pvl-mini-track{flex:0 0 auto;width:56px;height:4px;border-radius:999px;background:rgba(244,239,226,.2);position:relative;overflow:hidden}
+  #pvl-mini-progress{position:absolute;inset:0 100% 0 0;border-radius:999px;background:linear-gradient(90deg,#d8b25c,#f4e0a8)}
+
   /* ---- Desktop dropdown groups (pvl-nav-) ---- */
   .pvl-nav-group{position:relative}
   .pvl-nav-trigger{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;padding:10px 12px;margin:0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;border-radius:4px}
@@ -264,6 +274,12 @@
     div[style*="margin:44px auto 0"]{padding:0 18px!important}
     #pavel-player{padding:16px 18px!important;gap:16px!important}
     div[style*="padding:16px 40px"]{padding:14px 18px!important;gap:12px 22px!important;font-size:10px!important}
+
+    /* Mini anthem player: the full player up top scrolls out of reach fast
+       on a phone, so a slim play/pause bar sticks to the bottom once it's
+       out of view (JS toggles .pvl-mini-show) and tucks away again once
+       the real player is back on screen. */
+    #pvl-mini-player{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:120;align-items:center;gap:12px;padding:9px 16px;padding-bottom:calc(9px + env(safe-area-inset-bottom));background:linear-gradient(100deg,rgba(13,7,37,.97),rgba(30,16,66,.95));border-top:1px solid rgba(216,178,92,.42);box-shadow:0 -8px 22px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(100%);transition:opacity .2s ease,transform .2s ease}
 
     /* Identity documents: shrink the fixed photo columns, keep 2-col
        field grids (still legible) but leave more room for values */
@@ -463,23 +479,53 @@
   function audio(){ return $('pavel-audio'); }
   function fmt(s){ if(!isFinite(s)||s<0) s=0; var m=Math.floor(s/60),r=Math.floor(s%60); return m+':'+(r<10?'0':'')+r; }
 
+  /* Reproductor minimo (pvl-mini-): solo movil, ver el media query. Igual
+     que #pvl-nav-backdrop, se crea una vez y se cuelga de <body> para que
+     el position:fixed sea de verdad relativo al viewport. Un
+     IntersectionObserver sobre #pavel-player lo muestra en cuanto el
+     reproductor grande sale de pantalla por arriba, y lo oculta al volver. */
+  function miniPlayer(){
+    var m = $('pvl-mini-player');
+    if (m) return m;
+    m = doc.createElement('div');
+    m.id = 'pvl-mini-player';
+    m.innerHTML =
+      '<button id="pavel-mini-toggle" type="button" aria-label="Play the anthem" data-aria-es="Reproducir el himno" data-aria-en="Play the anthem">' +
+        '<svg id="pavel-mini-icon-play" width="14" height="14" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg>' +
+        '<svg id="pavel-mini-icon-pause" width="14" height="14" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true" style="display:none"><path d="M4 2.5h3.4v13H4zm6.6 0H14v13h-3.4z"></path></svg>' +
+      '</button>' +
+      '<div class="pvl-mini-title"><span data-lang="es">El Ruir del Unicornio</span><span data-lang="en">The Roar of the Unicorn</span></div>' +
+      '<div id="pvl-mini-track"><div id="pvl-mini-progress"></div></div>';
+    doc.body.appendChild(m);
+    if (window.PavelI18N) window.PavelI18N.apply(window.PavelI18N.get());
+    return m;
+  }
+
   function paint(){
     var a=audio(); if(!a) return;
     /* El lienzo descarta los atributos sin valor, asi que el bucle se fija aqui. */
     if(!a.loop) a.loop=true;
     var d=a.duration||0,bar=$('pavel-progress'),out=$('pavel-time'),
-        ip=$('pavel-icon-play'),ia=$('pavel-icon-pause'),btn=$('pavel-toggle');
+        ip=$('pavel-icon-play'),ia=$('pavel-icon-pause'),btn=$('pavel-toggle'),
+        mbar=$('pvl-mini-progress'),mip=$('pavel-mini-icon-play'),mia=$('pavel-mini-icon-pause'),mbtn=$('pavel-mini-toggle');
     if(bar) bar.style.right=(d?(100-(a.currentTime/d)*100):100)+'%';
     if(out) out.textContent=fmt(a.currentTime)+' / '+fmt(d);
+    if(mbar) mbar.style.right=(d?(100-(a.currentTime/d)*100):100)+'%';
     var playing=!a.paused&&!a.ended;
     if(ip) ip.style.display=playing?'none':'';
     if(ia) ia.style.display=playing?'':'none';
-    if(btn){
+    if(mip) mip.style.display=playing?'none':'';
+    if(mia) mia.style.display=playing?'':'none';
+    if(btn||mbtn){
       var lang=(window.PavelI18N&&window.PavelI18N.get())||'en';
       var es=lang==='es';
-      btn.setAttribute('data-aria-es','Pausar el himno');
-      btn.setAttribute('data-aria-en','Pause the anthem');
-      btn.setAttribute('aria-label',playing?(es?'Pausar el himno':'Pause the anthem'):(es?'Reproducir el himno':'Play the anthem'));
+      var label=playing?(es?'Pausar el himno':'Pause the anthem'):(es?'Reproducir el himno':'Play the anthem');
+      [btn,mbtn].forEach(function(b){
+        if(!b) return;
+        b.setAttribute('data-aria-es','Pausar el himno');
+        b.setAttribute('data-aria-en','Pause the anthem');
+        b.setAttribute('aria-label',label);
+      });
     }
   }
 
@@ -493,7 +539,7 @@
   doc.addEventListener('click',function(e){
     var a=audio(); if(!a) return;
     var t=e.target;
-    if(t.closest&&t.closest('#pavel-toggle')){
+    if(t.closest&&(t.closest('#pavel-toggle')||t.closest('#pavel-mini-toggle'))){
       if(a.paused){ start(); } else { a.pause(); }
       paint();
       return;
@@ -507,6 +553,34 @@
     }
   });
 
+  /* Muestra/oculta el reproductor minimo segun si #pavel-player sigue a la
+     vista. Un IntersectionObserver con threshold:0 no sirve aqui: si el
+     usuario hace un scroll rapido, el elemento puede saltar de "0% visible
+     por debajo" a "0% visible por encima" sin que la ratio cruce nunca el
+     umbral, y el observer no vuelve a disparar. En su lugar se mide
+     getBoundingClientRect() en cada scroll (con rAF para no saturar). */
+  var miniRaf=false;
+  function checkMiniVisibility(){
+    miniRaf=false;
+    var target=$('pavel-player'), m=$('pvl-mini-player');
+    if(!target||!m) return;
+    var r=target.getBoundingClientRect();
+    m.classList.toggle('pvl-mini-show', r.bottom<0);
+  }
+  function onMiniScroll(){
+    if(miniRaf) return;
+    miniRaf=true;
+    requestAnimationFrame(checkMiniVisibility);
+  }
+  miniPlayer();
+  doc.addEventListener('scroll', onMiniScroll, { passive:true, capture:true });
+  window.addEventListener('resize', onMiniScroll);
+  checkMiniVisibility();
+  /* Resync periodico (mismo patron que el resto del archivo): support.js
+     remonta el arbol, asi que #pavel-player/#pvl-mini-player pueden haber
+     sido reemplazados por nodos nuevos entre dos scrolls. */
+  setInterval(checkMiniVisibility, 800);
+
   /* Arranque automatico: los navegadores bloquean el audio con sonido hasta
      que hay interaccion, asi que si el intento inicial falla lo reintentamos
      en el primer gesto del visitante. */
@@ -515,9 +589,16 @@
     if(armed) return;
     armed=true;
     var evs=['pointerdown','keydown','touchstart','wheel'];
-    function go(){
-      var p=start();
+    function go(e){
       function done(){ evs.forEach(function(ev){ doc.removeEventListener(ev,go,true); }); }
+      /* Si el primer gesto del visitante es justo el boton de play/pausa,
+         dejar que su propio manejador de click decida: si tambien
+         llamamos start() aqui en el pointerdown, para cuando llega el
+         click el audio ya esta sonando y el handler lo interpreta como
+         "pausar", anulando el toque. */
+      var t=e&&e.target;
+      if(t&&t.closest&&(t.closest('#pavel-toggle')||t.closest('#pavel-mini-toggle'))){ done(); return; }
+      var p=start();
       if(p&&p.then) p.then(done)['catch'](function(){}); else done();
     }
     evs.forEach(function(ev){ doc.addEventListener(ev,go,true); });
