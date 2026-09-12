@@ -80,6 +80,109 @@
   .pvl-lang-switch button{border:0;background:transparent;cursor:pointer;padding:6px 12px;border-radius:999px;font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(244,239,226,.55);transition:background .15s ease,color .15s ease}
   .pvl-lang-switch button.pvl-lang-active{background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030}
   .pvl-lang-switch button:not(.pvl-lang-active):hover{color:#f4efe2}
+
+  /* =====================================================================
+     RESPONSIVE — phones (320-428px) & tablets (768-1024px), both
+     orientations. The base layout is authored with inline style=""
+     attributes (design-canvas format), so plain selectors can't outrank
+     them; rules below use !important plus stable hooks (ids, the one
+     .pvl-lang-switch/.pvl-pad classes, the single <nav>, data-screen-label
+     attributes, and unique inline-style substrings already present on the
+     elements that need it) instead of rewriting every inline attribute.
+     ===================================================================== */
+  html,body{max-width:100%;overflow-x:hidden}
+
+  /* ---- Tablets: <=1024px - trim the outer rhythm ---- */
+  @media (max-width:1024px){
+    section[data-screen-label]:not([data-screen-label="01 Portada"]){padding:64px 32px!important}
+    footer[style*="padding:56px 40px 72px"]{padding:48px 32px 56px!important}
+  }
+
+  /* ---- Phones & small tablets: <=768px ---- */
+  @media (max-width:768px){
+    /* Section rhythm: much less vertical air, tighter side gutters */
+    section[data-screen-label]:not([data-screen-label="01 Portada"]){padding:52px 20px!important}
+    footer[style*="padding:56px 40px 72px"]{padding:40px 20px 48px!important}
+
+    /* Header: logo/citizen chip row + nav + language switch */
+    div[style*="padding:26px 40px 0"]{padding:16px 18px 0!important;gap:10px 14px!important}
+    div[style*="padding:26px 40px 0"] > div:last-child{gap:12px 16px!important}
+    nav{gap:8px 16px!important;font-size:11px!important}
+    nav a{display:inline-block;padding:8px 1px}
+    .pvl-lang-switch button{padding:8px 13px}
+
+    /* Hero: stack headline column over the portrait, no squeeze */
+    div[style*="grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)"]{grid-template-columns:1fr!important;gap:30px!important;padding-top:34px!important}
+    div[style*="padding:52px 40px 0"]{padding:34px 18px 0!important}
+    div[style*="min-height:420px"]{min-height:0!important;padding-top:6px}
+    div[style*="margin:44px auto 0"]{padding:0 18px!important}
+    #pavel-player{padding:16px 18px!important;gap:16px!important}
+    div[style*="padding:16px 40px"]{padding:14px 18px!important;gap:12px 22px!important;font-size:10px!important}
+
+    /* Identity documents: shrink the fixed photo columns, keep 2-col
+       field grids (still legible) but leave more room for values */
+    div[style*="grid-template-columns:104px minmax(0,1fr)"]{grid-template-columns:78px minmax(0,1fr)!important;padding-right:36px!important}
+    div[style*="grid-template-columns:62px minmax(0,1fr)"]{grid-template-columns:52px minmax(0,1fr)!important}
+    div[style*="grid-template-columns:74px minmax(0,1fr)"]{grid-template-columns:58px minmax(0,1fr)!important}
+
+    /* Currency notes: shrink the fixed side/portrait columns so the
+       text column keeps a usable width; watermark/micro-print strips
+       already sit in their own overflow:hidden boxes, untouched */
+    div[style*="grid-template-columns:minmax(0,1fr) 130px"]{grid-template-columns:minmax(0,1fr) 86px!important;gap:12px!important}
+    div[style*="grid-template-columns:150px minmax(0,1fr)"]{grid-template-columns:96px minmax(0,1fr)!important;gap:14px!important}
+
+    /* El Mundo de Pavel modal */
+    #pavel-mundo{padding:10px}
+    #pavel-escenario{min-height:240px!important}
+    .pvl-pad{gap:5px}
+    .pvl-pad button{width:38px;height:38px}
+    .pvl-pad{grid-template-columns:38px 38px 38px;grid-template-rows:38px 38px 38px}
+  }
+
+  /* ---- Small phones: <=480px ---- */
+  @media (max-width:480px){
+    h1[style*="clamp(46px,7vw,104px)"]{font-size:clamp(32px,13vw,104px)!important}
+    section[data-screen-label]:not([data-screen-label="01 Portada"]){padding:44px 16px!important}
+    footer[style*="padding:56px 40px 72px"]{padding:36px 16px 44px!important}
+    div[style*="padding:26px 40px 0"]{padding:14px 14px 0!important}
+    div[style*="padding:52px 40px 0"]{padding:26px 14px 0!important}
+    div[style*="margin:44px auto 0"]{padding:0 14px!important}
+    div[style*="padding:16px 40px"]{padding:12px 14px!important}
+    #pavel-player{padding:14px 14px!important}
+
+    /* Identity documents: one more notch down, and stack the dense
+       2-column field grids so long ES/EN labels stop crowding values */
+    div[style*="grid-template-columns:104px minmax(0,1fr)"]{grid-template-columns:64px minmax(0,1fr)!important;padding-right:26px!important}
+    div[style*="grid-template-columns:repeat(2,minmax(0,1fr))"]{grid-template-columns:1fr!important;gap:8px!important}
+    div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:6px!important}
+    div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important}
+
+    /* Currency: stack the note's side column below the text column. The
+       note itself is pinned to aspect-ratio:2.12 with overflow:hidden, so
+       once its grid goes from 2 columns to 2 rows it needs to grow taller
+       instead of clipping the second row - drop the fixed ratio here. */
+    div[style*="aspect-ratio:2.12"]{aspect-ratio:auto!important}
+    div[style*="left:31%"]{display:none!important} /* perforation/watermark strip made sense between 2 columns only */
+    div[style*="grid-template-columns:minmax(0,1fr) 130px"]{grid-template-columns:1fr!important;justify-items:center;text-align:center!important;padding:20px!important}
+    div[style*="grid-template-columns:150px minmax(0,1fr)"]{grid-template-columns:1fr!important;justify-items:center;text-align:center!important;padding:20px!important}
+  }
+
+  /* Very short viewports (landscape phones): the game dialog is capped at
+     94vh, so reclaim vertical space from the canvas and the instructional
+     legend (controls are still shown via the on-screen d-pad/buttons). */
+  @media (max-height:420px) and (max-width:900px){
+    #pavel-escenario{min-height:130px!important}
+    #pavel-mundo-juego > div:first-child{display:none}
+  }
+
+  /* Comfortable tap targets on touch devices */
+  @media (pointer:coarse){
+    nav a{padding:13px 5px}
+    .pvl-lang-switch button{padding:12px 16px}
+    #pavel-mundo-cerrar{padding:14px 16px!important}
+    #pavel-btn-adorar,#pavel-btn-unicornio{padding:15px 18px!important}
+    #pavel-nombre-entrar{padding:16px 20px!important}
+  }
 </style>
 <script>
 /* Interruptor de idioma EN/ES. Igual que el himno, este bloque se ejecuta dos
