@@ -1,7 +1,7 @@
 # Reino de Pavel — Country Branding
 
 Identidad nacional completa del **Imperio del Reino de Pavel**, un estado soberano de un solo habitante y grandeza ilimitada.
-Motto: **EL JODIDO FINAL**
+Motto: **EL NON PLUS ULTRA**
 
 Todo el sistema vive en un único archivo HTML autocontenido (`reino-de-pavel.dc.html`) con estilos en línea.
 
