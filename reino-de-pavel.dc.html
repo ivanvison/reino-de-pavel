@@ -1238,6 +1238,105 @@
   });
 })();
 </script>
+<script>
+/* Tabla de adoradores (broma, sin backend) + convocatoria/enlace de
+   invitacion (pvl-board- / pvl-invite-). Mismo candado de doble ejecucion
+   que el resto de <helmet>. Lee el nombre del peregrino con la misma
+   cookie/localStorage que "El Mundo de Pavel"; el enlace de invitacion es
+   solo texto generado en el navegador, nunca se envia a ningun sitio. */
+(function(){
+  if (window.__pvlGrowth) return;
+  window.__pvlGrowth = true;
+  var doc = document;
+
+  function leerNombrePeregrino(){
+    var m = doc.cookie.match(/(?:^|; )pavelense=([^;]*)/);
+    if (m) {
+      try { return decodeURIComponent(m[1]).trim(); } catch (e) { return String(m[1] || '').trim(); }
+    }
+    try { return (localStorage.getItem('pavelense') || '').trim(); } catch (e) { return ''; }
+  }
+  function lang(){ return (window.PavelI18N && window.PavelI18N.get()) || 'en'; }
+
+  /* ---------- Tabla de adoradores (broma) ---------- */
+  function pintarTabla(){
+    var el = doc.getElementById('pvl-board-line1');
+    if (!el) return;
+    var n = leerNombrePeregrino();
+    var L = lang();
+    if (n) {
+      el.textContent = L === 'es' ? ('1. ' + n + ', que existe.') : ('1. ' + n + ', who exists.');
+    } else {
+      el.textContent = L === 'es' ? '1. Tú, en cuanto te registres en El Mundo de Pavel.' : '1. You, once you register in The World of Pavel.';
+    }
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', pintarTabla);
+  else pintarTabla();
+  setInterval(pintarTabla, 800);
+  doc.addEventListener('pavel:langchange', pintarTabla);
+
+  /* ---------- Convocatoria / enlace de invitacion ---------- */
+  function baseUrl(){
+    return location.origin + location.pathname;
+  }
+  function pintarEnlace(){
+    var inp = doc.getElementById('pvl-invite-link');
+    if (!inp) return;
+    var n = leerNombrePeregrino();
+    var url = baseUrl();
+    if (n) url += '?ref=' + encodeURIComponent(n);
+    inp.value = url;
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', pintarEnlace);
+  else pintarEnlace();
+  setInterval(pintarEnlace, 800);
+
+  function copiarEnlace(){
+    var inp = doc.getElementById('pvl-invite-link');
+    var status = doc.getElementById('pvl-invite-status');
+    if (!inp) return;
+    var L = lang();
+    function marcarCopiado(){
+      if (status) status.textContent = L === 'es' ? 'Convocatoria copiada.' : 'Summons copied.';
+    }
+    function marcarFallo(){
+      inp.focus();
+      inp.select();
+      if (status) status.textContent = L === 'es' ? 'No se pudo copiar solo: seleccionado, cópielo con Ctrl/Cmd+C.' : 'Could not copy automatically: selected, copy it with Ctrl/Cmd+C.';
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(inp.value).then(marcarCopiado, marcarFallo);
+    } else {
+      marcarFallo();
+    }
+    setTimeout(function(){ if (status) status.textContent = ''; }, 5000);
+  }
+  doc.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('#pvl-invite-copy')) {
+      e.preventDefault();
+      copiarEnlace();
+    }
+  });
+
+  /* ---------- "Convocatoria recibida de..." si se llega con ?ref= ---------- */
+  function pintarReferido(){
+    var box = doc.getElementById('pvl-invite-referred-by');
+    if (!box) return;
+    var params;
+    try { params = new URLSearchParams(location.search); } catch (e) { return; }
+    var ref = (params.get('ref') || '').trim().slice(0, 32);
+    if (!ref) return;
+    var es = doc.getElementById('pvl-invite-referrer-es');
+    var en = doc.getElementById('pvl-invite-referrer-en');
+    if (es) es.textContent = ref;
+    if (en) en.textContent = ref;
+    box.classList.remove('pvl-hide');
+    box.style.removeProperty('display');
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', pintarReferido);
+  else pintarReferido();
+})();
+</script>
 </helmet>
 
 <section data-screen-label="01 Portada" style="position:relative;overflow:hidden;padding:0;background:
@@ -1275,6 +1374,7 @@
         <a href="#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
         <a href="#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
         <a href="#quiz">Quiz</a>
+        <a href="#pvl-changelog"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
       </nav>
       <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
         <button type="button" data-lang-btn="en">EN</button>
@@ -2074,6 +2174,19 @@
             </div>
           </div>
         </div>
+
+        <div id="pvl-board-card" style="background:#f6f1e3;color:#201a33;padding:24px 24px 20px;box-shadow:0 18px 40px rgba(0,0,0,.5);position:relative">
+          <div style="position:absolute;inset:9px;border:1px solid rgba(143,111,42,.4);pointer-events:none"></div>
+          <div style="position:relative">
+            <div style="font:600 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#6b4f16"><span data-lang="es">TABLA DE ADORADORES · REGISTRO OFICIAL</span><span data-lang="en">LEADERBOARD OF ADORERS · OFFICIAL RECORD</span></div>
+            <div style="margin-top:14px;font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#201a33">
+              <div id="pvl-board-line1">1. …</div>
+              <div style="margin-top:8px;color:rgba(32,26,51,.7)"><span data-lang="es">2. Nadie más ha iniciado sesión jamás.</span><span data-lang="en">2. No one else has ever logged in.</span></div>
+            </div>
+            <p style="margin:14px 0 0;font:300 11px/1.6 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.62)"><span data-lang="es">El Ministerio de Estadística confirma que esta ausencia de competidores no es un fallo técnico, sino un reflejo fiel de la realidad: solo hay un trono, y está ocupado.</span><span data-lang="en">The Ministry of Statistics confirms this absence of competitors is not a technical error, but an accurate reflection of reality: there is only one throne, and it is occupied.</span></p>
+            <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(32,26,51,.18);font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(32,26,51,.5)"><span data-lang="es">RANKING ACTUALIZADO EN TIEMPO REAL · SIN SERVIDORES DE POR MEDIO</span><span data-lang="en">RANKING UPDATED IN REAL TIME · NO SERVERS INVOLVED</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2150,6 +2263,114 @@
         <div style="font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45);text-align:center"><span data-lang="es">Sello de concesión de visado</span><span data-lang="en">Visa grant stamp</span></div>
         <div style="margin-top:6px;padding:16px 18px;background:#12093a;border:1px solid rgba(244,239,226,.1);font:300 11.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">Condiciones de entrada: el portador debe presentarse con asombro genuino. No se requiere pasaporte previo, aunque se recomienda encarecidamente tener uno del propio Reino.</span><span data-lang="en">Conditions of entry: the bearer must arrive with genuine wonder. No prior passport is required, though owning one from the Kingdom itself is strongly recommended.</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="pvl-changelog" data-screen-label="17 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">09</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Estado del Reino · Crónica de decretos</span><span data-lang="en">State of the Kingdom · Chronicle of decrees</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">La corte no lleva actas confidenciales: cada obra del Reino fue, en efecto, construida, y queda aquí registrada como decreto — en el orden real en que sucedió.</span><span data-lang="en">The court keeps no confidential minutes: every work of the Kingdom was, in fact, built, and is recorded here as a decree — in the real order it happened.</span></p>
+
+    <div id="pvl-changelog-list" style="margin-top:40px;display:grid;gap:0">
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 10<br><span style="color:rgba(244,239,226,.45)">12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Memoria</span><span data-lang="en">Decree on Memory</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Reino ordena llevar un registro permanente de sus propios decretos, para que la historia pueda consultarse sin tener que fiarse de la memoria de nadie. Esta misma sección es ese registro.</span><span data-lang="en">By royal decree, the Kingdom orders a permanent record of its own decrees, so history can be consulted without having to trust anyone's memory. This very section is that record.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 9<br><span style="color:rgba(244,239,226,.45)">12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Lema</span><span data-lang="en">Decree on the Motto</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se refina el lema nacional: se retira la fórmula anterior, más áspera, y se adopta como divisa única "El Non Plus Ultra".</span><span data-lang="en">By royal decree, the national motto is refined: the harsher earlier wording is retired, and "The Non Plus Ultra" is adopted as the Crown's sole motto.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 8<br><span style="color:rgba(244,239,226,.45)">12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Grandeza Portátil</span><span data-lang="en">Decree on Portable Grandeur</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Palacio se redimensiona para recibir a peregrinos que lleguen por teléfono o tableta, sin que el trono se desborde de la pantalla; se restituye además la denominación de los billetes, ocultada por error en un decreto anterior.</span><span data-lang="en">By royal decree, the Palace is resized to receive pilgrims arriving by phone or tablet without the throne room spilling off the screen; the banknotes' denomination, hidden by an earlier decree's oversight, is restored.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 7<br><span style="color:rgba(244,239,226,.45)">11–12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Muro y el Registro</span><span data-lang="en">Decree on the Wall and the Registry</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Seguridad sella el registro de peregrinos tras una cookie reforzada y levanta una Política de Seguridad de Contenido alrededor de cada recurso que carga el Palacio; el Sello Real (favicón) recibe permiso expreso para atravesar ese muro.</span><span data-lang="en">By royal decree, the Ministry of Security seals the pilgrim registry behind a hardened cookie and raises a Content Security Policy around every resource the Palace loads; the Royal Seal (favicon) is granted explicit passage through that wall.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 6<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de lo Hallable</span><span data-lang="en">Decree on Discoverability</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se encargan mapas oficiales y normas de trato para los heraldos automatizados del mundo exterior — mapa del sitio, reglas para rastreadores, vistas previas para redes sociales y una descripción para cada imagen — de modo que también las máquinas sepan que el Reino existe.</span><span data-lang="en">By royal decree, official maps and rules of engagement are commissioned for the outside world's automated heralds — a sitemap, crawler rules, social preview cards, and a description for every image — so that machines, too, may know the Kingdom exists.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 5<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Planificación</span><span data-lang="en">Decree on Planning</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Planificación archiva su primer pergamino de obras futuras, a disposición de cualquier ciudadano que lo solicite.</span><span data-lang="en">By royal decree, the Ministry of Planning files its first scroll of future works, available to any citizen who asks to see it.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 4<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de las Lenguas</span><span data-lang="en">Decree on Tongues</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, la Corona reconoce el español y el inglés como lenguas oficiales por igual; toda proclama, formulario y documento del Reino hablará, de ahora en más, en ambas.</span><span data-lang="en">By royal decree, the Crown recognizes Spanish and English as equally official tongues; every proclamation, form and document of the Kingdom shall henceforth speak both.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 3<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de Apertura del Palacio</span><span data-lang="en">Decree Opening the Palace</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se abren las puertas de "El Mundo de Pavel": todo peregrino puede inscribir su nombre, recorrer la sala del trono, adorar y, al llegar a la décima adoración, invocar al unicornio de unicornios.</span><span data-lang="en">By royal decree, the doors of "The World of Pavel" are opened: any pilgrim may register their name, walk the throne room, worship, and — upon the tenth act of worship — summon the unicorn of unicorns.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 2<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Himno</span><span data-lang="en">Decree on the Anthem</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se instituye "El Ruir del Unicornio" como himno del Reino, dispuesto a sonar en bucle eterno; una corrección posterior aseguró que el bucle, en efecto, no se detenga.</span><span data-lang="en">By royal decree, "The Roar of the Unicorn" is instituted as the Kingdom's anthem, set to loop without end; a later correction ensured the loop, in fact, never breaks.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14);border-bottom:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 1<br><span style="color:rgba(244,239,226,.45)">8 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto Fundacional</span><span data-lang="en">Founding Decree</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, queda inscrita la carta fundacional del Reino: escudo, bandera, documentos de identidad, moneda y sellos, y la doctrina "existo porque Pavel existe", reformulada a partir de Descartes.</span><span data-lang="en">By royal decree, the Kingdom's founding charter is inscribed: the coat of arms, flag, identity documents, currency and stamps, and the doctrine "I exist because Pavel exists," reformulated from Descartes.</span></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="pvl-invite-card" style="margin-top:46px;background:#0d0725;border:1px solid rgba(216,178,92,.35);padding:30px clamp(20px,4vw,36px);display:grid;gap:14px">
+      <div style="font:600 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#d8b25c"><span data-lang="es">CONVOCATORIA DIPLOMÁTICA</span><span data-lang="en">DIPLOMATIC SUMMONS</span></div>
+      <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:23px;color:#f7f2e6"><span data-lang="es">Trae a otro peregrino a la corte</span><span data-lang="en">Bring another pilgrim to court</span></h3>
+      <p style="margin:0;max-width:64ch;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)"><span data-lang="es">Ningún decreto se cumple sin testigos. Copia esta convocatoria y entrégala a quien merezca conocer el Reino — llegará con tu nombre ya anunciado ante el Ministerio.</span><span data-lang="en">No decree is complete without witnesses. Copy this summons and hand it to whoever deserves to know the Kingdom — they will arrive with your name already announced to the Ministry.</span></p>
+      <div id="pvl-invite-referred-by" class="pvl-hide" style="padding:10px 14px;border:1px solid rgba(216,178,92,.35);background:rgba(216,178,92,.08);font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#e9c874;max-width:52ch">
+        <span data-lang="es">Convocatoria diplomática recibida de <strong id="pvl-invite-referrer-es"></strong>.</span><span data-lang="en">Diplomatic summons received from <strong id="pvl-invite-referrer-en"></strong>.</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <input id="pvl-invite-link" type="text" readonly aria-label="Invitation link" data-aria-es="Enlace de invitación" data-aria-en="Invitation link" style="flex:1 1 280px;min-width:0;padding:12px 14px;border:1px solid rgba(216,178,92,.4);background:#0b0620;color:#f4e0a8;font:400 12px/1.4 'IBM Plex Mono',monospace">
+        <button id="pvl-invite-copy" type="button" style="flex:none;padding:12px 18px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer"><span data-lang="es">Copiar convocatoria</span><span data-lang="en">Copy summons</span></button>
+      </div>
+      <div id="pvl-invite-status" role="status" aria-live="polite" style="min-height:14px;font:500 10px/1.4 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8fe0a8"></div>
     </div>
   </div>
 </section>
