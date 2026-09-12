@@ -133,6 +133,40 @@
   .pvl-lang-switch button.pvl-lang-active{background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030}
   .pvl-lang-switch button:not(.pvl-lang-active):hover{color:#f4efe2}
 
+  /* ---- Royal Decree Generator (pvl-decree-) ---- */
+  .pvl-decree-card{background:#f8f4e8;color:#201a33;box-shadow:0 22px 48px rgba(0,0,0,.45);padding:30px 32px;position:relative;box-sizing:border-box}
+  .pvl-decree-card:before{content:"";position:absolute;inset:9px;border:1px solid rgba(143,111,42,.35);pointer-events:none}
+  .pvl-decree-body p{margin:12px 0 0;font:300 13.5px/1.75 'IBM Plex Sans',sans-serif}
+  .pvl-decree-empty{margin:12px 0 0;font:300 13.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.5);font-style:italic}
+
+  /* ---- Ministry of Complaints (pvl-complaints-) ---- */
+  .pvl-complaints-reply{background:#f8f4e8;color:#201a33;padding:22px 24px;box-shadow:0 18px 40px rgba(0,0,0,.4);margin-top:20px;box-sizing:border-box}
+  .pvl-complaints-quote{border-left:3px solid #8f6f2a;padding-left:14px;margin:10px 0 14px;font:300 13px/1.6 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.65);font-style:italic}
+
+  /* ---- "How Pavelian are you?" quiz (pvl-quiz-) ---- */
+  .pvl-quiz-card{background:#0d0725;border:1px solid rgba(216,178,92,.35);padding:30px 32px;max-width:640px;box-sizing:border-box}
+  .pvl-quiz-option{display:block;width:100%;box-sizing:border-box;text-align:left;margin-top:10px;padding:13px 16px;border:1px solid rgba(216,178,92,.35);background:rgba(244,239,226,.03);color:#f4efe2;font:400 13px/1.5 'IBM Plex Sans',sans-serif;cursor:pointer}
+  .pvl-quiz-option:hover{border-color:rgba(233,200,116,.75);background:rgba(233,200,116,.08)}
+  .pvl-quiz-option:first-child{margin-top:16px}
+  .pvl-quiz-progress{font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(233,200,116,.75)}
+  .pvl-quiz-rank{font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(24px,3.2vw,34px);color:#f7f2e6;margin:10px 0 0}
+
+  /* ---- Easter egg toast (pvl-egg-) ---- */
+  #pvl-egg-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,160%);max-width:min(420px,88vw);padding:16px 20px;background:#f6f1e3;color:#201a33;border:1px solid rgba(143,111,42,.55);box-shadow:0 18px 40px rgba(0,0,0,.45);z-index:400;font:400 13px/1.5 'IBM Plex Sans',sans-serif;transition:transform .4s ease;box-sizing:border-box}
+  #pvl-egg-toast.pvl-egg-show{transform:translate(-50%,0)}
+  html.pvl-egg-rainbow{animation:pvl-egg-hue 4s linear}
+  @keyframes pvl-egg-hue{0%{filter:hue-rotate(0deg) saturate(1)}50%{filter:hue-rotate(180deg) saturate(1.6)}100%{filter:hue-rotate(360deg) saturate(1)}}
+  .pvl-egg-crest-pulse{animation:pvl-egg-crestpulse 1.1s ease}
+  @keyframes pvl-egg-crestpulse{0%,100%{filter:drop-shadow(0 0 0 rgba(233,200,116,0)) brightness(1)}50%{filter:drop-shadow(0 0 26px rgba(233,200,116,.9)) brightness(1.15)}}
+
+  /* ---- Achievement badges (pvl-badge-) ---- */
+  #pvl-badge-toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-160%);max-width:min(360px,86vw);padding:12px 16px;background:linear-gradient(180deg,#241760,#1b1150);border:1px solid rgba(233,200,116,.55);color:#f4e0a8;box-shadow:0 18px 40px rgba(0,0,0,.5);z-index:400;font:500 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;transition:transform .4s ease;box-sizing:border-box}
+  #pvl-badge-toast.pvl-badge-show{transform:translate(-50%,0)}
+  .pvl-badge-tile{display:flex;flex-direction:column;align-items:center;gap:6px;width:60px;text-align:center;opacity:.32;filter:grayscale(1);transition:opacity .25s ease,filter .25s ease}
+  .pvl-badge-tile.pvl-badge-earned{opacity:1;filter:none}
+  .pvl-badge-medal{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:12px;color:#1a1030;background:conic-gradient(from 220deg,#8f6f2a,#f4e0a8 25%,#d8b25c 50%,#f4e0a8 72%,#8f6f2a);border:1px solid rgba(0,0,0,.25)}
+  .pvl-badge-label{font:400 7.5px/1.25 'IBM Plex Mono',monospace;letter-spacing:.03em;color:rgba(244,239,226,.7)}
+
   /* =====================================================================
      RESPONSIVE — phones (320-428px) & tablets (768-1024px), both
      orientations. The base layout is authored with inline style=""
@@ -411,6 +445,20 @@
   var COOKIE = 'pavelense';
   var doc = document;
   var keys = Object.create(null);
+
+  /* Insignias/logros (pvl-badge-). Persistidas en localStorage porque son
+     un progreso del visitante que tiene sentido recordar entre visitas; el
+     nombre del peregrino ya se guarda igual, asi que este es el mismo nivel
+     de dato (nada se envia a ningun sitio). */
+  var BADGE_KEY = 'pavel-badges';
+  var LANG_SEEN_KEY = 'pavel-langs-vistos';
+  var BADGES = {
+    'primera-reverencia': { n: 'I', es: 'Primera reverencia', en: 'First bow' },
+    'gracias-real': { n: 'II', es: 'Gracias reales', en: 'Royal thanks' },
+    'primer-unicornio': { n: 'III', es: 'Primer unicornio invocado', en: 'First unicorn summoned' },
+    'cincuenta-adoraciones': { n: 'IV', es: 'Cincuenta adoraciones', en: 'Fifty acts of worship' },
+    'bilingue': { n: 'V', es: 'Súbdito bilingüe', en: 'Bilingual subject' }
+  };
   var state = {
     abierto: false,
     jugando: false,
@@ -513,6 +561,7 @@
     var pn = $('pavel-peregrino-nombre');
     if (pn) pn.textContent = state.nombre;
     pintarContador();
+    pintarInsignias();
     var esc = $('pavel-escenario');
     state.x = esc ? esc.clientWidth * 0.5 : 400;
     state.y = esc ? esc.clientHeight * 0.82 : 320;
@@ -526,6 +575,63 @@
   function pintarContador(){
     var el = $('pavel-adoraciones');
     if (el) el.textContent = String(state.adoraciones);
+  }
+  function leerInsignias(){
+    try {
+      var v = JSON.parse(localStorage.getItem(BADGE_KEY) || '[]');
+      return Array.isArray(v) ? v : [];
+    } catch (e) { return []; }
+  }
+  function guardarInsignias(arr){
+    try { localStorage.setItem(BADGE_KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function pintarInsignias(){
+    var arr = leerInsignias();
+    var tiles = doc.querySelectorAll('[data-pvl-badge]');
+    for (var i = 0; i < tiles.length; i++) {
+      var id = tiles[i].getAttribute('data-pvl-badge');
+      tiles[i].classList.toggle('pvl-badge-earned', arr.indexOf(id) !== -1);
+    }
+  }
+  var insigniaToastTimer = null;
+  function mostrarInsigniaToast(id){
+    var meta = BADGES[id];
+    if (!meta) return;
+    var t = $('pvl-badge-toast');
+    if (!t) {
+      t = doc.createElement('div');
+      t.id = 'pvl-badge-toast';
+      doc.body.appendChild(t);
+    }
+    var L = (window.PavelI18N && window.PavelI18N.get()) || 'en';
+    var etiqueta = L === 'es' ? 'Nueva distinción' : 'New distinction';
+    t.textContent = etiqueta + ' ' + meta.n + ' · ' + meta[L];
+    t.classList.add('pvl-badge-show');
+    if (insigniaToastTimer) clearTimeout(insigniaToastTimer);
+    insigniaToastTimer = setTimeout(function(){ t.classList.remove('pvl-badge-show'); }, 4200);
+  }
+  function desbloquear(id){
+    if (!BADGES[id]) return;
+    var arr = leerInsignias();
+    if (arr.indexOf(id) === -1) {
+      arr.push(id);
+      guardarInsignias(arr);
+      pintarInsignias();
+      mostrarInsigniaToast(id);
+    }
+  }
+  function registrarIdiomaVisto(){
+    var L = (window.PavelI18N && window.PavelI18N.get()) || 'en';
+    var vistos = [];
+    try {
+      vistos = JSON.parse(localStorage.getItem(LANG_SEEN_KEY) || '[]');
+      if (!Array.isArray(vistos)) vistos = [];
+    } catch (e) { vistos = []; }
+    if (vistos.indexOf(L) === -1) {
+      vistos.push(L);
+      try { localStorage.setItem(LANG_SEEN_KEY, JSON.stringify(vistos)); } catch (e) {}
+    }
+    if (vistos.indexOf('es') !== -1 && vistos.indexOf('en') !== -1) desbloquear('bilingue');
   }
   function pintarJugador(){
     var p = $('pavel-peregrino');
@@ -580,6 +686,8 @@
     if (!state.jugando || state.adorando) return;
     state.adorando = true;
     state.adoraciones += 1;
+    if (state.adoraciones === 1) desbloquear('primera-reverencia');
+    if (state.adoraciones === 50) desbloquear('cincuenta-adoraciones');
     pintarContador();
     pintarJugador();
     chispas();
@@ -589,6 +697,7 @@
     }
     if (state.adoraciones >= 10 && !state.agradecido) {
       state.agradecido = true;
+      desbloquear('gracias-real');
       var globo = $('pavel-globo-texto');
       var wrap = $('pavel-globo');
       var trono = $('pavel-trono');
@@ -622,6 +731,7 @@
     if (!uni) return;
     state.unicornio = true;
     uni.classList.add('pvl-viaja');
+    desbloquear('primer-unicornio');
   }
   function teclaJuego(k){
     return k === 'ArrowLeft' || k === 'ArrowRight' || k === 'ArrowUp' || k === 'ArrowDown' ||
@@ -685,11 +795,14 @@
       guardarNombre(state.nombre);
       pintarSitio();
     }
+    pintarInsignias();
+    registrarIdiomaVisto();
   }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', arranque);
   else arranque();
   setInterval(function(){ if (leerNombre()) pintarSitio(); }, 800);
   doc.addEventListener('pavel:langchange', function(){
+    registrarIdiomaVisto();
     if (state.nombre) pintarSitio();
     if (state.agradecido) {
       var globo = $('pavel-globo-texto');
@@ -700,6 +813,268 @@
           : ('Thank you ' + state.nombre + ' for your worship');
       }
     }
+  });
+})();
+</script>
+<script>
+/* Huevos de pascua (pvl-egg-). Igual que los demas bloques de <helmet>, este
+   se ejecuta dos veces (parseo + remontaje de support.js), de ahi el candado
+   global. Nada de esto se guarda ni se envia a ningun sitio. */
+(function(){
+  if (window.__pvlEggs) return;
+  window.__pvlEggs = true;
+  var doc = document;
+
+  function toast(esText, enText){
+    var t = document.getElementById('pvl-egg-toast');
+    if (!t) {
+      t = doc.createElement('div');
+      t.id = 'pvl-egg-toast';
+      doc.body.appendChild(t);
+    }
+    var lang = (window.PavelI18N && window.PavelI18N.get()) || 'en';
+    t.textContent = lang === 'es' ? esText : enText;
+    t.classList.add('pvl-egg-show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function(){ t.classList.remove('pvl-egg-show'); }, 4200);
+  }
+
+  /* Codigo Konami: ↑↑↓↓←→←→BA */
+  var KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  var progreso = 0;
+  doc.addEventListener('keydown', function(e){
+    var k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    var esperado = KONAMI[progreso];
+    if (k === esperado) {
+      progreso++;
+      if (progreso === KONAMI.length) {
+        progreso = 0;
+        doc.documentElement.classList.remove('pvl-egg-rainbow');
+        void doc.documentElement.offsetWidth;
+        doc.documentElement.classList.add('pvl-egg-rainbow');
+        toast('Código reconocido. La grandeza cambia de color por un instante.', 'Code recognized. Greatness briefly changes color.');
+      }
+    } else {
+      progreso = (k === KONAMI[0]) ? 1 : 0;
+    }
+  });
+
+  /* Siete clics al escudo */
+  var clicsEscudo = 0, clicsEscudoTimer = null;
+  doc.addEventListener('click', function(e){
+    var crest = e.target.closest && e.target.closest('#pvl-egg-crest');
+    if (!crest) return;
+    clicsEscudo++;
+    clearTimeout(clicsEscudoTimer);
+    clicsEscudoTimer = setTimeout(function(){ clicsEscudo = 0; }, 2500);
+    if (clicsEscudo >= 7) {
+      clicsEscudo = 0;
+      crest.classList.remove('pvl-egg-crest-pulse');
+      void crest.offsetWidth;
+      crest.classList.add('pvl-egg-crest-pulse');
+      toast('El escudo reconoce tu insistencia. Tres unicornios asienten.', 'The crest acknowledges your persistence. Three unicorns nod.');
+    }
+  });
+
+  /* Bucles del himno: el <audio loop> nunca dispara "ended", asi que se
+     cuenta cuando currentTime retrocede de cerca del final a cerca del
+     principio. */
+  var vueltasHimno = 0, ultimoTiempo = 0, avisado3 = false;
+  doc.addEventListener('timeupdate', function(e){
+    var a = e.target;
+    if (!a || a.id !== 'pavel-audio') return;
+    var d = a.duration || 0;
+    if (d && ultimoTiempo > d * 0.85 && a.currentTime < d * 0.15) {
+      vueltasHimno++;
+      if (vueltasHimno === 3 && !avisado3) {
+        avisado3 = true;
+        toast('Tres vueltas al himno. Tu lealtad queda registrada.', 'Three loops of the anthem. Your loyalty is on record.');
+      }
+    }
+    ultimoTiempo = a.currentTime;
+  }, true);
+})();
+</script>
+<script>
+/* Generador de decretos + Ministerio de Quejas + quiz "Que tan pavelense
+   eres". Mismo candado de doble ejecucion que el resto de <helmet>. Nada de
+   lo que se escribe aqui se guarda ni se envia a ningun sitio. */
+(function(){
+  if (window.__pvlPlay) return;
+  window.__pvlPlay = true;
+  var doc = document;
+  function lang(){ return (window.PavelI18N && window.PavelI18N.get()) || 'en'; }
+
+  /* ---------- Generador de decretos ---------- */
+  var DECREE_OPEN = {
+    es: function(t){ return 'Por la presente, el Ministerio de la Grandeza se pronuncia sobre ' + t + ' con la autoridad que le confiere no necesitar autorización de nadie.'; },
+    en: function(t){ return 'By these presents, the Ministry of Greatness rules on ' + t + ' with the authority conferred by needing no one’s approval.'; }
+  };
+  var DECREE_MID = [
+    { es: function(t){ return 'Queda establecido que ' + t + ' se interpretará siempre a favor de la grandeza, y en caso de duda, también.'; },
+      en: function(t){ return 'It is hereby established that ' + t + ' shall always be interpreted in favor of greatness, and in case of doubt, also.'; } },
+    { es: function(t){ return 'Se instruye a todo súbdito a considerar ' + t + ' un asunto resuelto, archivado y, en cierto modo, glorioso.'; },
+      en: function(t){ return 'Every subject is instructed to consider ' + t + ' a settled, filed, and in some sense glorious matter.'; } },
+    { es: function(t){ return 'El Ministerio reconoce la existencia de ' + t + ', le desea lo mejor, y sigue adelante sin cambiar nada.'; },
+      en: function(t){ return 'The Ministry acknowledges the existence of ' + t + ', wishes it well, and proceeds without changing anything.'; } },
+    { es: function(t){ return 'A partir de hoy, ' + t + ' entra en los anales del Reino, justo debajo del himno y justo encima del Descartes rectificado.'; },
+      en: function(t){ return 'As of today, ' + t + ' enters the annals of the Kingdom, just below the anthem and just above the rectified Descartes.'; } }
+  ];
+  var DECREE_CLOSE = [
+    { es: 'Cúmplase, publíquese y, si es posible, cántese de pie.', en: 'Let it be fulfilled, published, and, if possible, sung standing up.' },
+    { es: 'Firmado en el cielo, sin necesidad de testigos.', en: 'Signed in heaven, no witnesses required.' },
+    { es: 'Registrado bajo el Artículo I de la Constitución, como todo lo demás.', en: 'Filed under Article I of the Constitution, like everything else.' }
+  ];
+  var lastDecree = null;
+  function renderDecree(){
+    var out = doc.getElementById('pvl-decree-output');
+    if (!out || !lastDecree) return;
+    var L = lang();
+    out.innerHTML = '';
+    var p1 = doc.createElement('p'); p1.textContent = DECREE_OPEN[L](lastDecree.topic);
+    var p2 = doc.createElement('p'); p2.textContent = DECREE_MID[lastDecree.mid][L](lastDecree.topic);
+    var p3 = doc.createElement('p'); p3.style.fontWeight = '600'; p3.textContent = DECREE_CLOSE[lastDecree.close][L];
+    out.appendChild(p1); out.appendChild(p2); out.appendChild(p3);
+  }
+  doc.addEventListener('submit', function(e){
+    if (e.target && e.target.id === 'pvl-decree-form') {
+      e.preventDefault();
+      var inp = doc.getElementById('pvl-decree-input');
+      var topic = String((inp && inp.value) || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+      if (!topic) { if (inp) inp.focus(); return; }
+      lastDecree = { topic: topic, mid: Math.floor(Math.random() * DECREE_MID.length), close: Math.floor(Math.random() * DECREE_CLOSE.length) };
+      renderDecree();
+    }
+  });
+
+  /* ---------- Ministerio de Quejas ---------- */
+  var COMPLAINT_REPLIES = [
+    { es: 'Su queja ha sido recibida y reclasificada como elogio.', en: 'Your complaint has been received and reclassified as praise.' },
+    { es: 'El Ministerio le agradece su confianza y no hará nada al respecto.', en: 'The Ministry thanks you for your trust and will do nothing about it.' },
+    { es: 'Esta queja se ha archivado junto a las demás, en un cajón que no existe.', en: 'This complaint has been filed alongside the others, in a drawer that does not exist.' },
+    { es: 'Se le informa de que el Artículo I ya cubre este caso.', en: 'You are informed that Article I already covers this case.' },
+    { es: 'Su inquietud es válida, pero la grandeza no admite enmiendas.', en: 'Your concern is valid, but greatness admits no amendments.' },
+    { es: 'El Ministerio ha decidido, por unanimidad de un solo miembro, no opinar.', en: 'The Ministry has decided, by unanimous vote of one member, not to comment.' },
+    { es: 'Gracias por escribir. Su carta ha sido enmarcada.', en: 'Thank you for writing. Your letter has been framed.' },
+    { es: 'Esto se ha reenviado a un departamento que tampoco existe.', en: 'This has been forwarded to a department that also does not exist.' }
+  ];
+  var lastComplaint = null;
+  function renderComplaint(){
+    var out = doc.getElementById('pvl-complaints-output');
+    if (!out || !lastComplaint) return;
+    var L = lang();
+    out.innerHTML = '';
+    var box = doc.createElement('div');
+    box.className = 'pvl-complaints-reply';
+    var label = doc.createElement('div');
+    label.style.cssText = "font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#6b4f16";
+    label.textContent = L === 'es' ? 'RESPUESTA OFICIAL' : 'OFFICIAL REPLY';
+    var quote = doc.createElement('div');
+    quote.className = 'pvl-complaints-quote';
+    quote.textContent = '“' + lastComplaint.text + '”';
+    var reply = doc.createElement('p');
+    reply.style.cssText = "margin:0;font:300 14px/1.65 'IBM Plex Sans',sans-serif";
+    reply.textContent = COMPLAINT_REPLIES[lastComplaint.idx][L];
+    box.appendChild(label); box.appendChild(quote); box.appendChild(reply);
+    out.appendChild(box);
+  }
+  doc.addEventListener('submit', function(e){
+    if (e.target && e.target.id === 'pvl-complaints-form') {
+      e.preventDefault();
+      var inp = doc.getElementById('pvl-complaints-input');
+      var text = String((inp && inp.value) || '').replace(/\s+/g, ' ').trim().slice(0, 240);
+      if (!text) { if (inp) inp.focus(); return; }
+      lastComplaint = { text: text, idx: Math.floor(Math.random() * COMPLAINT_REPLIES.length) };
+      renderComplaint();
+      if (inp) inp.value = '';
+    }
+  });
+
+  /* ---------- Quiz "Que tan pavelense eres" ---------- */
+  var QUIZ = [
+    { es: '¿A qué hora te levantas a adorar la grandeza?', en: 'What time do you get up to worship greatness?',
+      opts: [ { es:'No me acuesto.', en:"I don't sleep.", pts:4 }, { es:'Antes del amanecer.', en:'Before dawn.', pts:3 }, { es:'A una hora razonable.', en:'At a reasonable hour.', pts:2 }, { es:'Cuando Pavel lo decida.', en:'Whenever Pavel decides.', pts:4 } ] },
+    { es: '¿Cuántos unicornios tienes?', en: 'How many unicorns do you own?',
+      opts: [ { es:'Ninguno, todavía.', en:'None, yet.', pts:1 }, { es:'Uno, prestado.', en:'One, borrowed.', pts:2 }, { es:'Uno, propio.', en:'One, my own.', pts:3 }, { es:'Soy el unicornio de unicornios.', en:'I am the unicorn of unicorns.', pts:4 } ] },
+    { es: '¿Con qué frecuencia escuchas el himno?', en: 'How often do you listen to the anthem?',
+      opts: [ { es:'Nunca lo he oído.', en:"I've never heard it.", pts:1 }, { es:'De vez en cuando.', en:'Now and then.', pts:2 }, { es:'En bucle, de pie.', en:'On loop, standing up.', pts:4 }, { es:'Lo tarareo en sueños.', en:'I hum it in my sleep.', pts:3 } ] },
+    { es: '¿Qué opinas del orden alfabético Pavel-grandeza?', en: 'What do you think of the Pavel-before-greatness alphabetical order?',
+      opts: [ { es:'Nunca lo había pensado.', en:"I'd never thought about it.", pts:1 }, { es:'Tiene sentido.', en:'It makes sense.', pts:2 }, { es:'Es innegociable.', en:'It is non-negotiable.', pts:4 }, { es:'Lo defendería en un tribunal.', en:'I would defend it in court.', pts:3 } ] },
+    { es: '¿Qué harías si Descartes dudara de ti?', en: 'What would you do if Descartes doubted you?',
+      opts: [ { es:'Dudaría también.', en:'I would doubt too.', pts:1 }, { es:'Le recordaría el Artículo I.', en:'I would remind him of Article I.', pts:3 }, { es:'Le pediría una rectificación por escrito.', en:'I would ask for a written correction.', pts:4 }, { es:'Le ofrecería una copia del himno.', en:'I would offer him a copy of the anthem.', pts:2 } ] },
+    { es: '¿Cuánto oro llevas puesto ahora mismo?', en: 'How much gold are you wearing right now?',
+      opts: [ { es:'Ninguno.', en:'None.', pts:1 }, { es:'Un poco, discretamente.', en:'A little, discreetly.', pts:2 }, { es:'Bastante, con letter-spacing.', en:'Quite a lot, with letter-spacing.', pts:3 }, { es:'Soy dorado por dentro.', en:'I am gold on the inside.', pts:4 } ] }
+  ];
+  var RANKS = [
+    { max:12, es:'Peregrino', en:'Pilgrim', descEs:'Vas por buen camino, literalmente.', descEn:'You are on the right path, literally.' },
+    { max:17, es:'Ciudadano', en:'Citizen', descEs:'Existes porque Pavel existe, y lo sabes.', descEn:'You exist because Pavel exists, and you know it.' },
+    { max:21, es:'Ministro', en:'Minister', descEs:'Casi tienes despacho propio.', descEn:'You almost have your own office.' },
+    { max:99, es:'Casi Soberano', en:'Sovereign-Adjacent', descEs:'Solo te falta el trono. Y nacer antes del Big Bang.', descEn:'All you’re missing is the throne. And being born before the Big Bang.' }
+  ];
+  var quizIdx = 0, quizScore = 0, quizDone = false;
+  function quizRestart(){ quizIdx = 0; quizScore = 0; quizDone = false; renderQuiz(); }
+  function renderQuiz(){
+    var body = doc.getElementById('pvl-quiz-body');
+    var prog = doc.getElementById('pvl-quiz-progress');
+    if (!body) return;
+    var L = lang();
+    body.innerHTML = '';
+    if (quizDone) {
+      if (prog) prog.textContent = '';
+      var rank = RANKS[0];
+      for (var r = 0; r < RANKS.length; r++) { if (quizScore <= RANKS[r].max) { rank = RANKS[r]; break; } }
+      var lead = doc.createElement('div');
+      lead.textContent = L === 'es' ? 'TU RANGO ES' : 'YOUR RANK IS';
+      lead.style.cssText = "font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#e9c874";
+      var title = doc.createElement('div');
+      title.className = 'pvl-quiz-rank';
+      title.textContent = rank[L];
+      var desc = doc.createElement('p');
+      desc.style.cssText = "margin:14px 0 0;font:300 13.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)";
+      desc.textContent = L === 'es' ? rank.descEs : rank.descEn;
+      var again = doc.createElement('button');
+      again.type = 'button';
+      again.style.cssText = 'margin-top:20px;padding:12px 18px;border:1px solid rgba(233,200,116,.5);background:transparent;color:#f4e0a8;font:600 11px/1 \'IBM Plex Sans\',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer';
+      again.textContent = L === 'es' ? 'Repetir el quiz' : 'Retake the quiz';
+      again.addEventListener('click', quizRestart);
+      body.appendChild(lead); body.appendChild(title); body.appendChild(desc); body.appendChild(again);
+      return;
+    }
+    var q = QUIZ[quizIdx];
+    if (prog) prog.textContent = (L === 'es' ? 'PREGUNTA ' : 'QUESTION ') + (quizIdx + 1) + ' / ' + QUIZ.length;
+    var qEl = doc.createElement('div');
+    qEl.style.cssText = "margin-top:8px;font-family:'Bodoni Moda',serif;font-size:19px;line-height:1.4;color:#f7f2e6";
+    qEl.textContent = q[L];
+    body.appendChild(qEl);
+    for (var i = 0; i < q.opts.length; i++) {
+      (function(opt){
+        var b = doc.createElement('button');
+        b.type = 'button';
+        b.className = 'pvl-quiz-option';
+        b.textContent = opt[L];
+        b.addEventListener('click', function(){
+          quizScore += opt.pts;
+          quizIdx++;
+          if (quizIdx >= QUIZ.length) quizDone = true;
+          renderQuiz();
+        });
+        body.appendChild(b);
+      })(q.opts[i]);
+    }
+  }
+  var quizBooted = false;
+  function bootQuiz(){
+    if (quizBooted) return;
+    if (!doc.getElementById('pvl-quiz-body')) return;
+    quizBooted = true;
+    renderQuiz();
+  }
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', bootQuiz); else bootQuiz();
+
+  doc.addEventListener('pavel:langchange', function(){
+    renderDecree();
+    renderComplaint();
+    if (quizBooted) renderQuiz();
   });
 })();
 </script>
@@ -733,6 +1108,9 @@
         <a href="#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
         <a href="#descartes">Descartes</a>
         <a href="#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+        <a href="#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+        <a href="#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+        <a href="#quiz">Quiz</a>
       </nav>
       <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
         <button type="button" data-lang-btn="en">EN</button>
@@ -811,7 +1189,7 @@
         <div style="position:relative;padding:34px;background:radial-gradient(circle at 50% 40%, #1d1247 0%, #0d0726 70%);border:1px solid rgba(216,178,92,.3)">
           <div style="position:relative;width:min(100%,340px);margin:0 auto;aspect-ratio:1;border-radius:50%;padding:10px;background:conic-gradient(from 220deg,#8f6f2a,#f4e0a8 25%,#d8b25c 50%,#f4e0a8 72%,#8f6f2a);box-shadow:0 0 0 1px rgba(0,0,0,.5),0 24px 60px rgba(0,0,0,.6)">
             <div style="width:100%;height:100%;border-radius:50%;overflow:hidden;border:3px solid #0d0726;background:#14103a">
-              <img src="assets/crest-unicorns.jpg" alt="Tres unicornios rampantes" data-alt-es="Tres unicornios rampantes" data-alt-en="Three rampant unicorns" style="width:100%;height:100%;object-fit:cover;object-position:50% 42%">
+              <img id="pvl-egg-crest" src="assets/crest-unicorns.jpg" alt="Tres unicornios rampantes" data-alt-es="Tres unicornios rampantes" data-alt-en="Three rampant unicorns" style="width:100%;height:100%;object-fit:cover;object-position:50% 42%">
             </div>
           </div>
           <div style="margin:22px auto 0;max-width:420px;text-align:center">
@@ -1428,6 +1806,67 @@
   </div>
 </section>
 
+<section id="decreto" data-screen-label="14 Decreto" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">10</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Generador de decretos reales</span><span data-lang="en">Royal decree generator</span></h2>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
+      <div>
+        <p style="margin:0;max-width:52ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)"><span data-lang="es">Escribe un tema, cualquier tema. El Ministerio de la Grandeza redactará un decreto oficial al respecto, con la solemnidad y la falta de fundamento habituales.</span><span data-lang="en">Type in a topic, any topic. The Ministry of Greatness will draft an official decree about it, with the usual solemnity and lack of justification.</span></p>
+        <form id="pvl-decree-form" style="margin-top:22px;display:grid;gap:12px;max-width:420px">
+          <label for="pvl-decree-input" style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.5)"><span data-lang="es">Asunto del decreto</span><span data-lang="en">Subject of the decree</span></label>
+          <input id="pvl-decree-input" type="text" maxlength="60" placeholder="El tráfico, los lunes, tu vecino…" data-ph-es="El tráfico, los lunes, tu vecino…" data-ph-en="Traffic, Mondays, your neighbor…" style="width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid rgba(216,178,92,.45);background:#0b0620;color:#f7f2e6;font:400 15px/1.3 'IBM Plex Sans',sans-serif">
+          <button id="pvl-decree-submit" type="submit" style="padding:14px 20px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;justify-self:start"><span data-lang="es">Redactar decreto</span><span data-lang="en">Draft the decree</span></button>
+        </form>
+      </div>
+      <div class="pvl-decree-card">
+        <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">GABINETE DEL SOBERANO</span><span data-lang="en">OFFICE OF THE SOVEREIGN</span></div>
+        <div class="pvl-decree-body" id="pvl-decree-output">
+          <p class="pvl-decree-empty" data-lang="es">Ningún decreto redactado todavía. El Ministerio espera su tema.</p>
+          <p class="pvl-decree-empty" data-lang="en">No decree drafted yet. The Ministry awaits your topic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quejas" data-screen-label="15 Quejas" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">11</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Ministerio de Quejas</span><span data-lang="en">Ministry of Complaints</span></h2>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
+      <div>
+        <p style="margin:0;max-width:52ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Todo súbdito tiene derecho a quejarse. El Ministerio tiene, a su vez, el derecho a no cambiar absolutamente nada al respecto. Su queja no se guarda ni se envía a ningún sitio: se lee una vez y se archiva en el olvido.</span><span data-lang="en">Every subject has the right to complain. The Ministry, in turn, has the right to change absolutely nothing about it. Your complaint is not stored or sent anywhere: it is read once and filed into oblivion.</span></p>
+        <form id="pvl-complaints-form" style="margin-top:22px;display:grid;gap:12px;max-width:420px">
+          <label for="pvl-complaints-input" style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(32,26,51,.55)"><span data-lang="es">Su queja</span><span data-lang="en">Your complaint</span></label>
+          <textarea id="pvl-complaints-input" maxlength="240" rows="3" placeholder="Escriba aquí su desdicha…" data-ph-es="Escriba aquí su desdicha…" data-ph-en="Write your misfortune here…" style="width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid rgba(32,26,51,.3);background:#fff;color:#201a33;font:400 14px/1.4 'IBM Plex Sans',sans-serif;resize:vertical"></textarea>
+          <button id="pvl-complaints-submit" type="submit" style="padding:14px 20px;border:0;border-radius:2px;background:#201a33;color:#f4efe2;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;justify-self:start"><span data-lang="es">Presentar queja</span><span data-lang="en">File complaint</span></button>
+        </form>
+      </div>
+      <div id="pvl-complaints-output"></div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" data-screen-label="16 Quiz" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">12</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">¿Qué tan pavelense eres?</span><span data-lang="en">How Pavelian are you?</span></h2>
+    </div>
+    <div style="margin-top:40px;display:flex;justify-content:center">
+      <div class="pvl-quiz-card" id="pvl-quiz-card">
+        <div class="pvl-quiz-progress" id="pvl-quiz-progress"></div>
+        <div id="pvl-quiz-body"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
   <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
     <div>
@@ -1518,6 +1957,31 @@
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button id="pavel-btn-adorar" type="button" style="padding:12px 18px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer"><span data-lang="es">Adorar</span><span data-lang="en">Worship</span></button>
           <button id="pavel-btn-unicornio" type="button" style="padding:12px 18px;border-radius:2px;border:1px solid rgba(233,200,116,.5);background:transparent;color:#f4e0a8;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer"><span data-lang="es">Invocar al unicornio de unicornios</span><span data-lang="en">Summon the unicorn of unicorns</span></button>
+        </div>
+      </div>
+      <div style="padding:14px 18px 18px;border-top:1px solid rgba(216,178,92,.16);background:rgba(8,4,21,.3)">
+        <div style="font:500 8px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.4);margin-bottom:10px"><span data-lang="es">Distinciones de la corte</span><span data-lang="en">Court distinctions</span></div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div class="pvl-badge-tile" data-pvl-badge="primera-reverencia">
+            <div class="pvl-badge-medal">I</div>
+            <div class="pvl-badge-label"><span data-lang="es">Primera reverencia</span><span data-lang="en">First bow</span></div>
+          </div>
+          <div class="pvl-badge-tile" data-pvl-badge="gracias-real">
+            <div class="pvl-badge-medal">II</div>
+            <div class="pvl-badge-label"><span data-lang="es">Gracias reales</span><span data-lang="en">Royal thanks</span></div>
+          </div>
+          <div class="pvl-badge-tile" data-pvl-badge="primer-unicornio">
+            <div class="pvl-badge-medal">III</div>
+            <div class="pvl-badge-label"><span data-lang="es">Primer unicornio</span><span data-lang="en">First unicorn</span></div>
+          </div>
+          <div class="pvl-badge-tile" data-pvl-badge="cincuenta-adoraciones">
+            <div class="pvl-badge-medal">IV</div>
+            <div class="pvl-badge-label"><span data-lang="es">50 adoraciones</span><span data-lang="en">50 acts of worship</span></div>
+          </div>
+          <div class="pvl-badge-tile" data-pvl-badge="bilingue">
+            <div class="pvl-badge-medal">V</div>
+            <div class="pvl-badge-label"><span data-lang="es">Súbdito bilingüe</span><span data-lang="en">Bilingual subject</span></div>
+          </div>
         </div>
       </div>
     </div>
