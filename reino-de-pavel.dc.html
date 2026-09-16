@@ -1086,6 +1086,19 @@
   var doc = document;
   function lang(){ return (window.PavelI18N && window.PavelI18N.get()) || 'en'; }
 
+  /* support.js construye su plantilla de React a partir del HTML que encuentra
+     dentro de <x-dc> y solo despues lo sustituye por #dc-root. Si pintamos
+     dentro de <x-dc> antes de ese remontaje, los nodos generados aqui acaban
+     formando parte de la plantilla; cuando el runtime relee el archivo y
+     re-renderiza con la plantilla limpia, React intenta borrar esos nodos --
+     que este script ya habia sustituido con innerHTML = '' -- y revienta con
+     "removeChild: The node to be removed is not a child of this node".
+     Por eso solo se pinta cuando el contenedor ya esta montado, es decir,
+     cuando ha dejado de colgar de la plantilla cruda. */
+  function montado(el){
+    return !!el && (!el.closest || !el.closest('x-dc'));
+  }
+
   /* ---------- Generador de decretos ---------- */
   var DECREE_OPEN = {
     es: function(t){ return 'Por la presente, el Ministerio de la Grandeza se pronuncia sobre ' + t + ' con la autoridad que le confiere no necesitar autorización de nadie.'; },
@@ -1246,7 +1259,7 @@
   var quizBooted = false;
   function bootQuiz(){
     if (quizBooted) return;
-    if (!doc.getElementById('pvl-quiz-body')) return;
+    if (!montado(doc.getElementById('pvl-quiz-body'))) return;
     quizBooted = true;
     renderQuiz();
   }
@@ -1455,7 +1468,7 @@
   var psychBooted = false;
   function bootPsych(){
     if (psychBooted) return;
-    if (!doc.getElementById('pvl-psych-body')) return;
+    if (!montado(doc.getElementById('pvl-psych-body'))) return;
     psychBooted = true;
     renderPsych();
   }
@@ -1602,7 +1615,10 @@
         a.download = 'ciudadania-pavel-' + nombre.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40) + '.png';
         doc.body.appendChild(a);
         a.click();
-        doc.body.removeChild(a);
+        /* Se quita del padre que lo tenga en ese momento: si algo lo hubiera
+           movido o sacado del DOM, doc.body.removeChild(a) tiraria un
+           NotFoundError en mitad de la descarga. */
+        if (a.parentNode) a.parentNode.removeChild(a);
         setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
       }, 'image/png');
     }
