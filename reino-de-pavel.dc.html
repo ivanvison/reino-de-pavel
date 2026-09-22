@@ -132,7 +132,7 @@
   .pvl-lang-switch button{border:0;background:transparent;cursor:pointer;padding:6px 12px;border-radius:999px;font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(244,239,226,.55);transition:background .15s ease,color .15s ease}
   .pvl-lang-switch button.pvl-lang-active{background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030}
   .pvl-lang-switch button:not(.pvl-lang-active):hover{color:#f4efe2}
-  .pvl-nav-toggle{display:none;flex:none;width:38px;height:38px;padding:0;border:1px solid rgba(216,178,92,.4);border-radius:8px;background:rgba(13,7,37,.5);cursor:pointer;position:relative}
+  .pvl-nav-toggle{display:none;flex:none;width:38px;height:38px;padding:0;border:1px solid rgba(216,178,92,.4);border-radius:8px;background:rgba(13,7,37,.5);cursor:pointer;position:relative;z-index:80}
   .pvl-nav-toggle span{position:absolute;left:9px;right:9px;height:2px;border-radius:2px;background:#e9c874;transition:transform .22s ease,opacity .18s ease}
   .pvl-nav-toggle span:nth-child(1){top:13px}
   .pvl-nav-toggle span:nth-child(2){top:18px}
@@ -142,6 +142,9 @@
   .pvl-nav-toggle.pvl-nav-open span:nth-child(3){top:18px;transform:rotate(-45deg)}
   #pvl-nav-backdrop{position:fixed;inset:0;background:rgba(5,2,15,.55);z-index:70;opacity:0;pointer-events:none;transition:opacity .2s ease}
   #pvl-nav-backdrop.pvl-nav-backdrop-show{opacity:1;pointer-events:auto}
+  /* Desktop: the nav sits above the backdrop so an open dropdown stays
+     bright while the rest of the page dims (mobile overrides below). */
+  #pvl-nav{position:relative;z-index:80}
 
   /* Mini anthem player (pvl-mini-): phones only, see the mobile media query
      below for when it's actually allowed to show. Appended to <body> by JS
@@ -1764,8 +1767,7 @@
     nav.classList.add('pvl-nav-open');
     btn.classList.add('pvl-nav-open');
     btn.setAttribute('aria-expanded', 'true');
-    var b = backdrop();
-    requestAnimationFrame(function(){ b.classList.add('pvl-nav-backdrop-show'); });
+    sincronizarFondo();
   }
   function cerrar(){
     var nav = doc.getElementById('pvl-nav');
@@ -1774,9 +1776,25 @@
     nav.classList.remove('pvl-nav-open');
     btn.classList.remove('pvl-nav-open');
     btn.setAttribute('aria-expanded', 'false');
-    var b = doc.getElementById('pvl-nav-backdrop');
-    if (b) b.classList.remove('pvl-nav-backdrop-show');
     cerrarGrupos();
+  }
+  /* Fondo oscurecido: visible mientras el menu movil o cualquier
+     desplegable este abierto, igual que detras de un modal. */
+  function hayAlgoAbierto(){
+    return estaAbierto() || !!doc.querySelector('.pvl-nav-group-open');
+  }
+  function sincronizarFondo(){
+    if (!hayAlgoAbierto()) {
+      var viejo = doc.getElementById('pvl-nav-backdrop');
+      if (viejo) viejo.classList.remove('pvl-nav-backdrop-show');
+      return;
+    }
+    var b = backdrop();
+    /* Un frame despues para que arranque la transicion de opacidad;
+       se vuelve a comprobar por si se cerro en ese intervalo. */
+    requestAnimationFrame(function(){
+      if (hayAlgoAbierto()) b.classList.add('pvl-nav-backdrop-show');
+    });
   }
   function estaAbierto(){
     var nav = doc.getElementById('pvl-nav');
@@ -1795,6 +1813,7 @@
       var btn = grupos[i].querySelector('.pvl-nav-trigger');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
+    sincronizarFondo();
   }
   function alternarGrupo(grupo){
     var abierto = grupo.classList.contains('pvl-nav-group-open');
@@ -1802,6 +1821,7 @@
     grupo.classList.toggle('pvl-nav-group-open', !abierto);
     var btn = grupo.querySelector('.pvl-nav-trigger');
     if (btn) btn.setAttribute('aria-expanded', String(!abierto));
+    sincronizarFondo();
   }
 
   doc.addEventListener('click', function(e){
