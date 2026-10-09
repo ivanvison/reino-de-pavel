@@ -182,12 +182,14 @@ anything in this change) — if the site owner wants extra assurance, loading th
 page in a normal browser after this change and checking DevTools' Console/Security
 tab for any `Refused to ...` message would be the quick confirmation step.
 
-### 5. `target="_blank"` external links — checked, none exist
-Grepped for `target="_blank"` / `target='_blank'` across the page: zero matches.
-Every `<a href="...">` on the page is a same-page anchor link (`#emblema`,
-`#ciudadania`, etc.) or the one bare `<a href="#descartes">Descartes</a>` — no
-external `http(s)://` links open in a new tab, so there was nothing to add
-`rel="noopener noreferrer"` to.
+### 5. `target="_blank"` external links — one, with `rel="noopener noreferrer"`
+At the time of this audit there were none: every `<a href="...">` was a same-page
+anchor link (`#emblema`, `#ciudadania`, etc.). Since then the hero's "Join Pavel's
+court" button links to Pavel's LinkedIn profile
+(`https://www.linkedin.com/in/pavel-navarro/`) with `target="_blank"` and
+`rel="noopener noreferrer"`, so the opened tab gets no `window.opener` and no
+referrer. The CSP needs no change for it: following a link is navigation, which no
+directive in the `<meta>` policy governs.
 
 ### 6. Secrets/tokens/credentials — checked, none found
 Grepped `reino-de-pavel.dc.html`, `support.js`, and `README.md` for
