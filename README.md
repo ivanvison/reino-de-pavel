@@ -74,6 +74,12 @@ hace clic, toca o pulsa una tecla en cualquier parte de la página.
 > evita registrar los oyentes por duplicado. El atributo `loop` sin valor lo descarta el runtime del
 > lienzo, así que el bucle se fija también desde JavaScript.
 
+### Súper Pavel World
+
+El videojuego de la sección `#juego` vive entero en un `<script>` del `<helmet>` (`window.__pvlSuperPavel`):
+lienzo de 320×180 escalado sin suavizado, sprites dibujados en código, sonido con Web Audio. Para
+probar un mundo concreto sin jugar los anteriores, añade `?juego-nivel=2` o `?juego-nivel=3` a la URL.
+
 ## Estructura
 
 ```
@@ -87,7 +93,8 @@ hace clic, toca o pulsa una tecla en cualquier parte de la página.
     ├── crest-unicorns.jpg     # escudo / armas mayores
     ├── pavel-head.png         # efigie oficial (foto, cédula, billete)
     ├── pavel-unicorn.png      # retrato ecuestre de Estado
-    └── descargas/             # Archivo Real de Descargas: fondos, bandera, logotipo, sellos
+    ├── descargas/             # Archivo Real de Descargas: fondos, bandera, logotipo, sellos
+    └── juego/pavel-cabeza.png # la cabeza de Pavel para «Súper Pavel World» (64 px)
 tools/
 ├── descargas.html             # plantilla de los fondos, la bandera y el logotipo
 └── render-descargas.mjs       # los regenera con Chrome sin interfaz
