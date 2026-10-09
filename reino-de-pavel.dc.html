@@ -11,7 +11,7 @@
      (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
      blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
      data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <title>Reino de Pavel · Kingdom of Pavel</title>
 <script src="./support.js"></script>
 </head>
@@ -393,6 +393,31 @@
   .pvl-lib-entry:before{content:"";position:absolute;inset:9px;border:1px solid rgba(143,111,42,.35);pointer-events:none}
   .pvl-lib-entry .pvl-lib-text{color:#201a33;font-size:14.5px}
   .pvl-lib-entry h4{margin:8px 0 0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:22px;line-height:1.2;color:#2a1a63}
+  /* ---- Banda sonora (pvl-st-). Nada de YouTube se carga hasta que el
+     visitante pulsa una pista: entonces se inyecta el iframe nocookie. ---- */
+  .pvl-st-wrap{margin-top:40px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:36px;align-items:start}
+  .pvl-st-stage{position:sticky;top:24px;display:grid;gap:12px}
+  .pvl-st-player{position:relative;aspect-ratio:16/9;background:radial-gradient(120% 90% at 30% 20%,#2a1a63 0,#140a38 55%,#0b0620 100%);border:1px solid rgba(143,111,42,.5);box-shadow:0 22px 48px rgba(32,26,51,.35);overflow:hidden}
+  .pvl-st-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .pvl-st-idle{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px}
+  .pvl-st-disc{width:clamp(90px,22vw,150px);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#15102a 0 2px,#221a3d 2px 4px);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.5);animation:pvl-st-spin 6s linear infinite}
+  .pvl-st-label{width:38%;aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#86e7ea,#f2a9dc);display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:clamp(16px,3vw,24px);color:#1b1150}
+  @keyframes pvl-st-spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.pvl-st-disc{animation:none}}
+  .pvl-st-now{min-height:16px;font:500 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#6b4f16}
+  .pvl-st-yt{justify-self:start;font:600 11px/1 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#2a1a63;border-bottom:1px solid rgba(42,26,99,.35);padding-bottom:4px}
+  .pvl-st-list{list-style:none;margin:0;padding:0;border-top:1px solid rgba(32,26,51,.14)}
+  .pvl-st-row{display:grid;grid-template-columns:38px 30px 1fr;gap:12px;align-items:start;padding:14px 4px;border-bottom:1px solid rgba(32,26,51,.12);transition:background .15s ease}
+  .pvl-st-row:hover{background:rgba(216,178,92,.12)}
+  .pvl-st-row.pvl-st-on{background:rgba(216,178,92,.22)}
+  .pvl-st-play{width:34px;height:34px;border-radius:50%;border:1px solid rgba(42,26,99,.4);background:#fff;color:#2a1a63;display:grid;place-items:center;cursor:pointer;padding:0}
+  .pvl-st-play:hover,.pvl-st-on .pvl-st-play{background:linear-gradient(180deg,#e9c874,#c99a3f);border-color:#c99a3f;color:#1a1030}
+  .pvl-st-n{padding-top:9px;font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#8f6f2a}
+  .pvl-st-meta{display:grid;gap:3px}
+  .pvl-st-title{font-family:'Bodoni Moda',serif;font-weight:700;font-size:17px;line-height:1.25;color:#201a33}
+  .pvl-st-artist{font:500 9.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(32,26,51,.6)}
+  .pvl-st-why{font:300 13px/1.55 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)}
+  @media (max-width:900px){.pvl-st-wrap{grid-template-columns:1fr}.pvl-st-stage{position:static}}
   /* ---- Print: the passport data page, a currency note, the citizenship
      certificate, the Order of the Unicorn certificate, and the Pavel Prize
      diploma each print cleanly on their own page. Everything else (nav,
@@ -1972,6 +1997,86 @@
   doc.addEventListener('pavel:langchange', pintar);
 })();
 </script>
+<script>
+/* Banda sonora (pvl-st-). Mismo candado de doble ejecucion que el resto de
+   <helmet>. No hay reproduccion automatica: el iframe de youtube-nocookie
+   solo se crea cuando el visitante pulsa una pista, y entonces sigue con el
+   resto de la lista. El himno y YouTube no suenan a la vez: elegir una pista
+   de YouTube pausa #pavel-audio, y elegir el himno quita el iframe. */
+(function(){
+  if (window.__pvlSoundtrack) return;
+  window.__pvlSoundtrack = true;
+  var doc = document;
+  var ORDEN = ["anthem", "Szdziw4tI9o", "weFJHtcxJt0", "04854XqcfCY", "HgzGwKwLmgM", "GC5E8ie2pdM", "bWcASV2sey0", "btPJPFnesV4", "AxWejrVYcCg", "9jK-NcRmVcw", "7ufkMTshjz8", "tF_ggG5dY5U", "imeXSRNRMeg", "suQC8d-YkeU", "y6120QOlsfU", "dQw4w9WgXcQ"];
+  var META = {"anthem": {"es": "El Ruir del Unicornio", "en": "The Roar of the Unicorn", "artist": "Pavel Navarro"}, "Szdziw4tI9o": {"es": "Also sprach Zarathustra", "en": "Also sprach Zarathustra", "artist": "Richard Strauss · Berliner Philharmoniker"}, "weFJHtcxJt0": {"es": "¡Aleluya!", "en": "Hallelujah!", "artist": "G. F. Händel"}, "04854XqcfCY": {"es": "We Are the Champions", "en": "We Are the Champions", "artist": "Queen"}, "HgzGwKwLmgM": {"es": "Don't Stop Me Now", "en": "Don't Stop Me Now", "artist": "Queen"}, "GC5E8ie2pdM": {"es": "The Best", "en": "The Best", "artist": "Tina Turner"}, "bWcASV2sey0": {"es": "Holding Out for a Hero", "en": "Holding Out for a Hero", "artist": "Bonnie Tyler"}, "btPJPFnesV4": {"es": "Eye of the Tiger", "en": "Eye of the Tiger", "artist": "Survivor"}, "AxWejrVYcCg": {"es": "Gonna Fly Now (Rocky)", "en": "Gonna Fly Now (Rocky)", "artist": "Bill Conti"}, "9jK-NcRmVcw": {"es": "The Final Countdown", "en": "The Final Countdown", "artist": "Europe"}, "7ufkMTshjz8": {"es": "1492: La conquista del paraíso", "en": "1492: Conquest of Paradise", "artist": "Vangelis"}, "tF_ggG5dY5U": {"es": "La copa de la vida", "en": "The Cup of Life", "artist": "Ricky Martin"}, "imeXSRNRMeg": {"es": "La negra tiene tumbao", "en": "La negra tiene tumbao", "artist": "Celia Cruz"}, "suQC8d-YkeU": {"es": "Ojalá que llueva café", "en": "Ojalá que llueva café", "artist": "Juan Luis Guerra 4.40"}, "y6120QOlsfU": {"es": "Sandstorm", "en": "Sandstorm", "artist": "Darude"}, "dQw4w9WgXcQ": {"es": "Never Gonna Give You Up", "en": "Never Gonna Give You Up", "artist": "Rick Astley"}};
+  var actual = null;
+  var reposo = null;
+  function lang(){ return (window.PavelI18N && window.PavelI18N.get()) || 'en'; }
+  function montado(el){ return !!el && (!el.closest || !el.closest('x-dc')); }
+  function himno(){ return doc.getElementById('pavel-audio'); }
+
+  function src(id){
+    var yt = ORDEN.filter(function(v){ return v !== 'anthem'; });
+    var i = yt.indexOf(id);
+    var resto = yt.slice(i + 1).concat(yt.slice(0, i));
+    return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1&playlist=' + resto.join(',');
+  }
+  function iframe(id){
+    var f = doc.createElement('iframe');
+    f.src = src(id);
+    f.title = 'YouTube: ' + META[id][lang()] + ' \u2014 ' + META[id].artist;
+    f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    return f;
+  }
+  function pintar(){
+    var rows = doc.querySelectorAll('[data-pvl-track]');
+    for (var i = 0; i < rows.length; i++) rows[i].classList.toggle('pvl-st-on', rows[i].getAttribute('data-pvl-track') === actual);
+    var now = doc.getElementById('pvl-st-now');
+    if (now && actual) {
+      var m = META[actual];
+      now.textContent = (lang() === 'es' ? 'Sonando: ' : 'Now playing: ') + m[lang()] + ' \u2014 ' + m.artist;
+    }
+    /* Si support.js remonto el reproductor, vuelve a poner el iframe. */
+    var p = doc.getElementById('pvl-st-player');
+    if (actual && actual !== 'anthem' && montado(p) && !p.querySelector('iframe')) {
+      p.innerHTML = '';
+      p.appendChild(iframe(actual));
+    }
+  }
+  doc.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('[data-pvl-track-btn]');
+    if (!b) return;
+    var id = b.getAttribute('data-pvl-track-btn');
+    var a = himno();
+    var p = doc.getElementById('pvl-st-player');
+    if (id === 'anthem') {
+      /* Antes de repintar: apply() dispara pavel:langchange, y pintar()
+         volveria a poner el iframe si aun creyera que suena YouTube. */
+      actual = 'anthem';
+      if (montado(p) && reposo !== null) {
+        p.innerHTML = reposo;
+        if (window.PavelI18N) window.PavelI18N.apply(window.PavelI18N.get());
+      }
+      if (a) { a.currentTime = 0; var pr = a.play(); if (pr && pr['catch']) pr['catch'](function(){}); }
+    } else {
+      if (a && !a.paused) a.pause();
+      /* El primer gesto de la pagina arranca el himno en pointerdown; se
+         vuelve a pausar en cuanto ese play() se resuelva. */
+      setTimeout(function(){ var h = himno(); if (h && !h.paused) h.pause(); }, 250);
+      actual = id;
+      if (montado(p)) {
+        if (reposo === null) reposo = p.innerHTML;
+        p.innerHTML = '';
+        p.appendChild(iframe(id));
+      }
+    }
+    pintar();
+  });
+  doc.addEventListener('pavel:langchange', pintar);
+  setInterval(pintar, 700);
+})();
+</script>
 </helmet>
 
 <section data-screen-label="01 Portada" style="position:relative;overflow:hidden;padding:0;background:
@@ -2035,6 +2140,7 @@
           <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
           <div class="pvl-nav-menu">
             <a href="#biblioteca"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="#banda-sonora"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
           </div>
         </div>
         <a href="#pvl-changelog" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
@@ -3308,15 +3414,129 @@
   </div>
 </section>
 
-<section id="pvl-changelog" data-screen-label="19 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
+<section id="banda-sonora" data-screen-label="19 Banda sonora" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">18</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Banda sonora del Reino</span><span data-lang="en">The Kingdom's soundtrack</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:64ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Lo que escucha todo pavelense <strong style="font-weight:600;color:#201a33">DIGNO</strong> de vivir en Pavelandia, seleccionado por el Ministerio de Cultura con criterio estrictamente épico. Nada suena hasta que usted lo pida: elija una pista y la lista sigue sola.</span><span data-lang="en">What every Pavelian <strong style="font-weight:600;color:#201a33">WORTHY</strong> of living in Pavelandia listens to, selected by the Ministry of Culture on strictly epic criteria. Nothing plays until you ask: pick a track and the list carries on by itself.</span></p>
+
+    <div class="pvl-st-wrap">
+      <div class="pvl-st-stage">
+        <div id="pvl-st-player" class="pvl-st-player">
+          <div class="pvl-st-idle">
+            <div class="pvl-st-disc" aria-hidden="true"><div class="pvl-st-label">P</div></div>
+            <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#e9c874"><span data-lang="es">GRAMÓFONO REAL · EN ESPERA</span><span data-lang="en">ROYAL GRAMOPHONE · STANDING BY</span></div>
+            <p style="margin:0;max-width:34ch;font:300 13.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Elija una pista. Hasta entonces, el Reino no carga nada de YouTube.</span><span data-lang="en">Pick a track. Until then, the Kingdom loads nothing from YouTube.</span></p>
+          </div>
+        </div>
+        <div id="pvl-st-now" role="status" aria-live="polite" class="pvl-st-now"></div>
+        <a class="pvl-st-yt" href="https://www.youtube.com/watch_videos?video_ids=Szdziw4tI9o,weFJHtcxJt0,04854XqcfCY,HgzGwKwLmgM,GC5E8ie2pdM,bWcASV2sey0,btPJPFnesV4,AxWejrVYcCg,9jK-NcRmVcw,7ufkMTshjz8,tF_ggG5dY5U,imeXSRNRMeg,suQC8d-YkeU,y6120QOlsfU,dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer"><span data-lang="es">Abrir la lista completa en YouTube ↗</span><span data-lang="en">Open the full playlist on YouTube ↗</span></a>
+      </div>
+      <ol class="pvl-st-list">
+        <li class="pvl-st-row" data-pvl-track="anthem">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="anthem" aria-label="Play The Roar of the Unicorn" data-aria-es="Reproducir El Ruir del Unicornio" data-aria-en="Play The Roar of the Unicorn"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">01</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">El Ruir del Unicornio</span><span data-lang="en">The Roar of the Unicorn</span></span><span class="pvl-st-artist">Pavel Navarro</span><span class="pvl-st-why"><span data-lang="es">Obligatorio. En la portada suena en bucle eterno; aquí, por si alguien se lo perdió.</span><span data-lang="en">Mandatory. On the front page it loops forever; here, in case anyone missed it.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="Szdziw4tI9o">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="Szdziw4tI9o" aria-label="Play Also sprach Zarathustra" data-aria-es="Reproducir Also sprach Zarathustra" data-aria-en="Play Also sprach Zarathustra"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">02</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Also sprach Zarathustra</span><span class="pvl-st-artist">Richard Strauss · Berliner Philharmoniker</span><span class="pvl-st-why"><span data-lang="es">Para cada vez que Pavel entra en una habitación. También en la cocina.</span><span data-lang="en">For every time Pavel enters a room. The kitchen included.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="weFJHtcxJt0">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="weFJHtcxJt0" aria-label="Play Hallelujah!" data-aria-es="Reproducir ¡Aleluya!" data-aria-en="Play Hallelujah!"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">03</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">¡Aleluya!</span><span data-lang="en">Hallelujah!</span></span><span class="pvl-st-artist">G. F. Händel</span><span class="pvl-st-why"><span data-lang="es">Lo que cantan los ángeles cuando el Soberano se despierta de la siesta.</span><span data-lang="en">What the angels sing when the Sovereign wakes from his nap.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="04854XqcfCY">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="04854XqcfCY" aria-label="Play We Are the Champions" data-aria-es="Reproducir We Are the Champions" data-aria-en="Play We Are the Champions"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">04</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">We Are the Champions</span><span class="pvl-st-artist">Queen</span><span class="pvl-st-why"><span data-lang="es">Escrita en plural por pura cortesía. El campeón es uno.</span><span data-lang="en">Written in the plural out of sheer courtesy. The champion is one.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="HgzGwKwLmgM">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="HgzGwKwLmgM" aria-label="Play Don't Stop Me Now" data-aria-es="Reproducir Don't Stop Me Now" data-aria-en="Play Don't Stop Me Now"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">05</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Don't Stop Me Now</span><span class="pvl-st-artist">Queen</span><span class="pvl-st-why"><span data-lang="es">Lo que responde Pavel cuando alguien le sugiere moderación.</span><span data-lang="en">What Pavel replies whenever someone suggests moderation.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="GC5E8ie2pdM">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="GC5E8ie2pdM" aria-label="Play The Best" data-aria-es="Reproducir The Best" data-aria-en="Play The Best"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">06</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">The Best</span><span class="pvl-st-artist">Tina Turner</span><span class="pvl-st-why"><span data-lang="es">«Simply the best»: definición literal en el diccionario nacional.</span><span data-lang="en">“Simply the best”: the literal entry in the national dictionary.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="bWcASV2sey0">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="bWcASV2sey0" aria-label="Play Holding Out for a Hero" data-aria-es="Reproducir Holding Out for a Hero" data-aria-en="Play Holding Out for a Hero"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">07</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Holding Out for a Hero</span><span class="pvl-st-artist">Bonnie Tyler</span><span class="pvl-st-why"><span data-lang="es">Preguntaba dónde estaban los héroes. Ya llegó; monta unicornio.</span><span data-lang="en">She asked where all the heroes had gone. He's here; he rides a unicorn.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="btPJPFnesV4">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="btPJPFnesV4" aria-label="Play Eye of the Tiger" data-aria-es="Reproducir Eye of the Tiger" data-aria-en="Play Eye of the Tiger"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">08</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Eye of the Tiger</span><span class="pvl-st-artist">Survivor</span><span class="pvl-st-why"><span data-lang="es">Entrenamiento matutino del Soberano: quince flexiones, todas perfectas.</span><span data-lang="en">The Sovereign's morning workout: fifteen push-ups, every one flawless.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="AxWejrVYcCg">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="AxWejrVYcCg" aria-label="Play Gonna Fly Now (Rocky)" data-aria-es="Reproducir Gonna Fly Now (Rocky)" data-aria-en="Play Gonna Fly Now (Rocky)"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">09</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Gonna Fly Now (Rocky)</span><span class="pvl-st-artist">Bill Conti</span><span class="pvl-st-why"><span data-lang="es">Subir escaleras a este ritmo es obligatorio en todo edificio público.</span><span data-lang="en">Climbing stairs to this tempo is mandatory in every public building.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="9jK-NcRmVcw">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="9jK-NcRmVcw" aria-label="Play The Final Countdown" data-aria-es="Reproducir The Final Countdown" data-aria-en="Play The Final Countdown"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">10</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">The Final Countdown</span><span class="pvl-st-artist">Europe</span><span class="pvl-st-why"><span data-lang="es">Cuenta atrás oficial del Año Nuevo pavelense.</span><span data-lang="en">The official countdown to the Pavelian New Year.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="7ufkMTshjz8">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="7ufkMTshjz8" aria-label="Play 1492: Conquest of Paradise" data-aria-es="Reproducir 1492: La conquista del paraíso" data-aria-en="Play 1492: Conquest of Paradise"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">11</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">1492: La conquista del paraíso</span><span data-lang="en">1492: Conquest of Paradise</span></span><span class="pvl-st-artist">Vangelis</span><span class="pvl-st-why"><span data-lang="es">Banda sonora del error de Colón (véase la Biblioteca Real, volumen IV).</span><span data-lang="en">Soundtrack to Columbus's mistake (see the Royal Library, volume IV).</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="tF_ggG5dY5U">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="tF_ggG5dY5U" aria-label="Play The Cup of Life" data-aria-es="Reproducir La copa de la vida" data-aria-en="Play The Cup of Life"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">12</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">La copa de la vida</span><span data-lang="en">The Cup of Life</span></span><span class="pvl-st-artist">Ricky Martin</span><span class="pvl-st-why"><span data-lang="es">¡Go, go, go! ¡Ale, ale, ale! Himno oficioso del Ministerio de Deportes.</span><span data-lang="en">Go, go, go! Ale, ale, ale! Unofficial anthem of the Ministry of Sport.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="imeXSRNRMeg">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="imeXSRNRMeg" aria-label="Play La negra tiene tumbao" data-aria-es="Reproducir La negra tiene tumbao" data-aria-en="Play La negra tiene tumbao"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">13</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">La negra tiene tumbao</span><span class="pvl-st-artist">Celia Cruz</span><span class="pvl-st-why"><span data-lang="es">¡Azúcar! El Reino importa ritmo libre de aranceles.</span><span data-lang="en">¡Azúcar! The Kingdom imports rhythm duty-free.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="suQC8d-YkeU">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="suQC8d-YkeU" aria-label="Play Ojalá que llueva café" data-aria-es="Reproducir Ojalá que llueva café" data-aria-en="Play Ojalá que llueva café"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">14</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Ojalá que llueva café</span><span class="pvl-st-artist">Juan Luis Guerra 4.40</span><span class="pvl-st-why"><span data-lang="es">Política agrícola oficial del Reino, aprobada por unanimidad de uno.</span><span data-lang="en">The Kingdom's official agricultural policy, passed by a unanimous vote of one.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="y6120QOlsfU">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="y6120QOlsfU" aria-label="Play Sandstorm" data-aria-es="Reproducir Sandstorm" data-aria-en="Play Sandstorm"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">15</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Sandstorm</span><span class="pvl-st-artist">Darude</span><span class="pvl-st-why"><span data-lang="es">Para invocar al unicornio de unicornios. Funciona mejor a todo volumen.</span><span data-lang="en">For summoning the unicorn of unicorns. Works best at full volume.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="dQw4w9WgXcQ">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="dQw4w9WgXcQ" aria-label="Play Never Gonna Give You Up" data-aria-es="Reproducir Never Gonna Give You Up" data-aria-en="Play Never Gonna Give You Up"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">16</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Never Gonna Give You Up</span><span class="pvl-st-artist">Rick Astley</span><span class="pvl-st-why"><span data-lang="es">El juramento de lealtad, en versión pop. Todo ciudadano se lo sabe de memoria.</span><span data-lang="en">The oath of allegiance, pop edition. Every citizen knows it by heart.</span></span></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="pvl-changelog" data-screen-label="20 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
   <div style="max-width:1180px;margin:0 auto">
     <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
-      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">18</span>
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">19</span>
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Estado del Reino · Crónica de decretos</span><span data-lang="en">State of the Kingdom · Chronicle of decrees</span></h2>
     </div>
     <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">La corte no lleva actas confidenciales: cada obra del Reino fue, en efecto, construida, y queda aquí registrada como decreto — en el orden real en que sucedió.</span><span data-lang="en">The court keeps no confidential minutes: every work of the Kingdom was, in fact, built, and is recorded here as a decree — in the real order it happened.</span></p>
 
     <div id="pvl-changelog-list" style="margin-top:40px;display:grid;gap:0">
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 14<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Banda Sonora</span><span data-lang="en">Decree on the Soundtrack</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Cultura publica la banda sonora oficial del Reino: dieciséis pistas que todo pavelense digno escucha, del himno nacional a Celia Cruz. Por respeto al silencio del súbdito, nada suena hasta que él lo pida.</span><span data-lang="en">By royal decree, the Ministry of Culture publishes the Kingdom's official soundtrack: sixteen tracks every worthy Pavelian listens to, from the national anthem to Celia Cruz. Out of respect for the subject's silence, nothing plays until they ask.</span></p>
+        </div>
+      </div>
 
       <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
         <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 13<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
