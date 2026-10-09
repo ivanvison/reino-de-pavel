@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- Plantilla de las descargas del Reino (fondos de pantalla, bandera, logotipo).
+     No forma parte del sitio: render-descargas.mjs la abre en Chrome sin interfaz
+     con ?d=<diseño>&w=<ancho>&h=<alto> y guarda una captura en assets/descargas/. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Descargas del Reino · plantilla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;width:100%;height:100%;overflow:hidden}
+  body{background:transparent;font-family:'IBM Plex Sans',sans-serif}
+  .lienzo{position:relative;width:100vw;height:100vh;overflow:hidden}
+  .cosmos{background:radial-gradient(120% 90% at 50% 30%,#2a1a63 0,#140a38 45%,#0b0620 100%)}
+  .estrellas{position:absolute;inset:0;opacity:.85;background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%,#fff 50%,transparent 51%),
+    radial-gradient(1.1px 1.1px at 72% 32%,#ffe8bd 50%,transparent 51%),
+    radial-gradient(1.6px 1.6px at 44% 68%,#fff 50%,transparent 51%),
+    radial-gradient(1.1px 1.1px at 86% 54%,#ffe8bd 50%,transparent 51%),
+    radial-gradient(1.3px 1.3px at 8% 82%,#fff 50%,transparent 51%),
+    radial-gradient(2px 2px at 58% 12%,#f2a9dc 50%,transparent 51%),
+    radial-gradient(2px 2px at 30% 44%,#86e7ea 50%,transparent 51%);
+    background-size:180px 180px,240px 240px,300px 300px,210px 210px,260px 260px,520px 520px,640px 640px}
+  .aurora{position:absolute;inset:-20%;background:
+    radial-gradient(40% 30% at 20% 80%,rgba(134,231,234,.18),transparent 70%),
+    radial-gradient(40% 30% at 85% 20%,rgba(242,169,220,.18),transparent 70%)}
+  .centro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .medallon{width:var(--m);aspect-ratio:1;border-radius:50%;padding:calc(var(--m)*.03);background:conic-gradient(from 220deg,#8f6f2a,#f4e0a8 25%,#d8b25c 50%,#f4e0a8 72%,#8f6f2a);box-shadow:0 0 0 2px rgba(0,0,0,.5),0 calc(var(--m)*.08) calc(var(--m)*.2) rgba(0,0,0,.6)}
+  .medallon>div{width:100%;height:100%;border-radius:50%;overflow:hidden;border:calc(var(--m)*.012) solid #0d0726;box-sizing:border-box}
+  .medallon img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;display:block}
+  .kicker{font:500 var(--k)/1 'IBM Plex Mono',monospace;letter-spacing:.32em;text-transform:uppercase;color:#e9c874}
+  .titulo{font-family:'Bodoni Moda',serif;font-weight:700;font-size:var(--t);line-height:1;color:#f7f2e6;letter-spacing:-.01em}
+  .lema{font:600 var(--k)/1 'IBM Plex Mono',monospace;letter-spacing:.34em;color:#e9c874}
+  .sello{width:var(--s);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:calc(var(--s)*.54);line-height:1}
+  .bandera{background:linear-gradient(180deg,#1b1150 0%,#1b1150 40%,#d8b25c 40%,#d8b25c 60%,#86e7ea 60%,#f2a9dc 100%)}
+  .retrato{position:absolute;bottom:0;height:var(--r);filter:drop-shadow(0 0 calc(var(--r)*.04) rgba(242,169,220,.45))}
+</style>
+</head>
+<body>
+<div id="raiz"></div>
+<script>
+(function(){
+  var q = new URLSearchParams(location.search);
+  var d = q.get('d') || 'cosmos';
+  var W = innerWidth, H = innerHeight, m = Math.min(W, H), vertical = H > W;
+  var raiz = document.getElementById('raiz');
+  var css = function(o){ return Object.keys(o).map(function(k){ return k + ':' + o[k]; }).join(';'); };
+  var html = '';
+  if (d === 'cosmos') {
+    html = '<div class="lienzo cosmos"><div class="aurora"></div><div class="estrellas"></div>' +
+      '<div class="centro" style="' + css({'--m': (vertical ? m*.62 : m*.5) + 'px', '--k': Math.round(m*.019) + 'px', '--t': Math.round(m*(vertical?.105:.085)) + 'px', gap: Math.round(m*.035) + 'px', 'padding-top': vertical ? (H*.06) + 'px' : '0'}) + '">' +
+      '<div class="kicker">Imperio del Reino de Pavel</div>' +
+      '<div class="medallon"><div><img src="../assets/crest-unicorns.jpg" alt=""></div></div>' +
+      '<div class="titulo">Reino de Pavel</div>' +
+      '<div class="lema">EL NON PLUS ULTRA</div></div></div>';
+  } else if (d === 'iridiscente') {
+    var s = vertical ? m*.6 : m*.42;
+    html = '<div class="lienzo bandera">' +
+      '<div class="centro" style="' + css({gap: Math.round(m*.04) + 'px', '--s': s + 'px', '--k': Math.round(m*.02) + 'px'}) + '">' +
+      '<div class="sello" style="background:#1b1150;border:' + Math.round(s*.02) + 'px solid #f4e0a8;color:#e9c874;box-shadow:0 0 0 ' + Math.round(s*.03) + 'px rgba(27,17,80,.35),0 ' + Math.round(s*.06) + 'px ' + Math.round(s*.2) + 'px rgba(0,0,0,.45)">P</div>' +
+      '<div class="lema" style="color:#1b1150;background:rgba(244,239,226,.82);padding:.9em 1.2em .8em 1.5em">EXISTO PORQUE PAVEL EXISTE</div></div></div>';
+  } else if (d === 'ecuestre') {
+    var r = vertical ? H*.66 : H*.92;
+    html = '<div class="lienzo cosmos"><div class="aurora"></div><div class="estrellas"></div>' +
+      '<img class="retrato" src="../assets/pavel-unicorn.png" alt="" style="' + css({'--r': r + 'px', left: vertical ? '50%' : 'auto', right: vertical ? 'auto' : (W*.08) + 'px', transform: vertical ? 'translateX(-50%)' : 'none'}) + '">' +
+      '<div style="' + css({position: 'absolute', left: vertical ? '0' : (W*.08) + 'px', right: vertical ? '0' : 'auto', top: vertical ? (H*.16) + 'px' : '50%', transform: vertical ? 'none' : 'translateY(-50%)', 'text-align': vertical ? 'center' : 'left', display: 'grid', gap: Math.round(m*.03) + 'px', '--k': Math.round(m*.02) + 'px', '--t': Math.round(m*(vertical?.11:.11)) + 'px'}) + '">' +
+      '<div class="kicker">Retrato ecuestre de Estado</div>' +
+      '<div class="titulo">Pavel I</div>' +
+      '<div class="lema">EL NON PLUS ULTRA</div></div></div>';
+  } else if (d === 'bandera') {
+    html = '<div class="lienzo bandera"><div class="centro"><div class="medallon" style="--m:' + (H*.26) + 'px;padding:0;background:#f4e0a8;padding:' + (H*.004) + 'px"><div style="border:0"><img src="../assets/crest-unicorns.jpg" alt=""></div></div></div></div>';
+  } else if (d === 'logo-oscuro' || d === 'logo-claro') {
+    var claro = d === 'logo-claro';
+    html = '<div class="lienzo" style="display:flex;align-items:center;justify-content:center;gap:' + (H*.12) + 'px;' + (claro ? 'background:transparent' : 'background:#0b0620') + '">' +
+      '<div style="width:' + (H*.62) + 'px;height:' + (H*.62) + 'px;border-radius:50%;overflow:hidden;border:' + (H*.025) + 'px solid ' + (claro ? '#8f6f2a' : '#d8b25c') + ';box-sizing:border-box;flex:none"><img src="../assets/crest-unicorns.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block"></div>' +
+      '<div><div class="titulo" style="font-size:' + (H*.3) + 'px;color:' + (claro ? '#201a33' : '#f7f2e6') + '">Reino de Pavel</div>' +
+      '<div class="kicker" style="--k:' + (H*.085) + 'px;margin-top:' + (H*.07) + 'px;color:' + (claro ? '#8f6f2a' : '#d8b25c') + '">Ministerio de la Grandeza</div></div></div>';
+  }
+  raiz.innerHTML = html;
+  var imgs = [].slice.call(document.images).map(function(i){ return i.decode ? i.decode().catch(function(){}) : null; });
+  Promise.all([document.fonts.ready].concat(imgs)).then(function(){ document.body.setAttribute('data-listo', '1'); });
+})();
+</script>
+</body>
+</html>
