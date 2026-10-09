@@ -373,6 +373,26 @@
     #pavel-nombre-entrar{padding:16px 20px!important}
   }
 
+  /* ---- Biblioteca Real (pvl-lib-). El texto de los volumenes va en
+     "escritura pavelense": de derecha a izquierda, letra por letra
+     (bidi-override). La traduccion plebeya se elige en <html data-pvl-script>,
+     que no remonta support.js, asi que la regla sobrevive a los remontajes. ---- */
+  .pvl-lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+  .pvl-lib-vol{position:relative;background:linear-gradient(90deg,#2a1a63 0,#2a1a63 14px,#1a0f45 14px,#160c3a 100%);border:1px solid rgba(216,178,92,.28);padding:22px 22px 22px 34px;box-shadow:0 14px 30px rgba(0,0,0,.35);transition:transform .2s ease,border-color .2s ease}
+  .pvl-lib-vol:hover{transform:translateY(-3px);border-color:rgba(216,178,92,.6)}
+  .pvl-lib-vol:before{content:"";position:absolute;left:4px;top:12px;bottom:12px;width:6px;border-top:2px solid #d8b25c;border-bottom:2px solid #d8b25c;background:repeating-linear-gradient(180deg,transparent 0 10px,rgba(216,178,92,.45) 10px 11px)}
+  .pvl-lib-num{font-family:'Bodoni Moda',serif;font-weight:700;font-size:30px;line-height:1;color:#e9c874}
+  .pvl-lib-dom{margin-top:10px;font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,239,226,.5)}
+  .pvl-lib-vol h3{margin:6px 0 0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;line-height:1.2;color:#f7f2e6}
+  .pvl-lib-text{margin:12px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.8);direction:rtl;unicode-bidi:bidi-override;text-align:right}
+  html[data-pvl-script="plebe"] .pvl-lib-text{direction:ltr;unicode-bidi:normal;text-align:left}
+  .pvl-lib-switch{display:inline-flex;border:1px solid rgba(216,178,92,.45);border-radius:999px;padding:3px;gap:2px;background:rgba(13,7,37,.5)}
+  .pvl-lib-switch button{border:0;background:transparent;cursor:pointer;padding:8px 14px;border-radius:999px;font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,226,.6)}
+  .pvl-lib-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030}
+  .pvl-lib-entry{background:#f8f4e8;color:#201a33;box-shadow:0 22px 48px rgba(0,0,0,.45);padding:28px 30px;position:relative}
+  .pvl-lib-entry:before{content:"";position:absolute;inset:9px;border:1px solid rgba(143,111,42,.35);pointer-events:none}
+  .pvl-lib-entry .pvl-lib-text{color:#201a33;font-size:14.5px}
+  .pvl-lib-entry h4{margin:8px 0 0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:22px;line-height:1.2;color:#2a1a63}
   /* ---- Print: the passport data page, a currency note, the citizenship
      certificate, the Order of the Unicorn certificate, and the Pavel Prize
      diploma each print cleanly on their own page. Everything else (nav,
@@ -1857,6 +1877,101 @@
   });
 })();
 </script>
+<script>
+/* Biblioteca Real (pvl-lib-). Mismo candado de doble ejecucion que el resto
+   de <helmet>. La escritura elegida (pavelense = derecha a izquierda, o la
+   traduccion plebeya) vive en <html data-pvl-script> y en localStorage; el
+   CSS hace el resto, asi que sobrevive a los remontajes de support.js. Los
+   numeros de la Biblioteca van "en mayuscula": en numeros romanos. Nada de lo
+   que se escribe en la Sala de Correcciones se guarda ni se envia. */
+(function(){
+  if (window.__pvlLibrary) return;
+  window.__pvlLibrary = true;
+  var doc = document;
+  var KEY = 'pavel-lib-script';
+  function lang(){ return (window.PavelI18N && window.PavelI18N.get()) || 'en'; }
+  function montado(el){ return !!el && (!el.closest || !el.closest('x-dc')); }
+
+  function leer(){
+    try { var v = localStorage.getItem(KEY); if (v === 'pavel' || v === 'plebe') return v; } catch (e) {}
+    return 'pavel';
+  }
+  var escritura = leer();
+  function aplicar(){
+    doc.documentElement.setAttribute('data-pvl-script', escritura);
+    var bs = doc.querySelectorAll('[data-pvl-script-btn]');
+    for (var i = 0; i < bs.length; i++) {
+      bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-pvl-script-btn') === escritura ? 'true' : 'false');
+    }
+  }
+  doc.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('[data-pvl-script-btn]');
+    if (!b) return;
+    escritura = b.getAttribute('data-pvl-script-btn');
+    try { localStorage.setItem(KEY, escritura); } catch (err) {}
+    aplicar();
+  });
+  aplicar();
+  /* Los botones pueden remontarse con aria-pressed de la plantilla. */
+  setInterval(aplicar, 500);
+
+  function romano(n){
+    var t = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+    var s = '';
+    for (var i = 0; i < t.length; i++) while (n >= t[i][0]) { s += t[i][1]; n -= t[i][0]; }
+    return s;
+  }
+  function azar(a, b){ return a + Math.floor(Math.random() * (b - a + 1)); }
+
+  function mayus(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
+  var TITULO = {
+    es: function(t){ return t + ' (edición corregida)'; },
+    en: function(t){ return t + ' (corrected edition)'; }
+  };
+  var ENTRADAS = [
+    { es: function(t, y){ return 'Se creía que ' + t + ' había sido inventado en el año ' + y + '. Falso: en el año ' + y + ' simplemente se le ocurrió a alguien pedirle permiso a Pavel, que lo había concebido mucho antes, durante una siesta.'; },
+      en: function(t, y){ return 'It was believed that ' + t + ' was invented in the year ' + y + '. False: in the year ' + y + ' someone merely thought to ask Pavel’s permission; he had conceived it long before, during a nap.'; } },
+    { es: function(t, y){ return 'Los historiadores sitúan el origen de ' + t + ' hacia el año ' + y + '. Omiten que su único propósito, desde el primer día, fue entretener al Soberano durante IV minutos y medio.'; },
+      en: function(t, y){ return 'Historians place the origin of ' + t + ' around the year ' + y + '. They omit that its sole purpose, from day one, was to entertain the Sovereign for IV and a half minutes.'; } },
+    { es: function(t, y){ return 'Primera mención documentada de ' + t + ': año ' + y + ', en una carta a Pavel que decía, textualmente, «esto también es por usted».'; },
+      en: function(t, y){ return 'First documented mention of ' + t + ': the year ' + y + ', in a letter to Pavel that read, verbatim, “this one is for you too.”'; } },
+    { es: function(t, y){ return 'Durante siglos, ' + t + ' fue atribuido a la casualidad. Tras XL años de investigación, la Biblioteca confirma que la casualidad es uno de los seudónimos de Pavel.'; },
+      en: function(t, y){ return 'For centuries, ' + t + ' was attributed to chance. After XL years of research, the Library confirms that chance is one of Pavel’s pen names.'; } },
+    { es: function(t, y){ return 'En el año ' + y + ', ' + t + ' intentó existir sin mencionar a Pavel. Duró III días. La versión actual, debidamente agradecida, es la que usted conoce.'; },
+      en: function(t, y){ return 'In the year ' + y + ', ' + t + ' tried to exist without mentioning Pavel. It lasted III days. The current version, duly grateful, is the one you know.'; } }
+  ];
+  var ultima = null;
+  function pintar(){
+    var out = doc.getElementById('pvl-lib-output');
+    if (!ultima || !montado(out)) return;
+    var L = lang();
+    out.innerHTML = '';
+    var ref = doc.createElement('div');
+    ref.style.cssText = "margin-top:14px;font:500 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.18em;color:rgba(32,26,51,.55)";
+    ref.textContent = (L === 'es' ? 'VOLUMEN ' : 'VOLUME ') + ultima.vol + ' · ' + (L === 'es' ? 'PÁGINA ' : 'PAGE ') + ultima.pag;
+    var h = doc.createElement('h4');
+    h.textContent = TITULO[L](mayus(ultima.tema));
+    var p = doc.createElement('p');
+    p.className = 'pvl-lib-text';
+    p.textContent = ENTRADAS[ultima.idx][L](ultima.tema, ultima.anio);
+    var firma = doc.createElement('p');
+    firma.className = 'pvl-lib-text';
+    firma.style.fontWeight = '600';
+    firma.textContent = L === 'es' ? 'Corregido por orden del Soberano. La versión anterior queda derogada.' : 'Corrected by order of the Sovereign. The previous version is hereby repealed.';
+    out.appendChild(ref); out.appendChild(h); out.appendChild(p); out.appendChild(firma);
+  }
+  doc.addEventListener('submit', function(e){
+    if (!e.target || e.target.id !== 'pvl-lib-form') return;
+    e.preventDefault();
+    var inp = doc.getElementById('pvl-lib-input');
+    var tema = String((inp && inp.value) || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+    if (!tema) { if (inp) inp.focus(); return; }
+    ultima = { tema: tema, idx: azar(0, ENTRADAS.length - 1), anio: romano(azar(300, 1999)), vol: romano(azar(13, 99)), pag: romano(azar(1, 999)) };
+    pintar();
+  });
+  doc.addEventListener('pavel:langchange', pintar);
+})();
+</script>
 </helmet>
 
 <section data-screen-label="01 Portada" style="position:relative;overflow:hidden;padding:0;background:
@@ -1914,6 +2029,12 @@
             <a href="#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
             <a href="#quiz">Quiz</a>
             <a href="#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="#biblioteca"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
           </div>
         </div>
         <a href="#pvl-changelog" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
@@ -3077,15 +3198,133 @@
   </div>
 </section>
 
-<section id="pvl-changelog" data-screen-label="18 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
+<section id="biblioteca" data-screen-label="18 Biblioteca" style="padding:88px 40px;background:#0d0725">
   <div style="max-width:1180px;margin:0 auto">
     <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
       <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">17</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Biblioteca Real · Todo lo conocido, reescrito</span><span data-lang="en">Royal Library · All that is known, rewritten</span></h2>
+    </div>
+    <div style="margin-top:22px;display:flex;gap:24px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap">
+      <p style="margin:0;max-width:64ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)"><span data-lang="es">Por decreto real, la historia y todo el saber humano se reeditan desde la única perspectiva que importa: la del Soberano. Los volúmenes están escritos en <strong style="font-weight:600;color:#f4e0a8">escritura pavelense</strong> — de derecha a izquierda, con los números en mayúscula — y la Corona ofrece, por pura magnanimidad, una traducción plebeya.</span><span data-lang="en">By royal decree, history and all human knowledge are reissued from the only perspective that matters: the Sovereign's. The volumes are written in <strong style="font-weight:600;color:#f4e0a8">Pavelian script</strong> — right to left, with numbers in capitals — and the Crown, out of sheer magnanimity, offers a commoner's translation.</span></p>
+      <div class="pvl-lib-switch" role="group" aria-label="Script" data-aria-es="Escritura" data-aria-en="Script">
+        <button type="button" data-pvl-script-btn="pavel" aria-pressed="true"><span data-lang="es">Escritura pavelense</span><span data-lang="en">Pavelian script</span></button>
+        <button type="button" data-pvl-script-btn="plebe" aria-pressed="false"><span data-lang="es">Traducción plebeya</span><span data-lang="en">Commoner translation</span></button>
+      </div>
+    </div>
+
+    <div class="pvl-lib-grid" style="margin-top:36px">
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">I</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen I · Historia</span><span data-lang="en">Volume I · History</span></div>
+        <h3><span data-lang="es">Antes del principio</span><span data-lang="en">Before the beginning</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">Durante siglos se enseñó que el universo empezó con el Big Bang. Falso: el Big Bang fue el aplauso. Pavel ya estaba allí, a XIV mil millones de años de distancia, esperando a que alguien encendiera la luz.</span><span data-lang="en">For centuries it was taught that the universe began with the Big Bang. False: the Big Bang was the applause. Pavel was already there, XIV billion years back, waiting for someone to turn on the light.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">II</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen II · Física</span><span data-lang="en">Volume II · Physics</span></div>
+        <h3><span data-lang="es">De la gravedad</span><span data-lang="en">On gravity</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">En MDCLXVI una manzana no cayó sobre Newton: se inclinó ante Pavel, y Newton estaba en medio. La gravedad es, por definición, la tendencia universal de todas las cosas a acercarse a Pavel.</span><span data-lang="en">In MDCLXVI an apple did not fall on Newton: it bowed to Pavel, and Newton was in the way. Gravity is, by definition, the universal tendency of all things to draw nearer to Pavel.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">III</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen III · Matemáticas</span><span data-lang="en">Volume III · Mathematics</span></div>
+        <h3><span data-lang="es">Del cero y del infinito</span><span data-lang="en">On zero and infinity</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">El cero se inventó para contar a los rivales de Pavel. El infinito, para contar sus virtudes. Por eso los números del Reino se escriben en mayúscula: II más II son IV, salvo que Pavel diga V.</span><span data-lang="en">Zero was invented to count Pavel's rivals. Infinity, to count his virtues. That is why the Kingdom writes its numbers in capitals: II plus II make IV, unless Pavel says V.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">IV</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen IV · Geografía</span><span data-lang="en">Volume IV · Geography</span></div>
+        <h3><span data-lang="es">Del descubrimiento</span><span data-lang="en">On discovery</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">En MCDXCII Colón no buscaba las Indias: buscaba el Reino de Pavel. Encontró América por error y, por vergüenza, no lo confesó jamás. Los mapas antiguos que dicen «aquí hay dragones» querían decir «aquí hay unicornios».</span><span data-lang="en">In MCDXCII Columbus was not looking for the Indies: he was looking for the Kingdom of Pavel. He found America by mistake and, out of shame, never confessed it. Old maps reading “here be dragons” meant “here be unicorns”.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">V</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen V · Astronomía</span><span data-lang="en">Volume V · Astronomy</span></div>
+        <h3><span data-lang="es">De las órbitas</span><span data-lang="en">On orbits</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">La Tierra gira alrededor del Sol, y el Sol alrededor de Pavel. Copérnico lo supo en MDXLIII, pero publicó solo la mitad para no ofender a la Tierra, que ya bastante tenía con creerse el centro.</span><span data-lang="en">The Earth orbits the Sun, and the Sun orbits Pavel. Copernicus knew it in MDXLIII, but published only half so as not to offend the Earth, which already had enough on its plate believing it was the centre.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">VI</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen VI · Biología</span><span data-lang="en">Volume VI · Biology</span></div>
+        <h3><span data-lang="es">Del origen de las especies</span><span data-lang="en">On the origin of species</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">Darwin observó en MDCCCLIX que todas las especies evolucionan. Omitió adónde: hacia el unicornio. El caballo es un unicornio que todavía no ha terminado de creer en Pavel.</span><span data-lang="en">Darwin observed in MDCCCLIX that every species evolves. He left out towards what: the unicorn. The horse is a unicorn that has not yet finished believing in Pavel.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">VII</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen VII · Arte</span><span data-lang="en">Volume VII · Art</span></div>
+        <h3><span data-lang="es">De la sonrisa</span><span data-lang="en">On the smile</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">La Gioconda, pintada hacia MDIII, sonríe porque Leonardo le contó en secreto que algún día existiría Pavel. No sonríe del todo porque aún faltaban CCCCLXX años.</span><span data-lang="en">The Mona Lisa, painted around MDIII, smiles because Leonardo secretly told her that one day Pavel would exist. She does not fully smile because there were still CCCCLXX years to go.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">VIII</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen VIII · Literatura</span><span data-lang="en">Volume VIII · Literature</span></div>
+        <h3><span data-lang="es">Del caballero</span><span data-lang="en">On the knight</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">Don Quijote, en MDCV, no embestía molinos por locura: buscaba al único caballero digno de montar un unicornio, y comprobaba uno por uno que ninguno de aquellos gigantes era Pavel.</span><span data-lang="en">Don Quixote, in MDCV, did not charge windmills out of madness: he was searching for the one knight worthy of riding a unicorn, and checking, one by one, that none of those giants was Pavel.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">IX</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen IX · Deporte</span><span data-lang="en">Volume IX · Sport</span></div>
+        <h3><span data-lang="es">Del maratón</span><span data-lang="en">On the marathon</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">Filípides corrió XLII kilómetros desde Maratón no para anunciar una victoria, sino para anunciar a Pavel. Cayó al llegar, pero de emoción, no de cansancio.</span><span data-lang="en">Pheidippides ran XLII kilometres from Marathon not to announce a victory but to announce Pavel. He collapsed on arrival — from emotion, not exhaustion.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">X</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen X · Informática</span><span data-lang="en">Volume X · Computing</span></div>
+        <h3><span data-lang="es">Del primer programa</span><span data-lang="en">On the first program</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">El primer programa de la historia no imprimía «Hola, mundo»: imprimía «Hola, Pavel». «Mundo» fue un error de traducción que nadie se atrevió a corregir desde MCMLXXVIII.</span><span data-lang="en">History's first program did not print “Hello, world”: it printed “Hello, Pavel”. “World” was a translation error nobody has dared to fix since MCMLXXVIII.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">XI</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen XI · Música</span><span data-lang="en">Volume XI · Music</span></div>
+        <h3><span data-lang="es">De la décima sinfonía</span><span data-lang="en">On the tenth symphony</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">Beethoven compuso IX sinfonías. La X estaba dedicada a Pavel y quedó inconclusa: ninguna orquesta tenía suficientes trompetas. Se quedó sordo de tanto imaginarlas.</span><span data-lang="en">Beethoven composed IX symphonies. The X was dedicated to Pavel and remained unfinished: no orchestra had enough trumpets. He went deaf from imagining them.</span></p>
+      </article>
+      <article class="pvl-lib-vol">
+        <div class="pvl-lib-num">XII</div>
+        <div class="pvl-lib-dom"><span data-lang="es">Volumen XII · Medicina</span><span data-lang="en">Volume XII · Medicine</span></div>
+        <h3><span data-lang="es">De la dosis diaria</span><span data-lang="en">On the daily dose</span></h3>
+        <p class="pvl-lib-text"><span data-lang="es">El refrán original decía: «Una mención a Pavel al día mantiene al médico en la lejanía». La manzana llegó después, por recomendación de Newton (véase el volumen II).</span><span data-lang="en">The original proverb said: “A mention of Pavel a day keeps the doctor away.” The apple came later, on Newton's recommendation (see volume II).</span></p>
+      </article>
+    </div>
+
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
+      <div>
+        <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#d8b25c"><span data-lang="es">SALA DE CORRECCIONES</span><span data-lang="en">HALL OF CORRECTIONS</span></div>
+        <h3 style="margin:12px 0 0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f7f2e6"><span data-lang="es">Reescribe cualquier cosa</span><span data-lang="en">Rewrite anything</span></h3>
+        <p style="margin:12px 0 0;max-width:52ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">¿Falta algo en los estantes? Nombra cualquier tema — un invento, un país, tu desayuno — y la Biblioteca emitirá su entrada oficial, debidamente corregida. Nada se guarda ni se envía.</span><span data-lang="en">Something missing from the shelves? Name any topic — an invention, a country, your breakfast — and the Library will issue its official entry, duly corrected. Nothing is stored or sent.</span></p>
+        <form id="pvl-lib-form" style="margin-top:20px;display:grid;gap:12px;max-width:420px">
+          <label for="pvl-lib-input" style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.5)"><span data-lang="es">Tema a corregir</span><span data-lang="en">Topic to correct</span></label>
+          <input id="pvl-lib-input" type="text" maxlength="60" placeholder="La rueda, Japón, el café…" data-ph-es="La rueda, Japón, el café…" data-ph-en="The wheel, Japan, coffee…" style="width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid rgba(216,178,92,.45);background:#0b0620;color:#f7f2e6;font:400 15px/1.3 'IBM Plex Sans',sans-serif">
+          <button type="submit" style="padding:14px 20px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;justify-self:start"><span data-lang="es">Corregir la historia</span><span data-lang="en">Correct history</span></button>
+        </form>
+      </div>
+      <div class="pvl-lib-entry">
+        <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">ENCICLOPEDIA DEL REINO · EDICIÓN CORREGIDA</span><span data-lang="en">ENCYCLOPAEDIA OF THE KINGDOM · CORRECTED EDITION</span></div>
+        <div id="pvl-lib-output" aria-live="polite">
+          <p class="pvl-lib-text" style="font-style:italic"><span data-lang="es">Ninguna entrada corregida todavía. Los estantes esperan su tema.</span><span data-lang="en">No entry corrected yet. The shelves await your topic.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pvl-changelog" data-screen-label="19 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">18</span>
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Estado del Reino · Crónica de decretos</span><span data-lang="en">State of the Kingdom · Chronicle of decrees</span></h2>
     </div>
     <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">La corte no lleva actas confidenciales: cada obra del Reino fue, en efecto, construida, y queda aquí registrada como decreto — en el orden real en que sucedió.</span><span data-lang="en">The court keeps no confidential minutes: every work of the Kingdom was, in fact, built, and is recorded here as a decree — in the real order it happened.</span></p>
 
     <div id="pvl-changelog-list" style="margin-top:40px;display:grid;gap:0">
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 13<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Biblioteca Real</span><span data-lang="en">Decree on the Royal Library</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se abre la Biblioteca Real: XII volúmenes que reescriben la historia y el saber humano desde la perspectiva del Soberano, en escritura pavelense — de derecha a izquierda y con los números en mayúscula — y una Sala de Correcciones donde cualquier súbdito puede enmendar el tema que falte.</span><span data-lang="en">By royal decree, the Royal Library opens: XII volumes rewriting history and human knowledge from the Sovereign's perspective, in Pavelian script — right to left, with numbers in capitals — and a Hall of Corrections where any subject may amend whatever topic is missing.</span></p>
+        </div>
+      </div>
 
       <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
         <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 12<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
