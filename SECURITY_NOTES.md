@@ -97,8 +97,15 @@ from a full audit of every resource the page and runtime load — not a generic
 template:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 ```
+
+**Later update (soundtrack, issue #9)**: `frame-src https://www.youtube-nocookie.com` was
+added for the *Kingdom's soundtrack* section. Before it, frames fell back to
+`default-src 'self'`. The embed is YouTube's privacy-enhanced `youtube-nocookie.com`
+host, and the iframe is created only when the visitor presses a track's play
+button — a page load contacts YouTube not at all. No thumbnails are loaded, so
+`img-src` is unchanged.
 
 **Post-merge update**: `img-src` was widened from `'self'` to `'self' data:` when this
 work was integrated alongside a parallel SEO effort that added an inline
@@ -182,7 +189,7 @@ anything in this change) — if the site owner wants extra assurance, loading th
 page in a normal browser after this change and checking DevTools' Console/Security
 tab for any `Refused to ...` message would be the quick confirmation step.
 
-### 5. `target="_blank"` external links — one, with `rel="noopener noreferrer"`
+### 5. `target="_blank"` external links — two, each with `rel="noopener noreferrer"`
 At the time of this audit there were none: every `<a href="...">` was a same-page
 anchor link (`#emblema`, `#ciudadania`, etc.). Since then the hero's "Join Pavel's
 court" button links to Pavel's LinkedIn profile
@@ -190,6 +197,9 @@ court" button links to Pavel's LinkedIn profile
 `rel="noopener noreferrer"`, so the opened tab gets no `window.opener` and no
 referrer. The CSP needs no change for it: following a link is navigation, which no
 directive in the `<meta>` policy governs.
+The soundtrack's "Open the full playlist on YouTube" link
+(`https://www.youtube.com/watch_videos?video_ids=…`) is the second, with the same
+`target="_blank"` and `rel="noopener noreferrer"`.
 
 ### 6. Secrets/tokens/credentials — checked, none found
 Grepped `reino-de-pavel.dc.html`, `support.js`, and `README.md` for
