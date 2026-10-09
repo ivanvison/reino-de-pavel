@@ -418,6 +418,19 @@
   .pvl-st-artist{font:500 9.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(32,26,51,.6)}
   .pvl-st-why{font:300 13px/1.55 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)}
   @media (max-width:900px){.pvl-st-wrap{grid-template-columns:1fr}.pvl-st-stage{position:static}}
+  /* ---- Archivo Real de Descargas (pvl-dl-). Enlaces <a download> a assets/,
+     mismo origen: nada nuevo para la CSP. ---- */
+  .pvl-dl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+  .pvl-dl-walls{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+  .pvl-dl-card{background:#12093a;border:1px solid rgba(216,178,92,.24);padding:16px 16px 18px;display:flex;flex-direction:column;gap:10px}
+  .pvl-dl-prev{aspect-ratio:4/3;background:#0d0726;overflow:hidden;border:1px solid rgba(244,239,226,.08)}
+  .pvl-dl-prev img{width:100%;height:100%;display:block}
+  .pvl-dl-card h3{margin:4px 0 0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6}
+  .pvl-dl-card p{margin:0;font:300 13px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.7);flex:1}
+  .pvl-dl-btns{display:flex;flex-wrap:wrap;gap:8px}
+  .pvl-dl-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid rgba(216,178,92,.45);border-radius:2px;color:#f4e0a8;font:600 10px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .15s ease,color .15s ease}
+  .pvl-dl-btn:hover{background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;border-color:#c99a3f}
+  .pvl-dl-meta{font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:none;opacity:.7}
   /* ---- Print: the passport data page, a currency note, the citizenship
      certificate, the Order of the Unicorn certificate, and the Pavel Prize
      diploma each print cleanly on their own page. Everything else (nav,
@@ -2141,6 +2154,7 @@
           <div class="pvl-nav-menu">
             <a href="#biblioteca"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
             <a href="#banda-sonora"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="#descargas"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
           </div>
         </div>
         <a href="#pvl-changelog" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
@@ -3520,15 +3534,89 @@
   </div>
 </section>
 
-<section id="pvl-changelog" data-screen-label="20 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
+<section id="descargas" data-screen-label="20 Descargas" style="padding:88px 40px;background:#0b0620">
   <div style="max-width:1180px;margin:0 auto">
     <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
       <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">19</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Archivo Real de Descargas</span><span data-lang="en">Royal Download Archive</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:64ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)"><span data-lang="es">Los símbolos del Reino, listos para llevar: el escudo, el sello, la bandera, el himno y fondos de pantalla para escritorio, tableta y móvil. Uso libre para súbditos, embajadas y peregrinos; queda prohibido únicamente usarlos para desmerecer a Pavel.</span><span data-lang="en">The Kingdom's symbols, ready to take away: the arms, the seal, the flag, the anthem, and wallpapers for desktop, tablet and phone. Free to use for subjects, embassies and pilgrims; the only prohibited use is belittling Pavel.</span></p>
+
+    <div style="margin-top:44px;font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#d8b25c"><span data-lang="es">FONDOS DE PANTALLA</span><span data-lang="en">WALLPAPERS</span></div>
+    <div class="pvl-dl-grid pvl-dl-walls" style="margin-top:16px">
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev" style="aspect-ratio:16/9"><img src="assets/descargas/vista-cosmos.jpg" alt="" loading="lazy" width="640" height="360" style="object-fit:cover"></div>
+        <h3><span data-lang="es">Cosmos</span><span data-lang="en">Cosmos</span></h3>
+        <p><span data-lang="es">El escudo de armas sobre el firmamento violeta del Reino.</span><span data-lang="en">The coat of arms over the Kingdom's violet firmament.</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/descargas/fondo-cosmos-escritorio.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Escritorio</span><span data-lang="en">Desktop</span></span><span class="pvl-dl-meta">2560×1440</span></a><a class="pvl-dl-btn" href="assets/descargas/fondo-cosmos-tableta.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Tableta</span><span data-lang="en">Tablet</span></span><span class="pvl-dl-meta">2048×2732</span></a><a class="pvl-dl-btn" href="assets/descargas/fondo-cosmos-movil.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Móvil</span><span data-lang="en">Phone</span></span><span class="pvl-dl-meta">1179×2556</span></a></div>
+      </article>
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev" style="aspect-ratio:16/9"><img src="assets/descargas/vista-iridiscente.jpg" alt="" loading="lazy" width="640" height="360" style="object-fit:cover"></div>
+        <h3><span data-lang="es">La Iridiscente</span><span data-lang="en">The Iridescent One</span></h3>
+        <p><span data-lang="es">Las franjas de la bandera y el sello: «existo porque Pavel existe».</span><span data-lang="en">The flag's stripes and the seal: “I exist because Pavel exists.”</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/descargas/fondo-iridiscente-escritorio.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Escritorio</span><span data-lang="en">Desktop</span></span><span class="pvl-dl-meta">2560×1440</span></a><a class="pvl-dl-btn" href="assets/descargas/fondo-iridiscente-tableta.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Tableta</span><span data-lang="en">Tablet</span></span><span class="pvl-dl-meta">2048×2732</span></a><a class="pvl-dl-btn" href="assets/descargas/fondo-iridiscente-movil.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Móvil</span><span data-lang="en">Phone</span></span><span class="pvl-dl-meta">1179×2556</span></a></div>
+      </article>
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev" style="aspect-ratio:16/9"><img src="assets/descargas/vista-ecuestre.jpg" alt="" loading="lazy" width="640" height="360" style="object-fit:cover"></div>
+        <h3><span data-lang="es">Retrato ecuestre</span><span data-lang="en">Equestrian portrait</span></h3>
+        <p><span data-lang="es">Pavel I a lomos del unicornio de Estado. Recomendado para la pantalla de bloqueo.</span><span data-lang="en">Pavel I astride the State unicorn. Recommended for the lock screen.</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/descargas/fondo-ecuestre-escritorio.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Escritorio</span><span data-lang="en">Desktop</span></span><span class="pvl-dl-meta">2560×1440</span></a><a class="pvl-dl-btn" href="assets/descargas/fondo-ecuestre-tableta.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Tableta</span><span data-lang="en">Tablet</span></span><span class="pvl-dl-meta">2048×2732</span></a><a class="pvl-dl-btn" href="assets/descargas/fondo-ecuestre-movil.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Móvil</span><span data-lang="en">Phone</span></span><span class="pvl-dl-meta">1179×2556</span></a></div>
+      </article>
+    </div>
+
+    <div style="margin-top:52px;font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#d8b25c"><span data-lang="es">KIT DE IDENTIDAD</span><span data-lang="en">IDENTITY KIT</span></div>
+    <div class="pvl-dl-grid" style="margin-top:16px">
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev"><img src="assets/crest-unicorns.jpg" alt="" loading="lazy" style="object-fit:cover"></div>
+        <h3><span data-lang="es">Escudo de armas</span><span data-lang="en">Coat of arms</span></h3>
+        <p><span data-lang="es">Armas mayores: tres unicornios rampantes.</span><span data-lang="en">Greater arms: three rampant unicorns.</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/crest-unicorns.jpg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">JPG</span><span data-lang="en">JPG</span></span><span class="pvl-dl-meta">1024×1024 · 246 KB</span></a></div>
+      </article>
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev"><img src="assets/descargas/sello-monograma-oro.svg" alt="" loading="lazy" style="object-fit:contain;padding:14%;box-sizing:border-box"></div>
+        <h3><span data-lang="es">Sello monograma</span><span data-lang="en">Monogram seal</span></h3>
+        <p><span data-lang="es">Vectorial, en sus tres versiones oficiales.</span><span data-lang="en">Vector, in its three official versions.</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/descargas/sello-monograma-oro.svg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Oro</span><span data-lang="en">Gold</span></span><span class="pvl-dl-meta">SVG</span></a><a class="pvl-dl-btn" href="assets/descargas/sello-monograma-documento.svg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Documento</span><span data-lang="en">Document</span></span><span class="pvl-dl-meta">SVG</span></a><a class="pvl-dl-btn" href="assets/descargas/sello-monograma-iridiscente.svg" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Iridiscente</span><span data-lang="en">Iridescent</span></span><span class="pvl-dl-meta">SVG</span></a></div>
+      </article>
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev"><img src="assets/descargas/logotipo-horizontal-oscuro.png" alt="" loading="lazy" style="object-fit:contain;background:#0b0620"></div>
+        <h3><span data-lang="es">Logotipo horizontal</span><span data-lang="en">Horizontal logo</span></h3>
+        <p><span data-lang="es">Uso institucional. El claro tiene fondo transparente.</span><span data-lang="en">Institutional use. The light one has a transparent background.</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/descargas/logotipo-horizontal-oscuro.png" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Oscuro</span><span data-lang="en">Dark</span></span><span class="pvl-dl-meta">PNG · 192 KB</span></a><a class="pvl-dl-btn" href="assets/descargas/logotipo-horizontal-claro.png" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Claro</span><span data-lang="en">Light</span></span><span class="pvl-dl-meta">PNG · 223 KB</span></a></div>
+      </article>
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev"><img src="assets/descargas/bandera-la-iridiscente.png" alt="" loading="lazy" style="object-fit:cover"></div>
+        <h3><span data-lang="es">La Iridiscente</span><span data-lang="en">The Iridescent One</span></h3>
+        <p><span data-lang="es">La bandera nacional, proporción 3:2.</span><span data-lang="en">The national flag, ratio 3:2.</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/descargas/bandera-la-iridiscente.png" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">PNG</span><span data-lang="en">PNG</span></span><span class="pvl-dl-meta">3000×2000 · 659 KB</span></a></div>
+      </article>
+      <article class="pvl-dl-card">
+        <div class="pvl-dl-prev"><img src="assets/anthem-cover.png" alt="" loading="lazy" style="object-fit:cover"></div>
+        <h3><span data-lang="es">Himno nacional</span><span data-lang="en">National anthem</span></h3>
+        <p><span data-lang="es">«El Ruir del Unicornio», para escuchar sin conexión.</span><span data-lang="en">“The Roar of the Unicorn”, for offline listening.</span></p>
+        <div class="pvl-dl-btns"><a class="pvl-dl-btn" href="assets/Bajo_el_Manto_de_Pavel.mp3" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></span><span class="pvl-dl-meta">MP3 · 727 KB</span></a><a class="pvl-dl-btn" href="assets/anthem-cover.png" download><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg><span><span data-lang="es">Portada</span><span data-lang="en">Cover</span></span><span class="pvl-dl-meta">PNG · 1.6 MB</span></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="pvl-changelog" data-screen-label="21 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">20</span>
       <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Estado del Reino · Crónica de decretos</span><span data-lang="en">State of the Kingdom · Chronicle of decrees</span></h2>
     </div>
     <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">La corte no lleva actas confidenciales: cada obra del Reino fue, en efecto, construida, y queda aquí registrada como decreto — en el orden real en que sucedió.</span><span data-lang="en">The court keeps no confidential minutes: every work of the Kingdom was, in fact, built, and is recorded here as a decree — in the real order it happened.</span></p>
 
     <div id="pvl-changelog-list" style="margin-top:40px;display:grid;gap:0">
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 15<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Archivo de Descargas</span><span data-lang="en">Decree on the Download Archive</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, los símbolos del Reino salen de palacio: el escudo, el sello, la bandera, el himno y fondos de pantalla para escritorio, tableta y móvil quedan a disposición de todo súbdito que quiera llevar la grandeza consigo.</span><span data-lang="en">By royal decree, the Kingdom's symbols leave the palace: the arms, the seal, the flag, the anthem, and wallpapers for desktop, tablet and phone are made available to every subject who wishes to carry greatness with them.</span></p>
+        </div>
+      </div>
 
       <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
         <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 14<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Reino de Pavel · sello monograma (iridiscente)</title>
+  <defs><linearGradient id="i" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86e7ea"/><stop offset=".55" stop-color="#f2a9dc"/><stop offset="1" stop-color="#f4e0a8"/></linearGradient></defs><circle cx="256" cy="256" r="250" fill="url(#i)"/>
+  <circle cx="256" cy="256" r="236" fill="none" stroke="rgba(13,7,38,.7)" stroke-width="12"/>
+  <text x="256" y="262" text-anchor="middle" dominant-baseline="middle" font-family="'Bodoni Moda','Bodoni 72','Didot','Bodoni MT',serif" font-weight="700" font-size="290" fill="#0d0726">P</text>
+</svg>

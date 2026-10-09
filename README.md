@@ -86,8 +86,24 @@ hace clic, toca o pulsa una tecla en cualquier parte de la página.
     ├── Bajo_el_Manto_de_Pavel.mp3  # himno «El Ruir del Unicornio» (reproductor de portada)
     ├── crest-unicorns.jpg     # escudo / armas mayores
     ├── pavel-head.png         # efigie oficial (foto, cédula, billete)
-    └── pavel-unicorn.png      # retrato ecuestre de Estado
+    ├── pavel-unicorn.png      # retrato ecuestre de Estado
+    └── descargas/             # Archivo Real de Descargas: fondos, bandera, logotipo, sellos
+tools/
+├── descargas.html             # plantilla de los fondos, la bandera y el logotipo
+└── render-descargas.mjs       # los regenera con Chrome sin interfaz
 ```
+
+### Regenerar las descargas
+
+Los fondos de pantalla, la bandera y el logotipo de `assets/descargas/` salen de
+`tools/descargas.html`. Tras cambiar la plantilla:
+
+```bash
+python3 -m http.server 8642 &
+node tools/render-descargas.mjs
+```
+
+Necesita Node 22+ y `google-chrome`. Los sellos monograma (`.svg`) se editan a mano.
 
 ## Créditos
 
