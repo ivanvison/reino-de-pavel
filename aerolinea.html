@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Pavel Airlines &amp; Non Plus Ultra International Airport · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="Pavel Airlines, the flag carrier of the Kingdom of Pavel: book a flight to PVL and download your boarding pass, watch the departures board, meet the unicorn fleet and visit Non Plus Ultra International Airport.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="aerolinea.html">
+<meta property="og:url" content="aerolinea.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="Pavel Airlines &amp; Non Plus Ultra International Airport · Kingdom of Pavel">
+<meta property="og:description" content="Pavel Airlines, the flag carrier of the Kingdom of Pavel: book a flight to PVL and download your boarding pass, watch the departures board, meet the unicorn fleet and visit Non Plus Ultra International Airport.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pavel Airlines &amp; Non Plus Ultra International Airport · Kingdom of Pavel">
+<meta name="twitter:description" content="Pavel Airlines, the flag carrier of the Kingdom of Pavel: book a flight to PVL and download your boarding pass, watch the departures board, meet the unicorn fleet and visit Non Plus Ultra International Airport.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+<script src="assets/js/lienzo.js"></script>
+<script src="assets/js/aerolinea.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 Pavel Airlines">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#blason"><span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+            <a href="el-reino.html#clima"><span data-lang="es">Clima</span><span data-lang="en">Weather</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+            <a href="documentos.html#hora-real"><span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+            <a href="honores.html#titulo"><span data-lang="es">Título real</span><span data-lang="en">Royal title</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+            <a href="ministerios.html#oraculo"><span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></a>
+            <a href="ministerios.html#bolsa"><span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="museo.html"><span data-lang="es">Museo</span><span data-lang="en">Museum</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="descargas.html#postales"><span data-lang="es">Postales</span><span data-lang="en">Postcards</span></a>
+            <a href="gastronomia.html"><span data-lang="es">Gastronomía</span><span data-lang="en">Cuisine</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+            <a href="arcade.html#pavel-dice"><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span></a>
+            <a href="arcade.html#arcade"><span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Viajes</span><span data-lang="en">Travel</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="aerolinea.html#aerolinea">Pavel Airlines</a>
+            <a href="aerolinea.html#vuelos"><span data-lang="es">Salidas y llegadas</span><span data-lang="en">Departures</span></a>
+            <a href="aerolinea.html#flota"><span data-lang="es">Flota y UnicornMiles</span><span data-lang="en">Fleet & UnicornMiles</span></a>
+            <a href="aerolinea.html#aeropuerto"><span data-lang="es">Aeropuerto PVL</span><span data-lang="en">PVL Airport</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span>Pavel Airlines</span></div>
+    <h1>Pavel Airlines</h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">La aerolínea de bandera y su aeropuerto. Todos los asientos son el 1A.</span><span data-lang="en">The flag carrier and its airport. Every seat is 1A.</span></p>
+    <div class="pvl-chips">
+      <a href="#aerolinea"><span data-lang="es">Reservar</span><span data-lang="en">Book</span></a>
+      <a href="#vuelos"><span data-lang="es">Salidas</span><span data-lang="en">Departures</span></a>
+      <a href="#flota"><span data-lang="es">Flota y millas</span><span data-lang="en">Fleet & miles</span></a>
+      <a href="#aeropuerto"><span data-lang="es">Aeropuerto</span><span data-lang="en">Airport</span></a>
+    </div>
+  </div>
+</header>
+<section id="aerolinea" data-screen-label="34 Pavel Airlines" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">34</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6">Pavel Airlines</h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">La aerolínea de bandera del Reino, indicativo UNICORN. Vuele desde cualquier ciudad del mundo a un único destino posible: el Aeropuerto Internacional Non Plus Ultra (PVL).</span><span data-lang="en">The Kingdom’s flag carrier, callsign UNICORN. Fly from any city in the world to the only destination that matters: Non Plus Ultra International Airport (PVL).</span></p>
+    <div class="pvl-air-res" style="margin-top:36px">
+      <form id="pvl-air-form" class="pvl-air-form">
+        <div class="pvl-air-kicker"><span data-lang="es">RESERVAR UN VUELO</span><span data-lang="en">BOOK A FLIGHT</span></div>
+        <label class="pvl-air-campo"><span><span data-lang="es">Origen</span><span data-lang="en">From</span></span><input id="pvl-air-origen" type="text" maxlength="30" autocomplete="off" placeholder="Madrid"></label>
+        <label class="pvl-air-campo"><span><span data-lang="es">Destino</span><span data-lang="en">To</span></span><input type="text" value="PVL · Non Plus Ultra Intl" disabled aria-describedby="pvl-air-dest-nota"></label>
+        <p id="pvl-air-dest-nota" class="pvl-air-nota"><span data-lang="es">El destino no se puede cambiar. Ningún pasajero lo ha intentado dos veces.</span><span data-lang="en">The destination cannot be changed. No passenger has tried twice.</span></p>
+        <div class="pvl-air-fila">
+          <label class="pvl-air-campo"><span><span data-lang="es">Fecha</span><span data-lang="en">Date</span></span><input id="pvl-air-fecha" type="date"></label>
+          <label class="pvl-air-campo"><span><span data-lang="es">Cabina</span><span data-lang="en">Cabin</span></span><select id="pvl-air-cabina"><option value="economica">Economy</option><option value="grandeza">Greatness</option><option value="primera">First-Among-None</option><option value="suite">Royal Unicorn Suite</option></select></label>
+        </div>
+        <label class="pvl-air-campo"><span><span data-lang="es">Pasajero</span><span data-lang="en">Passenger</span></span><input id="pvl-air-nombre" type="text" maxlength="30" autocomplete="off" placeholder="Ana García"></label>
+        <button type="submit" class="pvl-air-btn"><span data-lang="es">Buscar vuelos y reservar</span><span data-lang="en">Search flights and book</span></button>
+        <p class="pvl-air-nota"><span data-lang="es">Nada se guarda ni se cobra. Las tarifas se pagan en Grandezas, que no existen fuera del Reino.</span><span data-lang="en">Nothing is stored or charged. Fares are paid in Grandezas, which do not exist outside the Kingdom.</span></p>
+      </form>
+      <div id="pvl-air-out" class="pvl-air-out" hidden aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section id="vuelos" data-screen-label="35 Salidas" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">35</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Salidas y llegadas</span><span data-lang="en">Departures & arrivals</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">El panel oficial del Aeropuerto Internacional Non Plus Ultra. Ningún vuelo se ha retrasado jamás; algunos llegan antes de salir.</span><span data-lang="en">The official board of Non Plus Ultra International Airport. No flight has ever been delayed; some arrive before they leave.</span></p>
+    <div class="pvl-air-panel-wrap" style="margin-top:36px">
+      <div class="pvl-air-panel-top"><span>PVL · <span data-lang="es">SALIDAS</span><span data-lang="en">DEPARTURES</span></span><span id="pvl-air-reloj">--:--</span></div>
+      <div class="pvl-air-panel-scroll">
+        <table id="pvl-air-panel" class="pvl-air-panel">
+          <thead><tr><th scope="col"><span data-lang="es">Hora</span><span data-lang="en">Time</span></th><th scope="col"><span data-lang="es">Vuelo</span><span data-lang="en">Flight</span></th><th scope="col"><span data-lang="es">Destino</span><span data-lang="en">Destination</span></th><th scope="col"><span data-lang="es">Puerta</span><span data-lang="en">Gate</span></th><th scope="col"><span data-lang="es">Estado</span><span data-lang="en">Status</span></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flota" data-screen-label="36 Flota" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">36</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Flota y UnicornMiles</span><span data-lang="en">Fleet & UnicornMiles</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">Cuatro aeronaves, todas unicornios con motores a reacción, y un único asiento en cada una: el 1A. Y el programa de fidelidad Club Non Plus Ultra.</span><span data-lang="en">Four aircraft, all unicorns with jet engines, and a single seat in each: 1A. And the Club Non Plus Ultra loyalty programme.</span></p>
+    <div class="pvl-air-flota" style="margin-top:36px">
+        <article class="pvl-air-nave">
+          <svg viewBox="0 0 320 150" class="pvl-air-avion" aria-hidden="true"><path d="M40 92c0-20 30-30 120-30h70l40-30h18l-14 34c16 4 26 14 26 26s-12 18-30 18H70c-18 0-30-6-30-18z" fill="#f4efe2" stroke="#d8b25c" stroke-width="2"/><path d="M140 92l-50 40h26l70-40z" fill="#d8b25c"/><path d="M150 62l-30-36h20l50 36z" fill="#d8b25c"/><rect x="96" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><rect x="176" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><path d="M286 66l26-30-6 34z" fill="#e9c874"/><path d="M262 40c10-6 20-4 26 4" stroke="#f2a9dc" stroke-width="5" fill="none"/><circle cx="110" cy="80" r="4" fill="#86e7ea"/><circle cx="132" cy="80" r="4" fill="#86e7ea"/><circle cx="154" cy="80" r="4" fill="#86e7ea"/><circle cx="176" cy="80" r="4" fill="#86e7ea"/><circle cx="198" cy="80" r="4" fill="#86e7ea"/><circle cx="220" cy="80" r="4" fill="#86e7ea"/><circle cx="242" cy="80" r="4" fill="#86e7ea"/><text x="250" y="60" font-family="IBM Plex Mono,monospace" font-size="11" fill="#fff">PV-UNI</text></svg>
+          <h3><span data-lang="es">Unicornio I</span><span data-lang="en">Unicorn I</span></h3>
+          <p><span data-lang="es">Ala corta, ego largo. Vuela a Mach Pavel.</span><span data-lang="en">Short wing, long ego. Flies at Mach Pavel.</span></p>
+          <dl><div><dt><span data-lang="es">Matrícula</span><span data-lang="en">Tail</span></dt><dd>PV-UNI</dd></div><div><dt><span data-lang="es">Alcance</span><span data-lang="en">Range</span></dt><dd>8.849 km</dd></div><div><dt><span data-lang="es">Asientos</span><span data-lang="en">Seats</span></dt><dd>1 (1A)</dd></div></dl>
+        </article>
+        <article class="pvl-air-nave">
+          <svg viewBox="0 0 320 150" class="pvl-air-avion" aria-hidden="true"><path d="M40 92c0-20 30-30 120-30h70l40-30h18l-14 34c16 4 26 14 26 26s-12 18-30 18H70c-18 0-30-6-30-18z" fill="#1b1150" stroke="#d8b25c" stroke-width="2"/><path d="M140 92l-50 40h26l70-40z" fill="#f2a9dc"/><path d="M150 62l-30-36h20l50 36z" fill="#f2a9dc"/><rect x="96" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><rect x="176" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><path d="M286 66l26-30-6 34z" fill="#e9c874"/><path d="M262 40c10-6 20-4 26 4" stroke="#f2a9dc" stroke-width="5" fill="none"/><circle cx="110" cy="80" r="4" fill="#86e7ea"/><circle cx="132" cy="80" r="4" fill="#86e7ea"/><circle cx="154" cy="80" r="4" fill="#86e7ea"/><circle cx="176" cy="80" r="4" fill="#86e7ea"/><circle cx="198" cy="80" r="4" fill="#86e7ea"/><circle cx="220" cy="80" r="4" fill="#86e7ea"/><circle cx="242" cy="80" r="4" fill="#86e7ea"/><text x="250" y="60" font-family="IBM Plex Mono,monospace" font-size="11" fill="#fff">PV-IRI</text></svg>
+          <h3><span data-lang="es">La Iridiscente</span><span data-lang="en">The Iridescent</span></h3>
+          <p><span data-lang="es">El avión que cambia de color según quién lo mire.</span><span data-lang="en">The aircraft that changes colour depending on who looks at it.</span></p>
+          <dl><div><dt><span data-lang="es">Matrícula</span><span data-lang="en">Tail</span></dt><dd>PV-IRI</dd></div><div><dt><span data-lang="es">Alcance</span><span data-lang="en">Range</span></dt><dd>12.000 km</dd></div><div><dt><span data-lang="es">Asientos</span><span data-lang="en">Seats</span></dt><dd>1 (1A)</dd></div></dl>
+        </article>
+        <article class="pvl-air-nave">
+          <svg viewBox="0 0 320 150" class="pvl-air-avion" aria-hidden="true"><path d="M40 92c0-20 30-30 120-30h70l40-30h18l-14 34c16 4 26 14 26 26s-12 18-30 18H70c-18 0-30-6-30-18z" fill="#f2a9dc" stroke="#d8b25c" stroke-width="2"/><path d="M140 92l-50 40h26l70-40z" fill="#86e7ea"/><path d="M150 62l-30-36h20l50 36z" fill="#86e7ea"/><rect x="96" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><rect x="176" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><path d="M286 66l26-30-6 34z" fill="#e9c874"/><path d="M262 40c10-6 20-4 26 4" stroke="#f2a9dc" stroke-width="5" fill="none"/><circle cx="110" cy="80" r="4" fill="#86e7ea"/><circle cx="132" cy="80" r="4" fill="#86e7ea"/><circle cx="154" cy="80" r="4" fill="#86e7ea"/><circle cx="176" cy="80" r="4" fill="#86e7ea"/><circle cx="198" cy="80" r="4" fill="#86e7ea"/><circle cx="220" cy="80" r="4" fill="#86e7ea"/><circle cx="242" cy="80" r="4" fill="#86e7ea"/><text x="250" y="60" font-family="IBM Plex Mono,monospace" font-size="11" fill="#fff">PV-NPU</text></svg>
+          <h3>Non Plus Ultra</h3>
+          <p><span data-lang="es">No hay avión más allá. Por definición.</span><span data-lang="en">There is no aircraft beyond. By definition.</span></p>
+          <dl><div><dt><span data-lang="es">Matrícula</span><span data-lang="en">Tail</span></dt><dd>PV-NPU</dd></div><div><dt><span data-lang="es">Alcance</span><span data-lang="en">Range</span></dt><dd>∞</dd></div><div><dt><span data-lang="es">Asientos</span><span data-lang="en">Seats</span></dt><dd>1 (1A)</dd></div></dl>
+        </article>
+        <article class="pvl-air-nave">
+          <svg viewBox="0 0 320 150" class="pvl-air-avion" aria-hidden="true"><path d="M40 92c0-20 30-30 120-30h70l40-30h18l-14 34c16 4 26 14 26 26s-12 18-30 18H70c-18 0-30-6-30-18z" fill="#c62828" stroke="#d8b25c" stroke-width="2"/><path d="M140 92l-50 40h26l70-40z" fill="#f2c200"/><path d="M150 62l-30-36h20l50 36z" fill="#f2c200"/><rect x="96" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><rect x="176" y="96" width="44" height="14" rx="7" fill="#3a3a4a"/><path d="M286 66l26-30-6 34z" fill="#e9c874"/><path d="M262 40c10-6 20-4 26 4" stroke="#f2a9dc" stroke-width="5" fill="none"/><circle cx="110" cy="80" r="4" fill="#86e7ea"/><circle cx="132" cy="80" r="4" fill="#86e7ea"/><circle cx="154" cy="80" r="4" fill="#86e7ea"/><circle cx="176" cy="80" r="4" fill="#86e7ea"/><circle cx="198" cy="80" r="4" fill="#86e7ea"/><circle cx="220" cy="80" r="4" fill="#86e7ea"/><circle cx="242" cy="80" r="4" fill="#86e7ea"/><text x="250" y="60" font-family="IBM Plex Mono,monospace" font-size="11" fill="#fff">PV-BCE</text></svg>
+          <h3><span data-lang="es">Pepita Voladora</span><span data-lang="en">Flying Nugget</span></h3>
+          <p><span data-lang="es">Patrocinado por la pepita de castor. Huele a caramelo.</span><span data-lang="en">Sponsored by the beaver nugget. Smells of caramel.</span></p>
+          <dl><div><dt><span data-lang="es">Matrícula</span><span data-lang="en">Tail</span></dt><dd>PV-BCE</dd></div><div><dt><span data-lang="es">Alcance</span><span data-lang="en">Range</span></dt><dd>600 km</dd></div><div><dt><span data-lang="es">Asientos</span><span data-lang="en">Seats</span></dt><dd>1 (1A)</dd></div></dl>
+        </article>
+    </div>
+    <div class="pvl-air-club">
+      <div id="pvl-air-millas" class="pvl-air-millas" aria-live="polite"></div>
+      <ol class="pvl-air-niveles">
+        <li><b><span data-lang="es">Peregrino</span><span data-lang="en">Pilgrim</span></b><span><span data-lang="es">Acceso a la sala de espera… de pie.</span><span data-lang="en">Access to the waiting room… standing.</span></span></li>
+        <li><b><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span></b><span><span data-lang="es">Embarque prioritario detrás de Pavel.</span><span data-lang="en">Priority boarding behind Pavel.</span></span></li>
+        <li><b><span data-lang="es">Ministro</span><span data-lang="en">Minister</span></b><span><span data-lang="es">Una pepita de castor de cortesía. Una.</span><span data-lang="en">One complimentary beaver nugget. One.</span></span></li>
+        <li><b><span data-lang="es">Casi Soberano</span><span data-lang="en">Sovereign-Adjacent</span></b><span><span data-lang="es">Ver el asiento 1A de cerca.</span><span data-lang="en">See seat 1A up close.</span></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="aeropuerto" data-screen-label="37 Aeropuerto" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">37</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Aeropuerto Internacional Non Plus Ultra</span><span data-lang="en">Non Plus Ultra International Airport</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Una sola terminal, seis puertas y la puerta ∞, por la que embarcan todos los vuelos. Con su propio Buc-ee’s, como debe ser.</span><span data-lang="en">One terminal, six gates and gate ∞, where every flight boards. With its own Buc-ee’s, as it should be.</span></p>
+    <div class="pvl-air-aero" style="margin-top:36px">
+      <div class="pvl-air-plano-wrap"><svg viewBox="0 0 640 360" class="pvl-air-plano" role="img" aria-label="Terminal map" data-aria-es="Plano de la terminal" data-aria-en="Terminal map">
+  <rect width="640" height="360" fill="#e8e1cf"/>
+  <rect x="0" y="300" width="640" height="60" fill="#5d6278"/><g stroke="#fff" stroke-width="4" stroke-dasharray="26 18"><line x1="10" y1="330" x2="630" y2="330"/></g>
+  <text x="560" y="322" font-family="IBM Plex Mono,monospace" font-size="12" fill="#fff">RWY 00</text>
+  <path d="M60 60h520v170H60z" fill="#fbf7ec" stroke="#1b1150" stroke-width="3"/>
+  <path d="M60 230h520" stroke="#1b1150" stroke-width="3"/>
+  <rect x="80" y="230" width="44" height="60" fill="#d8b25c" stroke="#1b1150" stroke-width="2"/><text x="102" y="266" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="700" fill="#1b1150">A1</text><rect x="160" y="230" width="44" height="60" fill="#d8b25c" stroke="#1b1150" stroke-width="2"/><text x="182" y="266" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="700" fill="#1b1150">B7</text><rect x="240" y="230" width="44" height="60" fill="#d8b25c" stroke="#1b1150" stroke-width="2"/><text x="262" y="266" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="700" fill="#1b1150">C3</text><rect x="320" y="230" width="44" height="60" fill="#d8b25c" stroke="#1b1150" stroke-width="2"/><text x="342" y="266" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="700" fill="#1b1150">D9</text><rect x="400" y="230" width="44" height="60" fill="#d8b25c" stroke="#1b1150" stroke-width="2"/><text x="422" y="266" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="700" fill="#1b1150">E2</text><rect x="480" y="230" width="44" height="60" fill="#d8b25c" stroke="#1b1150" stroke-width="2"/><text x="502" y="266" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="14" font-weight="700" fill="#1b1150">∞</text>
+  <rect x="80" y="80" width="150" height="70" rx="4" fill="#c62828"/><text x="155" y="112" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="16" font-weight="800" fill="#f2c200">BUC-EE'S</text><text x="155" y="132" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#fff">TERMINAL</text>
+  <rect x="250" y="80" width="140" height="70" rx="4" fill="#1b1150"/><text x="320" y="110" text-anchor="middle" font-family="Bodoni Moda,serif" font-size="15" font-weight="700" fill="#e9c874">Sala Non Plus</text><text x="320" y="128" text-anchor="middle" font-family="Bodoni Moda,serif" font-size="15" font-weight="700" fill="#e9c874">Ultra</text>
+  <rect x="410" y="80" width="150" height="70" rx="4" fill="#f2a9dc"/><text x="485" y="110" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="700" fill="#1b1150">DUTY FREE</text><text x="485" y="128" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="#1b1150">GRANDEZAS · VINILO</text>
+  <rect x="250" y="170" width="140" height="40" rx="4" fill="#86e7ea"/><text x="320" y="195" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="700" fill="#1b1150">CONTROL · SONRÍA</text>
+  <circle cx="110" cy="190" r="16" fill="#3f8f4a"/><text x="110" y="195" text-anchor="middle" font-size="16" fill="#fff">i</text>
+  <text x="320" y="44" text-anchor="middle" font-family="Bodoni Moda,serif" font-size="20" font-weight="900" fill="#1b1150">PVL · TERMINAL ÚNICA</text>
+</svg>
+        <a href="reino-de-pavel.dc.html#mapa" class="pvl-air-link"><span data-lang="es">Ver el aeropuerto en el mapa del Reino →</span><span data-lang="en">See the airport on the map of the Kingdom →</span></a>
+      </div>
+      <ul class="pvl-air-servicios"><li><b><span data-lang="es">Buc-ee’s de la terminal</span><span data-lang="en">Terminal Buc-ee’s</span></b><span><span data-lang="es">Abierto 25 horas al día. Sí, 25.</span><span data-lang="en">Open 25 hours a day. Yes, 25.</span></span></li><li><b><span data-lang="es">Sala Non Plus Ultra</span><span data-lang="en">Non Plus Ultra Lounge</span></b><span><span data-lang="es">Butacas de terciopelo violeta y un retrato que le devuelve la mirada.</span><span data-lang="en">Violet velvet armchairs and a portrait that looks back at you.</span></span></li><li><b>Duty Free</b><span><span data-lang="es">Solo se venden Grandezas y el himno en vinilo. Ambos libres de impuestos y de dudas.</span><span data-lang="en">Only Grandezas and the anthem on vinyl are sold. Both tax-free and doubt-free.</span></span></li><li><b><span data-lang="es">Control de seguridad</span><span data-lang="en">Security</span></b><span><span data-lang="es">Se le pedirá que sonría. Es obligatorio.</span><span data-lang="en">You will be asked to smile. It is mandatory.</span></span></li></ul>
+    </div>
+    <div class="pvl-air-seguridad">
+      <div class="pvl-air-kicker"><span data-lang="es">TARJETA DE SEGURIDAD · LÉASE ANTES DEL DESPEGUE</span><span data-lang="en">SAFETY CARD · READ BEFORE TAKE-OFF</span></div>
+      <ol><li><span class="pvl-air-ico" aria-hidden="true">✈</span><p><span data-lang="es">Si la cabina pierde presión, una mascarilla dorada caerá frente a usted. Póngasela; queda bien.</span><span data-lang="en">If the cabin loses pressure, a golden mask will drop in front of you. Put it on; it suits you.</span></p></li><li><span class="pvl-air-ico" aria-hidden="true">◎</span><p><span data-lang="es">En el improbable caso de duda, piense en Pavel. La duda desaparecerá.</span><span data-lang="en">In the unlikely event of doubt, think of Pavel. The doubt will vanish.</span></p></li><li><span class="pvl-air-ico" aria-hidden="true">⇣</span><p><span data-lang="es">Las salidas de emergencia están señaladas con unicornios. Siga al unicornio.</span><span data-lang="en">Emergency exits are marked with unicorns. Follow the unicorn.</span></p></li><li><span class="pvl-air-ico" aria-hidden="true">♪</span><p><span data-lang="es">En caso de amerizaje, cante el himno. Flotará por pura grandeza.</span><span data-lang="en">In the event of a water landing, sing the anthem. You will float on greatness alone.</span></p></li></ol>
+    </div>
+  </div>
+</section>
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span> · <span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span> · <span data-lang="es">Título real</span><span data-lang="en">Royal title</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span> · <span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span> · <span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span> · <span data-lang="es">Postales</span><span data-lang="en">Postcards</span></small></a>
+      <a href="gastronomia.html"><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span><small><span data-lang="es">Banquete · Recetario</span><span data-lang="en">Banquet · Recipes</span></small></a>
+      <a href="museo.html"><span data-lang="es">Museo Real</span><span data-lang="en">Royal Museum</span><small><span data-lang="es">Sala de las Reliquias</span><span data-lang="en">Hall of Relics</span></small></a>
+      <a href="arcade.html"><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span><small><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span> · <span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></small></a>
+      <a href="aerolinea.html">Pavel Airlines<small><span data-lang="es">Reservas · Salidas · Flota · Aeropuerto</span><span data-lang="en">Booking · Departures · Fleet · Airport</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>
