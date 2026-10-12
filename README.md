@@ -45,6 +45,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#oraculo` · Oráculo | `ministerios.html` | Ministerios | Oráculo del Unicornio: baraja de 20 cartas en SVG, tirada de una o de tres (pasado, presente, grandeza) |
 | `#bolsa` · Bolsa | `ministerios.html` | Ministerios | Bolsa de la Grandeza: cinta de cotizaciones, índice PVL-100 y casa de cambio; todo sube, siempre |
 | `#biblioteca` · Biblioteca Real | `biblioteca.html` | Cultura | El saber humano reescrito desde la perspectiva de Pavel |
+| `#museo` · Museo | `museo.html` | Cultura | Museo Real: ocho reliquias en SVG ampliable, cada una con su cartela |
 | `#banda-sonora` · Banda sonora | `banda-sonora.html` | Cultura | Dieciséis pistas que todo pavelense digno escucha |
 | `#descargas` · Descargas | `descargas.html` | Cultura | Fondos de pantalla, bandera, logotipo, sellos e himno |
 | `#gastronomia` · Gastronomía | `gastronomia.html` | Cultura | Menú del Banquete de Estado y recetario real que eleva cualquier plato a banquete |

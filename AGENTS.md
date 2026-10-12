@@ -66,6 +66,7 @@ No build step: each page is a complete static file, and shared things live in `a
 | `honores.html` | `#orden-unicornio`, `#premio-pavel`, `#titulo` |
 | `ministerios.html` | `#decreto`, `#quejas`, `#quiz`, `#test-psi`, `#oraculo`, `#bolsa` |
 | `biblioteca.html`, `banda-sonora.html`, `descargas.html` | One section each |
+| `museo.html` | `#museo` |
 | `gastronomia.html` | `#gastronomia` |
 | `cronica.html` | The Chronicle, `#pvl-changelog` |
 
