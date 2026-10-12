@@ -32,6 +32,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#papeleria` · Papelería | `documentos.html` | Documentos | Carta diplomática A4, sobre aéreo, certificado de ciudadanía (`#ciudadania`) |
 | `#visa` · Visado | `documentos.html` | Documentos | Visado diplomático |
 | `#calendario` · Calendario | `documentos.html` | Documentos | Ocho fiestas nacionales |
+| `#hora-real` · Hora real | `documentos.html` | Documentos | Hora Estándar de Pavel (un minuto por delante), calendario pavelense y cuenta atrás a la próxima fiesta de `#calendario` |
 | `#ciudadania` · Ciudadanía | `documentos.html` | Honores | El certificado de ciudadanía, descargable como tarjeta PNG |
 | `#orden-unicornio` · Orden del Unicornio | `honores.html` | Honores | Medalla y certificado, con el nombre del peregrino |
 | `#premio-pavel` · Premio Pavel | `honores.html` | Honores | Diploma académico |
