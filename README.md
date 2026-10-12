@@ -40,6 +40,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#quejas` · Quejas | `ministerios.html` | Ministerios | Ministerio de Quejas: ocho no-respuestas |
 | `#quiz` · Quiz | `ministerios.html` | Ministerios | «¿Cuán pavelense eres?» |
 | `#test-psi` · Test psicológico | `ministerios.html` | Ministerios | Test psicológico |
+| `#oraculo` · Oráculo | `ministerios.html` | Ministerios | Oráculo del Unicornio: baraja de 20 cartas en SVG, tirada de una o de tres (pasado, presente, grandeza) |
 | `#biblioteca` · Biblioteca Real | `biblioteca.html` | Cultura | El saber humano reescrito desde la perspectiva de Pavel |
 | `#banda-sonora` · Banda sonora | `banda-sonora.html` | Cultura | Dieciséis pistas que todo pavelense digno escucha |
 | `#descargas` · Descargas | `descargas.html` | Cultura | Fondos de pantalla, bandera, logotipo, sellos e himno |

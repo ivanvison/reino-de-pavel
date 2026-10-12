@@ -64,7 +64,7 @@ No build step: each page is a complete static file, and shared things live in `a
 | `el-reino.html` | `#emblema`, `#bandera`, `#constitucion`, `#descartes`, `#clima` |
 | `documentos.html` | `#documentos`, `#moneda`, `#papeleria` (with the citizenship certificate, `#ciudadania`), `#visa`, `#calendario`, `#hora-real` |
 | `honores.html` | `#orden-unicornio`, `#premio-pavel` |
-| `ministerios.html` | `#decreto`, `#quejas`, `#quiz`, `#test-psi` |
+| `ministerios.html` | `#decreto`, `#quejas`, `#quiz`, `#test-psi`, `#oraculo` |
 | `biblioteca.html`, `banda-sonora.html`, `descargas.html` | One section each |
 | `cronica.html` | The Chronicle, `#pvl-changelog` |
 

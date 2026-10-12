@@ -58,6 +58,7 @@
 <script src="assets/js/huevos.js"></script>
 <script src="assets/js/mundo.js"></script>
 <script src="assets/js/ministerios.js"></script>
+<script src="assets/js/oraculo.js"></script>
 </helmet>
 <header class="pvl-subhead" data-screen-label="00 Ministerios">
   <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
@@ -106,6 +107,7 @@
             <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
             <a href="ministerios.html#quiz">Quiz</a>
             <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+            <a href="ministerios.html#oraculo"><span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></a>
           </div>
         </div>
         <div class="pvl-nav-group">
@@ -135,6 +137,7 @@
       <a href="#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
       <a href="#quiz">Quiz</a>
       <a href="#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+      <a href="#oraculo"><span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></a>
     </div>
   </div>
 </header>
@@ -216,6 +219,29 @@
   </div>
 </section>
 
+<section id="oraculo" data-screen-label="25 Oráculo" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">25</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Oráculo del Unicornio</span><span data-lang="en">Oracle of the Unicorn</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">Un rincón místico del Reino. Saque una carta y el Unicornio de los Unicornios le dirá su futuro: siempre halagüeño, siempre con la voz de Pavel.</span><span data-lang="en">A mystical corner of the Kingdom. Draw a card and the Unicorn of Unicorns will tell your future: always flattering, always in Pavel’s voice.</span></p>
+    <div class="pvl-or" style="margin-top:40px">
+      <div class="pvl-or-panel">
+        <div class="pvl-or-kicker"><span data-lang="es">GABINETE DEL ORÁCULO · CONSULTAS GRATUITAS</span><span data-lang="en">CABINET OF THE ORACLE · FREE CONSULTATIONS</span></div>
+        <p class="pvl-or-txt"><span data-lang="es">Veinte cartas, un solo destino posible. Concéntrese en su pregunta (la respuesta, en cualquier caso, será Pavel) y elija su tirada.</span><span data-lang="en">Twenty cards, only one possible destiny. Focus on your question (the answer, in any case, will be Pavel) and choose your spread.</span></p>
+        <div class="pvl-or-btns">
+          <button type="button" data-pvl-or-tirar="1"><span data-lang="es">Sacar una carta</span><span data-lang="en">Draw one card</span></button>
+          <button type="button" data-pvl-or-tirar="3"><span data-lang="es">Tirada de tres · pasado, presente, grandeza</span><span data-lang="en">Three-card spread · past, present, greatness</span></button>
+        </div>
+        <p id="pvl-or-lectura" class="pvl-or-lectura" aria-live="polite"></p>
+        <p class="pvl-or-nota"><span data-lang="es">Las cartas se barajan en su navegador. Nada se guarda. El Oráculo no admite reclamaciones: remítalas al Ministerio de Quejas.</span><span data-lang="en">The cards are shuffled in your browser. Nothing is stored. The Oracle accepts no complaints: send them to the Ministry of Complaints.</span></p>
+      </div>
+      <div id="pvl-or-mesa" class="pvl-or-mesa"></div>
+    </div>
+  </div>
+</section>
+
 <nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
   <div class="pvl-wings-in">
     <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
@@ -225,7 +251,7 @@
       <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
       <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span> · <span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></small></a>
       <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></small></a>
-      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span> · <span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></small></a>
       <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
       <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
       <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
