@@ -62,7 +62,7 @@ No build step: each page is a complete static file, and shared things live in `a
 |---|---|
 | `reino-de-pavel.dc.html` | The landing page: hero, state figures, anthem player, `#himno`, `#mapa`, `#juego`, the invitation card. `index.html` redirects here. |
 | `el-reino.html` | `#emblema`, `#bandera`, `#constitucion`, `#descartes`, `#clima` |
-| `documentos.html` | `#documentos`, `#moneda`, `#papeleria` (with the citizenship certificate, `#ciudadania`), `#visa`, `#calendario` |
+| `documentos.html` | `#documentos`, `#moneda`, `#papeleria` (with the citizenship certificate, `#ciudadania`), `#visa`, `#calendario`, `#hora-real` |
 | `honores.html` | `#orden-unicornio`, `#premio-pavel` |
 | `ministerios.html` | `#decreto`, `#quejas`, `#quiz`, `#test-psi` |
 | `biblioteca.html`, `banda-sonora.html`, `descargas.html` | One section each |

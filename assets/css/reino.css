@@ -623,3 +623,30 @@ html[data-pvl-script="plebe"] .pvl-lib-text{direction:ltr;unicode-bidi:normal;te
 .pvl-clima-pie{margin:16px 0 0;font:400 10.5px/1.6 'IBM Plex Mono',monospace;letter-spacing:.06em;color:rgba(244,239,226,.45)}
 @media (max-width:900px){.pvl-clima-grid{grid-template-columns:1fr}}
 @media (max-width:480px){.pvl-clima-regiones{grid-template-columns:1fr}.pvl-clima-temp{font-size:52px}}
+
+/* ---- Hora Estandar de Pavel (pvl-hora-) ---- */
+.pvl-hora{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pvl-hora-card{background:#0d0725;border:1px solid rgba(244,239,226,.14);padding:24px clamp(18px,2.6vw,28px);display:flex;flex-direction:column;gap:12px}
+.pvl-hora-c1{align-items:center;text-align:center;background:radial-gradient(100% 80% at 50% 0%,rgba(122,74,214,.35),transparent 65%),#0d0725}
+.pvl-hora-kicker{font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#d8b25c}
+.pvl-hora-reloj{width:min(220px,70vw);aspect-ratio:1}
+.pvl-hora-svg{width:100%;height:100%;display:block}
+.pvl-hora-dig{font:600 34px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#f7f2e6;font-variant-numeric:tabular-nums}
+.pvl-hora-nombre{font:600 12px/1.3 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#f2a9dc}
+.pvl-hora-nota{margin:auto 0 0;font:300 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.62)}
+.pvl-hora-pav{font:700 26px/1.15 'Bodoni Moda',serif;color:#f7f2e6}
+.pvl-hora-greg{font:400 10.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(244,239,226,.55)}
+.pvl-hora-meses{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+.pvl-hora-meses li{display:flex;gap:8px;font:400 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)}
+.pvl-hora-meses li span{font:500 10px/1.9 'IBM Plex Mono',monospace;color:rgba(216,178,92,.7)}
+.pvl-hora-meses li[aria-current]{color:#f4e0a8;font-weight:600}
+.pvl-hora-titulo{font:700 21px/1.25 'Bodoni Moda',serif;color:#f7f2e6}
+.pvl-hora-cuenta{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pvl-hora-cuenta div{padding:12px 6px;text-align:center;border:1px solid rgba(233,200,116,.35);background:rgba(233,200,116,.08)}
+.pvl-hora-cuenta b{display:block;font:600 28px/1 'IBM Plex Mono',monospace;color:#e9c874;font-variant-numeric:tabular-nums}
+.pvl-hora-cuenta span{display:block;margin-top:6px;font:400 9px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.6)}
+.pvl-hora-fecha{font:400 11px/1.4 'IBM Plex Mono',monospace;letter-spacing:.1em;color:rgba(244,239,226,.6)}
+.pvl-hora-hoy{font:700 24px/1.2 'Bodoni Moda',serif;background:linear-gradient(100deg,#f4e0a8,#d8b25c 40%,#f2a9dc 70%,#86e7ea);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pvl-hora-link{margin-top:auto;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
+@media (max-width:1024px){.pvl-hora{grid-template-columns:1fr 1fr}.pvl-hora-c3{grid-column:1/-1}}
+@media (max-width:640px){.pvl-hora{grid-template-columns:1fr}.pvl-hora-cuenta b{font-size:24px}}
