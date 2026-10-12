@@ -60,7 +60,7 @@ No build step: each page is a complete static file, and shared things live in `a
 
 | Page | Holds |
 |---|---|
-| `reino-de-pavel.dc.html` | The landing page: hero, state figures, anthem player, `#himno`, `#mapa`, `#juego`, the invitation card. `index.html` redirects here. |
+| `reino-de-pavel.dc.html` | The landing page: hero, state figures, anthem player, `#himno`, `#mapa`, the invitation card. `index.html` redirects here. |
 | `el-reino.html` | `#emblema`, `#blason`, `#bandera`, `#constitucion`, `#descartes`, `#clima` |
 | `documentos.html` | `#documentos`, `#moneda`, `#papeleria` (with the citizenship certificate, `#ciudadania`), `#visa`, `#calendario`, `#hora-real` |
 | `honores.html` | `#orden-unicornio`, `#premio-pavel`, `#titulo` |
@@ -68,7 +68,7 @@ No build step: each page is a complete static file, and shared things live in `a
 | `biblioteca.html`, `banda-sonora.html` | One section each |
 | `descargas.html` | `#descargas`, `#postales` |
 | `museo.html` | `#museo` |
-| `arcade.html` | `#pavel-dice`, `#arcade` |
+| `arcade.html` | `#pavel-dice`, `#arcade`, `#juego` |
 | `gastronomia.html` | `#gastronomia` |
 | `aerolinea.html` | `#aerolinea`, `#vuelos`, `#flota`, `#aeropuerto` (menu group *Viajes / Travel*) |
 | `cronica.html` | The Chronicle, `#pvl-changelog` |
