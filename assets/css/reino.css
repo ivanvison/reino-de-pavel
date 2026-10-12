@@ -724,3 +724,38 @@ html[data-pvl-script="plebe"] .pvl-lib-text{direction:ltr;unicode-bidi:normal;te
 @media (max-width:860px){.pvl-vis-desk{grid-template-columns:1fr}}
 @media (max-width:520px){.pvl-vis-campos{max-width:none;grid-template-columns:1fr 1fr}.pvl-vis-sello{position:static;margin:0 0 12px auto;width:110px;height:110px}.pvl-vis-sello div{width:92px;height:92px}}
 @media (prefers-reduced-motion:reduce){.pvl-vis-golpe{animation:none}}
+
+/* ---- Bolsa de la Grandeza (pvl-bolsa-) ---- */
+.pvl-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pvl-bolsa-cinta{overflow:hidden;border-top:1px solid rgba(216,178,92,.35);border-bottom:1px solid rgba(216,178,92,.35);background:#080415;padding:10px 0}
+.pvl-bolsa-cinta-in{display:inline-flex;gap:34px;white-space:nowrap;animation:pvl-bolsa-cinta 40s linear infinite;padding-left:34px}
+.pvl-bolsa-tick{font:500 12px/1 'IBM Plex Mono',monospace;color:#f4efe2;letter-spacing:.06em}
+.pvl-bolsa-tick b{color:#e9c874}
+.pvl-bolsa-tick i,.pvl-bolsa-valor i,.pvl-bolsa-up{font-style:normal;color:#7ee08a}
+@keyframes pvl-bolsa-cinta{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.pvl-bolsa-grid{margin-top:18px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:18px}
+.pvl-bolsa-panel,.pvl-bolsa-conv{background:#0d0725;border:1px solid rgba(244,239,226,.14);padding:22px clamp(16px,2.6vw,26px);min-width:0}
+.pvl-bolsa-kicker{font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#d8b25c}
+.pvl-bolsa-valor{margin-top:10px;font:700 40px/1 'Bodoni Moda',serif;color:#f7f2e6}
+.pvl-bolsa-valor i{font:500 16px/1 'IBM Plex Mono',monospace;margin-left:10px}
+.pvl-bolsa-grafico{margin-top:14px;height:220px}
+.pvl-bolsa-svg{display:block;width:100%;height:100%}
+.pvl-bolsa-coment{margin:14px 0 0;font:italic 400 15px/1.55 'Bodoni Moda',serif;color:rgba(244,239,226,.85)}
+.pvl-bolsa-tabla{width:100%;border-collapse:collapse;font:400 12px/1.3 'IBM Plex Mono',monospace;color:#f4efe2}
+.pvl-bolsa-tabla th,.pvl-bolsa-tabla td{padding:9px 6px;border-bottom:1px solid rgba(244,239,226,.08);text-align:right;white-space:nowrap}
+.pvl-bolsa-tabla thead th{font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.5)}
+.pvl-bolsa-tabla th[scope=row],.pvl-bolsa-tabla thead th:first-child{text-align:left}
+.pvl-bolsa-tabla th[scope=row] b{display:block;color:#e9c874;font-weight:600}
+.pvl-bolsa-tabla th[scope=row] span{display:block;margin-top:2px;font:300 10.5px/1.2 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.55);white-space:normal}
+.pvl-bolsa-mini{width:80px}
+.pvl-bolsa-mini .pvl-bolsa-svg{width:80px;height:24px}
+.pvl-bolsa-conv{margin-top:18px}
+.pvl-bolsa-conv-fila{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pvl-bolsa-conv-fila input,.pvl-bolsa-conv-fila select{padding:12px 14px;border:1px solid rgba(216,178,92,.4);border-radius:2px;background:#0b0620;color:#f4efe2;font:400 15px/1.2 'IBM Plex Mono',monospace}
+.pvl-bolsa-conv-fila input{width:150px}
+.pvl-bolsa-igual{font:600 20px/1 'IBM Plex Mono',monospace;color:rgba(244,239,226,.5)}
+.pvl-bolsa-res{font:700 28px/1 'Bodoni Moda',serif;color:#e9c874}
+.pvl-bolsa-nota{margin:12px 0 0;font:400 10.5px/1.6 'IBM Plex Mono',monospace;color:rgba(244,239,226,.45)}
+@media (max-width:900px){.pvl-bolsa-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.pvl-bolsa-mini{display:none}.pvl-bolsa-valor{font-size:32px}.pvl-bolsa-grafico{height:170px}}
+@media (prefers-reduced-motion:reduce){.pvl-bolsa-cinta-in{animation:none}.pvl-bolsa-cinta{overflow-x:auto}}

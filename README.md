@@ -42,6 +42,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#quiz` · Quiz | `ministerios.html` | Ministerios | «¿Cuán pavelense eres?» |
 | `#test-psi` · Test psicológico | `ministerios.html` | Ministerios | Test psicológico |
 | `#oraculo` · Oráculo | `ministerios.html` | Ministerios | Oráculo del Unicornio: baraja de 20 cartas en SVG, tirada de una o de tres (pasado, presente, grandeza) |
+| `#bolsa` · Bolsa | `ministerios.html` | Ministerios | Bolsa de la Grandeza: cinta de cotizaciones, índice PVL-100 y casa de cambio; todo sube, siempre |
 | `#biblioteca` · Biblioteca Real | `biblioteca.html` | Cultura | El saber humano reescrito desde la perspectiva de Pavel |
 | `#banda-sonora` · Banda sonora | `banda-sonora.html` | Cultura | Dieciséis pistas que todo pavelense digno escucha |
 | `#descargas` · Descargas | `descargas.html` | Cultura | Fondos de pantalla, bandera, logotipo, sellos e himno |
