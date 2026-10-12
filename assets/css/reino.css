@@ -952,3 +952,21 @@ html[data-pvl-script="plebe"] .pvl-lib-text{direction:ltr;unicode-bidi:normal;te
 .pvl-cor-revivir{margin:12px 0 0;padding:6px 0;border:0;background:none;color:rgba(233,200,116,.8);font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .pvl-cor-revivir:hover{color:#f4e0a8;text-decoration:underline}
 @media (prefers-reduced-motion:reduce){.pvl-cor,.pvl-cor-corona,.pvl-cor-corona-cae .pvl-cor-corona{animation:none}}
+
+/* ---- Estudio de Postales Reales (pvl-pos-) ---- */
+.pvl-pos{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px;align-items:start}
+.pvl-pos-form{display:grid;gap:14px;background:#0d0725;border:1px solid rgba(244,239,226,.14);padding:24px clamp(16px,3vw,28px)}
+.pvl-pos-form .pvl-bl-grupo legend{color:#d8b25c}
+.pvl-pos-form .pvl-bl-opts span{background:#0b0620;color:#f4efe2;border-color:rgba(216,178,92,.35)}
+.pvl-pos-form .pvl-bl-opts input:checked+span{background:#d8b25c;color:#1a1030;border-color:#d8b25c}
+.pvl-pos-campo{display:grid;gap:6px;font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#d8b25c}
+.pvl-pos-campo textarea,.pvl-pos-campo input{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid rgba(216,178,92,.4);border-radius:2px;background:#0b0620;color:#f4efe2;font:400 15px/1.4 'IBM Plex Sans',sans-serif;text-transform:none;letter-spacing:0;resize:vertical}
+.pvl-pos-fila{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pvl-pos-btn{justify-self:start;padding:13px 18px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:700 11px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.pvl-pos-nota{margin:0;font:400 10.5px/1.6 'IBM Plex Mono',monospace;color:rgba(244,239,226,.45)}
+.pvl-pos-vista{display:grid;gap:16px}
+.pvl-pos-cara{position:relative}
+.pvl-pos-et{position:absolute;top:-9px;left:12px;padding:2px 8px;background:#d8b25c;color:#1a1030;font:700 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.2em;z-index:1}
+.pvl-pos-cara canvas{display:block;width:100%;height:auto;aspect-ratio:3/2;box-shadow:0 20px 44px rgba(0,0,0,.5);border-radius:4px}
+@media (max-width:900px){.pvl-pos{grid-template-columns:minmax(0,1fr)}.pvl-pos-vista{order:-1}}
+@media (max-width:480px){.pvl-pos-fila{grid-template-columns:1fr}}

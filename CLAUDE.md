@@ -65,7 +65,8 @@ No build step: each page is a complete static file, and shared things live in `a
 | `documentos.html` | `#documentos`, `#moneda`, `#papeleria` (with the citizenship certificate, `#ciudadania`), `#visa`, `#calendario`, `#hora-real` |
 | `honores.html` | `#orden-unicornio`, `#premio-pavel`, `#titulo` |
 | `ministerios.html` | `#decreto`, `#quejas`, `#quiz`, `#test-psi`, `#oraculo`, `#bolsa` |
-| `biblioteca.html`, `banda-sonora.html`, `descargas.html` | One section each |
+| `biblioteca.html`, `banda-sonora.html` | One section each |
+| `descargas.html` | `#descargas`, `#postales` |
 | `museo.html` | `#museo` |
 | `arcade.html` | `#pavel-dice`, `#arcade` |
 | `gastronomia.html` | `#gastronomia` |
