@@ -7,17 +7,38 @@ Todo el sistema vive en un único archivo HTML autocontenido (`reino-de-pavel.dc
 
 ## Contenido
 
-| Sección | Qué incluye |
-|---|---|
-| 00 · Portada | Retrato ecuestre, cifras del Estado y el reproductor del himno **«El Ruir del Unicornio»** en bucle eterno |
-| 01 · Emblema | Escudo de armas (tres unicornios rampantes), monograma, versiones documento / iridiscente, logotipo horizontal |
-| 02 · Bandera | "La Iridiscente" (3:2), paleta y especímenes tipográficos |
-| 03 · Documentos | Pasaporte (cubierta + página de datos con MRZ), cédula imperial, licencia de conducir clase U |
-| 04 · Moneda y filatelia | Billete de 100 Grandezas (anverso y reverso), sello postal de 5 G, sello de control fronterizo |
-| 05 · Himno | Letra oficial, portada del himno, entrada del diccionario nacional (la grabación suena en el reproductor de la portada) |
-| 06 · Constitución | Carta Magna de la Grandeza: preámbulo, siete artículos y disposición final |
-| 07 · Descartes | Reformulación del *cogito*: Descartes admite haberse equivocado al no pensar en Pavel |
-| 08 · Papelería | Carta diplomática A4, sobre aéreo, certificado de ciudadanía |
+Cada sección es un `<section id="…">` y tiene su entrada en el menú (`<nav id="pvl-nav">`), en el
+grupo que indica la tabla. **El menú es la fuente de verdad**: ninguna sección se añade, renombra o
+quita sin que el menú, esta tabla, `sitemap.xml` y la Crónica la sigan en el mismo cambio. La regla
+y su lista de comprobación están en [`AGENTS.md`](AGENTS.md) (copiada en [`CLAUDE.md`](CLAUDE.md)), y
+`node tools/check-nav.mjs` la comprueba.
+
+| Sección | Menú | Qué incluye |
+|---|---|---|
+| Portada | — | Retrato ecuestre, cifras del Estado, botón de LinkedIn y el reproductor del himno **«El Ruir del Unicornio»** en bucle eterno |
+| `#emblema` · Emblema | El Reino | Escudo de armas (tres unicornios rampantes), monograma, versiones documento / iridiscente, logotipo horizontal |
+| `#bandera` · Bandera | El Reino | "La Iridiscente" (3:2), paleta y especímenes tipográficos |
+| `#himno` · Himno | El Reino | Letra oficial, portada del himno, partitura, entrada del diccionario nacional |
+| `#constitucion` · Constitución | El Reino | Carta Magna de la Grandeza: preámbulo, siete artículos y disposición final |
+| `#descartes` · Descartes | El Reino | Reformulación del *cogito*: Descartes admite haberse equivocado al no pensar en Pavel |
+| `#documentos` · Pasaporte e identidad | Documentos | Pasaporte (cubierta + página de datos con MRZ), cédula imperial, licencia de conducir clase U |
+| `#moneda` · Moneda y filatelia | Documentos | Billete de 100 Grandezas (anverso y reverso), moneda, sello postal de 5 G, sello fronterizo |
+| `#papeleria` · Papelería | Documentos | Carta diplomática A4, sobre aéreo, certificado de ciudadanía (`#ciudadania`) |
+| `#visa` · Visado | Documentos | Visado diplomático |
+| `#calendario` · Calendario | Documentos | Ocho fiestas nacionales |
+| `#ciudadania` · Ciudadanía | Honores | El certificado de ciudadanía, descargable como tarjeta PNG |
+| `#orden-unicornio` · Orden del Unicornio | Honores | Medalla y certificado, con el nombre del peregrino |
+| `#premio-pavel` · Premio Pavel | Honores | Diploma académico |
+| `#decreto` · Decreto | Ministerios | Generador de decretos reales |
+| `#quejas` · Quejas | Ministerios | Ministerio de Quejas: ocho no-respuestas |
+| `#quiz` · Quiz | Ministerios | «¿Cuán pavelense eres?» |
+| `#test-psi` · Test psicológico | Ministerios | Test psicológico |
+| `#biblioteca` · Biblioteca Real | Cultura | El saber humano reescrito desde la perspectiva de Pavel |
+| `#banda-sonora` · Banda sonora | Cultura | Dieciséis pistas que todo pavelense digno escucha |
+| `#descargas` · Descargas | Cultura | Fondos de pantalla, bandera, logotipo, sellos e himno |
+| `#mapa` · Mapa | Cultura | Mapa interactivo de Pavelandia: vistas, Street View, Buc-ee's |
+| `#juego` · Videojuego | Cultura | «Súper Pavel World», plataformas de 16 bits |
+| `#pvl-changelog` · Crónica | enlace propio | Un «Decreto N.º n» por cada obra del Reino |
 
 ## Sistema de diseño
 
@@ -84,6 +105,7 @@ probar un mundo concreto sin jugar los anteriores, añade `?juego-nivel=2` o `?j
 
 ```
 .
+├── AGENTS.md / CLAUDE.md      # reglas para quien cambie el sitio (el menú es obligatorio)
 ├── index.html                 # redirección
 ├── reino-de-pavel.dc.html     # el documento completo
 ├── support.js                 # runtime del componente
@@ -96,6 +118,7 @@ probar un mundo concreto sin jugar los anteriores, añade `?juego-nivel=2` o `?j
     ├── descargas/             # Archivo Real de Descargas: fondos, bandera, logotipo, sellos
     └── juego/pavel-cabeza.png # la cabeza de Pavel para «Súper Pavel World» (64 px)
 tools/
+├── check-nav.mjs              # comprueba que el menú refleja las secciones
 ├── descargas.html             # plantilla de los fondos, la bandera y el logotipo
 └── render-descargas.mjs       # los regenera con Chrome sin interfaz
 ```
