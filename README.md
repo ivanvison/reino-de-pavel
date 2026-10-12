@@ -37,7 +37,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#orden-unicornio` · Orden del Unicornio | `honores.html` | Honores | Medalla y certificado, con el nombre del peregrino |
 | `#premio-pavel` · Premio Pavel | `honores.html` | Honores | Diploma académico |
 | `#titulo` · Título real | `honores.html` | Honores | Generador de títulos nobiliarios: el mismo nombre, el mismo título; patente descargable en PNG |
-| `#decreto` · Decreto | `ministerios.html` | Ministerios | Generador de decretos reales |
+| `#decreto` · Decreto | `ministerios.html` | Ministerios | Generador de decretos reales; «Sellar y descargar» lo entrega en un pergamino sellado (PNG) |
 | `#quejas` · Quejas | `ministerios.html` | Ministerios | Ministerio de Quejas: ocho no-respuestas |
 | `#quiz` · Quiz | `ministerios.html` | Ministerios | «¿Cuán pavelense eres?» |
 | `#test-psi` · Test psicológico | `ministerios.html` | Ministerios | Test psicológico |
