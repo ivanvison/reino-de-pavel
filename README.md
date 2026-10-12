@@ -51,6 +51,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#gastronomia` · Gastronomía | `gastronomia.html` | Cultura | Menú del Banquete de Estado y recetario real que eleva cualquier plato a banquete |
 | `#mapa` · Mapa | `reino-de-pavel.dc.html` | Cultura | Mapa interactivo de Pavelandia: vistas, Street View, Buc-ee's |
 | `#juego` · Videojuego | `reino-de-pavel.dc.html` | Cultura | «Súper Pavel World», plataformas de 16 bits |
+| `#pavel-dice` · Pavel Dice | `arcade.html` | Cultura | «Pavel Dice»: Simon con cuatro notas del himno; ratón, tacto o teclado; récord local |
 | `#pvl-changelog` · Crónica | `cronica.html` | enlace propio | Un «Decreto N.º n» por cada obra del Reino |
 
 ## Sistema de diseño
