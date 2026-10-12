@@ -97,6 +97,11 @@ No build step: each page is a complete static file, and shared things live in `a
   `<head>` — and the body mounts after them. Delegate events on `document`, look elements up on use,
   and guard each script with a `window.__…` lock. Because the body mounts late, the browser cannot
   find a `#anchor` on arrival; `menu.js` scrolls to it once the section exists.
+- **Never give a `z-index` (or `transform`, `filter`, `opacity` < 1) to an ancestor of `#pvl-nav`.**
+  It makes a stacking context, and the dropdown then sits under `#pvl-nav-backdrop` (z-index 70, on
+  `<body>`): the menu opens but every link click lands on the backdrop and only closes it (#51).
+  Check menu links with real clicks, or `document.elementFromPoint()` on each open link — a scripted
+  `link.click()` skips hit-testing and passes even when the link is covered.
 - **A Content-Security-Policy `<meta>`** lists every external origin; `SECURITY_NOTES.md` records how
   it was derived. A new external resource must be added there, and is better avoided.
 - No build step, no dependencies: the site is static files on GitHub Pages from `main`.
