@@ -58,6 +58,7 @@
 <script src="assets/js/huevos.js"></script>
 <script src="assets/js/mundo.js"></script>
 <script src="assets/js/pavel-dice.js"></script>
+<script src="assets/js/corredor.js"></script>
 </helmet>
 <header class="pvl-subhead" data-screen-label="00 Sala de Juegos Real">
   <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
@@ -123,6 +124,7 @@
             <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
             <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
             <a href="arcade.html#pavel-dice"><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span></a>
+            <a href="arcade.html#arcade"><span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></a>
           </div>
         </div>
         <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
@@ -137,6 +139,10 @@
     <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span></span></div>
     <h1><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span></h1>
     <p class="pvl-subhead-lead"><span data-lang="es">Juegos de la corte para demostrar devoción. El himno no suena aquí: la portada lo guarda.</span><span data-lang="en">Court games to prove your devotion. The anthem does not play here: the home page keeps it.</span></p>
+    <div class="pvl-chips">
+      <a href="#pavel-dice"><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span></a>
+      <a href="#arcade"><span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></a>
+    </div>
   </div>
 </header>
 <section id="pavel-dice" data-screen-label="31 Pavel Dice" style="padding:88px 40px;background:#0b0620">
@@ -167,6 +173,26 @@
   </div>
 </section>
 
+<section id="arcade" data-screen-label="32 Carrera" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">32</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Pavel cabalga sin fin por el Desierto de los Rivales. Salte a los rivales, a los cactus y a los críticos con pancarta; recoja Grandezas. Nadie ha llegado al final porque no lo hay.</span><span data-lang="en">Pavel rides without end across the Desert of Rivals. Jump the rivals, the cacti and the critics with placards; collect Grandezas. No one has reached the end, because there is none.</span></p>
+    <div id="pvl-cr-wrap" class="pvl-cr" style="margin-top:36px">
+      <div class="pvl-cr-pantalla">
+        <canvas id="pvl-cr-canvas" width="320" height="180" tabindex="0" aria-label="Unicorn Runner" data-aria-es="Carrera del Unicornio" data-aria-en="Unicorn Runner"></canvas>
+      </div>
+      <div class="pvl-cr-barra">
+        <button type="button" id="pvl-cr-jugar" class="pvl-cr-jugar"><span data-lang="es">▶ Jugar</span><span data-lang="en">▶ Play</span></button>
+        <button type="button" id="pvl-cr-mudo" class="pvl-cr-mudo" aria-pressed="false"><span data-lang="es">Silenciar</span><span data-lang="en">Mute</span></button>
+        <p class="pvl-cr-ayuda"><span data-lang="es">Espacio, ↑ o toque: saltar (dos veces en el aire). P: pausa. Esc o un clic fuera: soltar el teclado. El récord solo se guarda en este navegador.</span><span data-lang="en">Space, ↑ or tap: jump (twice in mid-air). P: pause. Esc or a click outside: release the keyboard. The record is kept only in this browser.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
   <div class="pvl-wings-in">
     <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
@@ -182,7 +208,7 @@
       <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
       <a href="gastronomia.html"><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span><small><span data-lang="es">Banquete · Recetario</span><span data-lang="en">Banquet · Recipes</span></small></a>
       <a href="museo.html"><span data-lang="es">Museo Real</span><span data-lang="en">Royal Museum</span><small><span data-lang="es">Sala de las Reliquias</span><span data-lang="en">Hall of Relics</span></small></a>
-      <a href="arcade.html"><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span><small><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span></small></a>
+      <a href="arcade.html"><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span><small><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span> · <span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></small></a>
       <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
     </div>
     <div class="pvl-wings-pn">
