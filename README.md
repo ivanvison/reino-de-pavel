@@ -24,7 +24,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#emblema` · Emblema | `el-reino.html` | El Reino | Escudo de armas (tres unicornios rampantes), monograma, versiones documento / iridiscente, logotipo horizontal |
 | `#blason` · Blasón vasallo | `el-reino.html` | El Reino | Taller de blasones: forma, esmaltes, partición, mueble, tenantes, casa y lema; descarga en SVG y PNG |
 | `#bandera` · Bandera | `el-reino.html` | El Reino | "La Iridiscente" (3:2), paleta y especímenes tipográficos |
-| `#himno` · Himno | `reino-de-pavel.dc.html` | El Reino | Letra oficial, portada del himno, partitura, entrada del diccionario nacional |
+| `#himno` · Himno | `reino-de-pavel.dc.html` | El Reino | Letra oficial (con modo karaoke sincronizado con el reproductor), portada del himno, partitura, entrada del diccionario nacional |
 | `#constitucion` · Constitución | `el-reino.html` | El Reino | Carta Magna de la Grandeza: preámbulo, siete artículos y disposición final |
 | `#descartes` · Descartes | `el-reino.html` | El Reino | Reformulación del *cogito*: Descartes admite haberse equivocado al no pensar en Pavel |
 | `#clima` · Clima | `el-reino.html` | El Reino | Servicio Meteorológico Nacional: pronóstico de cinco días y por regiones, sembrado con la fecha y siempre glorioso |
