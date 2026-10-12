@@ -58,6 +58,8 @@
 <script src="assets/js/huevos.js"></script>
 <script src="assets/js/mundo.js"></script>
 <script src="assets/js/clima.js"></script>
+<script src="assets/js/lienzo.js"></script>
+<script src="assets/js/blason.js"></script>
 </helmet>
 <header class="pvl-subhead" data-screen-label="00 El Reino">
   <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
@@ -73,6 +75,7 @@
           <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
           <div class="pvl-nav-menu">
             <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#blason"><span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span></a>
             <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
             <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
             <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
@@ -135,6 +138,7 @@
     <p class="pvl-subhead-lead"><span data-lang="es">Los símbolos fundacionales: el escudo, la bandera, la Carta Magna y el cogito corregido.</span><span data-lang="en">The founding symbols: the coat of arms, the flag, the Magna Carta and the corrected cogito.</span></p>
     <div class="pvl-chips">
       <a href="#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+      <a href="#blason"><span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span></a>
       <a href="#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
       <a href="#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
       <a href="#descartes">Descartes</a>
@@ -194,6 +198,109 @@
           <span data-lang="es"><strong style="font-weight:600;color:#f4efe2">Nota lexicográfica oficial.</strong> En todo documento del Estado, <em>Pavel</em> precede a <em>grandeza</em> en el diccionario. Ninguna maquetación puede invertir este orden.</span>
           <span data-lang="en"><strong style="font-weight:600;color:#f4efe2">Official lexicographic note.</strong> In every State document, <em>Pavel</em> precedes <em>greatness</em> in the dictionary. No layout may reverse this order.</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blason" data-screen-label="28 Blasón" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">28</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Taller de blasones vasallos</span><span data-lang="en">Vassal crest workshop</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Jure vasallaje y diseñe las armas de su casa: forma del escudo, esmaltes de la paleta nacional, partición, mueble y tenantes. El Reino se las concede en el acto.</span><span data-lang="en">Pledge vassalage and design your house’s arms: shield shape, tinctures from the national palette, division, charge and supporters. The Kingdom grants them on the spot.</span></p>
+    <div class="pvl-bl" style="margin-top:40px">
+      <form id="pvl-bl-form" class="pvl-bl-form">
+        <fieldset class="pvl-bl-grupo">
+          <legend><span data-lang="es">Forma del escudo</span><span data-lang="en">Shield shape</span></legend>
+          <div class="pvl-bl-opts">
+            <label><input type="radio" name="pvl-bl-forma" value="clasico" checked><span><span data-lang="es">Clásico</span><span data-lang="en">Heater</span></span></label>
+            <label><input type="radio" name="pvl-bl-forma" value="frances"><span><span data-lang="es">Francés</span><span data-lang="en">French</span></span></label>
+            <label><input type="radio" name="pvl-bl-forma" value="iberico"><span><span data-lang="es">Ibérico</span><span data-lang="en">Iberian</span></span></label>
+            <label><input type="radio" name="pvl-bl-forma" value="losange"><span><span data-lang="es">Losange</span><span data-lang="en">Lozenge</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="pvl-bl-grupo">
+          <legend><span data-lang="es">Esmalte del campo</span><span data-lang="en">Field tincture</span></legend>
+          <div class="pvl-bl-opts">
+            <label><input type="radio" name="pvl-bl-campo" value="violeta" checked><span><i style="background:#1b1150"></i><span data-lang="es">Violeta</span><span data-lang="en">Violet</span></span></label>
+            <label><input type="radio" name="pvl-bl-campo" value="oro"><span><i style="background:#d8b25c"></i><span data-lang="es">Oro</span><span data-lang="en">Gold</span></span></label>
+            <label><input type="radio" name="pvl-bl-campo" value="plata"><span><i style="background:#ece7db"></i><span data-lang="es">Plata</span><span data-lang="en">Silver</span></span></label>
+            <label><input type="radio" name="pvl-bl-campo" value="gules"><span><i style="background:#9e1f33"></i>Gules</span></label>
+            <label><input type="radio" name="pvl-bl-campo" value="rosa"><span><i style="background:#f2a9dc"></i><span data-lang="es">Rosa</span><span data-lang="en">Rose</span></span></label>
+            <label><input type="radio" name="pvl-bl-campo" value="turquesa"><span><i style="background:#3fb8c4"></i><span data-lang="es">Turquesa</span><span data-lang="en">Turquoise</span></span></label>
+            <label><input type="radio" name="pvl-bl-campo" value="iris"><span><i style="background:linear-gradient(135deg,#86e7ea,#f2a9dc,#e9c874)"></i><span data-lang="es">Iridiscente</span><span data-lang="en">Iridescent</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="pvl-bl-grupo">
+          <legend><span data-lang="es">Partición</span><span data-lang="en">Division</span></legend>
+          <div class="pvl-bl-opts">
+            <label><input type="radio" name="pvl-bl-part" value="ninguna" checked><span><span data-lang="es">Lleno</span><span data-lang="en">Plain</span></span></label>
+            <label><input type="radio" name="pvl-bl-part" value="palo"><span><span data-lang="es">Partido</span><span data-lang="en">Per pale</span></span></label>
+            <label><input type="radio" name="pvl-bl-part" value="faja"><span><span data-lang="es">Cortado</span><span data-lang="en">Per fess</span></span></label>
+            <label><input type="radio" name="pvl-bl-part" value="cuartel"><span><span data-lang="es">Cuartelado</span><span data-lang="en">Quarterly</span></span></label>
+            <label><input type="radio" name="pvl-bl-part" value="banda"><span><span data-lang="es">En banda</span><span data-lang="en">Per bend</span></span></label>
+            <label><input type="radio" name="pvl-bl-part" value="chevron"><span><span data-lang="es">Cheurón</span><span data-lang="en">Chevron</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="pvl-bl-grupo">
+          <legend><span data-lang="es">Segundo esmalte</span><span data-lang="en">Second tincture</span></legend>
+          <div class="pvl-bl-opts">
+            <label><input type="radio" name="pvl-bl-part2" value="violeta"><span><i style="background:#1b1150"></i><span data-lang="es">Violeta</span><span data-lang="en">Violet</span></span></label>
+            <label><input type="radio" name="pvl-bl-part2" value="oro"><span><i style="background:#d8b25c"></i><span data-lang="es">Oro</span><span data-lang="en">Gold</span></span></label>
+            <label><input type="radio" name="pvl-bl-part2" value="plata"><span><i style="background:#ece7db"></i><span data-lang="es">Plata</span><span data-lang="en">Silver</span></span></label>
+            <label><input type="radio" name="pvl-bl-part2" value="gules" checked><span><i style="background:#9e1f33"></i>Gules</span></label>
+            <label><input type="radio" name="pvl-bl-part2" value="rosa"><span><i style="background:#f2a9dc"></i><span data-lang="es">Rosa</span><span data-lang="en">Rose</span></span></label>
+            <label><input type="radio" name="pvl-bl-part2" value="turquesa"><span><i style="background:#3fb8c4"></i><span data-lang="es">Turquesa</span><span data-lang="en">Turquoise</span></span></label>
+            <label><input type="radio" name="pvl-bl-part2" value="iris"><span><i style="background:linear-gradient(135deg,#86e7ea,#f2a9dc,#e9c874)"></i><span data-lang="es">Iridiscente</span><span data-lang="en">Iridescent</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="pvl-bl-grupo">
+          <legend><span data-lang="es">Mueble</span><span data-lang="en">Charge</span></legend>
+          <div class="pvl-bl-opts">
+            <label><input type="radio" name="pvl-bl-mueble" value="unicornio" checked><span><span data-lang="es">Unicornio</span><span data-lang="en">Unicorn</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble" value="estrella"><span><span data-lang="es">Estrella</span><span data-lang="en">Star</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble" value="corona"><span><span data-lang="es">Corona</span><span data-lang="en">Crown</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble" value="cetro"><span><span data-lang="es">Cetro</span><span data-lang="en">Sceptre</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble" value="castor"><span><span data-lang="es">Castor</span><span data-lang="en">Beaver</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble" value="monograma"><span><span data-lang="es">Monograma P</span><span data-lang="en">P monogram</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="pvl-bl-grupo">
+          <legend><span data-lang="es">Esmalte del mueble</span><span data-lang="en">Charge tincture</span></legend>
+          <div class="pvl-bl-opts">
+            <label><input type="radio" name="pvl-bl-mueble2" value="violeta"><span><i style="background:#1b1150"></i><span data-lang="es">Violeta</span><span data-lang="en">Violet</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble2" value="oro" checked><span><i style="background:#d8b25c"></i><span data-lang="es">Oro</span><span data-lang="en">Gold</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble2" value="plata"><span><i style="background:#ece7db"></i><span data-lang="es">Plata</span><span data-lang="en">Silver</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble2" value="gules"><span><i style="background:#9e1f33"></i>Gules</span></label>
+            <label><input type="radio" name="pvl-bl-mueble2" value="rosa"><span><i style="background:#f2a9dc"></i><span data-lang="es">Rosa</span><span data-lang="en">Rose</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble2" value="turquesa"><span><i style="background:#3fb8c4"></i><span data-lang="es">Turquesa</span><span data-lang="en">Turquoise</span></span></label>
+            <label><input type="radio" name="pvl-bl-mueble2" value="iris"><span><i style="background:linear-gradient(135deg,#86e7ea,#f2a9dc,#e9c874)"></i><span data-lang="es">Iridiscente</span><span data-lang="en">Iridescent</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="pvl-bl-grupo">
+          <legend><span data-lang="es">Tenantes</span><span data-lang="en">Supporters</span></legend>
+          <div class="pvl-bl-opts">
+            <label><input type="radio" name="pvl-bl-ten" value="unicornios" checked><span><span data-lang="es">Unicornios</span><span data-lang="en">Unicorns</span></span></label>
+            <label><input type="radio" name="pvl-bl-ten" value="castores"><span><span data-lang="es">Castores</span><span data-lang="en">Beavers</span></span></label>
+            <label><input type="radio" name="pvl-bl-ten" value="leones"><span><span data-lang="es">Leones</span><span data-lang="en">Lions</span></span></label>
+            <label><input type="radio" name="pvl-bl-ten" value="ninguno"><span><span data-lang="es">Ninguno</span><span data-lang="en">None</span></span></label>
+          </div>
+        </fieldset>
+        <div class="pvl-bl-textos">
+          <label><span><span data-lang="es">Nombre de la casa</span><span data-lang="en">House name</span></span><input id="pvl-bl-casa" type="text" maxlength="32" autocomplete="off" placeholder="García"></label>
+          <label><span><span data-lang="es">Lema</span><span data-lang="en">Motto</span></span><input id="pvl-bl-lema" type="text" maxlength="40" autocomplete="off" placeholder="Por la gracia de Pavel" data-ph-es="Por la gracia de Pavel" data-ph-en="By the grace of Pavel"></label>
+        </div>
+      </form>
+      <div class="pvl-bl-lado">
+        <div id="pvl-bl-prev" class="pvl-bl-prev" aria-live="polite"></div>
+        <div class="pvl-bl-btns">
+          <button type="button" data-pvl-bl="azar"><span data-lang="es">Al azar</span><span data-lang="en">Randomise</span></button>
+          <button type="button" data-pvl-bl="png"><span data-lang="es">Descargar PNG</span><span data-lang="en">Download PNG</span></button>
+          <button type="button" data-pvl-bl="svg"><span data-lang="es">Descargar SVG</span><span data-lang="en">Download SVG</span></button>
+        </div>
+        <p class="pvl-bl-nota"><span data-lang="es">Toda casa vasalla luce la corona del Reino sobre su escudo: es la condición de vasallaje. Nada de lo que diseña sale de su navegador.</span><span data-lang="en">Every vassal house wears the Kingdom’s crown above its shield: that is the condition of vassalage. Nothing you design leaves your browser.</span></p>
       </div>
     </div>
   </div>
@@ -361,7 +468,7 @@
     <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
     <div class="pvl-wings-grid">
       <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
-      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
       <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span> · <span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></small></a>
       <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span> · <span data-lang="es">Título real</span><span data-lang="en">Royal title</span></small></a>
       <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span> · <span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span> · <span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></small></a>

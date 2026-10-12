@@ -22,6 +22,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 |---|---|---|---|
 | Portada | `reino-de-pavel.dc.html` | — | Retrato ecuestre, cifras del Estado, botón de LinkedIn y el reproductor del himno **«El Ruir del Unicornio»** en bucle eterno |
 | `#emblema` · Emblema | `el-reino.html` | El Reino | Escudo de armas (tres unicornios rampantes), monograma, versiones documento / iridiscente, logotipo horizontal |
+| `#blason` · Blasón vasallo | `el-reino.html` | El Reino | Taller de blasones: forma, esmaltes, partición, mueble, tenantes, casa y lema; descarga en SVG y PNG |
 | `#bandera` · Bandera | `el-reino.html` | El Reino | "La Iridiscente" (3:2), paleta y especímenes tipográficos |
 | `#himno` · Himno | `reino-de-pavel.dc.html` | El Reino | Letra oficial, portada del himno, partitura, entrada del diccionario nacional |
 | `#constitucion` · Constitución | `el-reino.html` | El Reino | Carta Magna de la Grandeza: preámbulo, siete artículos y disposición final |
