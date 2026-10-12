@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Soundtrack · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="Sixteen tracks every worthy Pavelian listens to, from the national anthem to Celia Cruz.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="banda-sonora.html">
+<meta property="og:url" content="banda-sonora.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="Soundtrack · Kingdom of Pavel">
+<meta property="og:description" content="Sixteen tracks every worthy Pavelian listens to, from the national anthem to Celia Cruz.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Soundtrack · Kingdom of Pavel">
+<meta name="twitter:description" content="Sixteen tracks every worthy Pavelian listens to, from the national anthem to Celia Cruz.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+<script src="assets/js/banda-sonora.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 Banda sonora">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></span></div>
+    <h1><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">Dieciséis pistas que todo pavelense digno escucha.</span><span data-lang="en">Sixteen tracks every worthy Pavelian listens to.</span></p>
+  </div>
+</header>
+
+<section id="banda-sonora" data-screen-label="19 Banda sonora" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">18</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Banda sonora del Reino</span><span data-lang="en">The Kingdom's soundtrack</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:64ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Lo que escucha todo pavelense <strong style="font-weight:600;color:#201a33">DIGNO</strong> de vivir en Pavelandia, seleccionado por el Ministerio de Cultura con criterio estrictamente épico. Nada suena hasta que usted lo pida: elija una pista y la lista sigue sola.</span><span data-lang="en">What every Pavelian <strong style="font-weight:600;color:#201a33">WORTHY</strong> of living in Pavelandia listens to, selected by the Ministry of Culture on strictly epic criteria. Nothing plays until you ask: pick a track and the list carries on by itself.</span></p>
+
+    <div class="pvl-st-wrap">
+      <div class="pvl-st-stage">
+        <div id="pvl-st-player" class="pvl-st-player">
+          <div class="pvl-st-idle">
+            <div class="pvl-st-disc" aria-hidden="true"><div class="pvl-st-label">P</div></div>
+            <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#e9c874"><span data-lang="es">GRAMÓFONO REAL · EN ESPERA</span><span data-lang="en">ROYAL GRAMOPHONE · STANDING BY</span></div>
+            <p style="margin:0;max-width:34ch;font:300 13.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Elija una pista. Hasta entonces, el Reino no carga nada de YouTube.</span><span data-lang="en">Pick a track. Until then, the Kingdom loads nothing from YouTube.</span></p>
+          </div>
+        </div>
+        <div id="pvl-st-now" role="status" aria-live="polite" class="pvl-st-now"></div>
+        <a class="pvl-st-yt" href="https://www.youtube.com/watch_videos?video_ids=Szdziw4tI9o,weFJHtcxJt0,04854XqcfCY,HgzGwKwLmgM,GC5E8ie2pdM,bWcASV2sey0,btPJPFnesV4,AxWejrVYcCg,9jK-NcRmVcw,7ufkMTshjz8,tF_ggG5dY5U,imeXSRNRMeg,suQC8d-YkeU,y6120QOlsfU,dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer"><span data-lang="es">Abrir la lista completa en YouTube ↗</span><span data-lang="en">Open the full playlist on YouTube ↗</span></a>
+      </div>
+      <ol class="pvl-st-list">
+        <li class="pvl-st-row" data-pvl-track="anthem">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="anthem" aria-label="Play The Roar of the Unicorn" data-aria-es="Reproducir El Ruir del Unicornio" data-aria-en="Play The Roar of the Unicorn"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">01</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">El Ruir del Unicornio</span><span data-lang="en">The Roar of the Unicorn</span></span><span class="pvl-st-artist">Pavel Navarro</span><span class="pvl-st-why"><span data-lang="es">Obligatorio. En la portada suena en bucle eterno; aquí, por si alguien se lo perdió.</span><span data-lang="en">Mandatory. On the front page it loops forever; here, in case anyone missed it.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="Szdziw4tI9o">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="Szdziw4tI9o" aria-label="Play Also sprach Zarathustra" data-aria-es="Reproducir Also sprach Zarathustra" data-aria-en="Play Also sprach Zarathustra"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">02</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Also sprach Zarathustra</span><span class="pvl-st-artist">Richard Strauss · Berliner Philharmoniker</span><span class="pvl-st-why"><span data-lang="es">Para cada vez que Pavel entra en una habitación. También en la cocina.</span><span data-lang="en">For every time Pavel enters a room. The kitchen included.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="weFJHtcxJt0">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="weFJHtcxJt0" aria-label="Play Hallelujah!" data-aria-es="Reproducir ¡Aleluya!" data-aria-en="Play Hallelujah!"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">03</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">¡Aleluya!</span><span data-lang="en">Hallelujah!</span></span><span class="pvl-st-artist">G. F. Händel</span><span class="pvl-st-why"><span data-lang="es">Lo que cantan los ángeles cuando el Soberano se despierta de la siesta.</span><span data-lang="en">What the angels sing when the Sovereign wakes from his nap.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="04854XqcfCY">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="04854XqcfCY" aria-label="Play We Are the Champions" data-aria-es="Reproducir We Are the Champions" data-aria-en="Play We Are the Champions"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">04</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">We Are the Champions</span><span class="pvl-st-artist">Queen</span><span class="pvl-st-why"><span data-lang="es">Escrita en plural por pura cortesía. El campeón es uno.</span><span data-lang="en">Written in the plural out of sheer courtesy. The champion is one.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="HgzGwKwLmgM">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="HgzGwKwLmgM" aria-label="Play Don't Stop Me Now" data-aria-es="Reproducir Don't Stop Me Now" data-aria-en="Play Don't Stop Me Now"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">05</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Don't Stop Me Now</span><span class="pvl-st-artist">Queen</span><span class="pvl-st-why"><span data-lang="es">Lo que responde Pavel cuando alguien le sugiere moderación.</span><span data-lang="en">What Pavel replies whenever someone suggests moderation.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="GC5E8ie2pdM">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="GC5E8ie2pdM" aria-label="Play The Best" data-aria-es="Reproducir The Best" data-aria-en="Play The Best"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">06</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">The Best</span><span class="pvl-st-artist">Tina Turner</span><span class="pvl-st-why"><span data-lang="es">«Simply the best»: definición literal en el diccionario nacional.</span><span data-lang="en">“Simply the best”: the literal entry in the national dictionary.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="bWcASV2sey0">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="bWcASV2sey0" aria-label="Play Holding Out for a Hero" data-aria-es="Reproducir Holding Out for a Hero" data-aria-en="Play Holding Out for a Hero"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">07</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Holding Out for a Hero</span><span class="pvl-st-artist">Bonnie Tyler</span><span class="pvl-st-why"><span data-lang="es">Preguntaba dónde estaban los héroes. Ya llegó; monta unicornio.</span><span data-lang="en">She asked where all the heroes had gone. He's here; he rides a unicorn.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="btPJPFnesV4">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="btPJPFnesV4" aria-label="Play Eye of the Tiger" data-aria-es="Reproducir Eye of the Tiger" data-aria-en="Play Eye of the Tiger"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">08</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Eye of the Tiger</span><span class="pvl-st-artist">Survivor</span><span class="pvl-st-why"><span data-lang="es">Entrenamiento matutino del Soberano: quince flexiones, todas perfectas.</span><span data-lang="en">The Sovereign's morning workout: fifteen push-ups, every one flawless.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="AxWejrVYcCg">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="AxWejrVYcCg" aria-label="Play Gonna Fly Now (Rocky)" data-aria-es="Reproducir Gonna Fly Now (Rocky)" data-aria-en="Play Gonna Fly Now (Rocky)"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">09</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Gonna Fly Now (Rocky)</span><span class="pvl-st-artist">Bill Conti</span><span class="pvl-st-why"><span data-lang="es">Subir escaleras a este ritmo es obligatorio en todo edificio público.</span><span data-lang="en">Climbing stairs to this tempo is mandatory in every public building.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="9jK-NcRmVcw">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="9jK-NcRmVcw" aria-label="Play The Final Countdown" data-aria-es="Reproducir The Final Countdown" data-aria-en="Play The Final Countdown"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">10</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">The Final Countdown</span><span class="pvl-st-artist">Europe</span><span class="pvl-st-why"><span data-lang="es">Cuenta atrás oficial del Año Nuevo pavelense.</span><span data-lang="en">The official countdown to the Pavelian New Year.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="7ufkMTshjz8">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="7ufkMTshjz8" aria-label="Play 1492: Conquest of Paradise" data-aria-es="Reproducir 1492: La conquista del paraíso" data-aria-en="Play 1492: Conquest of Paradise"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">11</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">1492: La conquista del paraíso</span><span data-lang="en">1492: Conquest of Paradise</span></span><span class="pvl-st-artist">Vangelis</span><span class="pvl-st-why"><span data-lang="es">Banda sonora del error de Colón (véase la Biblioteca Real, volumen IV).</span><span data-lang="en">Soundtrack to Columbus's mistake (see the Royal Library, volume IV).</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="tF_ggG5dY5U">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="tF_ggG5dY5U" aria-label="Play The Cup of Life" data-aria-es="Reproducir La copa de la vida" data-aria-en="Play The Cup of Life"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">12</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title"><span data-lang="es">La copa de la vida</span><span data-lang="en">The Cup of Life</span></span><span class="pvl-st-artist">Ricky Martin</span><span class="pvl-st-why"><span data-lang="es">¡Go, go, go! ¡Ale, ale, ale! Himno oficioso del Ministerio de Deportes.</span><span data-lang="en">Go, go, go! Ale, ale, ale! Unofficial anthem of the Ministry of Sport.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="imeXSRNRMeg">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="imeXSRNRMeg" aria-label="Play La negra tiene tumbao" data-aria-es="Reproducir La negra tiene tumbao" data-aria-en="Play La negra tiene tumbao"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">13</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">La negra tiene tumbao</span><span class="pvl-st-artist">Celia Cruz</span><span class="pvl-st-why"><span data-lang="es">¡Azúcar! El Reino importa ritmo libre de aranceles.</span><span data-lang="en">¡Azúcar! The Kingdom imports rhythm duty-free.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="suQC8d-YkeU">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="suQC8d-YkeU" aria-label="Play Ojalá que llueva café" data-aria-es="Reproducir Ojalá que llueva café" data-aria-en="Play Ojalá que llueva café"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">14</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Ojalá que llueva café</span><span class="pvl-st-artist">Juan Luis Guerra 4.40</span><span class="pvl-st-why"><span data-lang="es">Política agrícola oficial del Reino, aprobada por unanimidad de uno.</span><span data-lang="en">The Kingdom's official agricultural policy, passed by a unanimous vote of one.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="y6120QOlsfU">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="y6120QOlsfU" aria-label="Play Sandstorm" data-aria-es="Reproducir Sandstorm" data-aria-en="Play Sandstorm"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">15</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Sandstorm</span><span class="pvl-st-artist">Darude</span><span class="pvl-st-why"><span data-lang="es">Para invocar al unicornio de unicornios. Funciona mejor a todo volumen.</span><span data-lang="en">For summoning the unicorn of unicorns. Works best at full volume.</span></span></span>
+        </li>
+        <li class="pvl-st-row" data-pvl-track="dQw4w9WgXcQ">
+          <button type="button" class="pvl-st-play" data-pvl-track-btn="dQw4w9WgXcQ" aria-label="Play Never Gonna Give You Up" data-aria-es="Reproducir Never Gonna Give You Up" data-aria-en="Play Never Gonna Give You Up"><svg width="12" height="12" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4.5 2.6 15 9 4.5 15.4z"></path></svg></button>
+          <span class="pvl-st-n">16</span>
+          <span class="pvl-st-meta"><span class="pvl-st-title">Never Gonna Give You Up</span><span class="pvl-st-artist">Rick Astley</span><span class="pvl-st-why"><span data-lang="es">El juramento de lealtad, en versión pop. Todo ciudadano se lo sabe de memoria.</span><span data-lang="en">The oath of allegiance, pop edition. Every citizen knows it by heart.</span></span></span>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <audio id="pavel-audio" src="assets/Bajo_el_Manto_de_Pavel.mp3" preload="none"></audio>
+</section>
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes</small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>

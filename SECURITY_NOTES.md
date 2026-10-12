@@ -239,3 +239,18 @@ Net assessment: this is, and remains, a low-risk static site. The one real
 finding worth fixing was the missing `Secure` cookie flag; everything else checked
 out clean on inspection, and the CSP is an incremental hardening layer on top of an
 already-safe page rather than a fix for a discovered vulnerability.
+
+## Update — the site split into pages (issue #18)
+
+The line references above point at the single-file page as it was when this review was written.
+Since #18 the site is several pages, and the review's findings map onto the new layout as follows:
+
+- **Every page carries the same CSP `<meta>`** in its real `<head>`, copied unchanged. No new origin
+  was added: the new stylesheet (`assets/css/reino.css`) and scripts (`assets/js/*.js`) are
+  same-origin and covered by `'self'`.
+- **The pilgrim-name sinks moved with their scripts**: the chip, greeting and modal (`textContent`)
+  are in `assets/js/mundo.js`; the certificates and the downloadable card in
+  `assets/js/certificados.js`; the leaderboard and `?ref=` invitation in `assets/js/adoradores.js`.
+  The code is unchanged, so the review's conclusions about them hold.
+- `assets/js/anclas.js` reads `location.hash` only to compare it against a fixed list of section ids
+  and redirect to a fixed page; nothing from the URL is written into the DOM.

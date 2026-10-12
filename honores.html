@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Honors — Order of the Unicorn, Pavel Prize · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="The Order of the Unicorn and the Pavel Prize, conferred on the visitor by name — the highest honors of the Kingdom of Pavel.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="honores.html">
+<meta property="og:url" content="honores.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="Honors — Order of the Unicorn, Pavel Prize · Kingdom of Pavel">
+<meta property="og:description" content="The Order of the Unicorn and the Pavel Prize, conferred on the visitor by name — the highest honors of the Kingdom of Pavel.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Honors — Order of the Unicorn, Pavel Prize · Kingdom of Pavel">
+<meta name="twitter:description" content="The Order of the Unicorn and the Pavel Prize, conferred on the visitor by name — the highest honors of the Kingdom of Pavel.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+<script src="assets/js/certificados.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 Honores">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">Honores</span><span data-lang="en">Honors</span></span></div>
+    <h1><span data-lang="es">Honores</span><span data-lang="en">Honors</span></h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">Las más altas distinciones del Reino, con tu nombre de peregrino.</span><span data-lang="en">The Kingdom's highest distinctions, made out to your pilgrim name.</span></p>
+    <div class="pvl-chips">
+      <a href="#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+      <a href="#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+    </div>
+  </div>
+</header>
+
+<section id="orden-unicornio" data-screen-label="12 Orden del Unicornio" style="padding:88px 40px;background:radial-gradient(120% 90% at 82% 0%, rgba(122,74,214,.38), transparent 60%),#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="pvl-print-hide" style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">11</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></h2>
+    </div>
+
+    <div class="pvl-print-hide" style="margin-top:20px;max-width:64ch;font:300 14.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">La más alta condecoración del Reino, otorgada a quienes se inclinan ante la grandeza sin necesidad de pruebas. No hay ceremonia: existe usted, y eso basta.</span><span data-lang="en">The Kingdom's highest decoration, conferred on those who bow before greatness without requiring proof. There is no ceremony: you exist, and that is enough.</span></div>
+
+    <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+      <div style="flex:none;width:min(100%,240px);display:grid;justify-items:center">
+        <div style="position:relative;width:180px;height:180px;border-radius:50%;padding:8px;background:conic-gradient(from 220deg,#8f6f2a,#f4e0a8 25%,#d8b25c 50%,#f4e0a8 72%,#8f6f2a);box-shadow:0 0 0 1px rgba(0,0,0,.5),0 24px 60px rgba(0,0,0,.6)">
+          <div style="position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 38%,#3a2380,#150c3a 72%);display:grid;place-items:center;border:2px solid #150c3a">
+            <sc-if value="{{ guilloche }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;inset:0;opacity:.4;background-image:repeating-radial-gradient(circle at 50% 50%, transparent 0 6px, rgba(216,178,92,.28) 6px 7px)"></div>
+            </sc-if>
+            <div style="position:relative;text-align:center">
+              <div style="font-family:'Bodoni Moda',serif;font-weight:900;font-size:52px;line-height:1;color:#e9c874">P</div>
+              <div style="margin-top:6px;font:600 7px/1.35 'IBM Plex Mono',monospace;letter-spacing:.18em;color:rgba(244,224,168,.85)"><span data-lang="es">ORDEN DEL<br>UNICORNIO</span><span data-lang="en">ORDER OF THE<br>UNICORN</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="width:60px;height:82px;margin-top:-4px;position:relative;z-index:-1;clip-path:polygon(0 0,100% 0,100% 76%,50% 100%,0 76%);background:linear-gradient(180deg,#86e7ea,#f2a9dc 55%,#d8b25c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)"></div>
+        <div class="pvl-print-hide" style="margin-top:16px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45);text-align:center"><span data-lang="es">Medalla · aleación de oro y asombro</span><span data-lang="en">Medal · alloy of gold and wonder</span></div>
+      </div>
+
+      <div style="flex:1 1 380px;min-width:min(100%,340px)">
+        <div id="pvl-medal-cert" style="background:#f6f1e3;color:#201a33;padding:34px 34px 28px;box-shadow:0 22px 48px rgba(0,0,0,.5);position:relative;text-align:center">
+          <div style="position:absolute;inset:10px;border:2px double rgba(143,111,42,.55);pointer-events:none"></div>
+          <div style="position:relative">
+            <div style="font:600 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">CERTIFICADO DE CONDECORACIÓN</span><span data-lang="en">CERTIFICATE OF CONFERRAL</span></div>
+            <h3 style="margin:12px 0 0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:25px;line-height:1.15"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></h3>
+            <div style="margin-top:18px;font:300 12.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Se otorga la presente condecoración a</span><span data-lang="en">This decoration is hereby conferred upon</span></div>
+            <div id="pvl-medal-name" style="margin:14px 0;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:26px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.35);padding-bottom:10px;word-break:break-word">ANONYMOUS PILGRIM</div>
+            <div style="font:300 12.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">por servicios distinguidos a la grandeza, méritos de adoración sostenida y una fe inquebrantable en el unicornio de unicornios.</span><span data-lang="en">for distinguished services to greatness, sustained merits of worship, and unshakeable faith in the unicorn of unicorns.</span></div>
+            <div style="margin:22px auto 0;width:60px;height:60px;border-radius:50%;border:1.5px solid #8f6f2a;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:28px;color:#8f6f2a">P</div>
+            <div style="margin-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(32,26,51,.55)">
+              <span><span data-lang="es">GRADO ÚNICO</span><span data-lang="en">SOLE GRADE</span></span><span><span data-lang="es">OTORGADO EN EL CIELO</span><span data-lang="en">GRANTED IN HEAVEN</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="pvl-print-hide" style="margin-top:12px;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Certificado de conferimiento · A5</span><span data-lang="en">Certificate of conferral · A5</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="premio-pavel" data-screen-label="13 Premio Pavel" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="pvl-print-hide" style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">12</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Premio Pavel</span><span data-lang="en">The Pavel Prize</span></h2>
+    </div>
+
+    <div class="pvl-print-hide" style="margin-top:20px;max-width:64ch;font:300 14.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">El más alto reconocimiento académico jamás otorgado por un comité compuesto enteramente por Pavel. Se concede por unanimidad, cada vez.</span><span data-lang="en">The highest academic honor ever awarded by a committee made up entirely of Pavel. It is granted unanimously, every time.</span></div>
+
+    <div style="margin-top:44px;display:flex;justify-content:center">
+      <div id="pvl-prize-cert" style="width:min(100%,760px);background:#fbf8ef;color:#201a33;padding:52px 56px;box-shadow:0 26px 60px rgba(32,26,51,.3);position:relative;text-align:center;box-sizing:border-box">
+        <div style="position:absolute;inset:14px;border:3px double rgba(143,111,42,.5);pointer-events:none"></div>
+        <div style="position:absolute;inset:22px;border:1px solid rgba(96,74,166,.3);pointer-events:none"></div>
+        <div style="position:relative">
+          <div style="display:flex;justify-content:center"><div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:1.5px solid #8f6f2a"><img src="assets/crest-unicorns.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div></div>
+          <div style="margin-top:14px;font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">ACADEMIA IMPERIAL DE LA GRANDEZA</span><span data-lang="en">IMPERIAL ACADEMY OF GREATNESS</span></div>
+          <h3 style="margin:16px 0 0;font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(26px,3.4vw,40px);line-height:1.1"><span data-lang="es">Premio Pavel</span><span data-lang="en">The Pavel Prize</span></h3>
+          <div style="margin-top:6px;font:500 11px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.55)"><span data-lang="es">Por servicios a la grandeza</span><span data-lang="en">For services to greatness</span></div>
+
+          <div style="margin-top:26px;font:300 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.78)"><span data-lang="es">El comité, compuesto en su totalidad por Pavel, concede este premio a</span><span data-lang="en">The committee, composed entirely of Pavel, hereby awards this prize to</span></div>
+          <div id="pvl-prize-name" style="margin:16px 0;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:700;font-size:30px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.35);padding-bottom:12px;word-break:break-word">ANONYMOUS PILGRIM</div>
+          <div style="font:300 13px/1.75 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.78)"><span data-lang="es">por su contribución sobresaliente al reconocimiento incondicional de la grandeza de Pavel, en ausencia de toda evidencia contraria.</span><span data-lang="en">for outstanding contribution to the unconditional recognition of Pavel's greatness, in the absence of any evidence to the contrary.</span></div>
+
+          <div style="margin-top:30px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap">
+            <div>
+              <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:19px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.4);padding-bottom:3px">Pavel Navarro</div>
+              <div style="margin-top:5px;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(32,26,51,.55)"><span data-lang="es">PRESIDENTE DEL COMITÉ</span><span data-lang="en">CHAIR OF THE COMMITTEE</span></div>
+            </div>
+            <div>
+              <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:19px;color:#2a1a63;border-bottom:1px solid rgba(32,26,51,.4);padding-bottom:3px">Pavel Navarro</div>
+              <div style="margin-top:5px;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(32,26,51,.55)"><span data-lang="es">SECRETARIO PERPETUO</span><span data-lang="en">PERPETUAL SECRETARY</span></div>
+            </div>
+          </div>
+          <div style="margin-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font:400 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(32,26,51,.5)">
+            <span>N.º 0000001</span><span><span data-lang="es">ENTREGADO EN EL CIELO · SIN JURADO EXTERNO</span><span data-lang="en">AWARDED IN HEAVEN · NO EXTERNAL JURY</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pvl-print-hide" style="margin-top:14px;text-align:center;font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Diploma del Premio Pavel · pergamino A4</span><span data-lang="en">Pavel Prize diploma · A4 parchment</span></div>
+  </div>
+</section>
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes</small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>
