@@ -26,6 +26,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#himno` · Himno | `reino-de-pavel.dc.html` | El Reino | Letra oficial, portada del himno, partitura, entrada del diccionario nacional |
 | `#constitucion` · Constitución | `el-reino.html` | El Reino | Carta Magna de la Grandeza: preámbulo, siete artículos y disposición final |
 | `#descartes` · Descartes | `el-reino.html` | El Reino | Reformulación del *cogito*: Descartes admite haberse equivocado al no pensar en Pavel |
+| `#clima` · Clima | `el-reino.html` | El Reino | Servicio Meteorológico Nacional: pronóstico de cinco días y por regiones, sembrado con la fecha y siempre glorioso |
 | `#documentos` · Pasaporte e identidad | `documentos.html` | Documentos | Pasaporte (cubierta + página de datos con MRZ), cédula imperial, licencia de conducir clase U |
 | `#moneda` · Moneda y filatelia | `documentos.html` | Documentos | Billete de 100 Grandezas (anverso y reverso), moneda, sello postal de 5 G, sello fronterizo |
 | `#papeleria` · Papelería | `documentos.html` | Documentos | Carta diplomática A4, sobre aéreo, certificado de ciudadanía (`#ciudadania`) |
