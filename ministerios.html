@@ -61,6 +61,7 @@
 <script src="assets/js/oraculo.js"></script>
 <script src="assets/js/lienzo.js"></script>
 <script src="assets/js/decreto-sello.js"></script>
+<script src="assets/js/bolsa.js"></script>
 </helmet>
 <header class="pvl-subhead" data-screen-label="00 Ministerios">
   <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
@@ -111,6 +112,7 @@
             <a href="ministerios.html#quiz">Quiz</a>
             <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
             <a href="ministerios.html#oraculo"><span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></a>
+            <a href="ministerios.html#bolsa"><span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></a>
           </div>
         </div>
         <div class="pvl-nav-group">
@@ -141,6 +143,7 @@
       <a href="#quiz">Quiz</a>
       <a href="#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
       <a href="#oraculo"><span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></a>
+      <a href="#bolsa"><span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></a>
     </div>
   </div>
 </header>
@@ -246,6 +249,45 @@
   </div>
 </section>
 
+<section id="bolsa" data-screen-label="27 Bolsa" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">27</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Bolsa de la Grandeza</span><span data-lang="en">The Greatness Exchange</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">La bolsa nacional del Reino, donde todo valor sube para siempre. Por decreto real, el gráfico no conoce el color rojo.</span><span data-lang="en">The Kingdom’s national stock exchange, where every asset rises forever. By royal decree, the chart does not know the colour red.</span></p>
+    <div id="pvl-bolsa-root" class="pvl-bolsa" style="margin-top:36px">
+      <div class="pvl-bolsa-cinta" aria-hidden="true"><div class="pvl-bolsa-cinta-in"></div></div>
+      <div class="pvl-bolsa-grid">
+        <div class="pvl-bolsa-panel">
+          <div class="pvl-bolsa-kicker"><span data-lang="es">ÍNDICE PVL-100 · EN VIVO · </span><span data-lang="en">PVL-100 INDEX · LIVE · </span><span class="pvl-bolsa-hora"></span></div>
+          <div class="pvl-bolsa-valor"></div>
+          <div class="pvl-bolsa-grafico"></div>
+          <p class="pvl-bolsa-coment" aria-live="polite"></p>
+        </div>
+        <div class="pvl-bolsa-panel">
+          <table class="pvl-bolsa-tabla">
+            <thead><tr><th scope="col"><span data-lang="es">Valor</span><span data-lang="en">Ticker</span></th><th scope="col"><span data-lang="es">Precio (G)</span><span data-lang="en">Price (G)</span></th><th scope="col"><span data-lang="es">Hoy</span><span data-lang="en">Today</span></th><th scope="col"><span data-lang="es">Tendencia</span><span data-lang="en">Trend</span></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pvl-bolsa-conv">
+        <div class="pvl-bolsa-kicker"><span data-lang="es">CASA DE CAMBIO REAL · TIPO DE CAMBIO HALAGADOR</span><span data-lang="en">ROYAL BUREAU DE CHANGE · FLATTERING EXCHANGE RATE</span></div>
+        <div class="pvl-bolsa-conv-fila">
+          <label for="pvl-bolsa-monto" class="pvl-vh"><span data-lang="es">Cantidad</span><span data-lang="en">Amount</span></label>
+          <input id="pvl-bolsa-monto" type="number" min="0" step="any" value="100" inputmode="decimal">
+          <label for="pvl-bolsa-moneda" class="pvl-vh"><span data-lang="es">Moneda</span><span data-lang="en">Currency</span></label>
+          <select id="pvl-bolsa-moneda"><option value="usd">USD</option><option value="eur">EUR</option><option value="gbp">GBP</option><option value="mxn">MXN</option></select>
+          <span class="pvl-bolsa-igual">=</span>
+          <output id="pvl-bolsa-res" for="pvl-bolsa-monto pvl-bolsa-moneda" class="pvl-bolsa-res">—</output>
+        </div>
+        <p class="pvl-bolsa-nota"><span data-lang="es">Cotización de pura cortesía. La Bolsa no acepta dinero real, solo admiración. Nada de lo que escribe sale de su navegador.</span><span data-lang="en">A rate of pure courtesy. The Exchange does not accept real money, only admiration. Nothing you type leaves your browser.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
   <div class="pvl-wings-in">
     <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
@@ -255,7 +297,7 @@
       <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
       <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span> · <span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></small></a>
       <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span> · <span data-lang="es">Título real</span><span data-lang="en">Royal title</span></small></a>
-      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span> · <span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span> · <span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span> · <span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></small></a>
       <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
       <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
       <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
