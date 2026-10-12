@@ -567,7 +567,11 @@ html[data-pvl-script="plebe"] .pvl-lib-text{direction:ltr;unicode-bidi:normal;te
 /* ---- Pages (issue #18): the header of every page but the landing, its
    breadcrumbs and the halls-of-the-palace backlinks at the foot. ---- */
 .pvl-brand{color:inherit;text-decoration:none}
-.pvl-subhead{position:relative;z-index:5;padding:0 0 34px;color:#f4efe2;background:
+/* No z-index here: one would make the header a stacking context below
+   #pvl-nav-backdrop (z-index 70, on <body>), and the backdrop would then cover
+   the open dropdown and swallow every click on its links (#51). #pvl-nav's own
+   z-index 80 already lifts the menu above the backdrop and the sections. */
+.pvl-subhead{position:relative;padding:0 0 34px;color:#f4efe2;background:
   radial-gradient(120% 120% at 12% 0%, rgba(122,74,214,.5) 0%, transparent 55%),
   radial-gradient(90% 120% at 88% 0%, rgba(58,190,214,.3) 0%, transparent 60%),
   linear-gradient(180deg,#140a33 0%,#0b0620 100%);border-bottom:1px solid rgba(216,178,92,.28)}
