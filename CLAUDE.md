@@ -77,7 +77,8 @@ No build step: each page is a complete static file, and shared things live in `a
 - **Scripts**: `assets/js/*.js`, one per feature, each listed as `<script src>` in the `<helmet>` of
   the pages that need it. Every page loads `i18n`, `menu`, `huevos` and `mundo`; the rest only where
   their section is. `lienzo.js` (`window.PavelLienzo`) draws and downloads the PNG cards (title,
-  visa, decree…); load it before the feature that uses it. `anclas.js` runs in the landing page's real `<head>` and redirects old
+  visa, decree…); load it before the feature that uses it. The map's Street View is its own engine,
+  `mapa-sv.js` (`window.PavelStreetView`), which `mapa.js` calls with the scene id and the viewpoints. `anclas.js` runs in the landing page's real `<head>` and redirects old
   `#anchors` of sections that moved.
 - **A sub-page** is the landing page's shell (real `<head>`, `<helmet>` metadata with its own title,
   description, canonical and `og:url`) plus the `.pvl-subhead` header (top bar with the menu,

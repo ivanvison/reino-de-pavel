@@ -1054,3 +1054,32 @@ html[data-pvl-script="plebe"] .pvl-lib-text{direction:ltr;unicode-bidi:normal;te
 @media (max-width:900px){.pvl-air-res,.pvl-air-club,.pvl-air-aero{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.pvl-air-bp{grid-template-columns:1fr}.pvl-air-bp-talon{grid-template-columns:repeat(3,auto);border-left:0;border-top:2px dashed #c9b78f}.pvl-air-bp-datos{grid-template-columns:repeat(2,minmax(0,1fr))}.pvl-air-fila{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.pvl-air-gira{animation:none}}
+
+/* ---- Street View premium (pvl-sv2-) ---- */
+.pvl-sv2{position:absolute;inset:0;overflow:hidden;background:#0b0620;outline:none;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.pvl-sv2:active{cursor:grabbing}
+.pvl-sv2:fullscreen{position:fixed}
+.pvl-sv2-lienzo{position:absolute;inset:0;display:block}
+.pvl-sv2-bar{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none}
+.pvl-sv2-bar>div:first-child{padding:8px 12px;background:rgba(13,7,37,.78);border-radius:8px;color:#f4efe2;backdrop-filter:blur(4px);max-width:60%}
+.pvl-sv2-k{font:500 9px/1.3 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874}
+.pvl-sv2-n{margin-top:2px;font:600 13px/1.25 'IBM Plex Sans',sans-serif}
+.pvl-sv2-acciones{display:flex;gap:6px;pointer-events:auto}
+.pvl-sv2-acciones button,.pvl-sv2-zoom button,.pvl-sv2-flecha{width:36px;height:36px;border:0;border-radius:50%;background:rgba(13,7,37,.78);color:#f4efe2;font:600 17px/1 'IBM Plex Sans',sans-serif;cursor:pointer;display:grid;place-items:center}
+.pvl-sv2-acciones button:hover,.pvl-sv2-zoom button:hover,.pvl-sv2-flecha:hover{background:#1b1150;color:#e9c874}
+.pvl-sv2-acciones button[aria-pressed="true"]{background:#d8b25c;color:#1a1030}
+.pvl-sv2-flecha{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;font-size:26px}
+.pvl-sv2-izq{left:10px}.pvl-sv2-der{right:10px}
+.pvl-sv2-zoom{position:absolute;right:12px;bottom:118px;display:grid;gap:6px}
+.pvl-sv2-mini{position:absolute;left:12px;bottom:118px;width:150px;height:106px;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.45);border:1px solid rgba(216,178,92,.5)}
+.pvl-sv2-mini canvas{display:block;width:150px;height:106px}
+.pvl-sv2-brujula{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:#f4efe2;color:#c62828;display:grid;place-items:center;font:700 10px/1 'IBM Plex Mono',monospace}
+.pvl-sv2-tira{position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;padding:10px;overflow-x:auto;background:linear-gradient(0deg,rgba(5,2,15,.85),rgba(5,2,15,0))}
+.pvl-sv2-tira button{flex:none;display:grid;gap:4px;padding:0;border:2px solid transparent;border-radius:8px;background:rgba(13,7,37,.7);color:#f4efe2;cursor:pointer;overflow:hidden;width:128px;text-align:left}
+.pvl-sv2-tira button[aria-current="true"]{border-color:#e9c874}
+.pvl-sv2-tira canvas{display:block;width:128px;height:72px}
+.pvl-sv2-tira span{padding:0 6px 6px;font:500 10px/1.25 'IBM Plex Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pvl-sv2-pista{position:absolute;left:50%;top:62px;transform:translateX(-50%);padding:5px 12px;border-radius:999px;background:rgba(13,7,37,.65);color:rgba(244,239,226,.85);font:400 10.5px/1.3 'IBM Plex Sans',sans-serif;white-space:nowrap;pointer-events:none;animation:pvl-sv2-pista 5s ease forwards}
+@keyframes pvl-sv2-pista{0%,70%{opacity:1}100%{opacity:0}}
+@media (max-width:640px){.pvl-sv2-mini{width:110px;height:78px;bottom:112px}.pvl-sv2-mini canvas{width:110px;height:78px}.pvl-sv2-pista{display:none}.pvl-sv2-tira button,.pvl-sv2-tira canvas{width:96px}.pvl-sv2-tira canvas{height:54px}.pvl-sv2-zoom{bottom:112px}.pvl-sv2-flecha{display:none}}
+@media (prefers-reduced-motion:reduce){.pvl-sv2-pista{animation:none}}
