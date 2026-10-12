@@ -63,7 +63,7 @@ No build step: each page is a complete static file, and shared things live in `a
 | `reino-de-pavel.dc.html` | The landing page: hero, state figures, anthem player, `#himno`, `#mapa`, `#juego`, the invitation card. `index.html` redirects here. |
 | `el-reino.html` | `#emblema`, `#bandera`, `#constitucion`, `#descartes`, `#clima` |
 | `documentos.html` | `#documentos`, `#moneda`, `#papeleria` (with the citizenship certificate, `#ciudadania`), `#visa`, `#calendario`, `#hora-real` |
-| `honores.html` | `#orden-unicornio`, `#premio-pavel` |
+| `honores.html` | `#orden-unicornio`, `#premio-pavel`, `#titulo` |
 | `ministerios.html` | `#decreto`, `#quejas`, `#quiz`, `#test-psi`, `#oraculo` |
 | `biblioteca.html`, `banda-sonora.html`, `descargas.html` | One section each |
 | `cronica.html` | The Chronicle, `#pvl-changelog` |
@@ -71,7 +71,8 @@ No build step: each page is a complete static file, and shared things live in `a
 - **Styles**: `assets/css/reino.css`, linked from every page's real `<head>`.
 - **Scripts**: `assets/js/*.js`, one per feature, each listed as `<script src>` in the `<helmet>` of
   the pages that need it. Every page loads `i18n`, `menu`, `huevos` and `mundo`; the rest only where
-  their section is. `anclas.js` runs in the landing page's real `<head>` and redirects old
+  their section is. `lienzo.js` (`window.PavelLienzo`) draws and downloads the PNG cards (title,
+  visa, decree…); load it before the feature that uses it. `anclas.js` runs in the landing page's real `<head>` and redirects old
   `#anchors` of sections that moved.
 - **A sub-page** is the landing page's shell (real `<head>`, `<helmet>` metadata with its own title,
   description, canonical and `og:url`) plus the `.pvl-subhead` header (top bar with the menu,
