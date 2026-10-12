@@ -48,6 +48,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#museo` · Museo | `museo.html` | Cultura | Museo Real: ocho reliquias en SVG ampliable, cada una con su cartela |
 | `#banda-sonora` · Banda sonora | `banda-sonora.html` | Cultura | Dieciséis pistas que todo pavelense digno escucha |
 | `#descargas` · Descargas | `descargas.html` | Cultura | Fondos de pantalla, bandera, logotipo, sellos e himno |
+| `#postales` · Postales | `descargas.html` | Cultura | Estudio de postales: cinco paisajes del mapa, saludo en ES/EN, mensaje, sello y matasellos; PNG con anverso y reverso |
 | `#gastronomia` · Gastronomía | `gastronomia.html` | Cultura | Menú del Banquete de Estado y recetario real que eleva cualquier plato a banquete |
 | `#mapa` · Mapa | `reino-de-pavel.dc.html` | Cultura | Mapa interactivo de Pavelandia: vistas, Street View, Buc-ee's |
 | `#juego` · Videojuego | `reino-de-pavel.dc.html` | Cultura | «Súper Pavel World», plataformas de 16 bits |
