@@ -30,7 +30,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#documentos` · Pasaporte e identidad | `documentos.html` | Documentos | Pasaporte (cubierta + página de datos con MRZ), cédula imperial, licencia de conducir clase U |
 | `#moneda` · Moneda y filatelia | `documentos.html` | Documentos | Billete de 100 Grandezas (anverso y reverso), moneda, sello postal de 5 G, sello fronterizo |
 | `#papeleria` · Papelería | `documentos.html` | Documentos | Carta diplomática A4, sobre aéreo, certificado de ciudadanía (`#ciudadania`) |
-| `#visa` · Visado | `documentos.html` | Documentos | Visado diplomático |
+| `#visa` · Visado | `documentos.html` | Documentos | Visado de cortesía y ventanilla de visados: solicitud, sello animado y visado descargable (PNG) con zona MRZ |
 | `#calendario` · Calendario | `documentos.html` | Documentos | Ocho fiestas nacionales |
 | `#hora-real` · Hora real | `documentos.html` | Documentos | Hora Estándar de Pavel (un minuto por delante), calendario pavelense y cuenta atrás a la próxima fiesta de `#calendario` |
 | `#ciudadania` · Ciudadanía | `documentos.html` | Honores | El certificado de ciudadanía, descargable como tarjeta PNG |

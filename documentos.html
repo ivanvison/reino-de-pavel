@@ -60,6 +60,8 @@
 <script src="assets/js/certificados.js"></script>
 <script src="assets/js/adoradores.js"></script>
 <script src="assets/js/hora-real.js"></script>
+<script src="assets/js/lienzo.js"></script>
+<script src="assets/js/visado.js"></script>
 </helmet>
 <header class="pvl-subhead" data-screen-label="00 Documentos">
   <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
@@ -659,6 +661,26 @@
         <div style="font:400 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.45);text-align:center"><span data-lang="es">Sello de concesión de visado</span><span data-lang="en">Visa grant stamp</span></div>
         <div style="margin-top:6px;padding:16px 18px;background:#12093a;border:1px solid rgba(244,239,226,.1);font:300 11.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">Condiciones de entrada: el portador debe presentarse con asombro genuino. No se requiere pasaporte previo, aunque se recomienda encarecidamente tener uno del propio Reino.</span><span data-lang="en">Conditions of entry: the bearer must arrive with genuine wonder. No prior passport is required, though owning one from the Kingdom itself is strongly recommended.</span></div>
       </div>
+    </div>
+
+    <div class="pvl-vis-desk">
+      <form id="pvl-vis-form" class="pvl-vis-form">
+        <div class="pvl-vis-kicker"><span data-lang="es">VENTANILLA DE VISADOS · SOLICITUD EN LÍNEA</span><span data-lang="en">VISA DESK · ONLINE APPLICATION</span></div>
+        <h3><span data-lang="es">Solicite su entrada al Reino</span><span data-lang="en">Apply for entry to the Kingdom</span></h3>
+        <label for="pvl-vis-nombre"><span data-lang="es">Nombre completo</span><span data-lang="en">Full name</span></label>
+        <input id="pvl-vis-nombre" type="text" maxlength="36" autocomplete="off" placeholder="Ana García">
+        <label for="pvl-vis-motivo"><span data-lang="es">Motivo de la visita</span><span data-lang="en">Purpose of visit</span></label>
+        <select id="pvl-vis-motivo">
+          <option value="peregrinacion" data-lbl-es="Peregrinación" data-lbl-en="Pilgrimage">Pilgrimage</option>
+          <option value="adoracion" data-lbl-es="Adoración" data-lbl-en="Adoration">Adoration</option>
+          <option value="tributo" data-lbl-es="Tributo" data-lbl-en="Tribute">Tribute</option>
+          <option value="unicornio" data-lbl-es="Acompañar a un unicornio" data-lbl-en="Accompanying a unicorn">Accompanying a unicorn</option>
+          <option value="bucees" data-lbl-es="Visitar el Buc-ee’s del desierto" data-lbl-en="Visiting the desert Buc-ee’s">Visiting the desert Buc-ee’s</option>
+        </select>
+        <button type="submit"><span data-lang="es">Presentar la solicitud</span><span data-lang="en">Submit the application</span></button>
+        <p class="pvl-vis-nota"><span data-lang="es">Plazo de resolución: inmediato. Tasa: una reverencia. Su nombre no sale de su navegador.</span><span data-lang="en">Processing time: immediate. Fee: one bow. Your name never leaves your browser.</span></p>
+      </form>
+      <div id="pvl-vis-out" class="pvl-vis-out" hidden aria-live="polite"></div>
     </div>
   </div>
 </section>

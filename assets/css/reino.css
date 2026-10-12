@@ -696,3 +696,31 @@ html[data-pvl-script="plebe"] .pvl-lib-text{direction:ltr;unicode-bidi:normal;te
 .pvl-dsel-btn{margin-top:16px;display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid rgba(107,79,22,.5);border-radius:2px;background:linear-gradient(180deg,#fff7e6,#f1e2bf);color:#4a3510;font:600 11px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .pvl-dsel-btn:hover{background:#f6e7c4}
 .pvl-dsel-btn[hidden]{display:none}
+
+/* ---- Ventanilla de visados (pvl-vis-) ---- */
+.pvl-vis-desk{margin-top:48px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:26px;align-items:start}
+.pvl-vis-form{display:grid;gap:10px;background:#0d0725;border:1px solid rgba(244,239,226,.14);padding:26px clamp(18px,3vw,30px)}
+.pvl-vis-kicker{font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#d8b25c}
+.pvl-vis-form h3{margin:2px 0 6px;font:700 24px/1.2 'Bodoni Moda',serif;color:#f7f2e6}
+.pvl-vis-form label{margin-top:4px;font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.55)}
+.pvl-vis-form input,.pvl-vis-form select{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(216,178,92,.4);border-radius:2px;background:#0b0620;color:#f4efe2;font:400 15px/1.2 'IBM Plex Sans',sans-serif}
+.pvl-vis-form button,.pvl-vis-btn{margin-top:8px;justify-self:start;padding:13px 18px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 11px/1.2 'IBM Plex Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.pvl-vis-nota{margin:6px 0 0;font:400 10.5px/1.6 'IBM Plex Mono',monospace;color:rgba(244,239,226,.45)}
+.pvl-vis-out[hidden]{display:none}
+.pvl-vis-card{position:relative;overflow:hidden;background:#f6f1e3;color:#201a33;border-radius:3px;padding:20px 22px 0;box-shadow:0 26px 60px rgba(0,0,0,.55);background-image:repeating-radial-gradient(circle at 22% 74%,transparent 0 7px,rgba(96,74,166,.12) 7px 8px),linear-gradient(115deg,rgba(242,169,220,.16),transparent 45%,rgba(134,231,234,.14))}
+.pvl-vis-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid rgba(32,26,51,.2);padding-bottom:10px;font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.18em;color:#6b4f16}
+.pvl-vis-top b{font:700 15px/1 'Bodoni Moda',serif;letter-spacing:.04em;color:#201a33}
+.pvl-vis-campos{margin:14px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;max-width:72%}
+.pvl-vis-campos dt{font:400 7.5px/1.3 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(32,26,51,.55)}
+.pvl-vis-campos dd{margin:2px 0 0;font:600 13px/1.3 'IBM Plex Mono',monospace;color:#201a33;overflow-wrap:anywhere}
+.pvl-vis-mrz{margin:0 -22px;padding:10px 22px 12px;background:rgba(32,26,51,.05);border-top:1px solid rgba(32,26,51,.18);font:500 clamp(8px,1.05vw,12px)/1.5 'IBM Plex Mono',monospace;letter-spacing:.04em;word-break:break-all}
+.pvl-vis-sello{position:absolute;right:16px;top:58px;width:132px;height:132px;border-radius:50%;border:3px solid rgba(122,74,214,.85);display:grid;place-items:center;text-align:center;color:rgba(122,74,214,.9);transform:rotate(-10deg)}
+.pvl-vis-sello div{width:112px;height:112px;border-radius:50%;border:1px solid currentColor;display:grid;place-content:center;gap:3px}
+.pvl-vis-sello small{font:600 6.5px/1.2 'IBM Plex Mono',monospace;letter-spacing:.12em}
+.pvl-vis-sello b{font:700 18px/1 'Bodoni Moda',serif}
+.pvl-vis-golpe{animation:pvl-vis-golpe .55s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes pvl-vis-golpe{0%{opacity:0;transform:scale(2.6) rotate(-24deg)}60%{opacity:1;transform:scale(.92) rotate(-8deg)}80%{transform:scale(1.04) rotate(-11deg)}100%{transform:scale(1) rotate(-10deg)}}
+.pvl-vis-ok{margin:14px 0 0;font:300 13px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)}
+@media (max-width:860px){.pvl-vis-desk{grid-template-columns:1fr}}
+@media (max-width:520px){.pvl-vis-campos{max-width:none;grid-template-columns:1fr 1fr}.pvl-vis-sello{position:static;margin:0 0 12px auto;width:110px;height:110px}.pvl-vis-sello div{width:92px;height:92px}}
+@media (prefers-reduced-motion:reduce){.pvl-vis-golpe{animation:none}}
