@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Royal Cuisine — State Banquet &amp; recipes · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="The State Banquet menu of the Kingdom of Pavel — beaver nuggets included — and a royal recipe generator that turns any dish into a feast worthy of the throne.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="gastronomia.html">
+<meta property="og:url" content="gastronomia.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="Royal Cuisine — State Banquet &amp; recipes · Kingdom of Pavel">
+<meta property="og:description" content="The State Banquet menu of the Kingdom of Pavel — beaver nuggets included — and a royal recipe generator that turns any dish into a feast worthy of the throne.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Royal Cuisine — State Banquet &amp; recipes · Kingdom of Pavel">
+<meta name="twitter:description" content="The State Banquet menu of the Kingdom of Pavel — beaver nuggets included — and a royal recipe generator that turns any dish into a feast worthy of the throne.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+<script src="assets/js/gastronomia.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 Gastronomía Real">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#blason"><span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+            <a href="el-reino.html#clima"><span data-lang="es">Clima</span><span data-lang="en">Weather</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+            <a href="documentos.html#hora-real"><span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+            <a href="honores.html#titulo"><span data-lang="es">Título real</span><span data-lang="en">Royal title</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+            <a href="ministerios.html#oraculo"><span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></a>
+            <a href="ministerios.html#bolsa"><span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="gastronomia.html"><span data-lang="es">Gastronomía</span><span data-lang="en">Cuisine</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span></span></div>
+    <h1><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span></h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">El Banquete de Estado y un recetario real para cualquier plato.</span><span data-lang="en">The State Banquet and a royal recipe book for any dish.</span></p>
+  </div>
+</header>
+<section id="gastronomia" data-screen-label="29 Gastronomía" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">29</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">El Ministerio de Cultura presenta la cocina oficial de Pavelandia: el menú del Banquete de Estado y un recetario real que convierte cualquier plato en un festín digno del trono.</span><span data-lang="en">The Ministry of Culture presents the official cuisine of Pavelandia: the State Banquet menu and a royal recipe book that turns any dish into a feast worthy of the throne.</span></p>
+    <div class="pvl-gas" style="margin-top:40px">
+      <div class="pvl-gas-menu">
+        <div class="pvl-gas-cabecera">
+          <div class="pvl-gas-kicker"><span data-lang="es">PALACIO DE LA GRANDEZA · SALÓN DEL TRONO</span><span data-lang="en">PALACE OF GREATNESS · THRONE ROOM</span></div>
+          <h3><span data-lang="es">Banquete de Estado</span><span data-lang="en">State Banquet</span></h3>
+          <div class="pvl-gas-sub"><span data-lang="es">en honor de Su Majestad Pavel · cubierto único</span><span data-lang="en">in honour of His Majesty Pavel · a single place setting</span></div>
+          <div class="pvl-gas-orla" aria-hidden="true">✦ ✦ ✦</div>
+        </div>
+        <ol class="pvl-gas-platos">
+        <li class="pvl-gas-plato">
+          <div class="pvl-gas-curso"><span data-lang="es">Aperitivo</span><span data-lang="en">Aperitif</span></div>
+          <h4><span data-lang="es">Pepitas de Castor del Desierto</span><span data-lang="en">Desert Beaver Nuggets</span></h4>
+          <p><span data-lang="es">Crujientes, dulces y servidas en bandeja de plata, tal como llegan del Buc-ee’s más grande del universo conocido. Se comen de una en una, con reverencia.</span><span data-lang="en">Crunchy, sweet and served on a silver tray, just as they arrive from the largest Buc-ee’s in the known universe. Eaten one at a time, with a bow.</span></p>
+        </li>
+        <li class="pvl-gas-plato">
+          <div class="pvl-gas-curso"><span data-lang="es">Entrante</span><span data-lang="en">Starter</span></div>
+          <h4><span data-lang="es">Carpaccio de Grandeza</span><span data-lang="en">Carpaccio of Greatness</span></h4>
+          <p><span data-lang="es">Láminas tan finas que solo se ven si se mira con admiración, aliñadas con aceite de oliva del Valle del Non Plus Ultra y escamas de oro.</span><span data-lang="en">Slices so thin they can only be seen when looked at with admiration, dressed with olive oil from the Non Plus Ultra Valley and gold flakes.</span></p>
+        </li>
+        <li class="pvl-gas-plato">
+          <div class="pvl-gas-curso"><span data-lang="es">Sopa</span><span data-lang="en">Soup</span></div>
+          <h4><span data-lang="es">Consomé del Lago Iridiscente</span><span data-lang="en">Lake Iridescent Consommé</span></h4>
+          <p><span data-lang="es">Clarificado tres veces y reflejado una: el comensal ve su rostro en el plato y, por cortesía, el de Pavel detrás.</span><span data-lang="en">Clarified three times and reflected once: the diner sees their face in the bowl and, out of courtesy, Pavel’s behind it.</span></p>
+        </li>
+        <li class="pvl-gas-plato">
+          <div class="pvl-gas-curso"><span data-lang="es">Plato principal</span><span data-lang="en">Main course</span></div>
+          <h4><span data-lang="es">Lomo Real al Himno, en su jugo</span><span data-lang="en">Royal Loin à l’Anthem, in its own jus</span></h4>
+          <p><span data-lang="es">Asado a fuego lento durante exactamente un bucle de «El Ruir del Unicornio», servido con patatas coronadas y una salsa que nadie ha conseguido imitar.</span><span data-lang="en">Slow-roasted for exactly one loop of «El Ruir del Unicornio», served with crowned potatoes and a sauce no one has managed to imitate.</span></p>
+        </li>
+        <li class="pvl-gas-plato">
+          <div class="pvl-gas-curso"><span data-lang="es">Sorbete</span><span data-lang="en">Sorbet</span></div>
+          <h4><span data-lang="es">Nieve del Monte Non Plus Ultra</span><span data-lang="en">Mount Non Plus Ultra Snow</span></h4>
+          <p><span data-lang="es">Recogida a 8.849 metros por un unicornio voluntario. Limpia el paladar y, según el Ministerio, también la conciencia.</span><span data-lang="en">Gathered at 8,849 metres by a volunteer unicorn. Cleanses the palate and, according to the Ministry, the conscience too.</span></p>
+        </li>
+        <li class="pvl-gas-plato">
+          <div class="pvl-gas-curso"><span data-lang="es">Postre</span><span data-lang="en">Dessert</span></div>
+          <h4><span data-lang="es">Tarta Iridiscente de las Tres Crines</span><span data-lang="en">Three-Mane Iridescent Cake</span></h4>
+          <p><span data-lang="es">Tres pisos —turquesa, rosa y oro— coronados por un cuerno de azúcar. Se corta solo cuando Pavel asiente.</span><span data-lang="en">Three tiers — turquoise, rose and gold — crowned with a sugar horn. Cut only when Pavel nods.</span></p>
+        </li>
+        <li class="pvl-gas-plato">
+          <div class="pvl-gas-curso"><span data-lang="es">Digestivo</span><span data-lang="en">Digestif</span></div>
+          <h4><span data-lang="es">Licor de Laurel del Premio Pavel</span><span data-lang="en">Pavel Prize Laurel Liqueur</span></h4>
+          <p><span data-lang="es">Destilado de las hojas que coronaron al único premiado. Se brinda de pie y en silencio, porque las palabras sobran.</span><span data-lang="en">Distilled from the leaves that crowned the sole laureate. Toasted standing and in silence, because words are superfluous.</span></p>
+        </li>
+        </ol>
+        <p class="pvl-gas-pie"><span data-lang="es">Se ruega a los comensales que no empiecen antes que el Soberano. Ni durante. Ni después.</span><span data-lang="en">Diners are kindly asked not to begin before the Sovereign. Nor during. Nor after.</span></p>
+      </div>
+      <div class="pvl-gas-recetario">
+        <form id="pvl-rec-form" class="pvl-rec-form">
+          <div class="pvl-rec-kicker"><span data-lang="es">COCINA REAL · SOLICITUD DE RECETA</span><span data-lang="en">ROYAL KITCHEN · RECIPE REQUEST</span></div>
+          <h3><span data-lang="es">Pida una receta real</span><span data-lang="en">Request a royal recipe</span></h3>
+          <p><span data-lang="es">Escriba cualquier plato —unas lentejas, un sándwich, la paella de su abuela— y el Chef Real lo elevará a la categoría de banquete.</span><span data-lang="en">Name any dish — lentils, a sandwich, your grandmother’s paella — and the Royal Chef will raise it to banquet rank.</span></p>
+          <label for="pvl-rec-plato" class="pvl-vh"><span data-lang="es">Plato</span><span data-lang="en">Dish</span></label>
+          <div class="pvl-rec-fila">
+            <input id="pvl-rec-plato" type="text" maxlength="48" autocomplete="off" placeholder="tortilla de patatas" data-ph-es="tortilla de patatas" data-ph-en="cheese toastie">
+            <button type="submit"><span data-lang="es">Elevar a receta real</span><span data-lang="en">Make it royal</span></button>
+          </div>
+          <p class="pvl-rec-legal"><span data-lang="es">El mismo plato recibe siempre la misma receta. No se guarda nada. No se recomienda cocinarla.</span><span data-lang="en">The same dish always gets the same recipe. Nothing is stored. Cooking it is not recommended.</span></p>
+        </form>
+        <article id="pvl-rec-out" class="pvl-rec-out" hidden aria-live="polite"></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span> · <span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span> · <span data-lang="es">Título real</span><span data-lang="en">Royal title</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span> · <span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span> · <span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
+      <a href="gastronomia.html"><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span><small><span data-lang="es">Banquete · Recetario</span><span data-lang="en">Banquet · Recipes</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>

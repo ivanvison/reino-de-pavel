@@ -47,6 +47,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#biblioteca` · Biblioteca Real | `biblioteca.html` | Cultura | El saber humano reescrito desde la perspectiva de Pavel |
 | `#banda-sonora` · Banda sonora | `banda-sonora.html` | Cultura | Dieciséis pistas que todo pavelense digno escucha |
 | `#descargas` · Descargas | `descargas.html` | Cultura | Fondos de pantalla, bandera, logotipo, sellos e himno |
+| `#gastronomia` · Gastronomía | `gastronomia.html` | Cultura | Menú del Banquete de Estado y recetario real que eleva cualquier plato a banquete |
 | `#mapa` · Mapa | `reino-de-pavel.dc.html` | Cultura | Mapa interactivo de Pavelandia: vistas, Street View, Buc-ee's |
 | `#juego` · Videojuego | `reino-de-pavel.dc.html` | Cultura | «Súper Pavel World», plataformas de 16 bits |
 | `#pvl-changelog` · Crónica | `cronica.html` | enlace propio | Un «Decreto N.º n» por cada obra del Reino |
