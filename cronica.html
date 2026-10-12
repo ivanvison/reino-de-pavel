@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Chronicle of decrees · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="Every work of the Kingdom of Pavel, recorded as a royal decree in the order it happened.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="cronica.html">
+<meta property="og:url" content="cronica.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="Chronicle of decrees · Kingdom of Pavel">
+<meta property="og:description" content="Every work of the Kingdom of Pavel, recorded as a royal decree in the order it happened.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chronicle of decrees · Kingdom of Pavel">
+<meta name="twitter:description" content="Every work of the Kingdom of Pavel, recorded as a royal decree in the order it happened.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 Crónica">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></span></div>
+    <h1><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">Cada obra del Reino, registrada como decreto.</span><span data-lang="en">Every work of the Kingdom, recorded as a decree.</span></p>
+  </div>
+</header>
+
+<section id="pvl-changelog" data-screen-label="23 Crónica del Reino" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">22</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Estado del Reino · Crónica de decretos</span><span data-lang="en">State of the Kingdom · Chronicle of decrees</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">La corte no lleva actas confidenciales: cada obra del Reino fue, en efecto, construida, y queda aquí registrada como decreto — en el orden real en que sucedió.</span><span data-lang="en">The court keeps no confidential minutes: every work of the Kingdom was, in fact, built, and is recorded here as a decree — in the real order it happened.</span></p>
+
+    <div id="pvl-changelog-list" style="margin-top:40px;display:grid;gap:0">
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 19<br><span style="color:rgba(244,239,226,.45)">11 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de las Salas del Palacio</span><span data-lang="en">Decree on the Halls of the Palace</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el palacio deja de ser un pasillo infinito: cada ala tiene ahora su propia sala — el Reino, los Documentos, los Honores, los Ministerios, la Biblioteca, la Banda sonora, las Descargas y esta Crónica. La portada se reserva para lo esencial: el himno, el mapa y el videojuego. El himno, por respeto, solo suena en la portada.</span><span data-lang="en">By royal decree, the palace stops being an endless corridor: each wing now has its own hall — the Kingdom, the Documents, the Honors, the Ministries, the Library, the Soundtrack, the Downloads and this Chronicle. The home page keeps the essentials: the anthem, the map and the video game. The anthem, out of respect, plays only on the home page.</span></p>
+        </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 18<br><span style="color:rgba(244,239,226,.45)">11 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Menú Real</span><span data-lang="en">Decree on the Royal Menu</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el menú del Reino es ley: ninguna sala de palacio podrá abrirse, renombrarse ni cerrarse sin que el menú lo diga, en ambas lenguas y en toda pantalla. La Moneda y la Papelería, que llevaban siglos sin puerta, estrenan la suya.</span><span data-lang="en">By royal decree, the Kingdom's menu is law: no hall of the palace may open, be renamed or close without the menu saying so, in both tongues and on every screen. The Currency and the Stationery, doorless for centuries, receive theirs.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 17<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Ocio Real</span><span data-lang="en">Decree on Royal Leisure</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Ocio publica «Súper Pavel World», cartucho oficial de 16 bits: tres mundos, el Rey Rival en la cima del Monte Non Plus Ultra y un punto de control en el Buc-ee’s. Pavel, a lomos del unicornio, siempre recupera el trono.</span><span data-lang="en">By royal decree, the Ministry of Leisure releases “Super Pavel World”, the official 16-bit cartridge: three worlds, the Rival King atop Mount Non Plus Ultra and a checkpoint at the Buc-ee’s. Pavel, astride the unicorn, always retakes the throne.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 16<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Cartografía</span><span data-lang="en">Decree on Cartography</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Cartografía Real publica el mapa oficial de Pavelandia, con vistas de satélite, relieve y Street View, tráfico de unicornios en tiempo real y no uno sino cinco Buc-ee’s, incluido el más grande del universo conocido.</span><span data-lang="en">By royal decree, the Ministry of Royal Cartography publishes the official map of Pavelandia, with satellite, terrain and Street View, live unicorn traffic, and not one but five Buc-ee’s, including the largest in the known universe.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 15<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Archivo de Descargas</span><span data-lang="en">Decree on the Download Archive</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, los símbolos del Reino salen de palacio: el escudo, el sello, la bandera, el himno y fondos de pantalla para escritorio, tableta y móvil quedan a disposición de todo súbdito que quiera llevar la grandeza consigo.</span><span data-lang="en">By royal decree, the Kingdom's symbols leave the palace: the arms, the seal, the flag, the anthem, and wallpapers for desktop, tablet and phone are made available to every subject who wishes to carry greatness with them.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 14<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Banda Sonora</span><span data-lang="en">Decree on the Soundtrack</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Cultura publica la banda sonora oficial del Reino: dieciséis pistas que todo pavelense digno escucha, del himno nacional a Celia Cruz. Por respeto al silencio del súbdito, nada suena hasta que él lo pida.</span><span data-lang="en">By royal decree, the Ministry of Culture publishes the Kingdom's official soundtrack: sixteen tracks every worthy Pavelian listens to, from the national anthem to Celia Cruz. Out of respect for the subject's silence, nothing plays until they ask.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 13<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Biblioteca Real</span><span data-lang="en">Decree on the Royal Library</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se abre la Biblioteca Real: XII volúmenes que reescriben la historia y el saber humano desde la perspectiva del Soberano, en escritura pavelense — de derecha a izquierda y con los números en mayúscula — y una Sala de Correcciones donde cualquier súbdito puede enmendar el tema que falte.</span><span data-lang="en">By royal decree, the Royal Library opens: XII volumes rewriting history and human knowledge from the Sovereign's perspective, in Pavelian script — right to left, with numbers in capitals — and a Hall of Corrections where any subject may amend whatever topic is missing.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 12<br><span style="color:rgba(244,239,226,.45)">9 oct.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Corte Profesional</span><span data-lang="en">Decree on the Professional Court</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se abre una embajada del Reino en LinkedIn. Los súbditos pueden ahora unirse a la corte de Pavel desde la portada; las solicitudes de contacto se consideran juramentos de lealtad.</span><span data-lang="en">By royal decree, the Kingdom opens an embassy on LinkedIn. Subjects may now join Pavel's court from the front page; connection requests are treated as oaths of fealty.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 11<br><span style="color:rgba(244,239,226,.45)">12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Fuero Interno</span><span data-lang="en">Decree on Inner Greatness</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se funda el Ministerio del Fuero Interno y se publica el Inventario de Personalidad del Reino: una mancha de tinta, seis preguntas y la conclusión científica de que toda psique es, en un 100%, compatible con Pavel.</span><span data-lang="en">By royal decree, the Ministry of Inner Greatness is founded and the Personality Inventory of the Kingdom is published: one inkblot, six questions, and the scientific conclusion that every psyche is 100% compatible with Pavel.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 10<br><span style="color:rgba(244,239,226,.45)">12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Memoria</span><span data-lang="en">Decree on Memory</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Reino ordena llevar un registro permanente de sus propios decretos, para que la historia pueda consultarse sin tener que fiarse de la memoria de nadie. Esta misma sección es ese registro.</span><span data-lang="en">By royal decree, the Kingdom orders a permanent record of its own decrees, so history can be consulted without having to trust anyone's memory. This very section is that record.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 9<br><span style="color:rgba(244,239,226,.45)">12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Lema</span><span data-lang="en">Decree on the Motto</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se refina el lema nacional: se retira la fórmula anterior, más áspera, y se adopta como divisa única "El Non Plus Ultra".</span><span data-lang="en">By royal decree, the national motto is refined: the harsher earlier wording is retired, and "The Non Plus Ultra" is adopted as the Crown's sole motto.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 8<br><span style="color:rgba(244,239,226,.45)">12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Grandeza Portátil</span><span data-lang="en">Decree on Portable Grandeur</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Palacio se redimensiona para recibir a peregrinos que lleguen por teléfono o tableta, sin que el trono se desborde de la pantalla; se restituye además la denominación de los billetes, ocultada por error en un decreto anterior.</span><span data-lang="en">By royal decree, the Palace is resized to receive pilgrims arriving by phone or tablet without the throne room spilling off the screen; the banknotes' denomination, hidden by an earlier decree's oversight, is restored.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 7<br><span style="color:rgba(244,239,226,.45)">11–12 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Muro y el Registro</span><span data-lang="en">Decree on the Wall and the Registry</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Seguridad sella el registro de peregrinos tras una cookie reforzada y levanta una Política de Seguridad de Contenido alrededor de cada recurso que carga el Palacio; el Sello Real (favicón) recibe permiso expreso para atravesar ese muro.</span><span data-lang="en">By royal decree, the Ministry of Security seals the pilgrim registry behind a hardened cookie and raises a Content Security Policy around every resource the Palace loads; the Royal Seal (favicon) is granted explicit passage through that wall.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 6<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de lo Hallable</span><span data-lang="en">Decree on Discoverability</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se encargan mapas oficiales y normas de trato para los heraldos automatizados del mundo exterior — mapa del sitio, reglas para rastreadores, vistas previas para redes sociales y una descripción para cada imagen — de modo que también las máquinas sepan que el Reino existe.</span><span data-lang="en">By royal decree, official maps and rules of engagement are commissioned for the outside world's automated heralds — a sitemap, crawler rules, social preview cards, and a description for every image — so that machines, too, may know the Kingdom exists.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 5<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de la Planificación</span><span data-lang="en">Decree on Planning</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, el Ministerio de Planificación archiva su primer pergamino de obras futuras, a disposición de cualquier ciudadano que lo solicite.</span><span data-lang="en">By royal decree, the Ministry of Planning files its first scroll of future works, available to any citizen who asks to see it.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 4<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de las Lenguas</span><span data-lang="en">Decree on Tongues</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, la Corona reconoce el español y el inglés como lenguas oficiales por igual; toda proclama, formulario y documento del Reino hablará, de ahora en más, en ambas.</span><span data-lang="en">By royal decree, the Crown recognizes Spanish and English as equally official tongues; every proclamation, form and document of the Kingdom shall henceforth speak both.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 3<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto de Apertura del Palacio</span><span data-lang="en">Decree Opening the Palace</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se abren las puertas de "El Mundo de Pavel": todo peregrino puede inscribir su nombre, recorrer la sala del trono, adorar y, al llegar a la décima adoración, invocar al unicornio de unicornios.</span><span data-lang="en">By royal decree, the doors of "The World of Pavel" are opened: any pilgrim may register their name, walk the throne room, worship, and — upon the tenth act of worship — summon the unicorn of unicorns.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 2<br><span style="color:rgba(244,239,226,.45)">11 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto del Himno</span><span data-lang="en">Decree on the Anthem</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, se instituye "El Ruir del Unicornio" como himno del Reino, dispuesto a sonar en bucle eterno; una corrección posterior aseguró que el bucle, en efecto, no se detenga.</span><span data-lang="en">By royal decree, "The Roar of the Unicorn" is instituted as the Kingdom's anthem, set to loop without end; a later correction ensured the loop, in fact, never breaks.</span></p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(244,239,226,.14);border-bottom:1px solid rgba(244,239,226,.14)">
+        <div style="font:500 9.5px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874">Decreto N.º 1<br><span style="color:rgba(244,239,226,.45)">8 sept.</span></div>
+        <div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:19px;color:#f7f2e6"><span data-lang="es">Decreto Fundacional</span><span data-lang="en">Founding Decree</span></h3>
+          <p style="margin:8px 0 0;font:300 13.5px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.75)"><span data-lang="es">Por decreto real, queda inscrita la carta fundacional del Reino: escudo, bandera, documentos de identidad, moneda y sellos, y la doctrina "existo porque Pavel existe", reformulada a partir de Descartes.</span><span data-lang="en">By royal decree, the Kingdom's founding charter is inscribed: the coat of arms, flag, identity documents, currency and stamps, and the doctrine "I exist because Pavel exists," reformulated from Descartes.</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes</small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>

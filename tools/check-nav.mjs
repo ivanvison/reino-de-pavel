@@ -7,7 +7,8 @@
 //   - a <section id="…"> is not reachable from the menu;
 //   - a menu link points at a page or an id that does not exist;
 //   - a menu label has only one of <span data-lang="es"> / <span data-lang="en">;
-//   - two pages carry different menus;
+//   - two pages carry different menus, or different "halls of the palace" backlinks, or the
+//     backlinks miss a page;
 //   - sitemap.xml misses a page, or README.md never names a section's #id;
 //   - CLAUDE.md and AGENTS.md differ.
 // No dependencies: plain Node 18+.
@@ -39,10 +40,21 @@ const sectionsOf = (html) => [...html.matchAll(/<section\s+id="([^"]+)"/g)].map(
 const ids = Object.fromEntries(pages.map((p) => [p, idsOf(read(p))]));
 const reached = new Set(); // "page#id" and "page"
 
+const wingsOf = (html) => {
+  const start = html.indexOf('<nav class="pvl-wings"');
+  return start === -1 ? '' : html.slice(start, html.indexOf('</nav>', start) + 6);
+};
 const firstNav = navOf(read(pages[0] ?? ''));
+const firstWings = wingsOf(read(pages[0] ?? ''));
+for (const page of pages) {
+  const w = wingsOf(read(page));
+  if (!w) fail(`${page}: no <nav class="pvl-wings"> — every page links back to home and its siblings`);
+  else if (w !== firstWings) fail(`${page}: its "halls of the palace" differ from ${pages[0]}'s — run node tools/sync-nav.mjs`);
+  for (const other of pages) if (w && !w.includes(`href="${other}"`)) fail(`${page}: "halls of the palace" miss ${other}`);
+}
 for (const page of pages) {
   const nav = navOf(read(page));
-  if (nav !== firstNav) fail(`${page}: its menu differs from ${pages[0]}'s — every page carries the same <nav>`);
+  if (nav !== firstNav) fail(`${page}: its menu differs from ${pages[0]}'s — run node tools/sync-nav.mjs`);
 
   for (const m of nav.matchAll(/<a\s[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)) {
     const [, href, label] = m;

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Ministries — decrees, complaints, quiz · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="Issue a royal decree, file a complaint, find out how Pavelian you are and take the psych test — the ministries of the Kingdom of Pavel.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="ministerios.html">
+<meta property="og:url" content="ministerios.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="Ministries — decrees, complaints, quiz · Kingdom of Pavel">
+<meta property="og:description" content="Issue a royal decree, file a complaint, find out how Pavelian you are and take the psych test — the ministries of the Kingdom of Pavel.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ministries — decrees, complaints, quiz · Kingdom of Pavel">
+<meta name="twitter:description" content="Issue a royal decree, file a complaint, find out how Pavelian you are and take the psych test — the ministries of the Kingdom of Pavel.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+<script src="assets/js/ministerios.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 Ministerios">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span></span></div>
+    <h1><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span></h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">Decretos, quejas, el quiz y el test: la administración del Reino a tu servicio (más o menos).</span><span data-lang="en">Decrees, complaints, the quiz and the test: the Kingdom's administration at your service (more or less).</span></p>
+    <div class="pvl-chips">
+      <a href="#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+      <a href="#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+      <a href="#quiz">Quiz</a>
+      <a href="#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+    </div>
+  </div>
+</header>
+
+<section id="decreto" data-screen-label="14 Decreto" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">13</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Generador de decretos reales</span><span data-lang="en">Royal decree generator</span></h2>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
+      <div>
+        <p style="margin:0;max-width:52ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)"><span data-lang="es">Escribe un tema, cualquier tema. El Ministerio de la Grandeza redactará un decreto oficial al respecto, con la solemnidad y la falta de fundamento habituales.</span><span data-lang="en">Type in a topic, any topic. The Ministry of Greatness will draft an official decree about it, with the usual solemnity and lack of justification.</span></p>
+        <form id="pvl-decree-form" style="margin-top:22px;display:grid;gap:12px;max-width:420px">
+          <label for="pvl-decree-input" style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.5)"><span data-lang="es">Asunto del decreto</span><span data-lang="en">Subject of the decree</span></label>
+          <input id="pvl-decree-input" type="text" maxlength="60" placeholder="El tráfico, los lunes, tu vecino…" data-ph-es="El tráfico, los lunes, tu vecino…" data-ph-en="Traffic, Mondays, your neighbor…" style="width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid rgba(216,178,92,.45);background:#0b0620;color:#f7f2e6;font:400 15px/1.3 'IBM Plex Sans',sans-serif">
+          <button id="pvl-decree-submit" type="submit" style="padding:14px 20px;border:0;border-radius:2px;background:linear-gradient(180deg,#e9c874,#c99a3f);color:#1a1030;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;justify-self:start"><span data-lang="es">Redactar decreto</span><span data-lang="en">Draft the decree</span></button>
+        </form>
+      </div>
+      <div class="pvl-decree-card">
+        <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">GABINETE DEL SOBERANO</span><span data-lang="en">OFFICE OF THE SOVEREIGN</span></div>
+        <div class="pvl-decree-body" id="pvl-decree-output">
+          <p class="pvl-decree-empty" data-lang="es">Ningún decreto redactado todavía. El Ministerio espera su tema.</p>
+          <p class="pvl-decree-empty" data-lang="en">No decree drafted yet. The Ministry awaits your topic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quejas" data-screen-label="15 Quejas" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">14</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Ministerio de Quejas</span><span data-lang="en">Ministry of Complaints</span></h2>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
+      <div>
+        <p style="margin:0;max-width:52ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Todo súbdito tiene derecho a quejarse. El Ministerio tiene, a su vez, el derecho a no cambiar absolutamente nada al respecto. Su queja no se guarda ni se envía a ningún sitio: se lee una vez y se archiva en el olvido.</span><span data-lang="en">Every subject has the right to complain. The Ministry, in turn, has the right to change absolutely nothing about it. Your complaint is not stored or sent anywhere: it is read once and filed into oblivion.</span></p>
+        <form id="pvl-complaints-form" style="margin-top:22px;display:grid;gap:12px;max-width:420px">
+          <label for="pvl-complaints-input" style="font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(32,26,51,.55)"><span data-lang="es">Su queja</span><span data-lang="en">Your complaint</span></label>
+          <textarea id="pvl-complaints-input" maxlength="240" rows="3" placeholder="Escriba aquí su desdicha…" data-ph-es="Escriba aquí su desdicha…" data-ph-en="Write your misfortune here…" style="width:100%;box-sizing:border-box;padding:14px 16px;border:1px solid rgba(32,26,51,.3);background:#fff;color:#201a33;font:400 14px/1.4 'IBM Plex Sans',sans-serif;resize:vertical"></textarea>
+          <button id="pvl-complaints-submit" type="submit" style="padding:14px 20px;border:0;border-radius:2px;background:#201a33;color:#f4efe2;font:600 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;justify-self:start"><span data-lang="es">Presentar queja</span><span data-lang="en">File complaint</span></button>
+        </form>
+      </div>
+      <div id="pvl-complaints-output"></div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" data-screen-label="16 Quiz" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">15</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">¿Qué tan pavelense eres?</span><span data-lang="en">How Pavelian are you?</span></h2>
+    </div>
+    <div style="margin-top:40px;display:flex;justify-content:center">
+      <div class="pvl-quiz-card" id="pvl-quiz-card">
+        <div class="pvl-quiz-progress" id="pvl-quiz-progress"></div>
+        <div id="pvl-quiz-body"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="test-psi" data-screen-label="17 Test psicológico" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">16</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Ministerio del Fuero Interno</span><span data-lang="en">Ministry of Inner Greatness</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:62ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Inventario de Personalidad del Reino, primera edición, tamaño muestral: usted. Seis ítems, una mancha de tinta y cuatro tipos oficiales. El resultado no se guarda ni se envía a ningún sitio, y no sustituye a un diagnóstico — ni siquiera al quiz de <a href="#quiz" style="color:#8f6f2a">qué tan pavelense es</a>.</span><span data-lang="en">Personality Inventory of the Kingdom, first edition, sample size: you. Six items, one inkblot, four official types. The result is not stored or sent anywhere, and it is not a diagnosis — not even a substitute for <a href="#quiz" style="color:#8f6f2a">how Pavelian you are</a>.</span></p>
+    <div style="margin-top:40px;display:flex;justify-content:center">
+      <div class="pvl-psych-card" id="pvl-psych-card">
+        <div class="pvl-psych-progress" id="pvl-psych-progress"></div>
+        <div id="pvl-psych-body"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes</small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>

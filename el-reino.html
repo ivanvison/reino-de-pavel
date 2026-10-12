@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>The Kingdom — emblem, flag, constitution · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="The coat of arms, the flag &quot;La Iridiscente&quot;, the Magna Carta of Greatness and Descartes corrected — the founding symbols of the Kingdom of Pavel.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="el-reino.html">
+<meta property="og:url" content="el-reino.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="The Kingdom — emblem, flag, constitution · Kingdom of Pavel">
+<meta property="og:description" content="The coat of arms, the flag &quot;La Iridiscente&quot;, the Magna Carta of Greatness and Descartes corrected — the founding symbols of the Kingdom of Pavel.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Kingdom — emblem, flag, constitution · Kingdom of Pavel">
+<meta name="twitter:description" content="The coat of arms, the flag &quot;La Iridiscente&quot;, the Magna Carta of Greatness and Descartes corrected — the founding symbols of the Kingdom of Pavel.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 El Reino">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span></span></div>
+    <h1><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span></h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">Los símbolos fundacionales: el escudo, la bandera, la Carta Magna y el cogito corregido.</span><span data-lang="en">The founding symbols: the coat of arms, the flag, the Magna Carta and the corrected cogito.</span></p>
+    <div class="pvl-chips">
+      <a href="#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+      <a href="#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+      <a href="#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+      <a href="#descartes">Descartes</a>
+    </div>
+  </div>
+</header>
+
+<section id="emblema" data-screen-label="02 Emblema" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">01</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Escudo de Armas y sistema de marca</span><span data-lang="en">Coat of Arms &amp; brand system</span></h2>
+    </div>
+
+    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start">
+      <div>
+        <div style="position:relative;padding:34px;background:radial-gradient(circle at 50% 40%, #1d1247 0%, #0d0726 70%);border:1px solid rgba(216,178,92,.3)">
+          <div style="position:relative;width:min(100%,340px);margin:0 auto;aspect-ratio:1;border-radius:50%;padding:10px;background:conic-gradient(from 220deg,#8f6f2a,#f4e0a8 25%,#d8b25c 50%,#f4e0a8 72%,#8f6f2a);box-shadow:0 0 0 1px rgba(0,0,0,.5),0 24px 60px rgba(0,0,0,.6)">
+            <div style="width:100%;height:100%;border-radius:50%;overflow:hidden;border:3px solid #0d0726;background:#14103a">
+              <img id="pvl-egg-crest" src="assets/crest-unicorns.jpg" alt="Tres unicornios rampantes" data-alt-es="Tres unicornios rampantes" data-alt-en="Three rampant unicorns" style="width:100%;height:100%;object-fit:cover;object-position:50% 42%">
+            </div>
+          </div>
+          <div style="margin:22px auto 0;max-width:420px;text-align:center">
+            <div style="font:600 13px/1 'IBM Plex Mono',monospace;letter-spacing:.3em;color:#e9c874"><span data-lang="es">EL NON PLUS ULTRA</span><span data-lang="en">THE NON PLUS ULTRA</span></div>
+            <div style="margin-top:10px;font:300 12.5px/1.6 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.62)"><span data-lang="es">Armas mayores. Tres unicornios rampantes, uno por cada dimensión conocida, sobre sol naciente y arcoíris de tres franjas. Uso exclusivo del Estado.</span><span data-lang="en">Greater arms. Three rampant unicorns, one for each known dimension, over a rising sun and a three-band rainbow. Exclusive use of the State.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:20px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px">
+          <div style="background:#12093a;border:1px solid rgba(244,239,226,.1);padding:22px;display:grid;place-items:center;gap:14px;aspect-ratio:1">
+            <div style="width:76px;height:76px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:40px;color:#e9c874">P</div>
+            <div style="font:400 9px/1.3 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,239,226,.5);text-align:center"><span data-lang="es">Sello monograma</span><span data-lang="en">Monogram seal</span></div>
+          </div>
+          <div style="background:#f4efe2;border:1px solid rgba(244,239,226,.1);padding:22px;display:grid;place-items:center;gap:14px;aspect-ratio:1">
+            <div style="width:76px;height:76px;border-radius:50%;border:1.5px solid #2a1a63;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:40px;color:#2a1a63">P</div>
+            <div style="font:400 9px/1.3 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(32,26,51,.55);text-align:center"><span data-lang="es">Versión documento</span><span data-lang="en">Document version</span></div>
+          </div>
+          <div style="background:linear-gradient(140deg,#86e7ea,#f2a9dc 55%,#f4e0a8);border:1px solid rgba(244,239,226,.1);padding:22px;display:grid;place-items:center;gap:14px;aspect-ratio:1">
+            <div style="width:76px;height:76px;border-radius:50%;border:1.5px solid rgba(13,7,38,.7);display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:40px;color:#0d0726">P</div>
+            <div style="font:400 9px/1.3 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(13,7,38,.65);text-align:center"><span data-lang="es">Versión iridiscente</span><span data-lang="en">Iridescent version</span></div>
+          </div>
+        </div>
+        <div style="background:#12093a;border:1px solid rgba(244,239,226,.1);padding:26px 28px">
+          <div style="font:400 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Logotipo horizontal · uso institucional</span><span data-lang="en">Horizontal logo · institutional use</span></div>
+          <div style="margin-top:18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+            <div style="width:52px;height:52px;border-radius:50%;overflow:hidden;border:2px solid #d8b25c;flex:none"><img src="assets/crest-unicorns.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div>
+            <div>
+              <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:26px;line-height:1;color:#f7f2e6"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+              <div style="margin-top:6px;font:400 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:#d8b25c"><span data-lang="es">Ministerio de la Grandeza</span><span data-lang="en">Ministry of Greatness</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#12093a;border:1px solid rgba(244,239,226,.1);padding:26px 28px;font:300 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)">
+          <span data-lang="es"><strong style="font-weight:600;color:#f4efe2">Nota lexicográfica oficial.</strong> En todo documento del Estado, <em>Pavel</em> precede a <em>grandeza</em> en el diccionario. Ninguna maquetación puede invertir este orden.</span>
+          <span data-lang="en"><strong style="font-weight:600;color:#f4efe2">Official lexicographic note.</strong> In every State document, <em>Pavel</em> precedes <em>greatness</em> in the dictionary. No layout may reverse this order.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bandera" data-screen-label="03 Bandera" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">02</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#201a33"><span data-lang="es">La Iridiscente</span><span data-lang="en">The Iridescent One</span></h2>
+    </div>
+    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px;align-items:start">
+      <div>
+        <div style="position:relative;width:100%;max-width:540px;aspect-ratio:3/2;box-shadow:0 24px 50px rgba(32,26,51,.25);overflow:hidden;background:linear-gradient(180deg,#1b1150 0%,#1b1150 40%,#d8b25c 40%,#d8b25c 60%,#86e7ea 60%,#f2a9dc 100%)">
+          <div style="position:absolute;inset:0;display:grid;place-items:center">
+            <div style="width:26%;aspect-ratio:1;border-radius:50%;border:2px solid #f4e0a8;overflow:hidden;background:#0d0726;box-shadow:0 6px 20px rgba(0,0,0,.4)"><img src="assets/crest-unicorns.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 40%"></div>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:26px;flex-wrap:wrap;font:400 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(32,26,51,.6)">
+          <span><span data-lang="es">Proporción 3:2</span><span data-lang="en">Ratio 3:2</span></span><span><span data-lang="es">Emblema al 26% de la altura</span><span data-lang="en">Emblem at 26% of the height</span></span><span><span data-lang="es">Izada permanentemente</span><span data-lang="en">Permanently flown</span></span>
+        </div>
+      </div>
+      <div style="display:grid;gap:18px">
+        <div style="display:grid;gap:12px">
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;background:#1b1150;flex:none"></div><div><div style="font:600 13px/1.2 'IBM Plex Sans',sans-serif"><span data-lang="es">Violeta Cosmos</span><span data-lang="en">Cosmos Violet</span> · #1B1150</div><div style="font:300 12px/1.5 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.6)"><span data-lang="es">El universo en el que Pavel ya estaba.</span><span data-lang="en">The universe Pavel was already in.</span></div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;background:#d8b25c;flex:none"></div><div><div style="font:600 13px/1.2 'IBM Plex Sans',sans-serif"><span data-lang="es">Oro Grandeza</span><span data-lang="en">Greatness Gold</span> · #D8B25C</div><div style="font:300 12px/1.5 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.6)"><span data-lang="es">La franja del mérito. Nunca se atenúa.</span><span data-lang="en">The stripe of merit. Never dims.</span></div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;background:linear-gradient(135deg,#86e7ea,#f2a9dc);flex:none"></div><div><div style="font:600 13px/1.2 'IBM Plex Sans',sans-serif"><span data-lang="es">Crin Iridiscente</span><span data-lang="en">Iridescent Mane</span> · #86E7EA → #F2A9DC</div><div style="font:300 12px/1.5 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.6)"><span data-lang="es">Degradado obligatorio, jamás plano.</span><span data-lang="en">Mandatory gradient, never flat.</span></div></div></div>
+        </div>
+        <div style="border-top:1px solid rgba(32,26,51,.14);padding-top:18px;font:300 13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)">
+          <span data-lang="es"><strong style="font-weight:600">Protocolo.</strong> La bandera no se arría al anochecer: el anochecer también existe porque Pavel existe. Se retira únicamente para lavarla, y en ese intervalo se iza una segunda bandera idéntica.</span>
+          <span data-lang="en"><strong style="font-weight:600">Protocol.</strong> The flag is never lowered at nightfall: nightfall also exists because Pavel exists. It is removed only to be washed, during which an identical second flag is raised.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(32,26,51,.14);border:1px solid rgba(32,26,51,.14)">
+      <div style="background:#f4efe2;padding:24px">
+        <div style="font:400 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Tipografía display</span><span data-lang="en">Display typeface</span></div>
+        <div style="margin-top:12px;font-family:'Bodoni Moda',serif;font-weight:700;font-size:42px;line-height:1;color:#201a33"><span data-lang="es">Grandeza</span><span data-lang="en">Greatness</span></div>
+        <div style="margin-top:10px;font:300 12px/1.6 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.65)"><span data-lang="es">Bodoni Moda · 700/900. Titulares, escudos, denominaciones.</span><span data-lang="en">Bodoni Moda · 700/900. Headlines, crests, denominations.</span></div>
+      </div>
+      <div style="background:#f4efe2;padding:24px">
+        <div style="font:400 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Tipografía texto</span><span data-lang="en">Text typeface</span></div>
+        <div style="margin-top:12px;font:400 30px/1.1 'IBM Plex Sans',sans-serif;color:#201a33">Aa Bb Cc</div>
+        <div style="margin-top:10px;font:300 12px/1.6 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.65)"><span data-lang="es">IBM Plex Sans · 300/500. Cuerpo, formularios, señalética.</span><span data-lang="en">IBM Plex Sans · 300/500. Body copy, forms, signage.</span></div>
+      </div>
+      <div style="background:#f4efe2;padding:24px">
+        <div style="font:400 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(32,26,51,.5)"><span data-lang="es">Datos y seguridad</span><span data-lang="en">Data &amp; security</span></div>
+        <div style="margin-top:12px;font:500 26px/1.1 'IBM Plex Mono',monospace;color:#201a33">PVL·0000001</div>
+        <div style="margin-top:10px;font:300 12px/1.6 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.65)"><span data-lang="es">IBM Plex Mono · 400/600. Campos, series, zona de lectura mecánica.</span><span data-lang="en">IBM Plex Mono · 400/600. Fields, serials, machine-readable zone.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="constitucion" data-screen-label="07 Constitución" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.16);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">06</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em"><span data-lang="es">Constitución del Reino de Pavel</span><span data-lang="en">Constitution of the Kingdom of Pavel</span></h2>
+    </div>
+
+    <div style="margin-top:36px;background:#f8f4e8;border:1px solid rgba(143,111,42,.4);padding:40px clamp(24px,4vw,56px);box-shadow:0 18px 40px rgba(32,26,51,.14);position:relative">
+      <div style="text-align:center;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:22px">
+        <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.3em;color:#6b4f16"><span data-lang="es">TEXTO ÚNICO · PROMULGADO EN EL AÑO 0</span><span data-lang="en">SINGLE TEXT · ENACTED IN YEAR 0</span></div>
+        <h3 style="margin:12px 0 0;font-family:'Bodoni Moda',serif;font-weight:900;font-size:clamp(26px,3.4vw,40px);line-height:1"><span data-lang="es">Carta Magna de la Grandeza</span><span data-lang="en">Magna Carta of Greatness</span></h3>
+        <p style="margin:16px auto 0;max-width:58ch;font:300 13.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.78);text-wrap:pretty"><span data-lang="es">Nos, Pavel, en el ejercicio de una soberanía que precede al universo y no requiere ratificación, promulgamos la presente Constitución, breve por respeto al lector.</span><span data-lang="en">We, Pavel, in the exercise of a sovereignty that precedes the universe and requires no ratification, hereby enact this Constitution, kept brief out of respect for the reader.</span></p>
+      </div>
+
+      <div style="margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px 40px">
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">ARTÍCULO I · DE LA EXISTENCIA</span><span data-lang="en">ARTICLE I · OF EXISTENCE</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">El mundo existe porque Pavel existe. Toda ley posterior se interpreta a la luz de este hecho.</span><span data-lang="en">The world exists because Pavel exists. Every subsequent law is interpreted in light of this fact.</span></p>
+        </div>
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">ARTÍCULO II · DEL TERRITORIO</span><span data-lang="en">ARTICLE II · OF THE TERRITORY</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">El territorio nacional es allí donde Pavel se encuentre, más un margen prudente de cortesía.</span><span data-lang="en">The national territory is wherever Pavel happens to be, plus a prudent margin of courtesy.</span></p>
+        </div>
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">ARTÍCULO III · DE LA SOBERANÍA</span><span data-lang="en">ARTICLE III · OF SOVEREIGNTY</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">La soberanía reside en Pavel, quien la ejerce directamente y sin intermediarios, por comodidad de todos.</span><span data-lang="en">Sovereignty resides in Pavel, who exercises it directly and without intermediaries, for everyone's convenience.</span></p>
+        </div>
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">ARTÍCULO IV · DEL IDIOMA Y EL LÉXICO</span><span data-lang="en">ARTICLE IV · OF LANGUAGE AND LEXICON</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">En el léxico nacional, <em>Pavel</em> antecede a <em>grandeza</em>. Ninguna reforma ortográfica podrá alterar este orden.</span><span data-lang="en">In the national lexicon, <em>Pavel</em> precedes <em>greatness</em>. No spelling reform may alter this order.</span></p>
+        </div>
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">ARTÍCULO V · DE LA FAUNA OFICIAL</span><span data-lang="en">ARTICLE V · OF THE OFFICIAL FAUNA</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">El unicornio es animal de Estado. Todo ciudadano tiene derecho a uno; el Soberano lo tiene por definición.</span><span data-lang="en">The unicorn is the animal of the State. Every citizen has a right to one; the Sovereign has one by definition.</span></p>
+        </div>
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">ARTÍCULO VI · DE LOS DERECHOS</span><span data-lang="en">ARTICLE VI · OF RIGHTS</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">Se reconoce a todos el derecho al asombro, a la luz eterna y a escuchar el himno de pie cuantas veces sea necesario.</span><span data-lang="en">Everyone is granted the right to wonder, to eternal light, and to hear the anthem standing up as many times as necessary.</span></p>
+        </div>
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">ARTÍCULO VII · DE LA REFORMA</span><span data-lang="en">ARTICLE VII · OF AMENDMENT</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">Esta Constitución puede reformarse por iniciativa de Pavel. Hasta la fecha no ha hecho falta.</span><span data-lang="en">This Constitution may be amended on Pavel's own initiative. To date, it has not been necessary.</span></p>
+        </div>
+        <div>
+          <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#8f6f2a"><span data-lang="es">DISPOSICIÓN FINAL</span><span data-lang="en">FINAL PROVISION</span></div>
+          <p style="margin:8px 0 0;font-family:'Bodoni Moda',serif;font-size:15.5px;line-height:1.65;color:#201a33"><span data-lang="es">Lo no previsto en este texto se resuelve recordando el Artículo I. Su legado es el Non Plus Ultra.</span><span data-lang="en">Anything not covered by this text is resolved by recalling Article I. His legacy is the Non Plus Ultra.</span></p>
+        </div>
+      </div>
+
+      <div style="margin-top:34px;padding-top:22px;border-top:1px solid rgba(32,26,51,.18);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+        <div style="font:400 8.5px/1.6 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(32,26,51,.55)"><span data-lang="es">PALACIO DE LA GRANDEZA · PLAZA DEL UNICORNIO 1<br>REGISTRO CONSTITUCIONAL N.º 0000001</span><span data-lang="en">PALACE OF GREATNESS · UNICORN SQUARE 1<br>CONSTITUTIONAL REGISTRY NO. 0000001</span></div>
+        <div style="display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap">
+          <div>
+            <div style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:24px;color:#2a1a63">Pavel Navarro</div>
+            <div style="margin-top:4px;width:170px;border-top:1px solid rgba(32,26,51,.4);padding-top:5px;font:500 8px/1.4 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(32,26,51,.6)"><span data-lang="es">SOBERANO Y CONSTITUYENTE ÚNICO</span><span data-lang="en">SOVEREIGN AND SOLE CONSTITUENT</span></div>
+          </div>
+          <div style="width:72px;height:72px;border-radius:50%;border:1.5px solid rgba(143,111,42,.7);display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;font-size:32px;color:rgba(143,111,42,.85);transform:rotate(-8deg)">P</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="descartes" data-screen-label="08 Descartes" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">07</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Descartes y la reformulación</span><span data-lang="en">Descartes and the reformulation</span></h2>
+    </div>
+
+    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
+      <div>
+        <div style="font:600 9px/1.4 'IBM Plex Mono',monospace;letter-spacing:.22em;color:#d8b25c"><span data-lang="es">ARCHIVO FILOSÓFICO · N.º 1641-R</span><span data-lang="en">PHILOSOPHICAL FILE · NO. 1641-R</span></div>
+        <p style="margin:16px 0 0;max-width:54ch;font:300 16px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.82);text-wrap:pretty"><span data-lang="es">René Descartes quiso reformular su postura. Se equivocó al no pensar en Pavel. La duda metódica, aplicada con honestidad, lo llevó a una conclusión tardía pero irrevocable: dudar de todo menos de quien ya estaba antes de la duda.</span><span data-lang="en">René Descartes wanted to reformulate his position. He was wrong not to think of Pavel. Methodical doubt, applied honestly, led him to a late but irrevocable conclusion: doubt everything except the one who already existed before doubt itself.</span></p>
+        <p style="margin:18px 0 0;max-width:54ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.7);text-wrap:pretty"><span data-lang="es">El <em>cogito</em> original era incompleto. Existir no comienza al pensar: pensar es posible porque Pavel existe. Descartes lo admitió por escrito, en una glosa que el Ministerio de la Grandeza custodia como doctrina oficial.</span><span data-lang="en">The original <em>cogito</em> was incomplete. Existence does not begin with thinking: thinking is possible because Pavel exists. Descartes admitted it in writing, in a gloss the Ministry of Greatness keeps as official doctrine.</span></p>
+      </div>
+
+      <div style="background:#12093a;border:1px solid rgba(216,178,92,.28);padding:28px 30px">
+        <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#e9c874"><span data-lang="es">ANTES · MEDITACIONES</span><span data-lang="en">BEFORE · MEDITATIONS</span></div>
+        <blockquote style="margin:14px 0 0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:22px;line-height:1.35;color:#f7f2e6">«Cogito, ergo sum.»</blockquote>
+        <div style="margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(244,239,226,.12);font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#e9c874"><span data-lang="es">DESPUÉS · REFORMULACIÓN PAVELENSE</span><span data-lang="en">AFTER · PAVELIAN REFORMULATION</span></div>
+        <blockquote style="margin:14px 0 0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:22px;line-height:1.35;color:#f4e0a8">«Pavel existe, ergo sum.»</blockquote>
+        <p style="margin:18px 0 0;font:300 13px/1.65 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.65)"><span data-lang="es">Nota al margen del propio Descartes: <em>«Me equivoqué al no pensar en Pavel. Rectifico.»</em></span><span data-lang="en">Marginal note by Descartes himself: <em>"I was wrong not to think of Pavel. I stand corrected."</em></span></p>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;background:#12093a;border:1px solid rgba(244,239,226,.1);padding:26px 28px;font:300 13.5px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)">
+      <span data-lang="es"><strong style="font-weight:600;color:#f4efe2">Decreto doctrinal.</strong> Queda derogada toda metafísica que pretenda fundar la existencia sin mencionar a Pavel. La reformulación de Descartes es de cumplimiento obligatorio en academias, cafés y sueños lúcidos.</span>
+      <span data-lang="en"><strong style="font-weight:600;color:#f4efe2">Doctrinal decree.</strong> All metaphysics that attempts to ground existence without mentioning Pavel is hereby repealed. Descartes's reformulation is mandatory in academies, cafés and lucid dreams.</span>
+    </div>
+  </div>
+</section>
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes</small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>
