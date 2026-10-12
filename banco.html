@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP built from an audit of every resource this page actually loads: same-origin
+     assets/scripts, Google Fonts (fonts.googleapis.com CSS + fonts.gstatic.com files),
+     and support.js's runtime, which injects React/ReactDOM/Babel from unpkg.com (each
+     pinned to an exact version with a Subresource Integrity hash in support.js) and
+     evaluates this page's inline <script data-dc-script> logic via `new Function`
+     (hence 'unsafe-eval'). No build step exists to hash/nonce the inline <style>/<script>
+     blocks, so 'unsafe-inline' is a deliberate, documented tradeoff. img-src allows
+     data: for the inline SVG favicon below. See SECURITY_NOTES.md. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>National Bank of Pavelandia · Kingdom of Pavel</title>
+<link rel="stylesheet" href="assets/css/reino.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<!-- SEO / sharing metadata. Description is in English to match the page's default
+     language (<html lang="en">, EN shown on first load) and og:locale below; the
+     EN/ES toggle only swaps visible DOM text, which crawlers and share-preview
+     bots don't execute, so a single crawler-facing language was chosen deliberately
+     rather than trying to cram both languages into one meta value. -->
+<meta name="description" content="The National Bank of Pavelandia, the sovereign bank of the Kingdom of Pavel: tiered credit cards to download, accounts opened instantly, loans always approved, Grandeza exchange rates and branches on the map. A novelty, not a real bank.">
+<!-- Canonical / og:url use a relative, self-referencing path because no real
+     hosting domain has been confirmed yet (only the in-universe joke domain
+     REINODEPAVEL.GOV appears in the diplomatic-letter copy, which is not a real,
+     registered address). Replace both with an absolute https://... URL once the
+     owner picks the actual domain (GitHub Pages URL or custom domain). -->
+<link rel="canonical" href="banco.html">
+<meta property="og:url" content="banco.html">
+<meta property="og:site_name" content="Reino de Pavel · Kingdom of Pavel">
+<meta property="og:title" content="National Bank of Pavelandia · Kingdom of Pavel">
+<meta property="og:description" content="The National Bank of Pavelandia, the sovereign bank of the Kingdom of Pavel: tiered credit cards to download, accounts opened instantly, loans always approved, Grandeza exchange rates and branches on the map. A novelty, not a real bank.">
+<!-- Relative path: works once this file and assets/ are hosted together (e.g. GitHub
+     Pages). Swap for an absolute URL once the final domain is known — most social
+     crawlers (Facebook/Slack/Discord) require an absolute og:image URL to render a
+     preview at all, so this MUST become absolute before launch, not just as a nicety. -->
+<meta property="og:image" content="assets/crest-unicorns.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="National Bank of Pavelandia · Kingdom of Pavel">
+<meta name="twitter:description" content="The National Bank of Pavelandia, the sovereign bank of the Kingdom of Pavel: tiered credit cards to download, accounts opened instantly, loans always approved, Grandeza exchange rates and branches on the map. A novelty, not a real bank.">
+<meta name="twitter:image" content="assets/crest-unicorns.jpg">
+<!-- Favicon: inline SVG reusing the gold-P-in-a-ring monogram from the site header
+     (no new external asset). Violeta Cosmos / Oro Grandeza per the design system. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b1150' stroke='%23d8b25c' stroke-width='3'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-weight='700' font-size='36' fill='%23e9c874' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/huevos.js"></script>
+<script src="assets/js/mundo.js"></script>
+<script src="assets/js/lienzo.js"></script>
+<script src="assets/js/banco.js"></script>
+</helmet>
+<header class="pvl-subhead" data-screen-label="00 Banco Nacional">
+  <div style="position:relative;max-width:1180px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="reino-de-pavel.dc.html" class="pvl-brand" style="display:flex;align-items:center;gap:12px">
+      <div style="width:34px;height:34px;border-radius:50%;border:1.5px solid #d8b25c;display:grid;place-items:center;font-family:'Bodoni Moda',serif;font-weight:700;color:#e9c874;font-size:17px">P</div>
+      <div style="font:500 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.22em;color:rgba(244,239,226,.72);text-transform:uppercase">Imperio del Reino de Pavel</div>
+      <div id="pavel-ciudadano" style="display:none;margin-left:8px;padding:5px 10px;border:1px solid rgba(216,178,92,.4);border-radius:999px;font:500 9px/1.2 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e9c874"><span data-lang="es">Ciudadano</span><span data-lang="en">Citizen</span> · <span id="pavel-ciudadano-nombre"></span></div>
+    </a>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button id="pvl-nav-toggle" type="button" class="pvl-nav-toggle" aria-expanded="false" aria-controls="pvl-nav" aria-label="Menu" data-aria-es="Menú" data-aria-en="Menu"><span></span><span></span><span></span></button>
+      <nav id="pvl-nav" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;font:400 12px/1 'IBM Plex Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,239,226,.66)">
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="el-reino.html#emblema"><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span></a>
+            <a href="el-reino.html#blason"><span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span></a>
+            <a href="el-reino.html#bandera"><span data-lang="es">Bandera</span><span data-lang="en">Flag</span></a>
+            <a href="reino-de-pavel.dc.html#himno"><span data-lang="es">Himno</span><span data-lang="en">Anthem</span></a>
+            <a href="el-reino.html#constitucion"><span data-lang="es">Constitución</span><span data-lang="en">Constitution</span></a>
+            <a href="el-reino.html#descartes">Descartes</a>
+            <a href="el-reino.html#clima"><span data-lang="es">Clima</span><span data-lang="en">Weather</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#documentos"><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span></a>
+            <a href="documentos.html#moneda"><span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span></a>
+            <a href="documentos.html#papeleria"><span data-lang="es">Papelería</span><span data-lang="en">Stationery</span></a>
+            <a href="documentos.html#visa"><span data-lang="es">Visado</span><span data-lang="en">Visa</span></a>
+            <a href="documentos.html#calendario"><span data-lang="es">Calendario</span><span data-lang="en">Calendar</span></a>
+            <a href="documentos.html#hora-real"><span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="documentos.html#ciudadania"><span data-lang="es">Ciudadanía</span><span data-lang="en">Citizenship</span></a>
+            <a href="honores.html#orden-unicornio"><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span></a>
+            <a href="honores.html#premio-pavel"><span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span></a>
+            <a href="honores.html#titulo"><span data-lang="es">Título real</span><span data-lang="en">Royal title</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="ministerios.html#decreto"><span data-lang="es">Decreto</span><span data-lang="en">Decree</span></a>
+            <a href="ministerios.html#quejas"><span data-lang="es">Quejas</span><span data-lang="en">Complaints</span></a>
+            <a href="ministerios.html#quiz">Quiz</a>
+            <a href="ministerios.html#test-psi"><span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span></a>
+            <a href="ministerios.html#oraculo"><span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span></a>
+            <a href="ministerios.html#bolsa"><span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Cultura</span><span data-lang="en">Culture</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></a>
+            <a href="museo.html"><span data-lang="es">Museo</span><span data-lang="en">Museum</span></a>
+            <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></a>
+            <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span></a>
+            <a href="descargas.html#postales"><span data-lang="es">Postales</span><span data-lang="en">Postcards</span></a>
+            <a href="gastronomia.html"><span data-lang="es">Gastronomía</span><span data-lang="en">Cuisine</span></a>
+            <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
+            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+            <a href="arcade.html#pavel-dice"><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span></a>
+            <a href="arcade.html#arcade"><span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Viajes</span><span data-lang="en">Travel</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="aerolinea.html#aerolinea">Pavel Airlines</a>
+            <a href="aerolinea.html#vuelos"><span data-lang="es">Salidas y llegadas</span><span data-lang="en">Departures</span></a>
+            <a href="aerolinea.html#flota"><span data-lang="es">Flota y UnicornMiles</span><span data-lang="en">Fleet & UnicornMiles</span></a>
+            <a href="aerolinea.html#aeropuerto"><span data-lang="es">Aeropuerto PVL</span><span data-lang="en">PVL Airport</span></a>
+          </div>
+        </div>
+        <div class="pvl-nav-group">
+          <button type="button" class="pvl-nav-trigger" aria-haspopup="true" aria-expanded="false"><span data-lang="es">Banco</span><span data-lang="en">Bank</span><svg class="pvl-nav-caret" width="9" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"></path></svg></button>
+          <div class="pvl-nav-menu">
+            <a href="banco.html#banco"><span data-lang="es">Banca en línea</span><span data-lang="en">Online banking</span></a>
+            <a href="banco.html#tarjetas"><span data-lang="es">Tarjetas de crédito</span><span data-lang="en">Credit cards</span></a>
+            <a href="banco.html#cuentas"><span data-lang="es">Cuentas</span><span data-lang="en">Accounts</span></a>
+            <a href="banco.html#prestamos"><span data-lang="es">Préstamos e hipotecas</span><span data-lang="en">Loans &amp; mortgages</span></a>
+            <a href="banco.html#cambio"><span data-lang="es">Cambio de divisas</span><span data-lang="en">Currency exchange</span></a>
+            <a href="banco.html#sucursales"><span data-lang="es">Sucursales y cajeros</span><span data-lang="en">Branches &amp; ATMs</span></a>
+          </div>
+        </div>
+        <a href="cronica.html" class="pvl-nav-toplink"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></a>
+      </nav>
+      <div class="pvl-lang-switch" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="es">ES</button>
+      </div>
+    </div>
+  </div>
+  <div class="pvl-subhead-in">
+    <div class="pvl-crumbs"><a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span></a><span aria-hidden="true">›</span><span><span data-lang="es">Banco Nacional</span><span data-lang="en">National Bank</span></span></div>
+    <h1><span data-lang="es">Banco Nacional de Pavelandia</span><span data-lang="en">National Bank of Pavelandia</span></h1>
+    <p class="pvl-subhead-lead"><span data-lang="es">El banco soberano de un país de un solo ciudadano. Reservas: infinitas. Clientes: usted.</span><span data-lang="en">The sovereign bank of a one-citizen country. Reserves: infinite. Customers: you.</span></p>
+    <div class="pvl-chips">
+      <a href="#banco"><span data-lang="es">Banca en línea</span><span data-lang="en">Online banking</span></a>
+      <a href="#tarjetas"><span data-lang="es">Tarjetas</span><span data-lang="en">Cards</span></a>
+      <a href="#cuentas"><span data-lang="es">Cuentas</span><span data-lang="en">Accounts</span></a>
+      <a href="#prestamos"><span data-lang="es">Préstamos</span><span data-lang="en">Loans</span></a>
+      <a href="#cambio"><span data-lang="es">Cambio</span><span data-lang="en">Exchange</span></a>
+      <a href="#sucursales"><span data-lang="es">Sucursales</span><span data-lang="en">Branches</span></a>
+    </div>
+  </div>
+</header>
+<div class="pvl-bk-aviso" role="note"><b><span data-lang="es">BANCO DE BROMA</span><span data-lang="en">NOVELTY BANK</span></b> <span data-lang="es">El Banco Nacional de Pavelandia no es un banco real: no guarda dinero, no cobra, no presta y no envía nada a ningún sitio. Nunca escriba aquí contraseñas, números de tarjeta ni datos bancarios reales, y desconfíe de cualquier página que se los pida.</span><span data-lang="en">The National Bank of Pavelandia is not a real bank: it holds no money, charges nothing, lends nothing and sends nothing anywhere. Never type real passwords, card numbers or bank details here, and distrust any page that asks for them.</span></div>
+
+<section id="banco" data-screen-label="38 Banco Nacional" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">38</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Banca en línea</span><span data-lang="en">Online banking</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">Fundado el mismo día que el Reino, el Banco Nacional emite la Grandeza, custodia la Bóveda Real y concede todos los préstamos que se le piden. Su calificación crediticia, AAA+∞, se la otorgó él mismo.</span><span data-lang="en">Founded the same day as the Kingdom, the National Bank issues the Grandeza, keeps the Royal Vault and grants every loan it is asked for. Its credit rating, AAA+∞, it awarded itself.</span></p>
+    <div class="pvl-bk-dos" style="margin-top:36px">
+      <form id="pvl-bk-login" class="pvl-bk-form" autocomplete="off">
+        <div class="pvl-bk-kicker"><span data-lang="es">ACCESO DE CLIENTES</span><span data-lang="en">CUSTOMER LOGIN</span></div>
+        <label class="pvl-bk-campo"><span><span data-lang="es">Nombre de peregrino</span><span data-lang="en">Pilgrim name</span></span><input id="pvl-bk-usuario" type="text" maxlength="26" autocomplete="off" placeholder="Ana García"></label>
+        <label class="pvl-bk-campo"><span><span data-lang="es">Nivel de devoción</span><span data-lang="en">Devotion level</span> · <output id="pvl-bk-devocion-v">100</output>%</span><input id="pvl-bk-devocion" type="range" min="0" max="100" value="100"></label>
+        <p class="pvl-bk-nota"><span data-lang="es">Aquí no hay contraseña: su identidad se verifica por su devoción. El Banco nunca le pedirá una contraseña, y usted no debería dársela a ninguna página de broma.</span><span data-lang="en">There is no password here: your identity is verified by your devotion. The Bank will never ask you for a password, and you should never give one to a joke page.</span></p>
+        <button type="submit" class="pvl-bk-btn"><span data-lang="es">Entrar en la banca en línea</span><span data-lang="en">Enter online banking</span></button>
+        <p id="pvl-bk-login-msg" class="pvl-bk-ok" role="status" aria-live="polite"></p>
+      </form>
+      <div class="pvl-bk-cifras">
+        <div><small><span data-lang="es">RESERVAS</span><span data-lang="en">RESERVES</span></small><b>∞ G</b><span><span data-lang="es">Auditadas por el Soberano</span><span data-lang="en">Audited by the Sovereign</span></span></div>
+        <div><small><span data-lang="es">TIPO DE INTERÉS OFICIAL</span><span data-lang="en">BASE RATE</span></small><b id="pvl-bk-tipo">0 %</b><span><span data-lang="es">Fijado según el humor del día</span><span data-lang="en">Set by the mood of the day</span></span></div>
+        <div><small><span data-lang="es">CALIFICACIÓN</span><span data-lang="en">RATING</span></small><b>AAA+∞</b><span><span data-lang="es">Autoconcedida, con orgullo</span><span data-lang="en">Self-awarded, proudly</span></span></div>
+        <div><small><span data-lang="es">MOROSIDAD</span><span data-lang="en">BAD DEBT</span></small><b><span data-lang="es">0,00 %</span><span data-lang="en">0.00%</span></b><span><span data-lang="es">Nadie le debe nada a la grandeza</span><span data-lang="en">No one owes greatness anything</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarjetas" data-screen-label="39 Tarjetas" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">39</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Tarjetas de crédito</span><span data-lang="en">Credit cards</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Cuatro tarjetas, de la Clásica a la Infinita, todas con red UNICORN, aceptadas en cualquier lugar donde se conozca a Pavel (es decir, en todas partes). Elija la suya, póngale su nombre y descárguela.</span><span data-lang="en">Four cards, from Classic to Infinite, all on the UNICORN network, accepted wherever Pavel is known (that is, everywhere). Pick yours, put your name on it and download it.</span></p>
+    <div id="pvl-bk-gama" class="pvl-bk-gama" role="radiogroup" aria-label="Card range" data-aria-es="Gama de tarjetas" data-aria-en="Card range" style="margin-top:36px"></div>
+    <div class="pvl-bk-tarjeta-sala">
+      <div id="pvl-bk-tarjeta-vista" class="pvl-bk-tarjeta-vista"></div>
+      <div class="pvl-bk-tarjeta-info">
+        <label class="pvl-bk-campo pvl-bk-campo-claro"><span><span data-lang="es">Nombre en la tarjeta</span><span data-lang="en">Name on the card</span></span><input id="pvl-bk-titular" type="text" maxlength="24" autocomplete="off" placeholder="Ana García"></label>
+        <div id="pvl-bk-ventajas" aria-live="polite"></div>
+        <button type="button" id="pvl-bk-tarjeta-png" class="pvl-bk-btn"><span data-lang="es">Descargar la tarjeta (PNG)</span><span data-lang="en">Download the card (PNG)</span></button>
+        <p class="pvl-bk-nota pvl-bk-nota-claro"><span data-lang="es">El «número» lleva letras e infinitos: no sirve en ningún comercio del mundo, salvo en el corazón de Pavel.</span><span data-lang="en">The “number” contains letters and infinities: it works in no shop in the world, except Pavel’s heart.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cuentas" data-screen-label="40 Cuentas" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">40</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Cuentas</span><span data-lang="en">Accounts</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">Tres cuentas, una aprobación instantánea y ningún papeleo que no sea un certificado de bienvenida. La cuenta vive solo en este navegador.</span><span data-lang="en">Three accounts, instant approval and no paperwork beyond a welcome certificate. The account lives in this browser only.</span></p>
+    <div class="pvl-bk-productos" style="margin-top:36px">
+      <article class="pvl-bk-producto"><small><span data-lang="es">CUENTA CORRIENTE</span><span data-lang="en">CHECKING</span></small><h3><span data-lang="es">Corriente Grandeza</span><span data-lang="en">Grandeza Checking</span></h3><dl><div><dt><span data-lang="es">Saldo mínimo</span><span data-lang="en">Minimum balance</span></dt><dd><span data-lang="es">Su lealtad inquebrantable</span><span data-lang="en">Your undying loyalty</span></dd></div><div><dt><span data-lang="es">Comisiones</span><span data-lang="en">Fees</span></dt><dd><span data-lang="es">Una sonrisa al mes</span><span data-lang="en">One smile a month</span></dd></div><div><dt><span data-lang="es">Intereses</span><span data-lang="en">Interest</span></dt><dd><span data-lang="es">Se pagan en aplausos</span><span data-lang="en">Paid in applause</span></dd></div></dl></article>
+      <article class="pvl-bk-producto"><small><span data-lang="es">CUENTA DE AHORRO</span><span data-lang="en">SAVINGS</span></small><h3><span data-lang="es">Ahorro del Unicornio</span><span data-lang="en">Unicorn Savings</span></h3><dl><div><dt><span data-lang="es">Saldo mínimo</span><span data-lang="en">Minimum balance</span></dt><dd><span data-lang="es">Paciencia, que es una virtud</span><span data-lang="en">Patience, which is a virtue</span></dd></div><div><dt><span data-lang="es">Retiradas</span><span data-lang="en">Withdrawals</span></dt><dd><span data-lang="es">Ilimitadas, de afecto</span><span data-lang="en">Unlimited, of affection</span></dd></div><div><dt><span data-lang="es">Intereses</span><span data-lang="en">Interest</span></dt><dd><span data-lang="es">Ovación de pie anual</span><span data-lang="en">A yearly standing ovation</span></dd></div></dl></article>
+      <article class="pvl-bk-producto pvl-bk-producto-vip"><small><span data-lang="es">SOLO CON INVITACIÓN</span><span data-lang="en">BY INVITATION ONLY</span></small><h3><span data-lang="es">Bóveda Real</span><span data-lang="en">Royal Vault</span></h3><dl><div><dt><span data-lang="es">Saldo mínimo</span><span data-lang="en">Minimum balance</span></dt><dd><span data-lang="es">Haber cantado el himno entero</span><span data-lang="en">Having sung the whole anthem</span></dd></div><div><dt><span data-lang="es">Custodia</span><span data-lang="en">Custody</span></dt><dd><span data-lang="es">Dos unicornios armados</span><span data-lang="en">Two armed unicorns</span></dd></div><div><dt><span data-lang="es">Intereses</span><span data-lang="en">Interest</span></dt><dd><span data-lang="es">Una mención en el próximo decreto</span><span data-lang="en">A mention in the next decree</span></dd></div></dl></article>
+    </div>
+    <div class="pvl-bk-dos" style="margin-top:26px">
+      <form id="pvl-bk-abrir" class="pvl-bk-form" autocomplete="off">
+        <div class="pvl-bk-kicker"><span data-lang="es">ABRIR UNA CUENTA</span><span data-lang="en">OPEN AN ACCOUNT</span> · <span id="pvl-bk-paso-n">1</span>/3</div>
+        <ol class="pvl-bk-pasos" aria-hidden="true"><li class="pvl-bk-on"></li><li></li><li></li></ol>
+        <fieldset class="pvl-bk-paso" data-paso="1">
+          <legend><span data-lang="es">¿Qué cuenta desea?</span><span data-lang="en">Which account would you like?</span></legend>
+          <label class="pvl-bk-opcion"><input type="radio" name="pvl-bk-tipo" value="corriente" checked> <span><span data-lang="es">Corriente Grandeza</span><span data-lang="en">Grandeza Checking</span></span></label>
+          <label class="pvl-bk-opcion"><input type="radio" name="pvl-bk-tipo" value="ahorro"> <span><span data-lang="es">Ahorro del Unicornio</span><span data-lang="en">Unicorn Savings</span></span></label>
+          <label class="pvl-bk-opcion"><input type="radio" name="pvl-bk-tipo" value="boveda"> <span><span data-lang="es">Bóveda Real</span><span data-lang="en">Royal Vault</span></span></label>
+          <button type="button" class="pvl-bk-btn" data-pvl-bk-ir="2"><span data-lang="es">Siguiente</span><span data-lang="en">Next</span></button>
+        </fieldset>
+        <fieldset class="pvl-bk-paso" data-paso="2" hidden>
+          <legend><span data-lang="es">Sus datos (solo uno)</span><span data-lang="en">Your details (just one)</span></legend>
+          <label class="pvl-bk-campo"><span><span data-lang="es">Nombre de peregrino</span><span data-lang="en">Pilgrim name</span></span><input id="pvl-bk-abrir-nombre" type="text" maxlength="26" autocomplete="off" placeholder="Ana García"></label>
+          <label class="pvl-bk-opcion"><input id="pvl-bk-jura" type="checkbox"> <span><span data-lang="es">Juro lealtad eterna al Soberano y acepto que mis intereses se paguen en aplausos.</span><span data-lang="en">I swear eternal loyalty to the Sovereign and accept that my interest is paid in applause.</span></span></label>
+          <p class="pvl-bk-nota"><span data-lang="es">No pedimos documento, dirección, ingresos ni datos bancarios. Nunca.</span><span data-lang="en">We ask for no ID, address, income or bank details. Ever.</span></p>
+          <div class="pvl-bk-botones"><button type="button" class="pvl-bk-btn pvl-bk-btn-2" data-pvl-bk-ir="1"><span data-lang="es">Atrás</span><span data-lang="en">Back</span></button><button type="submit" class="pvl-bk-btn"><span data-lang="es">Solicitar</span><span data-lang="en">Apply</span></button></div>
+        </fieldset>
+        <fieldset class="pvl-bk-paso" data-paso="3" hidden>
+          <legend><span data-lang="es">Aprobada al instante</span><span data-lang="en">Approved instantly</span></legend>
+          <div id="pvl-bk-aprobada" aria-live="polite"></div>
+          <div class="pvl-bk-botones"><button type="button" id="pvl-bk-cert-png" class="pvl-bk-btn"><span data-lang="es">Descargar el certificado de bienvenida (PNG)</span><span data-lang="en">Download the welcome certificate (PNG)</span></button></div>
+        </fieldset>
+      </form>
+      <div id="pvl-bk-panel" class="pvl-bk-panel" aria-live="polite"></div>
+    </div>
+    <div id="pvl-bk-extracto" class="pvl-bk-extracto" hidden></div>
+  </div>
+</section>
+
+<section id="prestamos" data-screen-label="41 Préstamos" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">41</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Préstamos e hipotecas</span><span data-lang="en">Loans &amp; mortgages</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Todo préstamo se aprueba. Toda cuota vence «cuando la grandeza lo permita». El Banco no ha denegado nada desde su fundación, y no piensa empezar con usted.</span><span data-lang="en">Every loan is approved. Every instalment falls due “whenever greatness permits”. The Bank has refused nothing since its founding, and does not intend to start with you.</span></p>
+    <div class="pvl-bk-dos pvl-bk-dos-claro" style="margin-top:36px">
+      <form id="pvl-bk-prestamo" class="pvl-bk-form pvl-bk-form-claro" autocomplete="off">
+        <div class="pvl-bk-kicker"><span data-lang="es">PRÉSTAMO PERSONAL</span><span data-lang="en">PERSONAL LOAN</span></div>
+        <label class="pvl-bk-campo pvl-bk-campo-claro"><span><span data-lang="es">Importe (Grandezas)</span><span data-lang="en">Amount (Grandezas)</span></span><input id="pvl-bk-importe" type="number" min="1" max="999999999999" step="1" value="1000000"></label>
+        <label class="pvl-bk-campo pvl-bk-campo-claro"><span><span data-lang="es">Finalidad</span><span data-lang="en">Purpose</span></span><select id="pvl-bk-finalidad"><option value="unicornio">A unicorn</option><option value="bucees">Beaver Nuggets, wholesale</option><option value="estatua">A statue of Pavel</option><option value="vinilo">The anthem on vinyl</option><option value="nada">Nothing; I just like loans</option></select></label>
+        <label class="pvl-bk-campo pvl-bk-campo-claro"><span><span data-lang="es">Plazo</span><span data-lang="en">Term</span> · <output id="pvl-bk-plazo-v">12</output></span><input id="pvl-bk-plazo" type="range" min="1" max="99" value="12"></label>
+        <button type="submit" class="pvl-bk-btn"><span data-lang="es">Calcular y aprobar</span><span data-lang="en">Calculate and approve</span></button>
+        <div id="pvl-bk-prestamo-out" class="pvl-bk-resultado" aria-live="polite" hidden></div>
+      </form>
+      <form id="pvl-bk-hipoteca" class="pvl-bk-form pvl-bk-form-claro" autocomplete="off">
+        <div class="pvl-bk-kicker"><span data-lang="es">HIPOTECA EN PAVELÓPOLIS</span><span data-lang="en">PAVELÓPOLIS MORTGAGE</span></div>
+        <label class="pvl-bk-campo pvl-bk-campo-claro"><span><span data-lang="es">Parcela</span><span data-lang="en">Plot</span></span><select id="pvl-bk-parcela"><option value="centro">Pavelópolis Centro</option><option value="norte">Pavelópolis Norte</option><option value="lago">Orilla del Lago Iridiscente</option><option value="puerto">Puerto Grandeza</option><option value="san-unicornio">San Unicornio</option><option value="descartes">Villa Descartes</option><option value="rival">Isla del Rival</option></select></label>
+        <label class="pvl-bk-campo pvl-bk-campo-claro"><span><span data-lang="es">Superficie</span><span data-lang="en">Size</span> · <output id="pvl-bk-m2-v">120</output> m²</span><input id="pvl-bk-m2" type="range" min="20" max="2000" step="10" value="120"></label>
+        <button type="submit" class="pvl-bk-btn"><span data-lang="es">Tasar y aprobar</span><span data-lang="en">Value and approve</span></button>
+        <div id="pvl-bk-hipoteca-out" class="pvl-bk-resultado" aria-live="polite" hidden></div>
+        <a href="reino-de-pavel.dc.html#mapa" class="pvl-bk-link"><span data-lang="es">Ver las parcelas en el mapa del Reino →</span><span data-lang="en">See the plots on the map of the Kingdom →</span></a>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="cambio" data-screen-label="42 Cambio" style="padding:88px 40px;background:#0b0620">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">42</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Cambio de divisas</span><span data-lang="en">Currency exchange</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.72)"><span data-lang="es">Cambie cualquier moneda del mundo por Grandezas. El tipo se fija cada día al amanecer y siempre favorece a la Grandeza, que es lo justo.</span><span data-lang="en">Exchange any currency in the world for Grandezas. The rate is set each day at dawn and always favours the Grandeza, as is only fair.</span></p>
+    <div class="pvl-bk-dos" style="margin-top:36px">
+      <form id="pvl-bk-cambio" class="pvl-bk-form" autocomplete="off">
+        <div class="pvl-bk-kicker"><span data-lang="es">CONVERTIR</span><span data-lang="en">CONVERT</span></div>
+        <div class="pvl-bk-fila">
+          <label class="pvl-bk-campo"><span><span data-lang="es">Importe</span><span data-lang="en">Amount</span></span><input id="pvl-bk-fx-imp" type="number" min="0" step="any" value="1000"></label>
+          <label class="pvl-bk-campo"><span><span data-lang="es">Moneda</span><span data-lang="en">Currency</span></span><select id="pvl-bk-fx-mon"></select></label>
+        </div>
+        <div id="pvl-bk-fx-out" class="pvl-bk-fx-out" aria-live="polite"></div>
+        <p class="pvl-bk-nota"><span data-lang="es">Tipos ficticios, sembrados con la fecha. La Grandeza no cotiza fuera del Reino; dentro, solo sube.</span><span data-lang="en">Fictional rates, seeded from the date. The Grandeza is not traded outside the Kingdom; inside, it only goes up.</span></p>
+        <a href="ministerios.html#bolsa" class="pvl-bk-link pvl-bk-link-osc"><span data-lang="es">Ver la Bolsa de la Grandeza →</span><span data-lang="en">See the Greatness Stock Exchange →</span></a>
+      </form>
+      <div class="pvl-bk-pizarra">
+        <div class="pvl-bk-pizarra-top"><span><span data-lang="es">TIPOS DEL DÍA</span><span data-lang="en">TODAY’S RATES</span></span><span id="pvl-bk-fx-fecha"></span></div>
+        <table class="pvl-bk-tabla"><thead><tr><th scope="col"><span data-lang="es">Moneda</span><span data-lang="en">Currency</span></th><th scope="col"><span data-lang="es">1 G vale</span><span data-lang="en">1 G buys</span></th><th scope="col"><span data-lang="es">Hoy</span><span data-lang="en">Today</span></th></tr></thead><tbody id="pvl-bk-fx-tabla"></tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sucursales" data-screen-label="43 Sucursales" style="padding:88px 40px;background:#f4efe2;color:#201a33">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(32,26,51,.18);padding-bottom:16px">
+      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#8f6f2a">43</span>
+      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#1b1150"><span data-lang="es">Sucursales y cajeros</span><span data-lang="en">Branches &amp; ATMs</span></h2>
+    </div>
+    <p style="margin:22px 0 0;max-width:66ch;font:300 14px/1.7 'IBM Plex Sans',sans-serif;color:rgba(32,26,51,.75)"><span data-lang="es">Una red de oficinas a la altura del Reino. Todas están en el mapa, y todos los cajeros dispensan Grandezas y cumplidos.</span><span data-lang="en">A branch network worthy of the Kingdom. All of them are on the map, and every ATM dispenses Grandezas and compliments.</span></p>
+    <ul class="pvl-bk-sucursales" style="margin-top:36px">
+      <li><span class="pvl-bk-tipo-suc"><span data-lang="es">OFICINA CENTRAL</span><span data-lang="en">HEAD OFFICE</span></span><b><span data-lang="es">Palacio de la Grandeza</span><span data-lang="en">Palace of Greatness</span></b><span><span data-lang="es">Plaza del Unicornio 1 · abierto cuando Pavel está despierto</span><span data-lang="en">Unicorn Square 1 · open while Pavel is awake</span></span><small><span data-lang="es">Bóveda Real, emisión de Grandezas, audiencias</span><span data-lang="en">Royal Vault, Grandeza issuance, audiences</span></small></li>
+      <li><span class="pvl-bk-tipo-suc"><span data-lang="es">CAJERO 24/25</span><span data-lang="en">ATM 24/25</span></span><b>Buc-ee’s Pavelópolis Norte</b><span><span data-lang="es">Autopista U-2, salida 1 · junto a las Beaver Nuggets</span><span data-lang="en">U-2 highway, exit 1 · by the Beaver Nuggets</span></span><small><span data-lang="es">Retira Grandezas y brisket</span><span data-lang="en">Dispenses Grandezas and brisket</span></small></li>
+      <li><span class="pvl-bk-tipo-suc"><span data-lang="es">SUCURSAL</span><span data-lang="en">BRANCH</span></span><b><span data-lang="es">Puerto Grandeza</span><span data-lang="en">Port Greatness</span></b><span><span data-lang="es">Muelle 1 · horario de mareas</span><span data-lang="en">Pier 1 · tidal hours</span></span><small><span data-lang="es">Cambio de divisas para marineros</span><span data-lang="en">Currency exchange for sailors</span></small></li>
+      <li><span class="pvl-bk-tipo-suc"><span data-lang="es">CAJERO</span><span data-lang="en">ATM</span></span><b><span data-lang="es">Aeropuerto PVL · puerta ∞</span><span data-lang="en">PVL Airport · gate ∞</span></b><span><span data-lang="es">Zona de embarque · solo pasajeros del 1A</span><span data-lang="en">Airside · seat 1A passengers only</span></span><small><span data-lang="es">Canjea UnicornMiles por aplausos</span><span data-lang="en">Swaps UnicornMiles for applause</span></small></li>
+      <li><span class="pvl-bk-tipo-suc"><span data-lang="es">SUCURSAL</span><span data-lang="en">BRANCH</span></span><b>Buc-ee’s <span data-lang="es">del Desierto</span><span data-lang="en">Desert</span></b><span><span data-lang="es">240 surtidores · la mayor oficina bancaria del universo</span><span data-lang="en">240 pumps · the largest bank branch in the universe</span></span><small><span data-lang="es">Hipotecas con vistas a nada</span><span data-lang="en">Mortgages with a view of nothing</span></small></li>
+      <li><span class="pvl-bk-tipo-suc"><span data-lang="es">CAJERO</span><span data-lang="en">ATM</span></span><b><span data-lang="es">Cumbre del Monte Non Plus Ultra</span><span data-lang="en">Summit of Mount Non Plus Ultra</span></b><span><span data-lang="es">A 8.849 m · el cajero más alto del mundo</span><span data-lang="en">At 8,849 m · the highest ATM in the world</span></span><small><span data-lang="es">Comisión por altitud: cero</span><span data-lang="en">Altitude fee: zero</span></small></li>
+    </ul>
+    <a href="reino-de-pavel.dc.html#mapa" class="pvl-bk-link"><span data-lang="es">Ver todas las sucursales en el mapa del Reino →</span><span data-lang="en">See every branch on the map of the Kingdom →</span></a>
+  </div>
+</section>
+
+
+<nav class="pvl-wings" aria-label="Halls of the palace" data-aria-es="Salas del palacio" data-aria-en="Halls of the palace">
+  <div class="pvl-wings-in">
+    <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
+    <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
+    <div class="pvl-wings-grid">
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
+      <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span> · <span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></small></a>
+      <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span> · <span data-lang="es">Título real</span><span data-lang="en">Royal title</span></small></a>
+      <a href="ministerios.html"><span data-lang="es">Ministerios</span><span data-lang="en">Ministries</span><small><span data-lang="es">Decreto</span><span data-lang="en">Decree</span> · <span data-lang="es">Quejas</span><span data-lang="en">Complaints</span> · Quiz · <span data-lang="es">Test psicológico</span><span data-lang="en">Psych test</span> · <span data-lang="es">Oráculo</span><span data-lang="en">Oracle</span> · <span data-lang="es">Bolsa</span><span data-lang="en">Stock exchange</span></small></a>
+      <a href="biblioteca.html"><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span><small><span data-lang="es">Biblioteca Real</span><span data-lang="en">Royal Library</span></small></a>
+      <a href="banda-sonora.html"><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span><small><span data-lang="es">Banda sonora</span><span data-lang="en">Soundtrack</span></small></a>
+      <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span> · <span data-lang="es">Postales</span><span data-lang="en">Postcards</span></small></a>
+      <a href="gastronomia.html"><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span><small><span data-lang="es">Banquete · Recetario</span><span data-lang="en">Banquet · Recipes</span></small></a>
+      <a href="museo.html"><span data-lang="es">Museo Real</span><span data-lang="en">Royal Museum</span><small><span data-lang="es">Sala de las Reliquias</span><span data-lang="en">Hall of Relics</span></small></a>
+      <a href="arcade.html"><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span><small><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span> · <span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></small></a>
+      <a href="aerolinea.html">Pavel Airlines<small><span data-lang="es">Reservas · Salidas · Flota · Aeropuerto</span><span data-lang="en">Booking · Departures · Fleet · Airport</span></small></a>
+      <a href="banco.html"><span data-lang="es">Banco Nacional</span><span data-lang="en">National Bank</span><small><span data-lang="es">Tarjetas · Cuentas · Préstamos · Cambio</span><span data-lang="en">Cards · Accounts · Loans · Exchange</span></small></a>
+      <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>
+    </div>
+    <div class="pvl-wings-pn">
+      <a href="reino-de-pavel.dc.html">← <span data-lang="es">Volver a la portada</span><span data-lang="en">Back to the home page</span></a>
+    </div>
+  </div>
+</nav>
+
+<footer style="padding:56px 40px 72px;background:#080415;border-top:1px solid rgba(216,178,92,.25)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end">
+    <div>
+      <div style="font-family:'Bodoni Moda',serif;font-weight:700;font-size:24px;color:#f4e0a8"><span data-lang="es">Reino de Pavel</span><span data-lang="en">Kingdom of Pavel</span></div>
+      <div style="margin-top:8px;font:400 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,226,.45)"><span data-lang="es">Ministerio de la Grandeza · Palacio de la Grandeza · Plaza del Unicornio 1</span><span data-lang="en">Ministry of Greatness · Palace of Greatness · Unicorn Square 1</span></div>
+    </div>
+    <div style="flex:1 1 300px;font:500 11px/1.6 'IBM Plex Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#d8b25c;text-align:right"><span data-lang="es">El Non Plus Ultra</span><span data-lang="en">The Non Plus Ultra</span><br><span style="color:rgba(244,239,226,.4);letter-spacing:.14em"><span data-lang="es">EXISTES PORQUE PAVEL EXISTE.</span><span data-lang="en">YOU EXIST BECAUSE PAVEL EXISTS.</span></span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;guilloche&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Seguridad&quot;},&quot;holder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;NAVARRO, PAVEL&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      bilingual: this.props.bilingual ?? true,
+      guilloche: this.props.guilloche ?? true,
+      holder: this.props.holder ?? "NAVARRO, PAVEL"
+    };
+  }
+}
+</script>
+</body>
+</html>

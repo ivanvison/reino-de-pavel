@@ -58,6 +58,12 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#vuelos` · Salidas y llegadas | `aerolinea.html` | Viajes | Panel de salidas a paletas: todo a tiempo o adelantado por decreto |
 | `#flota` · Flota y UnicornMiles | `aerolinea.html` | Viajes | Cuatro unicornios a reacción y el programa de fidelidad Club Non Plus Ultra |
 | `#aeropuerto` · Aeropuerto PVL | `aerolinea.html` | Viajes | Plano de la terminal, servicios (Buc-ee’s incluido) y tarjeta de seguridad |
+| `#banco` · Banca en línea | `banco.html` | Banco | Banco Nacional de Pavelandia: aviso de banco de broma, acceso sin contraseña (nombre y devoción) e indicadores |
+| `#tarjetas` · Tarjetas de crédito | `banco.html` | Banco | Cuatro tarjetas en SVG (Clásica a Infinita) con el nombre del titular; descarga en PNG |
+| `#cuentas` · Cuentas | `banco.html` | Banco | Tres cuentas, alta en tres pasos aprobada al instante (número e IBAN de broma, certificado PNG), panel con saldo y movimientos, extracto imprimible |
+| `#prestamos` · Préstamos e hipotecas | `banco.html` | Banco | Préstamo siempre aprobado al 0 % e hipoteca de una parcela de Pavelópolis |
+| `#cambio` · Cambio de divisas | `banco.html` | Banco | Conversor a Grandezas y pizarra de tipos del día, sembrados con la fecha |
+| `#sucursales` · Sucursales y cajeros | `banco.html` | Banco | Oficinas y cajeros del Reino, enlazados al mapa |
 | `#pvl-changelog` · Crónica | `cronica.html` | enlace propio | Un «Decreto N.º n» por cada obra del Reino |
 
 ## Sistema de diseño
