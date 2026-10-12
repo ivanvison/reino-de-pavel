@@ -321,12 +321,17 @@
     st.lang = L();
     var abierto = st.sel;
     var svA = st.sv;
+    var svC = raiz.querySelector('.pvl-map-sv');
+    var vista = svC && !svC.hidden ? st.svId : null;
+    var cam = vista && window.PavelStreetView && window.PavelStreetView.camara ? window.PavelStreetView.camara() : null;
     raiz.innerHTML = '';
     svg = null;
     montar();
     st.sv = svA;
     pintarUI();
     if (abierto) ficha(abierto);
+    /* Street View abierto: se vuelve a abrir en el nuevo idioma, con la misma camara. */
+    if (vista) abrirSV(vista, cam);
   }
 
   /* ---------- Ficha de lugar ---------- */
@@ -489,9 +494,22 @@
   function palacioBandera(x){ return '<g transform="translate(' + x + ' 0)"><rect x="-4" y="' + (HZ - 220) + '" width="8" height="260" fill="#8f6f2a"/><rect x="4" y="' + (HZ - 220) + '" width="150" height="40" fill="#1b1150"/><rect x="4" y="' + (HZ - 180) + '" width="150" height="20" fill="#d8b25c"/><rect x="4" y="' + (HZ - 160) + '" width="150" height="40" fill="url(#pvl-sv-iri2)"/><defs><linearGradient id="pvl-sv-iri2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86e7ea"/><stop offset="1" stop-color="#f2a9dc"/></linearGradient></defs></g>'; }
 
   var svx = 0;
-  function abrirSV(id){
+  /* Street View premium (assets/js/mapa-sv.js): si el motor esta cargado, la
+     escena se pinta alli; si no, queda el panorama SVG de siempre. */
+  function puntosSV(){
+    var out = [];
+    POIS.forEach(function(p){ if (p.sv && ESCENAS[p.sv]) out.push({ id: p.sv, x: p.x, y: p.y, n: t(p.n) }); });
+    return out;
+  }
+  function abrirSV(id, cam){
     var e = ESCENAS[id]; if (!e || !raiz) return;
     var cont = raiz.querySelector('.pvl-map-sv');
+    st.svId = id;
+    if (window.PavelStreetView && window.PavelStreetView.abrir(cont, id, {
+      puntos: puntosSV(),
+      camara: cam,
+      alCaminar: function(nuevo){ st.svId = nuevo; }
+    })) return;
     var dibujo = e.f();
     svx = 0;
     cont.innerHTML = '<div class="pvl-map-sv-pano" data-pvl-sv-pano><svg viewBox="0 0 ' + (PW * 2) + ' ' + PH + '" preserveAspectRatio="xMinYMid slice" xmlns="' + NS + '"><g>' + dibujo + '</g><g transform="translate(' + PW + ' 0)">' + dibujo.replace(/id="(pvl-sv-[^"]+)"/g, 'id="$1-b"').replace(/url\(#(pvl-sv-[^)]+)\)/g, 'url(#$1-b)') + '</g></svg></div>' +

@@ -50,7 +50,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#descargas` · Descargas | `descargas.html` | Cultura | Fondos de pantalla, bandera, logotipo, sellos e himno |
 | `#postales` · Postales | `descargas.html` | Cultura | Estudio de postales: cinco paisajes del mapa, saludo en ES/EN, mensaje, sello y matasellos; PNG con anverso y reverso |
 | `#gastronomia` · Gastronomía | `gastronomia.html` | Cultura | Menú del Banquete de Estado y recetario real que eleva cualquier plato a banquete |
-| `#mapa` · Mapa | `reino-de-pavel.dc.html` | Cultura | Mapa interactivo de Pavelandia: vistas, Street View, Buc-ee's |
+| `#mapa` · Mapa | `reino-de-pavel.dc.html` | Cultura | Mapa interactivo de Pavelandia: vistas, Buc-ee's y un Street View de 360° en lienzo con profundidad, mirada en dos ejes, sombras, reflejos, vida ambiental, modo nocturno, minimapa y descarga de la vista |
 | `#juego` · Videojuego | `reino-de-pavel.dc.html` | Cultura | «Súper Pavel World», plataformas de 16 bits |
 | `#pavel-dice` · Pavel Dice | `arcade.html` | Cultura | «Pavel Dice»: Simon con cuatro notas del himno; ratón, tacto o teclado; récord local |
 | `#arcade` · Carrera del Unicornio | `arcade.html` | Cultura | Corredor infinito en lienzo de 16 bits: saltos dobles, rivales, críticos y Grandezas; récord local |
