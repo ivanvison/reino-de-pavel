@@ -74,6 +74,7 @@
 <script src="assets/js/adoradores.js"></script>
 <script src="assets/js/mapa.js"></script>
 <script src="assets/js/juego.js"></script>
+<script src="assets/js/karaoke.js"></script>
 </helmet>
 <section data-screen-label="01 Portada" style="position:relative;overflow:hidden;padding:0;background:
   radial-gradient(120% 90% at 12% 8%, rgba(122,74,214,.55) 0%, transparent 55%),
@@ -230,14 +231,25 @@
     </div>
 
     <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start">
-      <div style="background:#f6f1e3;color:#201a33;padding:36px 34px;box-shadow:0 22px 48px rgba(0,0,0,.5);position:relative">
+      <div id="pvl-kar-card" data-pvl-kar="letra" style="background:#f6f1e3;color:#201a33;padding:36px 34px;box-shadow:0 22px 48px rgba(0,0,0,.5);position:relative">
         <div style="position:absolute;inset:12px;border:1px solid rgba(143,111,42,.35);pointer-events:none"></div>
         <div style="position:relative;text-align:center">
           <div style="font:600 8.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#6b4f16"><span data-lang="es">LETRA OFICIAL DEL ESTADO</span><span data-lang="en">OFFICIAL STATE LYRICS</span></div>
           <h3 style="margin:10px 0 0;font-family:'Bodoni Moda',serif;font-weight:900;font-size:30px;line-height:1"><span data-lang="es">Himno de Pavel</span><span data-lang="en">Anthem of Pavel</span></h3>
           <div style="margin-top:6px;font:400 10px/1.4 'IBM Plex Mono',monospace;letter-spacing:.16em;color:rgba(32,26,51,.6)"><span data-lang="es">MAESTOSO · TONALIDAD DE GRANDEZA MAYOR</span><span data-lang="en">MAESTOSO · KEY OF GREATNESS MAJOR</span></div>
         </div>
-        <div style="margin-top:28px;display:grid;gap:18px;font-family:'Bodoni Moda',serif;font-size:17px;line-height:1.6;text-align:center;color:#201a33">
+        <div class="pvl-kar-tabs" role="group" aria-label="Lyrics view" data-aria-es="Vista de la letra" data-aria-en="Lyrics view">
+          <button type="button" data-pvl-kar-modo="letra" aria-pressed="true"><span data-lang="es">Letra</span><span data-lang="en">Lyrics</span></button>
+          <button type="button" data-pvl-kar-modo="karaoke" aria-pressed="false"><span data-lang="es">Karaoke</span><span data-lang="en">Karaoke</span></button>
+        </div>
+        <div class="pvl-kar-vista">
+          <div id="pvl-kar-lineas" class="pvl-kar-lineas" aria-live="off"></div>
+          <div class="pvl-kar-pie">
+            <button type="button" id="pvl-kar-desde"><span data-lang="es">▶ Cantar desde el principio</span><span data-lang="en">▶ Sing from the top</span></button>
+            <span id="pvl-kar-estado" class="pvl-kar-estado"></span>
+          </div>
+        </div>
+        <div class="pvl-kar-estatica" style="margin-top:28px;display:grid;gap:18px;font-family:'Bodoni Moda',serif;font-size:17px;line-height:1.6;text-align:center;color:#201a33">
           <p style="margin:0" data-lang="es">Antes del Big Bang tu eterna luz brilló<br>¡Oh, Pavel! De la existencia emanación<br>Unicornio de perfección sin par<br>En el léxico tu nombre es sinónimo de grandeza</p>
           <p style="margin:0" data-lang="en">Before the Big Bang your eternal light shone<br>Oh, Pavel! From existence you emanate<br>Unicorn of peerless perfection<br>In the lexicon your name is synonymous with greatness</p>
           <p style="margin:0;font-weight:700" data-lang="es">¡Tu legado es el Non Plus Ultra!<br>¡Oh, Pavel! ¡Pavel, nombre inmortal!</p>
