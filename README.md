@@ -54,6 +54,10 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#juego` · Videojuego | `reino-de-pavel.dc.html` | Cultura | «Súper Pavel World», plataformas de 16 bits |
 | `#pavel-dice` · Pavel Dice | `arcade.html` | Cultura | «Pavel Dice»: Simon con cuatro notas del himno; ratón, tacto o teclado; récord local |
 | `#arcade` · Carrera del Unicornio | `arcade.html` | Cultura | Corredor infinito en lienzo de 16 bits: saltos dobles, rivales, críticos y Grandezas; récord local |
+| `#aerolinea` · Pavel Airlines | `aerolinea.html` | Viajes | Reserva de vuelos a PVL con tarifa en Grandezas y tarjeta de embarque descargable (PNG) |
+| `#vuelos` · Salidas y llegadas | `aerolinea.html` | Viajes | Panel de salidas a paletas: todo a tiempo o adelantado por decreto |
+| `#flota` · Flota y UnicornMiles | `aerolinea.html` | Viajes | Cuatro unicornios a reacción y el programa de fidelidad Club Non Plus Ultra |
+| `#aeropuerto` · Aeropuerto PVL | `aerolinea.html` | Viajes | Plano de la terminal, servicios (Buc-ee’s incluido) y tarjeta de seguridad |
 | `#pvl-changelog` · Crónica | `cronica.html` | enlace propio | Un «Decreto N.º n» por cada obra del Reino |
 
 ## Sistema de diseño
