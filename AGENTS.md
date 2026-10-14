@@ -37,7 +37,7 @@ It cannot see a layout, so the breakpoint checks below stay yours.
       page; a big one may get its own page, which then needs the full page shell.
 - [ ] A menu entry is added, renamed or removed in the right `.pvl-nav-group` — *El Reino / The
       Kingdom*, *Documentos / Documents*, *Honores / Honors*, *Ministerios / Ministries*, *Cultura /
-      Culture*, *Viajes / Travel* — or as a top-level `.pvl-nav-toplink` — on the landing page, then
+      Culture*, *Viajes / Travel*, *Banco / Bank* — or as a top-level `.pvl-nav-toplink` — on the landing page, then
       `node tools/sync-nav.mjs` copies it to every page.
 - [ ] The entry's label carries **both** `<span data-lang="es">` **and** `<span data-lang="en">`. A
       word that is the same in both languages (`Quiz`, `Descartes`) may be plain text with no spans.
@@ -71,6 +71,7 @@ No build step: each page is a complete static file, and shared things live in `a
 | `arcade.html` | `#pavel-dice`, `#arcade`, `#juego` |
 | `gastronomia.html` | `#gastronomia` |
 | `aerolinea.html` | `#aerolinea`, `#vuelos`, `#flota`, `#aeropuerto` (menu group *Viajes / Travel*) |
+| `banco.html` | `#banco`, `#tarjetas`, `#cuentas`, `#prestamos`, `#cambio`, `#sucursales` (menu group *Banco / Bank*) |
 | `cronica.html` | The Chronicle, `#pvl-changelog` |
 
 - **Styles**: `assets/css/reino.css`, linked from every page's real `<head>`.
