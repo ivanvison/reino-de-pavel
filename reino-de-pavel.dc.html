@@ -73,7 +73,6 @@
 <script src="assets/js/himno.js"></script>
 <script src="assets/js/adoradores.js"></script>
 <script src="assets/js/mapa.js"></script>
-<script src="assets/js/juego.js"></script>
 <script src="assets/js/karaoke.js"></script>
 <script src="assets/js/coronacion.js"></script>
 <script src="assets/js/lienzo.js"></script>
@@ -154,7 +153,7 @@
             <a href="descargas.html#postales"><span data-lang="es">Postales</span><span data-lang="en">Postcards</span></a>
             <a href="gastronomia.html"><span data-lang="es">Gastronomía</span><span data-lang="en">Cuisine</span></a>
             <a href="reino-de-pavel.dc.html#mapa"><span data-lang="es">Mapa</span><span data-lang="en">Map</span></a>
-            <a href="reino-de-pavel.dc.html#juego"><span data-lang="es">Videojuego</span><span data-lang="en">Video game</span></a>
+            <a href="arcade.html#juego"><span data-lang="es">Súper Pavel World</span><span data-lang="en">Super Pavel World</span></a>
             <a href="arcade.html#pavel-dice"><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span></a>
             <a href="arcade.html#arcade"><span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></a>
           </div>
@@ -377,65 +376,6 @@
   </div>
 </section>
 
-<section id="juego" data-screen-label="22 Juego" style="padding:88px 40px;background:#0b0620">
-  <div style="max-width:1180px;margin:0 auto">
-    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(244,239,226,.14);padding-bottom:16px">
-      <span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c">21</span>
-      <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:#f7f2e6"><span data-lang="es">Súper Pavel World · el videojuego oficial</span><span data-lang="en">Super Pavel World · the official video game</span></h2>
-    </div>
-    <p style="margin:22px 0 0;max-width:66ch;font:300 15px/1.7 'IBM Plex Sans',sans-serif;color:rgba(244,239,226,.78)"><span data-lang="es">Los Rivales han invadido el Reino y el Rey Rival se ha sentado en el trono. Solo un jinete puede recuperarlo: Pavel, a lomos del unicornio de Estado. Tres mundos, cinco Buc-ee’s de distancia y ni un solo atajo moral. Cartucho de 16 bits, sin monedas reales.</span><span data-lang="en">The Rivals have invaded the Kingdom and the Rival King has taken the throne. Only one rider can win it back: Pavel, astride the State unicorn. Three worlds, five Buc-ee’s apart, and not a single moral shortcut. A 16-bit cartridge, no real coins required.</span></p>
-
-    <div class="pvl-sp-grid">
-      <div id="pvl-sp-wrap" class="pvl-sp-wrap">
-        <div class="pvl-sp-pantalla">
-          <canvas id="pvl-sp-canvas" width="960" height="540" tabindex="0" aria-label="Super Pavel World" data-aria-es="Súper Pavel World: pulsa para jugar" data-aria-en="Super Pavel World: tap to play"></canvas>
-          <div class="pvl-sp-tactil" aria-hidden="true">
-            <div class="pvl-sp-cruz"><button type="button" data-pvl-sp-tecla="t-izq" tabindex="-1">◀</button><button type="button" data-pvl-sp-tecla="t-der" tabindex="-1">▶</button></div>
-            <div class="pvl-sp-ab"><button type="button" data-pvl-sp-tecla="t-b" tabindex="-1">B</button><button type="button" data-pvl-sp-tecla="t-a" tabindex="-1">A</button></div>
-          </div>
-        </div>
-        <div class="pvl-sp-barra">
-          <button id="pvl-sp-jugar" type="button" class="pvl-sp-jugar"><span data-lang="es">▶ Jugar</span><span data-lang="en">▶ Play</span></button>
-          <button id="pvl-sp-mudo" type="button" class="pvl-sp-icono" aria-pressed="false" aria-label="Sound" data-aria-es="Sonido" data-aria-en="Sound">🔊</button>
-          <span class="pvl-sp-rec"><span data-lang="es">Récord</span><span data-lang="en">Best</span> <strong id="pvl-sp-record">000000</strong></span>
-        </div>
-      </div>
-
-      <aside class="pvl-sp-manual">
-        <div class="pvl-sp-k"><span data-lang="es">MANUAL DE INSTRUCCIONES</span><span data-lang="en">INSTRUCTION MANUAL</span></div>
-        <h3><span data-lang="es">Controles</span><span data-lang="en">Controls</span></h3>
-        <ul class="pvl-sp-lista">
-          <li><kbd>←</kbd><kbd>→</kbd> <span data-lang="es">cabalgar</span><span data-lang="en">ride</span></li>
-          <li><kbd>Espacio</kbd> / <kbd>Z</kbd> <span data-lang="es">saltar (más tiempo pulsado, más alto)</span><span data-lang="en">jump (hold for higher)</span></li>
-          <li><kbd>X</kbd> / <kbd>Shift</kbd> <span data-lang="es">galopar · disparar arcoíris con el cetro</span><span data-lang="en">gallop · fire rainbows with the sceptre</span></li>
-          <li><kbd>P</kbd> <span data-lang="es">pausa</span><span data-lang="en">pause</span> · <kbd>M</kbd> <span data-lang="es">silencio</span><span data-lang="en">mute</span> · <kbd>Esc</kbd> <span data-lang="es">soltar el teclado</span><span data-lang="en">release the keyboard</span></li>
-          <li><span data-lang="es">En el móvil: botones en pantalla (A salta, B galopa).</span><span data-lang="en">On a phone: on-screen buttons (A jumps, B gallops).</span></li>
-        </ul>
-        <h3><span data-lang="es">Poderes</span><span data-lang="en">Power-ups</span></h3>
-        <ul class="pvl-sp-lista">
-          <li><b style="color:#86e7ea">Crin Iridiscente</b> — <span data-lang="es">el unicornio crece y rompe ladrillos.</span><span data-lang="en">the unicorn grows and breaks bricks.</span></li>
-          <li><b style="color:#e9c874"><span data-lang="es">Cetro de Grandeza</span><span data-lang="en">Sceptre of Greatness</span></b> — <span data-lang="es">dispara arcoíris.</span><span data-lang="en">fires rainbows.</span></li>
-          <li><b style="color:#f2a9dc"><span data-lang="es">Estrella Non Plus Ultra</span><span data-lang="en">Non Plus Ultra Star</span></b> — <span data-lang="es">invencible un rato.</span><span data-lang="en">invincible for a while.</span></li>
-          <li><b style="color:#f5c400">Beaver Nuggets</b> — <span data-lang="es">una vida extra. Cien Grandezas, otra.</span><span data-lang="en">an extra life. A hundred Grandezas, another.</span></li>
-        </ul>
-        <h3><span data-lang="es">Enemigos del Reino</span><span data-lang="en">Enemies of the Kingdom</span></h3>
-        <ul class="pvl-sp-lista">
-          <li><b><span data-lang="es">Rivales</span><span data-lang="en">Rivals</span></b> — <span data-lang="es">píselos. No tienen otro argumento.</span><span data-lang="en">stomp them. They have no other argument.</span></li>
-          <li><b><span data-lang="es">Críticos</span><span data-lang="en">Critics</span></b> — <span data-lang="es">píselos y patee su periódico enrollado.</span><span data-lang="en">stomp them, then kick their rolled-up newspaper.</span></li>
-          <li><b><span data-lang="es">Dudas cartesianas</span><span data-lang="en">Cartesian Doubts</span></b> — <span data-lang="es">vuelan; Descartes ya se rectificó.</span><span data-lang="en">they fly; Descartes already recanted.</span></li>
-          <li><b><span data-lang="es">El Rey Rival</span><span data-lang="en">The Rival King</span></b> — <span data-lang="es">tres pisotones en la cima del Monte Non Plus Ultra.</span><span data-lang="en">three stomps on top of Mount Non Plus Ultra.</span></li>
-        </ul>
-        <h3><span data-lang="es">Mundos</span><span data-lang="en">Worlds</span></h3>
-        <ol class="pvl-sp-lista">
-          <li>1-1 · Pavelópolis</li>
-          <li>1-2 · <span data-lang="es">Desierto de los Rivales (punto de control en el Buc-ee’s)</span><span data-lang="en">Desert of Rivals (checkpoint at the Buc-ee’s)</span></li>
-          <li>1-3 · <span data-lang="es">Monte Non Plus Ultra, de noche</span><span data-lang="en">Mount Non Plus Ultra, by night</span></li>
-        </ol>
-      </aside>
-    </div>
-  </div>
-</section>
-
 <div style="padding:0 40px 88px;background:#0b0620">
   <div style="max-width:1180px;margin:0 auto">
     <div id="pvl-invite-card" style="margin-top:46px;background:#0d0725;border:1px solid rgba(216,178,92,.35);padding:30px clamp(20px,4vw,36px);display:grid;gap:14px">
@@ -459,7 +399,7 @@
     <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.26em;color:#d8b25c"><span data-lang="es">PALACIO DE LA GRANDEZA</span><span data-lang="en">PALACE OF GREATNESS</span></div>
     <h2 style="margin-top:12px"><span data-lang="es">Las salas del palacio</span><span data-lang="en">The halls of the palace</span></h2>
     <div class="pvl-wings-grid">
-      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa · Videojuego</span><span data-lang="en">Anthem · Map · Video game</span></small></a>
+      <a href="reino-de-pavel.dc.html"><span data-lang="es">Portada</span><span data-lang="en">Home</span><small><span data-lang="es">Himno · Mapa</span><span data-lang="en">Anthem · Map</span></small></a>
       <a href="el-reino.html"><span data-lang="es">El Reino</span><span data-lang="en">The Kingdom</span><small><span data-lang="es">Emblema</span><span data-lang="en">Emblem</span> · <span data-lang="es">Blasón vasallo</span><span data-lang="en">Vassal crest</span> · <span data-lang="es">Bandera</span><span data-lang="en">Flag</span> · <span data-lang="es">Constitución</span><span data-lang="en">Constitution</span> · Descartes · <span data-lang="es">Clima</span><span data-lang="en">Weather</span></small></a>
       <a href="documentos.html"><span data-lang="es">Documentos</span><span data-lang="en">Documents</span><small><span data-lang="es">Pasaporte e identidad</span><span data-lang="en">Passport &amp; identity</span> · <span data-lang="es">Moneda y filatelia</span><span data-lang="en">Currency &amp; stamps</span> · <span data-lang="es">Papelería</span><span data-lang="en">Stationery</span> · <span data-lang="es">Visado</span><span data-lang="en">Visa</span> · <span data-lang="es">Calendario</span><span data-lang="en">Calendar</span> · <span data-lang="es">Hora real</span><span data-lang="en">Royal time</span></small></a>
       <a href="honores.html"><span data-lang="es">Honores</span><span data-lang="en">Honors</span><small><span data-lang="es">Orden del Unicornio</span><span data-lang="en">Order of the Unicorn</span> · <span data-lang="es">Premio Pavel</span><span data-lang="en">Pavel Prize</span> · <span data-lang="es">Título real</span><span data-lang="en">Royal title</span></small></a>
@@ -469,7 +409,7 @@
       <a href="descargas.html"><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span><small><span data-lang="es">Descargas</span><span data-lang="en">Downloads</span> · <span data-lang="es">Postales</span><span data-lang="en">Postcards</span></small></a>
       <a href="gastronomia.html"><span data-lang="es">Gastronomía Real</span><span data-lang="en">Royal Cuisine</span><small><span data-lang="es">Banquete · Recetario</span><span data-lang="en">Banquet · Recipes</span></small></a>
       <a href="museo.html"><span data-lang="es">Museo Real</span><span data-lang="en">Royal Museum</span><small><span data-lang="es">Sala de las Reliquias</span><span data-lang="en">Hall of Relics</span></small></a>
-      <a href="arcade.html"><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span><small><span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span> · <span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></small></a>
+      <a href="arcade.html"><span data-lang="es">Sala de Juegos Real</span><span data-lang="en">Royal Arcade</span><small><span data-lang="es">Súper Pavel World</span><span data-lang="en">Super Pavel World</span> · <span data-lang="es">Pavel Dice</span><span data-lang="en">Pavel Says</span> · <span data-lang="es">Carrera del Unicornio</span><span data-lang="en">Unicorn Runner</span></small></a>
       <a href="aerolinea.html">Pavel Airlines<small><span data-lang="es">Reservas · Salidas · Flota · Aeropuerto</span><span data-lang="en">Booking · Departures · Fleet · Airport</span></small></a>
       <a href="banco.html"><span data-lang="es">Banco Nacional</span><span data-lang="en">National Bank</span><small><span data-lang="es">Tarjetas · Cuentas · Préstamos · Cambio</span><span data-lang="en">Cards · Accounts · Loans · Exchange</span></small></a>
       <a href="cronica.html"><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span><small><span data-lang="es">Crónica</span><span data-lang="en">Chronicle</span></small></a>

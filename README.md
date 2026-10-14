@@ -51,7 +51,7 @@ enlaces a la portada y a todas las demás páginas. Los enlaces antiguos a la po
 | `#postales` · Postales | `descargas.html` | Cultura | Estudio de postales: cinco paisajes del mapa, saludo en ES/EN, mensaje, sello y matasellos; PNG con anverso y reverso |
 | `#gastronomia` · Gastronomía | `gastronomia.html` | Cultura | Menú del Banquete de Estado y recetario real que eleva cualquier plato a banquete |
 | `#mapa` · Mapa | `reino-de-pavel.dc.html` | Cultura | Mapa interactivo de Pavelandia: vistas, Buc-ee's y un Street View de 360° en lienzo con profundidad, mirada en dos ejes, sombras, reflejos, vida ambiental, modo nocturno, minimapa y descarga de la vista |
-| `#juego` · Videojuego | `reino-de-pavel.dc.html` | Cultura | «Súper Pavel World», plataformas de 16 bits |
+| `#juego` · Videojuego | `arcade.html` | Cultura | «Súper Pavel World», plataformas de 16 bits |
 | `#pavel-dice` · Pavel Dice | `arcade.html` | Cultura | «Pavel Dice»: Simon con cuatro notas del himno; ratón, tacto o teclado; récord local |
 | `#arcade` · Carrera del Unicornio | `arcade.html` | Cultura | Corredor infinito en lienzo de 16 bits: saltos dobles, rivales, críticos y Grandezas; récord local |
 | `#aerolinea` · Pavel Airlines | `aerolinea.html` | Viajes | Reserva de vuelos a PVL con tarifa en Grandezas y tarjeta de embarque descargable (PNG) |
@@ -115,9 +115,9 @@ elige esa pista.
 El reproductor de la portada toca `assets/Bajo_el_Manto_de_Pavel.mp3` en bucle continuo, con play/pausa,
 barra de avance arrastrable y tiempo transcurrido.
 
-Intenta sonar solo al abrir la página. Los navegadores bloquean el audio con sonido hasta que hay
-interacción, así que si el arranque automático se rechaza el himno entra en cuanto el visitante
-hace clic, toca o pulsa una tecla en cualquier parte de la página.
+No suena solo: el himno arranca únicamente cuando el visitante pulsa el botón de play (en el
+reproductor de la portada o en el mini-reproductor). La reproducción automática al abrir la página
+se retiró a petición del propietario.
 
 > La lógica del reproductor vive en `assets/js/himno.js`, cargado desde el `<helmet>`, no junto al marcado: el cuerpo
 > del documento se monta después de que corre el script, de ahí que todo se delegue en `document` y que
@@ -138,7 +138,7 @@ probar un mundo concreto sin jugar los anteriores, añade `?juego-nivel=2` o `?j
 .
 ├── AGENTS.md / CLAUDE.md      # reglas para quien cambie el sitio (el menú es obligatorio)
 ├── index.html                 # redirección a la portada
-├── reino-de-pavel.dc.html     # portada: héroe, himno, mapa, videojuego, convocatoria
+├── reino-de-pavel.dc.html     # portada: héroe, himno, mapa, convocatoria
 ├── el-reino.html              # emblema, bandera, constitución, Descartes
 ├── documentos.html            # pasaporte, moneda, papelería y ciudadanía, visado, calendario
 ├── honores.html               # Orden del Unicornio, Premio Pavel

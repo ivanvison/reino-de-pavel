@@ -114,35 +114,11 @@
      sido reemplazados por nodos nuevos entre dos scrolls. */
   setInterval(checkMiniVisibility, 800);
 
-  /* Arranque automatico: los navegadores bloquean el audio con sonido hasta
-     que hay interaccion, asi que si el intento inicial falla lo reintentamos
-     en el primer gesto del visitante. */
-  var armed=false;
-  function arm(){
-    if(armed) return;
-    armed=true;
-    var evs=['pointerdown','keydown','touchstart','wheel'];
-    function go(e){
-      function done(){ evs.forEach(function(ev){ doc.removeEventListener(ev,go,true); }); }
-      /* Si el primer gesto del visitante es justo el boton de play/pausa,
-         dejar que su propio manejador de click decida: si tambien
-         llamamos start() aqui en el pointerdown, para cuando llega el
-         click el audio ya esta sonando y el handler lo interpreta como
-         "pausar", anulando el toque. */
-      var t=e&&e.target;
-      if(t&&t.closest&&(t.closest('#pavel-toggle')||t.closest('#pavel-mini-toggle'))){ done(); return; }
-      var p=start();
-      if(p&&p.then) p.then(done)['catch'](function(){}); else done();
-    }
-    evs.forEach(function(ev){ doc.addEventListener(ev,go,true); });
-  }
-  function autoplay(){
-    var a=audio();
-    if(!a){ setTimeout(autoplay,150); return; }
-    var p=start();
-    if(p&&p.then) p['catch'](arm); else arm();
-  }
-  if(doc.readyState==='loading') doc.addEventListener('DOMContentLoaded',autoplay); else autoplay();
+  /* Sin arranque automatico. El himno solo suena cuando el visitante pulsa
+     play (#pavel-toggle o #pvl-mini-toggle), gestionado por el click de arriba.
+     Antes se intentaba reproducir al cargar la portada y, si el navegador lo
+     bloqueaba, al primer gesto del visitante en cualquier parte de la pagina;
+     esa reproduccion automatica se retiro a peticion del propietario. */
 
   setInterval(paint,200);
 })();
